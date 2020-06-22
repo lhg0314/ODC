@@ -1,12 +1,16 @@
 package admin.dao.face;
 
 import java.util.List;
+import java.util.Map;
 
+import dto.ArtistDetail;
 import dto.ArtistInfo;
+import dto.AskBoard;
+import dto.ClassInfo;
 import util.Paging;
 
 /* 
- * 200620 이서연
+ * 200621 이서연
  */
 
 public interface ArtManageDao {
@@ -25,4 +29,37 @@ public interface ArtManageDao {
 	 * @return List<ArtistInfo> - artistinfo 조회결과 리스트
 	 */
 	public List<ArtistInfo> selectAllArt(Paging paging);
+
+	
+	/**
+	 * artno로 사업자 조회
+	 * @param artistInfo - artno 담겨잇음
+	 * @return ArtistInfo - 조회된 artist 정보
+	 */
+	public ArtistInfo selectByArtno(ArtistInfo artistInfo);
+
+	
+	/**
+	 * 사업자 소개글 가져오기
+	 * @param artistDetail
+	 * @return
+	 */
+	public ArtistDetail selectArtDetail(ArtistDetail artistDetail);
+
+	
+	/**
+	 * 사업자 개설 클래스 가져오기
+	 * @param classInfo
+	 * @return
+	 */
+	public List<ClassInfo> classList(ClassInfo classInfo);
+
+	
+	
+	/**
+	 * 조인해서 map으로 askBoardComm 가져오기
+	 * @param ab
+	 * @return
+	 */
+	public List<Map<String, Object>> askCommList(AskBoard ab);
 }

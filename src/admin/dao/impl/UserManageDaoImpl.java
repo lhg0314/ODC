@@ -5,10 +5,15 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import admin.dao.face.UserManageDao;
 import dbutil.JDBCTemplate;
+import dto.AskBoard;
+import dto.ClassBooking;
+import dto.ReviewBoard;
 import dto.UserInfo;
 import util.Paging;
 
@@ -164,6 +169,181 @@ public class UserManageDaoImpl implements UserManageDao{
 		}
 		
 		return uinfo;
+	}
+
+
+	@Override
+	public List<Map<String, Object>> bookingList(ClassBooking book) {
+		
+		String sql = "";
+		
+		sql += "SELECT b.booking_no, b.class_no, c.class_name, b.booking_date, b.payment_date, b.total_price";
+		sql += " FROM classbooking b JOIN classinfo c";
+		sql += " ON b.user_no = ? AND b.class_no = c.class_no";
+		sql += " ORDER BY b.booking_no, b.booking_date, b.class_no";
+	
+		conn = JDBCTemplate.getConnection();
+		
+		
+		List<Map<String, Object>> list = new ArrayList<>();
+		
+//		ClassBooking booking = null;
+		
+		
+		try {
+			
+			ps = conn.prepareStatement(sql);
+			
+			ps.setInt(1, book.getUserno());
+			
+			rs = ps.executeQuery();
+			
+			while(rs.next()) {
+				
+//				booking = new ClassBooking();
+//				
+//				booking.setBookingNo(rs.getInt("booking_no"));
+//				booking.setClassno(rs.getInt("class_no"));
+//				booking.setBookingDate(rs.getDate("booking_date"));
+//				booking.setPaymentDate(rs.getDate("payment_date"));
+//				booking.setTotalPrice(rs.getInt("total_price"));
+//				
+//				list.add(booking);
+				
+				Map<String, Object> map = new HashMap<>();
+				
+				map.put("bookingNo", rs.getInt("booking_no"));
+				map.put("classno", rs.getInt("class_no"));
+				map.put("classname", rs.getString("class_name"));
+				map.put("bookingDate", rs.getDate("booking_date"));
+				map.put("paymentDate", rs.getDate("payment_date"));
+				map.put("totalPrice", rs.getInt("total_price"));
+				
+				list.add(map);
+				
+			}
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			JDBCTemplate.close(ps);
+			JDBCTemplate.close(rs);
+		}
+		
+		return list;
+	}
+
+	
+	
+
+	@Override
+	public List<Map<String, Object>> reviewList(ReviewBoard review) {
+		
+		String sql = "";
+		
+		sql += "SELECT r.review_no, r.class_no, c.class_name, r.review_content, r.sat_level, r.review_date";
+		sql += " FROM reviewboard r JOIN classinfo c";
+		sql += " ON user_no = ? AND r.class_no = c.class_no";
+		sql += " ORDER BY review_no";
+		
+		conn = JDBCTemplate.getConnection();
+		
+		List<Map<String, Object>> list = new ArrayList<>();
+		
+//		ReviewBoard rb = null;
+		
+		try {
+			
+			ps = conn.prepareStatement(sql);
+			
+			ps.setInt(1, review.getUserno());
+			
+			rs = ps.executeQuery();
+			
+			while(rs.next()) {
+				
+//				rb = new ReviewBoard();
+//				
+//				rb.setReviewno(rs.getInt("review_no"));
+//				rb.setClassno(rs.getInt("class_no"));
+//				rb.setReviewContent(rs.getString("review_content"));
+//				rb.setSat_level(rs.getInt("sat_level"));
+//				rb.setReviewDate(rs.getDate("review_date"));
+//				
+//				list.add(rb);
+				
+				
+				Map<String, Object> map = new HashMap<>();
+				
+				map.put("reviewno", rs.getInt("review_no"));
+				map.put("classno", rs.getInt("class_no"));
+				map.put("classname", rs.getString("class_name"));
+				map.put("reviewContent", rs.getString("review_content"));
+				map.put("sat_level", rs.getInt("sat_level"));
+				map.put("reviewDate", rs.getDate("review_date"));
+				
+				list.add(map);
+				
+			}
+					
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			JDBCTemplate.close(ps);
+			JDBCTemplate.close(rs);
+		}
+		
+		return list;
+	}
+
+
+	
+	@Override
+	public List<AskBoard> askList(AskBoard ask) {
+		
+		String sql = "";
+		
+		sql += "SELECT ask_board_no, class_no, ask_content, ask_date";
+		sql += " FROM askboard";
+		sql += " WHERE user_no = ?";
+		sql += " ORDER BY ask_board_no, ask_date";
+		
+		conn = JDBCTemplate.getConnection();
+		
+		List<AskBoard> list = new ArrayList<>();
+		
+		AskBoard ab = null;
+		
+		try {
+			
+			ps = conn.prepareStatement(sql);
+			
+			ps.setInt(1, ask.getUserno());
+			
+			rs = ps.executeQuery();
+			
+			while(rs.next()) {
+				
+				ab = new AskBoard();
+				
+				ab.setAskBoardno(rs.getInt("ask_board_no"));
+				ab.setClassno(rs.getInt("class_no"));
+				ab.setAskContent(rs.getString("ask_content"));
+				ab.setAskDate(rs.getDate("ask_date"));
+				
+				list.add(ab);
+			}
+					
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			JDBCTemplate.close(ps);
+			JDBCTemplate.close(rs);
+		}
+		
+		return list;
 	}
 
 
