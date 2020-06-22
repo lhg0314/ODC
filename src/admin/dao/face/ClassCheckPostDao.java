@@ -73,6 +73,21 @@ public interface ClassCheckPostDao {
 	 */
 	public List<Map<String, Object>> selectClassBookingByClassNo(Paging paging, int classno);
 
+	/**
+	 * 클래스 리뷰 페이징 처리
+	 * @param classno
+	 * @return
+	 */
+	public int selectCntClassReview(int classno);
+
+	/**
+	 * 클래스별 리뷰 가져오기
+	 * @param paging
+	 * @param classno
+	 * @return
+	 */
+	public List<Map<String, Object>> selectClassReviewByClassNo(Paging paging, int classno);
+
 
 
 }

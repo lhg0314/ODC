@@ -39,10 +39,10 @@ $(document).ready(function(){
 <input type="text" id="search" placeholder="클래스명" value="${paging.search }"/>
 <button type="button" id="btnSearch">검색</button><br>
 <br>
-<table id="classTable" class="table table-striped table-condensed text-center">
+<table id="classTable" class="table table-condensed text-center table-hover">
 	<tr>
 		<th>번호</th>
-		<th>클래스명</th>
+		<th style="width: 23%;">클래스명</th>
 		<th>사업자 아이디</th>
 		<th>카테고리</th>
 		<th>지역</th>

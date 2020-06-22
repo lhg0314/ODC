@@ -118,19 +118,8 @@ $(document).ready(function(){
 	<td colspan="4">${info.classOriginFilename }</td>
 </tr>
 <tr>
-	<th colspan="4">클래스 후기</th>
+	<th colspan="4"><a href="/admin/class/review?classno=${info.classNo }">&raquo; 클래스 후기보기</a></th>
 </tr>
-<tr>
-	<td colspan="4">
-	<div id="classReview">
-	
-	
-	
-	
-	</div>
-	</td>
-</tr>
-
 </table>
 </form>
 <div class="text-center">
