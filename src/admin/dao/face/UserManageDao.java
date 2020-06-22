@@ -1,7 +1,11 @@
 package admin.dao.face;
 
 import java.util.List;
+import java.util.Map;
 
+import dto.AskBoard;
+import dto.ClassBooking;
+import dto.ReviewBoard;
 import dto.UserInfo;
 import util.Paging;
 
@@ -33,4 +37,31 @@ public interface UserManageDao {
 	 * @return UserInfo
 	 */
 	public UserInfo selectByUserno(UserInfo userInfo);
+	
+	
+	
+	/**
+	 * userno로  에약된클래스 조회
+	 * @param booking - userno 담긴 ClasBooking 객체
+	 * @return - 예약정보 
+	 */
+	public List<Map<String, Object>> bookingList(ClassBooking book);
+	
+	
+	/**
+	 * userno로 작성한 후기 조회
+	 * @param review
+	 * @return - 작성한 리뷰
+	 */
+	public List<Map<String, Object>> reviewList(ReviewBoard review);
+	
+	
+	/**
+	 * userno로 작성한 문의 조회
+	 * @param ask
+	 * @return
+	 */
+	public List<AskBoard> askList(AskBoard ask);
+	
+	
 }

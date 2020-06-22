@@ -1,3 +1,6 @@
+<!-- 200620 이서연 -->
+<!-- artlist의 페이징 -->
+
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 

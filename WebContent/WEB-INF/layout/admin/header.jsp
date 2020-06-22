@@ -107,13 +107,13 @@ ul.sub li:hover {
         <li class="group">
             <div class="title">회원 관리</div>
             <ul class="sub">
-                <li><a href="#">회원 정보</a></li>
+                <li><a href="/admin/userlist">회원 정보</a></li>
             </ul>
         </li>
         <li class="group">
             <div class="title">사업자 관리</div>
             <ul class="sub">
-                <li><a href="#">사업자 정보</a></li>
+                <li><a href="/admin/artlist">사업자 정보</a></li>
             </ul>
         </li>
         <li class="group">

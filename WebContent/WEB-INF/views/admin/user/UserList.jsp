@@ -1,4 +1,3 @@
-<!-- 완성 -->
 <!-- 200620 이서연 -->
 <!-- 관리자페이지 > 사용자정보 > 사용자 상세정보.jsp -->
 
@@ -16,20 +15,28 @@
 
 
 <style type="text/css">
+
 .container { 
+
 	width: 960px; 
 	text-align: center;
 }
+
 .table {
+
 	display: inline-table;
 	width: 850px;
 	font-size: 14px;
 }
+
 .searchBtn {
+
 	margin: 30px 60px;
 	float: right;
 }
+
 .tablehead { background: thistle; }
+
 </style>
 
 
@@ -101,7 +108,7 @@ $(document).ready(function() {
 	
 	</table>
 	
-	<c:import url="/WEB-INF/layout/paging/pagingUser.jsp"/>
+	<c:import url="/WEB-INF/paging/pagingUser.jsp"/>
 
 </div>
 
