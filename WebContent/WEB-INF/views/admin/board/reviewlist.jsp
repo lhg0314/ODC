@@ -7,7 +7,7 @@
 $(document).ready(function(){
 	//검색 버틀 클릭
 	$("#btnSearch").click(function() {
-		location.href="/admin/talent?search="+$("#search").val();
+		location.href="/admin/reviewlist?search="+$("#search").val();
 	});
 	
 	$("#search").keydown(function(e) {
@@ -77,7 +77,6 @@ $(document).ready(function(){
 	<td><button type="button" onclick="location.href='/admin/class/view?classno=${info.classNo }&view=post'">상세 정보</button></td>
 	<td>
 	<c:if test="${info.classCheck eq 0}">검토 신청</c:if>
-	<c:if test="${info.classCheck eq 1}">검토 완료</c:if>
 	<c:if test="${info.classCheck eq 2}">검토 중</c:if>
 	<c:if test="${info.classCheck eq 3}">반려</c:if>
 	</td>
@@ -86,5 +85,5 @@ $(document).ready(function(){
 	</c:forEach>
 </table>
 </div>
-<c:import url="/WEB-INF/paging/admintalentpaging.jsp" />
+<c:import url="/WEB-INF/paging/adminreviewpaging.jsp" />
 <c:import url="/WEB-INF/layout/admin/footer.jsp" />
