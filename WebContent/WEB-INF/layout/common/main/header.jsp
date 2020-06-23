@@ -23,6 +23,18 @@
 	background: thistle;
 	padding-left: 7%;
 }
+#minilist{
+
+list-style: none;
+ font-weight: bold;
+ white-space:nowrap;
+ width:300px;
+}
+#minilist > li{
+	float:left;
+	
+}
+
 
 .navst{
 	list-style-type: none;
@@ -218,14 +230,16 @@
    
    <div class="chart"><b>1</b> 인기 클래스 top5</div>
    
-   <div style="position: absolute; right: 250px;">
-	   <ul style="list-style: none; font-weight: bold;">
+   <div style="position: absolute; width: 350px; right: -2%;">
+	   <ul id="minilist">
 	   		<c:if test="${empty userid }">
-			<li><a href="/member/login" class="aNone" style="float: left;">&nbsp;로그인&nbsp; |</a></li>
-			<li><a href="/user/join" class="aNone">&nbsp; 회원가입</a></li>
+			<li><a href="/member/login" class="aNone">&nbsp;로그인&nbsp; |</a></li>
+			<li><a href="/user/join" class="aNone" >&nbsp; 회원가입&nbsp; |</a></li>
+			<li><a href="/artist/main" class="aNone" >&nbsp; 작가 페이지</a></li>
 	   		</c:if>
 	   		<c:if test="${!empty userid }">
 			<li><a href="/user/logout" class="aNone">&nbsp; 로그아웃</a></li>
+			<li><a href="/artist/main" class="aNone" >&nbsp; 작가 페이지</a></li>
 	   		</c:if>
 	   </ul>
    </div>
