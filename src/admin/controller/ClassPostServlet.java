@@ -1,6 +1,7 @@
 package admin.controller;
 
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.List;
 import java.util.Map;
 
@@ -9,6 +10,8 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
+import com.google.gson.Gson;
 
 import admin.service.face.AdminClassService;
 import admin.service.impl.AdminClassServiceImpl;
@@ -50,10 +53,20 @@ public class ClassPostServlet extends HttpServlet {
 		@Override
 		protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 			
+			// 응답 데이터 형식 지정
+			resp.setContentType("text/html; charset=utf-8");
+			
+			// json 형식
+			resp.setContentType("application/json; charset=utf-8");
+			
+			// 출력 스트림
+			PrintWriter out = resp.getWriter();
+			
 			int classno = -1;
 			
 			// 파라미터 처리
 			String cn = req.getParameter("classno");
+			System.out.println(cn);
 			if( cn != null && !"".equals(cn)) {
 				classno = Integer.parseInt(cn);
 			}
@@ -65,6 +78,8 @@ public class ClassPostServlet extends HttpServlet {
 				postStatus = Integer.parseInt(cn);
 			}
 		
+//			System.out.println("classno : " + classno + "status : " + postStatus);
+			
 			ClassInfo classInfo = new ClassInfo();
 			
 			// 클래스 업데이트할 정보가 담긴 객체
@@ -75,12 +90,10 @@ public class ClassPostServlet extends HttpServlet {
 			// 게시사항 변경하기
 			adminClassService.updatePostStatus(classInfo);
 			
-			
 			// 리다이렉트
 			if( "check".equals(req.getParameter("view"))){
 				resp.sendRedirect("/admin/class/check");
-			}else {	resp.sendRedirect("/admin/class/post"); }
-		
+			}else {	out.println("{\"mes\" : \" 저장되었습니다\"}"); }
 		
 		}
 

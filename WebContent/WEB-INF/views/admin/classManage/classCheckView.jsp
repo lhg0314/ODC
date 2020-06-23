@@ -12,46 +12,69 @@ $(document).ready(function(){
 	})
 	
 	$("#btnCheckUpdate").click(function(){
-		$("#checkForm").submit();
+		$("#checkAjax").html("");
+	
+		$.ajax({
+			type: "post"// 요청 메소드
+			, url: "/admin/class/check"
+			, data: {
+				"classno" : $("#classno").text()
+				, "classCheck" : $("#classCheck").val()
+			}
+			, dataType: "html"
+			, success: function(res){
+				console.log("성공")
+			
+				var message = JSON.parse(res);
+							
+				$("#checkAjax").html(message.mes);
+			}
+			, error: function(){
+				console.log("실패")
+			}
+		})
 	})
 	
 	$("#btnPostUpdate").click(function(){
 		$("#postForm").submit();
 	})
 	
-	
 });
 </script>
 
 <style type="text/css">
-
+#classInfoTable{
+	font-size: 14px;
+}
 #SnvClassCheck{
 	background: #ecdfec;
 }
 #classInfoTable th{
-	background: #ecdfec;
+	background: thistle;
 }
+#checkAjax{
+	color: green;
+	width: 150px;
+	display: inline-block;
+}
+
 
 </style>
 
 <%-- 클래스 상세 페이지 --%>
 <%-- 20200620 구동영 --%>
-<h4 >&nbsp;클래스 관리</h4>
+<h4 style="font-weight: bold;">&nbsp;클래스 관리</h4>
 <hr>
-<h5>&nbsp;클래스 검토 > 클래스 계획서</h5>
+<h5 style="font-weight: bold;">&nbsp;클래스 검토 > 클래스 계획서</h5>
 <br>
 <div>
-
-<form action="/admin/class/check" method="post" id="checkForm">
-
-<input type="hidden" name="classno" value="${info.classNo }" />
 
 <table class="table table-bordered" id="classInfoTable">
 <tr>
 	<th>클래스 이름</th>
 	<td>${info.className }</td>
 	<th>클래스 번호</th>
-	<td>${info.classNo }</td>
+	<td id="classno">${info.classNo }</td>
 </tr>
 <tr>
 	<th>카테고리</th>
@@ -87,7 +110,7 @@ $(document).ready(function(){
 	<td>${info.minPeople } ~ ${info.maxPeople} 명</td>
 	<th>검토 진행 상태 변경</th>
 	<td>
-		<select name="classCheck" id="classCheck">
+		<select id="classCheck">
 			<c:choose>
 			<c:when test="${info.classCheck eq 0 }">
 				<option value="0" selected="selected">검토 신청</option>
@@ -106,7 +129,8 @@ $(document).ready(function(){
 			</c:when>
 			</c:choose>
 		</select>
-
+		<button type="button" id="btnCheckUpdate">저장</button>
+		<div id="checkAjax"></div>
 	</td>
 </tr>
 <tr>
@@ -124,7 +148,6 @@ $(document).ready(function(){
 
 
 </table>
-</form>
 
 
 <form action="/admin/class/post" method="post" id="postForm">
@@ -135,7 +158,6 @@ $(document).ready(function(){
 
 <div class="text-center">
 <button type="button" class="btn btn-default" id="btnList">목록</button>
-<button type="button" id="btnCheckUpdate" class="btn btn-primary" >저장</button>
 <button type="button" class="btn btn-success" id="btnPostUpdate">클래스 게시</button>
 </div>
 

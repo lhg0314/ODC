@@ -12,42 +12,66 @@ $(document).ready(function(){
 	})
 	
 	$("#btnPostUpdate").click(function(){
-		$("#postForm").submit();
+		$("#postAjax").html("");
+		
+		$.ajax({
+			type: "post"// 요청 메소드
+			, url: "/admin/class/post"
+			, data: {
+				"classno" : $("#classno").text()
+				, "postStatus" : $("#postStatus").val()
+			}
+			, dataType: "html"
+			, success: function(res){
+				console.log("성공")
+				
+				var message = JSON.parse(res);
+								
+				
+				$("#postAjax").html(message.mes);
+			}
+			, error: function(){
+				console.log("실패")
+			}
+		})
+		
 	})
 	
 });
 </script>
 
 <style type="text/css">
-
+#classInfoTable{
+	font-size: 14px;
+}
 #SnvClassPost{
 	background: #ecdfec;
 }
 #classInfoTable th{
-	background: #ecdfec;
+	background: thistle;
 }
-
+#postAjax{
+	color: green;
+	width: 150px;
+	display: inline-block;
+}
 
 </style>
 
 <%-- 클래스 상세 페이지 --%>
 <%-- 20200620 구동영 --%>
-<h4 >&nbsp;클래스 관리</h4>
+<h4 style="font-weight: bold;">&nbsp;클래스 관리</h4>
 <hr>
-<h5>&nbsp;클래스 정보 > 클래스 상세 정보</h5>
+<h5 style="font-weight: bold;">&nbsp;클래스 정보 > 클래스 상세 정보</h5>
 <br>
 <div>
 
-<form action="/admin/class/post" method="post" id="postForm">
-
-<input type="hidden" name="classno" value="${info.classNo }" />
-
 <table class="table table-bordered" id="classInfoTable">
-<tr >
-	<th>클래스 이름</th>
+<tr>
+	<th style="width: 15%;">클래스 이름</th>
 	<td>${info.className }</td>
-	<th>클래스 번호</th>
-	<td>${info.classNo }</td>
+	<th style="width: 15%;">클래스 번호</th>
+	<td id="classno">${info.classNo }</td>
 </tr>
 <tr>
 	<th>카테고리</th>
@@ -103,6 +127,8 @@ $(document).ready(function(){
 		</c:when>
 		</c:choose>
 		</select>
+	<button type="button" id="btnPostUpdate">저장</button>
+	<div id="postAjax"></div>
 	</td>
 </tr>
 <tr>
@@ -121,10 +147,8 @@ $(document).ready(function(){
 	<th colspan="4"><a href="/admin/class/review?classno=${info.classNo }">&raquo; 클래스 후기보기</a></th>
 </tr>
 </table>
-</form>
 <div class="text-center">
 <button type="button" class="btn btn-default" id="btnList">목록</button>
-<button type="button" class="btn btn-primary" id="btnPostUpdate">저장</button>
 </div>
 
 </div>
