@@ -249,7 +249,7 @@ ul.sub li a {
 		<div id="userbox_cont">
 			<img src="/resources/img/mini.jpg" />		
 			<img src="/resources/img/grade/artistgrade.PNG" />		
-			<span>홍길동 님 </span>
+			<span>${artid }님 </span>
 		</div>
 	</div>
 	
