@@ -27,6 +27,14 @@ $(document).ready(function(){
 			$("#maxPeople").val("");
 		}
 	})
+
+	$("#minPeople").blur(function(){
+		
+		if($(this).val() > $("#maxPeople").val() && $("#maxPeople").val() != ""){
+			alert("최소 인원 수는 최대 인원수보다 적어야 합니다");
+			$("#minPeople").val("");
+		}
+	})
 	
 	$("#classFile").change(function(){
 		
@@ -46,6 +54,8 @@ $(document).ready(function(){
 		
 		reader.readAsDataURL(file);		
 	});
+	
+	
 	
 })
 </script>
@@ -90,6 +100,7 @@ $(document).ready(function(){
 	<div class="form-group">
     	<label for="category">카테고리</label>
 		<select class="form-control" id="category" name="category" required="required" >
+			<option value="0" selected="selected">--선택--</option>
 			<option value="1">플라워</option>
 			<option value="2">음악</option>
 			<option value="3">수공예</option>
@@ -144,7 +155,7 @@ $(document).ready(function(){
     </div>
 	
 	</form>
-	<div id="btn"><a href="#"><button class="class_button">클래스 등록</button></a></div>
+	<div id="btn"><button class="class_button">클래스 등록</button></div>
 	
 </div>
 	
