@@ -46,7 +46,7 @@ function ajaxFromServer(){
 				if("user"==opt){
 					location.href="/main";
 				}else if("artist"==opt){
-					location.href="/작가페이지";
+					location.href="/artist/main";
 				}else if("admin"==opt){
 					location.href="/관리자 페이지";
 				}
