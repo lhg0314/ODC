@@ -10,4 +10,12 @@ public interface ArtistService {
 
 	void insertartist(ArtistInfo artist);
 
+	int selectUserIdByEN(String email, String name);
+
+	String getIdByEN(String email, String name);
+
+	int selectUserPwByEN(String email, String name, String id);
+
+	String getPwByEN(String email, String name, String id);
+
 }

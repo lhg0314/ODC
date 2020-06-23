@@ -30,5 +30,25 @@ public class ArtistServiceImpl implements ArtistService {
 		artistDao.insertArtist(artist);
 		
 	}
+	@Override
+	public int selectUserIdByEN(String email, String name) {
+		int res=artistDao.idCheckByEN(email,name);
+		return res;
+	}
+	@Override
+	public String getIdByEN(String email, String name) {
+		String id=artistDao.getIdByEN(email,name);
+		return id;
+	}
+	@Override
+	public int selectUserPwByEN(String email, String name, String id) {
+		int res=artistDao.userPwChkByEN(email,name,id);
+		return res;
+	}
+	@Override
+	public String getPwByEN(String email, String name, String id) {
+		String pw=artistDao.selectUserPwByEN(email,name,id);
+		return pw;
+	}
 
 }
