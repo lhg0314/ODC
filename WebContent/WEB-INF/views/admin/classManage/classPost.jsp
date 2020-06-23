@@ -37,6 +37,7 @@ $(document).ready(function(){
 <h5>&nbsp;클래스 정보</h5>
 <h6>&nbsp;&nbsp;클래스 게시 상태를 변경할 수 있고 예약 현황을 확인할 수 있다.</h6>
 <br>
+
 <input type="text" id="search" placeholder="클래스명" value="${paging.search }"/>
 <button type="button" id="btnSearch">검색</button><br>
 <br>
