@@ -10,34 +10,34 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import admin.service.face.AdminDonationService;
-import admin.service.impl.AdminDonationServiceImpl;
+import admin.service.face.AdminBoardService;
+import admin.service.impl.AdminBoardServiceImpl;
+import dto.NoticeBoard;
 import util.Paging;
 
 /**
- * 관리자 - 재능기부 클래스 관리 서블릿
- * 완성 
+ * 관리자 - 공지사항 관리 페이지
+ * 완성
  * 200623
  * 박주이
  */
-@WebServlet("/admin/talent")
-public class TalentDonationSevlet extends HttpServlet {
+@WebServlet("/admin/noticelist")
+public class AdminNoticeListServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
+	private AdminBoardService adminBoardService = new AdminBoardServiceImpl();
 	
-	private AdminDonationService adminDonationService = new AdminDonationServiceImpl();
-
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		System.out.println("/admin/telent - [GET]");
+		System.out.println("/admin/noticelist - [GET]");
 		
-		Paging paging = adminDonationService.getPagingTalent(req);
+		Paging paging = adminBoardService.getPagingNotice(req);
 		
-		List<Map<String, Object>> list = adminDonationService.selectAllTalentDonationClass(paging);
+		List<NoticeBoard> list = adminBoardService.selectAllNotice(paging);
 		
 		req.setAttribute("paging", paging);
 		req.setAttribute("list", list);
 		
-		req.getRequestDispatcher("/WEB-INF/views/admin/donation/talent.jsp").forward(req, resp);
+		req.getRequestDispatcher("/WEB-INF/views/admin/board/noticelist.jsp").forward(req, resp);
 		
 	}
 }

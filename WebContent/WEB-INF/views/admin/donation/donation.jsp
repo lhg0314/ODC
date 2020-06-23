@@ -91,5 +91,5 @@ $(document).ready(function(){
 </table>
 </div>
 
-<c:import url="/WEB-INF/paging/donationpaging.jsp" />
+<c:import url="/WEB-INF/paging/admindonationpaging.jsp" />
 <c:import url="/WEB-INF/layout/admin/footer.jsp" />

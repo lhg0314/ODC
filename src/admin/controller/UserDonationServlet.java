@@ -15,6 +15,7 @@ import admin.service.impl.AdminDonationServiceImpl;
 import util.Paging;
 /**
  * 관리자 - 작가 후원내역 관리 서블릿
+ * 완성
  * 200623
  * 박주이
  */
