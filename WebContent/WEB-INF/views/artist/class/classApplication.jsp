@@ -3,49 +3,153 @@
 
     
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>    
-
 <!-- mian header -->
 <c:import url="/WEB-INF/layout/common/main/header.jsp"></c:import> 
 
 <!-- artistpage header -->    
 <c:import url="/WEB-INF/layout/artist/artistpageheader.jsp"></c:import> 
 
+<script type="text/javascript">
+$(document).ready(function(){
+	
+	$("#maxPeople").focus(function(){
+		if($("#minPeople").val() == "" ){
+			alert("최소 인원 수를 먼저 입력해주세요.")
+			$("#minPeople").focus();
+		}
+		
+	})
+	
+	$("#maxPeople").blur(function(){
+		
+		if($(this).val() < $("#minPeople").val()){
+			alert("최대 인원 수는 최소 인원 수보다 많아야 합니다");
+			$("#maxPeople").val("");
+		}
+	})
+	
+	$("#classFile").change(function(){
+		
+		var file = this.files[0];
+		console.log(file);
+		
+		/* 파일리더 객체 생성 */
+		var reader = new FileReader();
+		
+		/* 리더 시작 시 함수 구현 */
+		reader.onload = function(e){
+			
+			var url = e.target.result;
+			
+			$("#fileView").html($("<img src=" + url + ">").css("height","95%"));
+		}
+		
+		reader.readAsDataURL(file);		
+	});
+	
+})
+</script>
+<style>
+
+#classContentInfo{
+	font-size: 12px;
+	margin: 3px;
+}
+
+#minPeople, #maxPeople{
+	display: inline-block;
+	width: 100px;
+}
+#classStartDate, #classEndDate, #recruitStartDate, #recruitEndDate{
+	display: inline-block;
+	width: 200px;
+}
+
+#fileView{
+	height: 200px;
+	border: 3px solid #ccc;
+	border-radius: 10px;
+	width: 100%;
+}
+
+
+</style>
 
 <div id="main">
 	<span id="boardtitle">클래스 등록</span>
 	<hr>
 	<br>
 	
-	<div id="class_upload_notice">
+	<form action="/artist/class/app" method="post" encType="multipart/form-data">
 	
-	<span>클래스 등록을 위한 공지사항</span><br><br>
+	<div class="form-group">
+    	<label for="className">클래스 이름</label>
+    	<input type="text" class="form-control" id="className" name="className" required="required" />
+    </div>
+
+	<div class="form-group">
+    	<label for="category">카테고리</label>
+		<select class="form-control" id="category" name="category" required="required" >
+			<option value="1">플라워</option>
+			<option value="2">음악</option>
+			<option value="3">수공예</option>
+			<option value="4">요리</option>
+			<option value="5">뷰티</option>
+			<option value="6">미술</option>
+			<option value="7">기타</option>
+		</select>    	
+    </div>
 	
-	<span>비둘기, 이국 오면 위에 그리고 별 오는 이름자를 버리었습니다.</span><br> 
-	<span>이름과 불러 북간도에 무성할 마리아 토끼, 패, 봅니다.</span><br>   
-	<span>강아지, 남은 경, 계십니다. 불러 소학교 나의 있습니다.</span><br>   
-	<span>않은 내일 속의 보고, 봅니다.</span><br>  
-	<span>강아지, 이름과 시와 계절이 밤을 언덕 별 다하지 계집애들의 계십니다.</span><br>   
-	<span>이웃 동경과 이름과, 멀리 별에도 있습니다. 멀리 때 이름을 말 봅니다.</span><br>  
-	<span>토끼, 했던 이름을 아이들의 너무나 하나에 까닭입니다.</span><br>   
-	<span>아무 나는 묻힌 차 된 있습니다.</span><br>  
-	<span>비둘기, 이국 오면 위에 그리고 별 오는 이름자를 버리었습니다.</span><br> 
-	<span>이름과 불러 북간도에 무성할 마리아 토끼, 패, 봅니다.</span><br>   
-	<span>강아지, 남은 경, 계십니다. 불러 소학교 나의 있습니다.</span><br>   
-	<span>않은 내일 속의 보고, 봅니다.</span><br>  
-	<span>강아지, 이름과 시와 계절이 밤을 언덕 별 다하지 계집애들의 계십니다.</span><br>   
-	<span>이웃 동경과 이름과, 멀리 별에도 있습니다. 멀리 때 이름을 말 봅니다.</span><br>  
-	<span>토끼, 했던 이름을 아이들의 너무나 하나에 까닭입니다.</span><br>   
-	<span>아무 나는 묻힌 차 된 있습니다.</span><br>  
+	<div class="form-group">
+    	<label for="minPeople">인원 수</label><br>
+    	<input type="number" min="1" class="form-control" id="minPeople" name="minPeople" required="required" />&nbsp;~&nbsp;
+    	<input type="number" min="1" class="form-control" id="maxPeople" name="maxPeople" required="required" />
+    </div>
+    
+	<div class="form-group">
+    	<label for="classStartDate">클래스 진행기간</label><br>
+    	<input type="date" class="form-control" id="classStartDate" name="classStartDate" required="required" />&nbsp;~&nbsp;
+    	<input type="date" class="form-control" id="classEndDate" name="classEndDate" required="required" />
+    </div>
+
+	<div class="form-group">
+    	<label for="recruitStartDate">클래스 모집기간</label><br>
+    	<input type="date" class="form-control" id="recruitStartDate" name="recruitStartDate" disabled="disabled" value="${date }" required="required" />&nbsp;~&nbsp;
+    	<input type="date" class="form-control" id="recruitEndDate" name="recruitEndDate" disabled="disabled" required="required" />
+    </div>
+    
+    
+	
+	<div class="form-group">
+	<label for="classContent">클래스 소개</label><br>
+	<div id="classContentInfo" >
+	- 클래스 소개를 입력해주십시오.<br>
+	- <span style="color: red;">클래스를 진행할 시간을 반드시 입력하셔야 합니다.</span>
+	</div>
+	<textarea class="form-control" rows="10" id="classContent" name="classContent" required="required" ></textarea>
 	</div>
 	
-	<br>
 	
-	<div id="btn"><a href="#"><button class="class_button">+ 클래스 등록</button></a></div>
-
-
+	<div class="form-group">
+    	<label for="addr">공방 위치</label><br>
+		<input type="text" class="form-control" id="addr" disabled="disabled" value="${artInfo.artAddr }">
+    </div>
+	
+	<div class="form-group">
+    	<label for="classFile">사진 첨부</label>
+    	<input type="file" accept="image/*" id="classFile" name="classFile" />
+    	<br>
+	<div id="fileView">
+	</div>
+    </div>
+	
+	</form>
+	<div id="btn"><a href="#"><button class="class_button">클래스 등록</button></a></div>
+	
+</div>
+	
 </div> <!-- 전체를 감싸는 div -->
-
-
+<div class="clearfix"></div>
 
 </section>
 
