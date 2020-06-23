@@ -8,7 +8,7 @@
 
 <div style="border: 1px solid #ccc; border-radius: 22px; width: 500px; margin: 0 auto; text-align: center;">
 
-<h3>관리자 id님</h3> 
+<h3>관리자 ${adminid }님</h3> 
 <br>
 <h4 style="color: thistle">ODC 관리자 페이지에 로그인 성공하였습니다</h4>
 <br>

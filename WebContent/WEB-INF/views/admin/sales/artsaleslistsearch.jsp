@@ -27,12 +27,37 @@
 	float: right;
 }
 
+#serchbox{
+	width: 250px;
+	margin: 0 auto;
+	text-align: left;
+	float: left;
+}
+
 </style>
 
 
 <h4 >&nbsp;<a href="/admin/artsales/list" class="aTagStyleNone">수익관리</a></h4>
 <hr>
 <h5>&nbsp;<a href="/admin/artsales/list" class="aTagStyleNone">사업자 수익관리</a></h5>
+
+<!-- 사업자 아이디 검색 -->
+<div id="serchbox" >
+<form action="/admin/artsales/search" method="post">
+
+<div class="row">
+  <div class="col-lg-6">
+    <div class="input-group">
+      <input type="text" class="form-control" placeholder="사업자 아이디 검색" style="width: 180px;" name="artid">
+      <span class="input-group-btn">
+        <button class="btn btn-default" type="submit">Search</button>
+      </span>
+    </div><!-- /input-group -->
+  </div><!-- /.col-lg-6 -->
+</div><!-- /.row -->
+
+</form>
+</div>
 
 
 <div id="moncho">
@@ -74,7 +99,6 @@
 <caption  class="totalsalesbox"><h4 style="font-weight: bold;">${month }월   ${artid }사업자 수익 리스트</h4></caption>
 </c:if>
 
-
 <!-- 테이블 th -->
 <tr style="background: thistle;" >
 	<th style="width: 10%">예약 번호</th>
@@ -86,6 +110,23 @@
 	<th style="width: 10%">총금액</th>
 	<th style="width: 10%">사업자 수익금</th>
 </tr>
+
+<!-- 매출이 없을 때  -->
+<c:if  var="mon" test="${empty nowartsearchlist }">
+<tr>
+<td colspan="8" style="color: thistle; font-weight: bold;">수익 리스트가 없습니다</td>
+</tr>
+<!-- 사업자 매출 보이기 -->
+<tr style="background: thistle;">
+<th colspan="7" style="text-align: right;">사업자 총수입</th>
+<th class="textcenter"><fmt:formatNumber pattern="#,###" value="0" />원</th>
+</tr>
+</table>
+</c:if>
+
+<!--수익이 있을 때 -->
+<c:if  var="mon" test="${!empty nowartsearchlist }">
+
 
 <!-- 값 출력 -->
 <c:forEach items="${nowartsearchlist }" var="nowartsearch" >
@@ -108,9 +149,8 @@
 <th class="textcenter"><fmt:formatNumber pattern="#,###" value="${nowsearchtotal*0.9 }" />원</th>
 </tr>
 </table>
-
-
 <c:import url="/WEB-INF/layout/paging/artsalessearchpaging.jsp"></c:import>
+</c:if>
 
 <c:import url="/WEB-INF/layout/admin/footer.jsp"></c:import>
 

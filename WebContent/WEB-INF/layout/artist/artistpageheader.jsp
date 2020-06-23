@@ -249,7 +249,7 @@ ul.sub li a {
 		<div id="userbox_cont">
 			<img src="/resources/img/mini.jpg" />		
 			<img src="/resources/img/grade/artistgrade.PNG" />		
-			<span>홍길동 님 </span>
+			<span>${artid }님 </span>
 		</div>
 	</div>
 	
@@ -270,7 +270,7 @@ ul.sub li a {
 		        <li><a href="#">클래스 등록</a></li>
 		        <li><a href="#">클래스 검수 확인</a></li>
 		        <li><a href="#">클래스 관리</a></li>
-		        <li><a href="#">클래스 매출 현황</a></li>
+		        <li><a href="/artistpage/class/sales">클래스 매출 현황</a></li>
 		    </ul>
 		</li>
 	</ul>

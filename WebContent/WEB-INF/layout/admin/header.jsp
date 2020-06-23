@@ -141,8 +141,8 @@ ul.sub li:hover {
         <li class="group">
             <div class="title">게시판 관리</div>
             <ul class="sub">
-                <li><a href="#">공지사항 관리</a></li>                
-                <li><a href="#">후기게시판 관리</a></li>    
+                <li><a href="/admin/noticelist">공지사항 관리</a></li>                
+                <li><a href="/admin/reviewlist">후기게시판 관리</a></li>    
             </ul>
         </li> 
     </ul>

@@ -57,7 +57,7 @@ public class AdminSalesDaoImpl implements AdminSalesDao{
 		
 		String sql = "";
 		sql += "select count(*) from classbooking";
-		sql += " where booking_date BETWEEN ? and ? ";
+		sql += " where payment_date BETWEEN ? and ? ";
 		
 		//결과 저장할 변수
 		int totalCount = 0 ;
@@ -138,7 +138,7 @@ public class AdminSalesDaoImpl implements AdminSalesDao{
 		sql += " from classbooking,artistinfo,classinfo";
 		sql += " WHERE classinfo.art_no = artistinfo.art_no";
 		sql += " AND classinfo.class_no = classbooking.class_no";
-		sql += " AND booking_date BETWEEN ? and ? ";
+		sql += " AND payment_date BETWEEN ? and ? ";
 		sql += " and art_id like '%'|| ? ||'%'";
 		
 		//결과 저장할 변수
@@ -182,7 +182,7 @@ public class AdminSalesDaoImpl implements AdminSalesDao{
 		sql += " from classbooking,artistinfo,classinfo";
 		sql += " WHERE classinfo.art_no = artistinfo.art_no";
 		sql += " AND classinfo.class_no = classbooking.class_no";
-		sql += " AND booking_date BETWEEN ? and ? ";
+		sql += " AND payment_date BETWEEN ? and ? ";
 		sql += " and art_id like '%'|| ? ||'%'";
 		
 		//결과 저장할 변수
@@ -230,7 +230,7 @@ public class AdminSalesDaoImpl implements AdminSalesDao{
 		sql += "	        from userinfo, classbooking, classinfo";
 		sql += "	        WHERE userinfo.user_no = classbooking.user_no";
 		sql += "	        AND classinfo.class_no = classbooking.class_no";
-		sql += "	        AND booking_date BETWEEN ? and ?";
+		sql += "	        AND payment_date BETWEEN ? and ?";
 		sql += "	        order by booking_no desc";
 		sql += "	     ) c";
 		sql += " ) classbooking ";
@@ -280,8 +280,6 @@ public class AdminSalesDaoImpl implements AdminSalesDao{
 		
 		return nowadminsaleslist;
 		
-		
-		
 	}
 	
 	@Override
@@ -297,7 +295,7 @@ public class AdminSalesDaoImpl implements AdminSalesDao{
 		sql += "	        from userinfo, classbooking, classinfo";
 		sql += "	        WHERE userinfo.user_no = classbooking.user_no";
 		sql += "	        AND classinfo.class_no = classbooking.class_no";
-		sql += "	        AND booking_date BETWEEN ? and ?";
+		sql += "	        AND payment_date BETWEEN ? and ?";
 		sql += "	        order by booking_no desc";
 		sql += "	     ) c";
 		sql += " ) classbooking ";
@@ -365,7 +363,7 @@ public class AdminSalesDaoImpl implements AdminSalesDao{
 		sql += "	        WHERE classinfo.art_no = artistinfo.art_no";
 		sql += "	        AND classinfo.class_no = classbooking.class_no";
 		sql += "	        AND userinfo.user_no = classbooking.user_no";
-		sql += "	        AND booking_date BETWEEN ? and ?";
+		sql += "	        AND payment_date BETWEEN ? and ?";
 		sql += "	        order by booking_no desc";
 		sql += "	     ) c";
 		sql += " ) classbooking ";
@@ -431,7 +429,7 @@ public class AdminSalesDaoImpl implements AdminSalesDao{
 		sql += "	        WHERE classinfo.art_no = artistinfo.art_no";
 		sql += "	        AND classinfo.class_no = classbooking.class_no";
 		sql += "	        AND userinfo.user_no = classbooking.user_no";
-		sql += "	        AND booking_date BETWEEN ? and ?";
+		sql += "	        AND payment_date BETWEEN ? and ?";
 		sql += "	        order by booking_no desc";
 		sql += "	     ) c";
 		sql += " ) classbooking ";
@@ -497,7 +495,7 @@ public class AdminSalesDaoImpl implements AdminSalesDao{
 		sql += "	        WHERE classinfo.art_no = artistinfo.art_no";
 		sql += "	        AND classinfo.class_no = classbooking.class_no";
 		sql += "	        AND userinfo.user_no = classbooking.user_no";
-		sql += "	        AND booking_date BETWEEN ? and ?";
+		sql += "	        AND payment_date BETWEEN ? and ?";
 		sql += "	        AND art_id like '%'|| ? ||'%'";
 		sql += "	        ORDER by booking_no desc";
 		sql += "	     ) c";
@@ -565,7 +563,7 @@ public class AdminSalesDaoImpl implements AdminSalesDao{
 		sql += "	        WHERE classinfo.art_no = artistinfo.art_no";
 		sql += "	        AND classinfo.class_no = classbooking.class_no";
 		sql += "	        AND userinfo.user_no = classbooking.user_no";
-		sql += "	        AND booking_date BETWEEN ? and ?";
+		sql += "	        AND payment_date BETWEEN ? and ?";
 		sql += "	        AND art_id like '%'|| ? ||'%'";
 		sql += "	        ORDER by booking_no desc";
 		sql += "	     ) c";
@@ -706,7 +704,7 @@ public class AdminSalesDaoImpl implements AdminSalesDao{
 		sql += " from classbooking,classinfo,artistinfo";
 		sql += " WHERE classinfo.art_no = artistinfo.art_no";
 		sql += " AND classinfo.class_no = classbooking.class_no";
-		sql += " AND booking_date BETWEEN ? and ?";
+		sql += " AND payment_date BETWEEN ? and ?";
 		sql += " AND art_id like '%'|| ? ||'%'";
 		
 		int chototalsales = 0;
@@ -748,7 +746,7 @@ public class AdminSalesDaoImpl implements AdminSalesDao{
 		sql += " from classbooking,classinfo,artistinfo";
 		sql += " WHERE classinfo.art_no = artistinfo.art_no";
 		sql += " AND classinfo.class_no = classbooking.class_no";
-		sql += " AND booking_date BETWEEN ? and ?";
+		sql += " AND payment_date BETWEEN ? and ?";
 		sql += " AND art_id like '%'|| ? ||'%'";
 		
 		int chosearchtotal = 0;
