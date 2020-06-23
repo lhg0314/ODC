@@ -245,8 +245,10 @@ list-style: none;
    </div>
    
    <div class="wish" onclick="location.href='#';">
+   <a href="/user/mypage">
    <div id="sizeup" class="glyphicon glyphicon-user" ></div>
    <br><small>마이페이지</small>
+   </a>
    </div>
    
    <div class="cart" onclick="location.href='#';">

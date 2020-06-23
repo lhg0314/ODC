@@ -172,7 +172,7 @@ ul.sub li:hover a { color: #e7717d; }
 	<div id="userbox">
 		<div id="userbox_cont">
 			<img src="/resources/img/grade/grade1.PNG" />		
-			<span>홍길동 님 </span>
+			<span>${userid }님 </span>
 		</div>
 	</div>
 	
