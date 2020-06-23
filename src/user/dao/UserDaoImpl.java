@@ -96,4 +96,114 @@ public class UserDaoImpl implements UserDao {
 		return res;
 	}
 
+
+	@Override
+	public int userIdChkByEN(String email, String name) {
+		conn=JDBCTemplate.getConnection();
+		
+		String sql="select count(*) from userinfo where user_name=? and user_email=?";
+		int res=0;
+		
+		try {
+			ps=conn.prepareStatement(sql);
+			ps.setString(1, name);
+			ps.setString(2, email);
+			rs=ps.executeQuery();
+			
+			while(rs.next()) {
+				res=rs.getInt(1);
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			JDBCTemplate.close(rs);
+			JDBCTemplate.close(ps);
+		}
+		return res;
+	}
+
+
+	@Override
+	public String selectUserIdByEN(String email, String name) {
+		conn=JDBCTemplate.getConnection();
+		
+		String sql="select user_id from userinfo where user_name=? and user_email=?";
+		String res="";
+		
+		try {
+			ps=conn.prepareStatement(sql);
+			ps.setString(1, name);
+			ps.setString(2, email);
+			rs=ps.executeQuery();
+			
+			while(rs.next()) {
+				res=rs.getString("user_id");
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			JDBCTemplate.close(rs);
+			JDBCTemplate.close(ps);
+		}
+		return res;
+	}
+
+
+	@Override
+	public int userPwChkByEN(String email, String name, String id) {
+		conn=JDBCTemplate.getConnection();
+		
+		String sql="select count(*) from userinfo where user_name=? and user_email=? and user_id=?";
+		int res=0;
+		
+		try {
+			ps=conn.prepareStatement(sql);
+			ps.setString(1, name);
+			ps.setString(2, email);
+			ps.setString(3, id);
+			rs=ps.executeQuery();
+			
+			while(rs.next()) {
+				res=rs.getInt(1);
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			JDBCTemplate.close(rs);
+			JDBCTemplate.close(ps);
+		}
+		return res;
+	}
+
+
+	@Override
+	public String selectUserPwByEN(String email, String name, String id) {
+		conn=JDBCTemplate.getConnection();
+		
+		String sql="select user_pw from userinfo where user_name=? and user_email=? and user_id=?";
+		String res="";
+		
+		try {
+			ps=conn.prepareStatement(sql);
+			ps.setString(1, name);
+			ps.setString(2, email);
+			ps.setString(3, id);
+			rs=ps.executeQuery();
+			
+			while(rs.next()) {
+				res=rs.getString("user_pw");
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			JDBCTemplate.close(rs);
+			JDBCTemplate.close(ps);
+		}
+		return res;
+	}
+
 }
