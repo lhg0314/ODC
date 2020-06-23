@@ -106,14 +106,12 @@
 <!-- 사업자 수익 보이기 -->
 <tr style="background: thistle;">
 <th colspan="6" style="text-align: right;">사업자 총수익</th>
-<th class="textcenter"><fmt:formatNumber pattern="#,###" value="${0 }" />원</th>
+<th class="textcenter"><fmt:formatNumber pattern="#,###" value="${searchclassnametotal*0.9 }" />원</th>
 </tr>
 </table>
 <!--페이징  -->
-<%-- <c:import url="/WEB-INF/layout/paging/artclasssalesnowpaging.jsp"></c:import> --%>
+<c:import url="/WEB-INF/layout/paging/artsalessearchrespaging.jsp"></c:import>
 </c:if>
-
-
 
 </div> <!-- 전체를 감싸는 div -->
 

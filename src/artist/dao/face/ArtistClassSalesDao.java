@@ -63,4 +63,20 @@ public interface ArtistClassSalesDao {
 	 */
 	public ArrayList<Map<String, Object>> choartsalessearch(String artid, String classname);
 
+	/**
+	 * 사업자에서 클래스 이름으로 검색한 페이징 개수 
+	 * @param artid
+	 * @param classname
+	 * @return
+	 */
+	public int searchCntAll(String artid, String classname);
+
+	/**
+	 *  사업자에서 클래스 이름으로 검색한 각 클래스당 총 매출
+	 * @param artid
+	 * @param classname
+	 * @return
+	 */
+	public int searchclassnametotal(String artid, String classname);
+
 }

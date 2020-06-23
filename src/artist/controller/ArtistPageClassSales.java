@@ -26,7 +26,7 @@ public class ArtistPageClassSales extends HttpServlet {
 	
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		System.out.println("/artistpage/class/sales [GET]");
+//		System.out.println("/artistpage/class/sales [GET]");
 	
 		//사업자로 로그인한 아이디값 가져오기
 		HttpSession session = req.getSession();

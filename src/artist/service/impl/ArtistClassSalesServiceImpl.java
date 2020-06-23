@@ -268,4 +268,29 @@ public class ArtistClassSalesServiceImpl implements ArtistClassSalesService{
 		ArrayList<Map<String, Object>> choartsalessearch = artistclasssalesDao.choartsalessearch(artid,classname);
 		return choartsalessearch;
 	}
+	
+	@Override
+	public Paging searchgetPaging(HttpServletRequest req, String artid, String classname) {
+		//전달 파라미터  curPage를 파싱한다
+				String param = req.getParameter("curPage");
+				int curPage = 0 ;
+				if(param != null && !"".equals(param)) {
+					curPage = Integer.parseInt(param);
+				}
+				
+				//classbooking 테이블의 총 게시글 수를 조회한다
+				int totalCount = artistclasssalesDao.searchCntAll(artid,classname);
+				
+				//paging객체 생성
+				Paging paging = new Paging(totalCount, curPage);
+				
+				//계산된 Paging 객체 반환
+				return paging;
+	}
+	
+	@Override
+	public int searchclassnametotal(String artid, String classname) {
+		int searchclassnametotal = artistclasssalesDao.searchclassnametotal(artid,classname);
+		return searchclassnametotal;
+	}
 }

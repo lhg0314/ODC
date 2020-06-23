@@ -18,7 +18,7 @@ public class ArtistpageController extends HttpServlet {
 	
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		System.out.println("/artist/artistpage [GET]");
+//		System.out.println("/artist/artistpage [GET]");
 	
 		//이인주 20200623 
 		

@@ -385,4 +385,73 @@ public class ArtistClassSalesDaoImpl implements ArtistClassSalesDao{
 		
 		return choartsalessearch;
 	}
+	
+	@Override
+	public int searchCntAll(String artid, String classname) {
+		conn = JDBCTemplate.getConnection();//디비 연결
+		
+		String sql = "";
+		sql += "select count(*)";
+		sql += " from classbooking,artistinfo,classinfo";
+		sql += " WHERE classbooking.class_no = classinfo.class_no";
+		sql += " and classinfo.art_no = artistinfo.art_no";
+		sql += " and art_id = ?";
+		sql += " and class_name = ?";
+
+		//결과 저장할 변수
+		int totalCount = 0 ;
+		
+		try {
+			ps = conn.prepareStatement(sql);
+			ps.setString(1, artid);
+			ps.setString(2, classname);
+			rs = ps.executeQuery();
+			
+			while(rs.next()) {
+				totalCount = rs.getInt(1);
+			}
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}finally {
+			JDBCTemplate.close(rs);
+			JDBCTemplate.close(ps);
+		}
+		
+		return totalCount;
+	}
+	
+	@Override
+	public int searchclassnametotal(String artid, String classname) {
+		conn = JDBCTemplate.getConnection();//디비 연결
+		
+		String sql = "";
+		sql += "select sum(total_price)";
+		sql += " from classbooking,classinfo,artistinfo";
+		sql += " WHERE classinfo.art_no = artistinfo.art_no";
+		sql += " AND classinfo.class_no = classbooking.class_no";
+		sql += " AND art_id = ?";
+		sql += " AND class_name = ?";
+		
+		int searchclassnametotal = 0;
+		try {
+			ps = conn.prepareStatement(sql);
+
+			ps.setString(1,artid );
+			ps.setString(2,classname );
+			
+			rs = ps.executeQuery();
+			
+			while(rs.next()) {
+				searchclassnametotal = rs.getInt(1);
+			}			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}finally {
+			JDBCTemplate.close(rs);
+			JDBCTemplate.close(ps);
+			
+		}
+		return searchclassnametotal;
+	}
 }
