@@ -19,19 +19,19 @@ $(document).ready(function(){
 	background: #ecdfec;
 }
 
-#classTable th{
+#classReviewTable th{
 	text-align: center;
 }
-#classTable tr:first-child{
-	background: #ecdfec;
+#classReviewTable tr:first-child{
+	background: thistle;
 }
 </style>
 
 <%-- 클래스별 후기 확인 페이지 --%>
 <%-- 20200620 구동영 --%>
-<h4 >&nbsp;클래스 관리</h4>
+<h4 style="font-weight: bold;">&nbsp;클래스 관리</h4>
 <hr>
-<h5>&nbsp;<a href="/admin/class/post">클래스 정보</a> > <a href="javascript:history.go(-1)">클래스 상세 정보</a> > 클래스 후기</h5>
+<h5 style="font-weight: bold;">&nbsp;<a href="/admin/class/post">클래스 정보</a> > <a href="javascript:history.go(-1)">클래스 상세 정보</a> > 클래스 후기</h5>
 <br>
 <br>
 
@@ -40,7 +40,7 @@ $(document).ready(function(){
 <br>
 </c:if>
 <c:if test="${paging.totalCount ne 0 }">
-<table id="classTable" class="table table-condensed text-center table-hover">
+<table id="classReviewTable" class="table table-condensed text-center table-hover">
 	<tr>
 		<th>번호</th>
 		<th style="width: 60%;">내용</th>

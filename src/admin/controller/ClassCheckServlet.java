@@ -1,6 +1,7 @@
 package admin.controller;
 
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.List;
 import java.util.Map;
 
@@ -52,7 +53,16 @@ public class ClassCheckServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		
 	
-		System.out.println("/check update post");
+//		System.out.println("/check update post");
+		
+		// 응답 데이터 형식 지정
+		resp.setContentType("text/html; charset=utf-8");
+		
+		// json 형식
+		resp.setContentType("application/json; charset=utf-8");
+		
+		// 출력 스트림
+		PrintWriter out = resp.getWriter();
 		
 		int classno = -1;
 		
@@ -75,8 +85,8 @@ public class ClassCheckServlet extends HttpServlet {
 		
 		adminClassService.updateClassCheck(classInfo);
 		
-		// 리다이렉트
-		resp.sendRedirect("/admin/class/check");
+		// 결과 전달
+		out.println("{\"mes\" : \" 저장되었습니다\"}"); 
 		
 	
 	}

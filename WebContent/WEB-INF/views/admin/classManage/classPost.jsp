@@ -22,19 +22,23 @@ $(document).ready(function(){
 	background: #ecdfec;
 }
 
+#classTable{
+	font-size: 14px;
+}
+
 #classTable th{
 	text-align: center;
 }
 #classTable tr:first-child{
-	background: #ecdfec;
+	background: thistle;
 }
 </style>
 
 <%-- 클래스 게시/삭제 페이지 --%>
 <%-- 20200620 구동영 --%>
-<h4 >&nbsp;클래스 관리</h4>
+<h4 style="font-weight: bold;">&nbsp;클래스 관리</h4>
 <hr>
-<h5>&nbsp;클래스 정보</h5>
+<h5 style="font-weight: bold;">&nbsp;클래스 정보</h5>
 <h6>&nbsp;&nbsp;클래스 게시 상태를 변경할 수 있고 예약 현황을 확인할 수 있다.</h6>
 <br>
 
