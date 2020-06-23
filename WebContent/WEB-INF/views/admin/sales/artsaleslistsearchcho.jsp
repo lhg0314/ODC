@@ -109,7 +109,6 @@
 <!-- 값 출력 -->
 <c:forEach items="${choartsearchlist }" var="chosearch" >
 <tr >
-
 	<td>${chosearch.bookingNo }</td>
 	<td>${chosearch.userid }</td>
 	<td>${chosearch.classname }</td>

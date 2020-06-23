@@ -270,7 +270,7 @@ ul.sub li a {
 		        <li><a href="#">클래스 등록</a></li>
 		        <li><a href="#">클래스 검수 확인</a></li>
 		        <li><a href="#">클래스 관리</a></li>
-		        <li><a href="#">클래스 매출 현황</a></li>
+		        <li><a href="/artistpage/class/sales">클래스 매출 현황</a></li>
 		    </ul>
 		</li>
 	</ul>
