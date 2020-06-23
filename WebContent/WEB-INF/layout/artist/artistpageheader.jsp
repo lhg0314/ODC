@@ -255,16 +255,6 @@ ul.sub li a {
 	
 	<ul class="navi">
 		<li class="group">
-		    <div class="title">작가 프로필</div>
-		    <ul class="sub">
-		        <li><a href="#">작가 프로필 조회 및 수정</a></li>
-		        <li><a href="#">작가 탈퇴</a></li>
-		    </ul>
-		</li>
-	</ul>
-		
-	<ul class="navi">
-		<li class="group">
 		    <div class="title">클래스</div>
 		    <ul class="sub"> 
 		        <li><a href="#">클래스 등록</a></li>
@@ -295,6 +285,17 @@ ul.sub li a {
 		    </ul>
 		</li>
 	</ul>
+	
+	<ul class="navi">
+		<li class="group">
+		    <div class="title">작가 프로필</div>
+		    <ul class="sub">
+		        <li><a href="#">작가 프로필 조회 및 수정</a></li>
+		        <li><a href="#">작가 탈퇴</a></li>
+		    </ul>
+		</li>
+	</ul>
+		
 	    
 </div>
 
