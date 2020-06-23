@@ -76,7 +76,7 @@
 	float: right;
 /* 	border: 1px solid #ccc; */
 	width: 75%;
-	height: 90%;
+/* 	height: 90%; */
 	
 	padding: 0 20px;
 /* 	margin: 20px 0; */
