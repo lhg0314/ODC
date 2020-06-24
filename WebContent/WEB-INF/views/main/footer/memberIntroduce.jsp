@@ -162,22 +162,7 @@
  		</div>
  	</div>
  	
-<div class="member">
-    <div class="photo">
-      		<img src="/resources/img/mini.jpg" alt="미니언즈">
-        <div class="caption">
-	        <span>조원</span>
-	        <span>강혁진</span>
-        </div>
- 		</div>
- 		
- 		<div class="content">
- 			<h3>개발 담당 파트</h3>
- 			<span>롸롸롸로라라롸라랄라롸롸라롸</span><br><br><br>
- 			<h3>소감 한마디</h3>
- 			<span>롸라ㅘ롸롸롸로라롸롸라로라라ㅗㄹ</span><br>
- 		</div>
- 	</div>
+
  	
 <div class="member">
     <div class="photo">
@@ -243,7 +228,7 @@
  			<h3>개발 담당 파트</h3>
  			<span>롸롸롸로라라롸라랄라롸롸라롸</span><br><br><br>
  			<h3>소감 한마디</h3>
- 			<span>롸라ㅘ롸롸롸로라롸롸라로라라ㅗㄹ</span><br>
+ 			<span>너무 힘들다</span><br>
  		</div>
 </div>
 

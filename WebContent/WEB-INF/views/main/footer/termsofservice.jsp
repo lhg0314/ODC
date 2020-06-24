@@ -18,6 +18,14 @@
 
 .liststylenon {
 	list-style: none;
+	
+}
+
+.liststylenon >li{
+
+	line-height: 1.4rem;
+	font-size: 1.1rem;
+	margin-top: 15px
 }
 
 #loginFooter {text-align: center; }
