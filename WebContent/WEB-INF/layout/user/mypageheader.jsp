@@ -8,7 +8,7 @@
 
 #wrapper {
 	width: 1200px;
- 	height: 1800px;
+ 	height: 100%;
  	margin-top: 20px;
 }
 
@@ -180,7 +180,7 @@ ul.sub li:hover a { color: #e7717d; }
 		<li class="group">
 		    <div class="title">클래스</div>
 		    <ul class="sub">
-		        <li><a href="#">예약한 클래스</a></li>
+		        <li><a href="/mypage/class/booking">예약한 클래스</a></li>
 		        <li><a href="#">클래스 장바구니</a></li>
 		        <li><a href="#">클래스 수강 조회 및 취소</a></li>
 		    </ul>

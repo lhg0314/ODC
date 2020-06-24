@@ -42,7 +42,7 @@
 	
 	<div id="btn"><a href="#"><button class="class_button">+ 클래스 등록</button></a></div>
 
-
+<div class="clearfix"></div>
 </div> <!-- 전체를 감싸는 div -->
 </section>
 
