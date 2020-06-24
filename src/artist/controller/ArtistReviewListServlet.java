@@ -16,8 +16,8 @@ import artist.service.impl.ArtistBoardServiceImpl;
 import util.Paging;
 /**
  * 
- * @author 200624 박주이
  * 작가페이지 - 후기게시판 리스트 출력
+ * @author 200624 박주이
  * 완성
  *
  */
@@ -28,7 +28,7 @@ public class ArtistReviewListServlet extends HttpServlet {
 	
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		System.out.println("/admin/reviewlist - [GET]");
+		System.out.println("/artist/reviewlist - [GET]");
 		
 		HttpSession session = req.getSession();
 		

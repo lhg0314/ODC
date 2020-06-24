@@ -37,8 +37,8 @@ public class ArtistBoardServiceImpl implements ArtistBoardService {
 	}
 
 	@Override
-	public List<Map<String, Object>> selectReviewByArtNo(Paging paging, int artNo) {
-		return artistBoardDao.selectReviewByArtNo(paging, artNo);
+	public List<Map<String, Object>> selectReviewByArtNo(Paging paging, int artno) {
+		return artistBoardDao.selectReviewByArtNo(paging, artno);
 	}
 
 	@Override
