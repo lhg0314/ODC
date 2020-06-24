@@ -58,7 +58,8 @@ public class ArtistJoinServlet extends HttpServlet {
 		
 		artist.setArtpw(req.getParameter("artpw"));
 		artist.setArtCode(Integer.parseInt(req.getParameter("businessnumber")));
-		String addr=req.getParameter("addr1") +req.getParameter("addr2")+ req.getParameter("addr3");
+		
+		String addr=req.getParameter("addr1")+";" +req.getParameter("addr2")+";" +req.getParameter("addr3");
 		artist.setArtAddr(addr);
 		
 		artist.setArtNick(req.getParameter("artnick"));

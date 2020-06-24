@@ -23,7 +23,7 @@ import dto.UserInfo;
  */
 
 @WebServlet("/admin/userview")
-public class UserViewController extends HttpServlet {
+public class UserViewServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	

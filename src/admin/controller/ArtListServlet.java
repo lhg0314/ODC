@@ -20,7 +20,7 @@ import util.Paging;
  */
 
 @WebServlet("/admin/artlist")
-public class ArtListController extends HttpServlet {
+public class ArtListServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	
 

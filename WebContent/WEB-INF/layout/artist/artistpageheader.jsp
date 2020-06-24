@@ -3,6 +3,10 @@
     
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>    
 
+<!-- 부트스트랩 3.3.2 -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css">
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
 
 <!-- font -->
 <script src="https://kit.fontawesome.com/a076d05399.js"></script>
@@ -12,7 +16,7 @@
 
 #wrapper {
 	width: 1200px;
- 	height: 1000px;
+ 	height: 100%;
  	margin-top: 20px;
 }
 
@@ -30,7 +34,7 @@
 /* 	border: 1px solid #ccc; */
 	
 	width: 25%;
-	height: 700px;
+	height: 100%;
 }
 
 #userbox {
@@ -249,7 +253,7 @@ ul.sub li a {
 		<div id="userbox_cont">
 			<img src="/resources/img/mini.jpg" />		
 			<img src="/resources/img/grade/artistgrade.PNG" />		
-			<span>홍길동 님 </span>
+			<span>${artid } 님 </span>
 		</div>
 	</div>
 	
@@ -290,8 +294,8 @@ ul.sub li a {
 		<li class="group">
 		    <div class="title">작가 프로필</div>
 		    <ul class="sub">
-		        <li><a href="#">작가 프로필 조회 및 수정</a></li>
-		        <li><a href="#">작가 탈퇴</a></li>
+		        <li><a href="/artist/info">작가 프로필 조회 및 수정</a></li>
+		        <li><a href="/artist/leave">작가 탈퇴</a></li>
 		    </ul>
 		</li>
 	</ul>
