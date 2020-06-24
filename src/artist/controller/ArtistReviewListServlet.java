@@ -14,7 +14,13 @@ import javax.servlet.http.HttpSession;
 import artist.service.face.ArtistBoardService;
 import artist.service.impl.ArtistBoardServiceImpl;
 import util.Paging;
-
+/**
+ * 
+ * @author 200624 박주이
+ * 작가페이지 - 후기게시판 리스트 출력
+ * 완성
+ *
+ */
 @WebServlet("/artist/reviewlist")
 public class ArtistReviewListServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;

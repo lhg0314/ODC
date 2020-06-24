@@ -119,6 +119,5 @@ function checkAll() {
 <button id="btnDelete" class="btn btn-warning">삭제</button>
 </div>
 </div>
-</div>
 <c:import url="/WEB-INF/paging/adminreviewpaging.jsp" />
 <c:import url="/WEB-INF/layout/admin/footer.jsp" />
