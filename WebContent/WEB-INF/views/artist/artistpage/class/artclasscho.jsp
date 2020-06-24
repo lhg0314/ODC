@@ -10,7 +10,7 @@
  <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %> 
 
 <!-- mian header -->
-<c:import url="/WEB-INF/layout/common/main/header.jsp"></c:import> 
+<c:import url="/WEB-INF/layout/common/main/artHeader.jsp"></c:import> 
 
 <!-- artistpage header -->    
 <c:import url="/WEB-INF/layout/artist/artistpageheader.jsp"></c:import> 

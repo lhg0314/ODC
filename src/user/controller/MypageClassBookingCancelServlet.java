@@ -1,6 +1,10 @@
+//20200624 이인주
+// 마이페이지 - 클래스 예약 취소하기
+
 package user.controller;
 
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.Map;
@@ -15,11 +19,8 @@ import javax.servlet.http.HttpSession;
 import user.service.UserMyPageClassService;
 import user.service.UserMyPageClassServiceImpl;
 
-// 20200624 이인주
-// 마이페이지 - class - Booking 
-// 클래스 예약 확인 
-@WebServlet("/mypage/class/booking")
-public class MypageClassBookingServlet extends HttpServlet {
+@WebServlet("/mypage/classbooking/cancel")
+public class MypageClassBookingCancelServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	private UserMyPageClassService usermypageclassService = new UserMyPageClassServiceImpl();
 	
@@ -35,18 +36,27 @@ public class MypageClassBookingServlet extends HttpServlet {
 		//사용자  아이디  jsp로 넘기기
 		req.setAttribute("userid", userid);
 		
-		//현재 날짜 받아오기
-		Date nowday = usermypageclassService.nowday();
+		//쿼리스트링으로 받은 클래스번호 뽑아오기 
+		int bookingno = usermypageclassService.bookingnoparam(req);
 		
-		//사용자 예약 리스트  전체 조회
-		ArrayList<Map<String, Object>> userbooking  = usermypageclassService.userbooking(userid,nowday);
+		//사용자 예약 리스트  선택 삭제
+		int bookingcancel  = usermypageclassService.bookingcancel(bookingno);
 		
-		//사용자 예약 리스트  전체 조회 jsp로 넘기기
-		req.setAttribute("userbooking", userbooking);
-				
-		req.getRequestDispatcher("/WEB-INF/views/user/mypage/class/classbooking.jsp").forward(req,resp);
-				
-				
+		//성공 삭제하면 예약 클래스 리스트로 돌아가기
+		
+		String msg = "";
+		String url = "";
+		if(bookingcancel > 0) {
+			msg = "클래스 예약 취소하였습니다";
+		}else {
+			msg = "클래스 예약 취소에 실패했습니다 다시 시도해주세요";
+		}
+		url = "/mypage/class/booking";
+		
+		req.setAttribute("msg", msg);
+		req.setAttribute("url", url);
+		
+		req.getRequestDispatcher("/WEB-INF/views/user/mypage/class/alert.jsp").forward(req,resp);
 	}
 
 }

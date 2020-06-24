@@ -116,6 +116,7 @@
 <th class="textcenter"><fmt:formatNumber pattern="#,###" value="${chototalsales*0.1 }" />원</th>
 </tr>
 </table>
+
 <c:import url="/WEB-INF/layout/paging/adminsalespaging.jsp"></c:import>
 </c:if>
 
