@@ -11,33 +11,10 @@
 
 <script type="text/javascript">
 $(document).ready(function(){
-	
-	$("#maxPeople").focus(function(){
-		if($("#minPeople").val() == "" ){
-			alert("최소 인원 수를 먼저 입력해주세요.")
-			$("#minPeople").focus();
-		}
-		
-	})
-	
-	$("#maxPeople").blur(function(){
-		
-		if($(this).val() < $("#minPeople").val()){
-			alert("최대 인원 수는 최소 인원 수보다 많아야 합니다");
-			$("#maxPeople").val("");
-		}
-	})
 
-	$("#minPeople").blur(function(){
-		
-		if($(this).val() > $("#maxPeople").val() && $("#maxPeople").val() != ""){
-			alert("최소 인원 수는 최대 인원수보다 적어야 합니다");
-			$("#minPeople").val("");
-		}
-	})
-	
 	$("#classFile").change(function(){
 		
+		$("#fileView").html("");
 		var file = this.files[0];
 		console.log(file);
 		
@@ -55,7 +32,43 @@ $(document).ready(function(){
 		reader.readAsDataURL(file);		
 	});
 	
+	$("#classEndDate").blur(function(){
+		$("#recruitEndDate").val($(this).val());
+	});
 	
+	$("#talentDonation").change(function(){
+		if( $(this).is(":checked")){
+			$("#classPrice").val(0);
+			$("#classPrice").attr("readOnly", "readOnly");
+		}else{
+			$("#classPrice").removeAttr("readOnly");			
+		}
+	})
+	
+	
+	$("#appForm").submit(function(){
+		if($("#category").val() == 0 ){
+			alert("카테고리를 선택하세요");
+			$("#category").focus();
+			return false;
+		}else if($("#maxPeople").val() < $("#minPeople").val()){
+			alert("최대 인원 수는 최소 인원 수보다 많아야 합니다");
+			$("#minPeople").val("");
+			$("#maxPeople").val("");
+			$("#minPeople").focus();
+			return false;
+		}else if($("#classStartDate").val() > $("#classEndDate").val()){
+			alert("클래스 종료 날짜는 시작 날짜 이후여야 합니다.");
+			$("#classStartDate").val("");
+			$("#classEndDate").val("");
+			$("#classStartDate").focus();
+			return false;
+		}else if($("#location").val() == 0 ){
+			alert("지역을 선택하세요");
+			$("#location").focus();
+			return false;
+		}
+	});
 	
 })
 </script>
@@ -66,18 +79,38 @@ $(document).ready(function(){
 	font-size: 14px;
 }
 
+#SvnclassApp{
+	color: #e7717d;
+}
+
 #category{
 	width: 100px;
+}
+
+#people{
+	margin-left: 302px;
 }
 #classContentInfo{
 	font-size: 12px;
 	margin: 3px;
 }
 
+#classPrice{
+	width: 250px;
+	text-align: right;
+	display: inline-block;
+}
+
+#chkbox{
+	margin-left: 10px;
+}
+
 #minPeople, #maxPeople{
 	display: inline-block;
 	width: 100px;
+	text-align: right;
 }
+
 #classStartDate, #classEndDate, #recruitStartDate, #recruitEndDate{
 	display: inline-block;
 	width: 160px;
@@ -85,16 +118,20 @@ $(document).ready(function(){
 
 #fileView{
 	height: 200px;
+	width: 200px;
 	border: 1px solid #ccc;
-	width: 100%;
-	vertical-align: middle;
 	margin-top: 5px;
 	padding: 10px;
+}
+#LocDetail{
+	width: 628px;
+	margin-left: 20px;
 }
 
 .line{
 	display: inline-block;
 }
+
 </style>
 
 <div id="main">
@@ -103,16 +140,29 @@ $(document).ready(function(){
 	<br>
 	
 	<div id="appContent">
-		<form action="/artist/class/app" method="post" encType="multipart/form-data">
+		<form action="/artist/class/app" method="post" encType="multipart/form-data" id="appForm">
 		
 		<div class="form-group">
 	    	<label for="className">클래스 이름</label>
 	    	<input type="text" class="form-control" id="className" name="className" required="required" />
 	    </div>
-	    
+
 		<br>
+
+		<div class="form-group line">
+	    	<label for="classPrice" style="display: block;">금액</label>
+	    	<input type="number" min="0" step ="1000" class="form-control" id="classPrice" name="classPrice" required="required"/><span>원</span>
+	    </div>
+
+	    <div class="form-group line" id="chkbox">
+		<label class="checkbox-inline">
+  			<input type="checkbox" id="talentDonation" name="talentDonation" value="1"> 재능 기부
+		</label>
+	    </div>
 		
-		<div class="form-group">
+		<br><br>
+		
+		<div class="form-group line">
 	    	<label for="category">카테고리</label>
 			<select class="form-control" id="category" name="category" required="required" >
 				<option value="0" selected="selected">--선택--</option>
@@ -125,27 +175,25 @@ $(document).ready(function(){
 				<option value="7">기타</option>
 			</select>    	
 	    </div>
-	    
-		<br>
 		
-		<div class="form-group">
+		<div class="form-group line" id="people">
 	    	<label for="minPeople">인원 수</label><br>
 	    	<input type="number" min="1" class="form-control" id="minPeople" name="minPeople" required="required" />&nbsp;~&nbsp;
 	    	<input type="number" min="1" class="form-control" id="maxPeople" name="maxPeople" required="required" />
 	    </div>
 	    
-	    <br>
+	    <br><br>
 	    
 		<div class="form-group line">
 	    	<label for="classStartDate">클래스 진행기간</label><br>
-	    	<input type="date" class="form-control" id="classStartDate" name="classStartDate" required="required" />&nbsp;~&nbsp;
-	    	<input type="date" class="form-control" id="classEndDate" name="classEndDate" required="required" />
+	    	<input type="date" min="${today }" class="form-control" id="classStartDate" name="classStartDate" required="required" />&nbsp;~&nbsp;
+	    	<input type="date" min="${today }" class="form-control" id="classEndDate" name="classEndDate" required="required" />
 	    </div>
 	    
-		<div class="form-group line">
+		<div class="form-group line" style="margin-left: 56px;">
 	    	<label for="recruitStartDate">클래스 모집기간</label><br>
-	    	<input type="date" class="form-control" id="recruitStartDate" name="recruitStartDate" disabled="disabled" value="${date }" required="required" />&nbsp;~&nbsp;
-	    	<input type="date" class="form-control" id="recruitEndDate" name="recruitEndDate" disabled="disabled" required="required" />
+	    	<input type="date" class="form-control" id="recruitStartDate" name="recruitStartDate" readonly="readonly" value="${today }" required="required" />&nbsp;~&nbsp;
+	    	<input type="date" class="form-control" id="recruitEndDate" name="recruitEndDate" readonly="readonly" required="required" />
 	    </div>
 	    
 	    <br><br>
@@ -175,23 +223,23 @@ $(document).ready(function(){
 		</select>    	
 	    </div>
 	    
-		<div class="form-group line">
+		<div class="form-group line" id="LocDetail">
 	    	<label for="addr">공방 위치</label><br>
 			<input type="text" class="form-control" id="addr" disabled="disabled" value="${artInfo.artAddr }">
 	    </div>
 	    
-		<br>
+		<br><br>
 		
 		<div class="form-group">
 	    	<label for="classFile">사진 첨부</label>
-	    	<input type="file" accept="image/*" id="classFile" name="classFile" />
+	    	<input type="file" accept="image/*" id="classFile" name="classFile" required="required"/>
 			<div id="fileView">
 			</div>
 	    </div>
 		
+		<div class="text-center"><button class="class_button">클래스 등록</button></div>
 		</form>
 	
-		<div id="btn"><button class="class_button">클래스 등록</button></div>
 	
 	</div>
 	
