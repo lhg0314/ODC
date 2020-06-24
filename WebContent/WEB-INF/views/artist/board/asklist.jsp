@@ -1,14 +1,18 @@
-<!-- 관리자 후기리스트 -->
+<!-- 작가페이지 문의리스트 -->
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
         
-<c:import url="/WEB-INF/layout/admin/header.jsp" />
+<!-- mian header -->
+<c:import url="/WEB-INF/layout/common/main/header.jsp"></c:import> 
+
+<!-- artistpage header -->    
+<c:import url="/WEB-INF/layout/artist/artistpageheader.jsp"></c:import> 
 
 <script type="text/javascript">
 $(document).ready(function(){
 	//검색 버튼 클릭
 	$("#btnSearch").click(function() {
-		location.href="/admin/reviewlist?search="+$("#search").val();
+		location.href="/artist/asklist?search="+$("#search").val();
 	});
 	
 	$("#search").keydown(function(e) {
@@ -71,15 +75,15 @@ function checkAll() {
 </script>
 
 <style type="text/css">
-#reviewTable th {
+#askTable th {
 	text-align: center;
 	background: #ecdfec;
 }
 </style>
 <div>
-<h4>게시판 관리</h4>
+<h4>게시판</h4>
 <hr>
-<h5>후기게시판 관리</h5><br>
+<h5>고객 문의 내역</h5><br>
 
 <div>
 <input type="text" id="search" placeholder="클래스명" value="${paging.search }"/>
@@ -98,7 +102,7 @@ function checkAll() {
 
 	<c:if test="${empty list }">
 	<tr>
-		<td colspan="6" style="color: thistle; font-weight: bold;">후기게시판 리스트가 없습니다</td>
+		<td colspan="6" style="color: thistle; font-weight: bold;">문의 내역이 없습니다</td>
 	</tr>
 	</c:if>
 	
@@ -109,7 +113,7 @@ function checkAll() {
 		<td>${info.reviewNo }</td>
 		<td>${info.userId }</td>
 		<td style="text-align: left;">${info.className}</td>
-		<td style="text-align: left;"><a href="/review/view?reviewno=${info.reviewNo }">${info.reviewTitle }</a></td>
+		<td style="text-align: left;">${info.reviewTitle }</td>
 		<td>${info.reviewDate }</td>
 	</tr>	
 	
@@ -119,6 +123,10 @@ function checkAll() {
 <button id="btnDelete" class="btn btn-warning">삭제</button>
 </div>
 </div>
-</div>
-<c:import url="/WEB-INF/paging/adminreviewpaging.jsp" />
-<c:import url="/WEB-INF/layout/admin/footer.jsp" />
+<c:import url="/WEB-INF/paging/artpageaskpaging.jsp" />
+
+<!-- float 막기 -->
+<div class="clearfix"></div>
+
+<!-- 메인 footer -->
+<c:import url="/WEB-INF/layout/common/main/footer.jsp"></c:import>

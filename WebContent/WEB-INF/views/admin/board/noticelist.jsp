@@ -93,7 +93,7 @@ function checkAll() {
 	<tr class="table-hover">
 	<td><input type="checkbox" name="checkRow" value="${info.noticeNo }" /></td>
 		<td>${info.noticeNo }</td>
-		<td style="text-align: left;"><a href="/board/noticeview?noticeno=${info.noticeNo }">${info.noticeTitle }</a></td>
+		<td style="text-align: left;"><a href="/notice/view?noticeno=${info.noticeNo }">${info.noticeTitle }</a></td>
 		<td>${info.noticeDate}</td>
 	</tr>	
 	
