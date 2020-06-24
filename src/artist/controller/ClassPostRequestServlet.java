@@ -28,11 +28,9 @@ public class ClassPostRequestServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		
 		// 세션값으로 로그인 아이디 가져오기
-//		HttpSession session = req.getSession();
+		HttpSession session = req.getSession();
 		
-//		String artId = (String) session.getAttribute("artid");
-		
-		String artId = "artid1";
+		String artId = (String) session.getAttribute("artid");
 		
 		// 해당 아이디 작가 정보 가져오기
 		ArtistInfo artInfo = artistClassService.getArtInfoByArtId(artId);
