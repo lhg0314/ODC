@@ -180,8 +180,8 @@ ul.sub li:hover a { color: #e7717d; }
 		<li class="group">
 		    <div class="title">클래스</div>
 		    <ul class="sub">
-		        <li><a href="/mypage/class/booking">예약 클래스 조회 및 결제취소</a></li>
-		        <li><a href="#">클래스 장바구니</a></li>
+		        <li><a href="/mypage/class/booking">예약 클래스</a></li>
+		        <li><a href="/mypage/class/wish">장바구니</a></li>
 		        <li><a href="#">클래스 수강 조회</a></li>
 		    </ul>
 		</li>
