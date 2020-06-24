@@ -21,7 +21,7 @@ public class ClassInfo {
     private String classContent;
     private int postStatus;
     private int classCheck;
-    
+     
 
 	@Override
 	public String toString() {
