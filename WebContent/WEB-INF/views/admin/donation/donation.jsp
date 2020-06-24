@@ -63,8 +63,8 @@ $(document).ready(function(){
 	<tr>
 		<th>작가명</th>
 		<th>후원한 사용자명</th>
-		<th>후원 금액</th>
 		<th>후원 날짜</th>
+		<th>후원 금액</th>
 	</tr>
 
 	<c:if test="${empty list }">

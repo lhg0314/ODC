@@ -5,7 +5,7 @@
 
 <script type="text/javascript">
 $(document).ready(function(){
-	//검색 버틀 클릭
+	//검색 버튼 클릭
 	$("#btnSearch").click(function() {
 		location.href="/admin/reviewlist?search="+$("#search").val();
 	});
@@ -17,73 +17,106 @@ $(document).ready(function(){
 	});
 });
 </script>
+
+<script type="text/javascript">
+$(document).ready(function() {
+	// 선택체크 삭제
+	$("#btnDelete").click(function() {
+		// 선택된 체크박스
+		var $checkboxes = $("input:checkbox[name='checkRow']:checked");
+
+		// 체크된 대상들을 map으로 만들고 map을 문자열로 만들기
+		var map = $checkboxes.map(function() {
+			return $(this).val();
+		});
+		var names = map.get().join(",");
+		
+		// 전송 폼
+		var $form = $("<form>")
+			.attr("action", "/admin/rlistdelete")
+			.attr("method", "post")
+			.append(
+				$("<input>")
+					.attr("type", "hidden")
+					.attr("name", "names")
+					.attr("value", names)
+			);
+		$(document.body).append($form);
+		$form.submit();
+	
+	});
+});
+
+//전체 체크/해제
+function checkAll() {
+	// checkbox들
+	var $checkboxes=$("input:checkbox[name='checkRow']");
+
+	// checkAll 체크상태 (true:전체선택, false:전체해제)
+	var check_status = $("#checkAll").is(":checked");
+	
+	if( check_status ) {
+		// 전체 체크박스를 checked로 바꾸기
+		$checkboxes.each(function() {
+			this.checked = true;	
+		});
+	} else {
+		// 전체 체크박스를 checked 해제하기
+		$checkboxes.each(function() {
+			this.checked = false;	
+		});
+	}
+}
+</script>
+
 <style type="text/css">
-#talentTable th {
+#reviewTable th {
 	text-align: center;
 	background: #ecdfec;
 }
 </style>
 <div>
-<h4>기부 관리</h4>
+<h4>게시판 관리</h4>
 <hr>
-<h5>재능기부 클래스</h5><br>
+<h5>후기게시판 관리</h5><br>
 
+<div>
 <input type="text" id="search" placeholder="클래스명" value="${paging.search }"/>
 <button type="button" id="btnSearch">검색</button><br><br>
+</div>
 
-<table id="talentTable" class="table table-condensed text-center table-hover">
+<table id="reviewTable" class="table table-condensed text-center table-hover">
 	<tr>
+		<th><input type="checkbox" id="checkAll" onclick="checkAll();" /></th>
 		<th>번호</th>
-		<th style="width: 23%;">클래스명</th>
-		<th>사업자 아이디</th>
-		<th>카테고리</th>
-		<th>지역</th>
-		<th>신청 날짜</th>
-		<th>상세 정보</th>
-		<th>진행 상황</th>
+		<th>작성자 아이디</th>
+		<th style="width: 40%;">클래스명</th>
+		<th style="width: 20%;">제목</th>
+		<th>게시 날짜</th>
 	</tr>
 
 	<c:if test="${empty list }">
-		<tr>
-		<td colspan="8" style="color: thistle; font-weight: bold;">기부 클래스 리스트가 없습니다</td>
-		</tr>
+	<tr>
+		<td colspan="6" style="color: thistle; font-weight: bold;">후기게시판 리스트가 없습니다</td>
+	</tr>
 	</c:if>
 	
 	<c:forEach var="info" items="${list }" varStatus="status">
 	
 	<tr class="table-hover">
-	<td>${info.classNo }</td>
-	<td>${info.className }</td>
-	<td>${info.artId}</td>
-	<td>
-	<c:if test="${info.category eq 1}">플라워</c:if>
-	<c:if test="${info.category eq 2}">음악</c:if>
-	<c:if test="${info.category eq 3}">수공예</c:if>
-	<c:if test="${info.category eq 4}">요리</c:if>
-	<c:if test="${info.category eq 5}">뷰티</c:if>
-	<c:if test="${info.category eq 6}">미술</c:if>
-	<c:if test="${info.category eq 7}">기타</c:if>
-	</td>
-	<td>
-	<c:if test="${info.location eq 1}">서울</c:if>
-	<c:if test="${info.location eq 2}">경기</c:if>
-	<c:if test="${info.location eq 3}">강원</c:if>
-	<c:if test="${info.location eq 4}">충청</c:if>
-	<c:if test="${info.location eq 5}">경상</c:if>
-	<c:if test="${info.location eq 6}">전라</c:if>
-	<c:if test="${info.location eq 7}">제주</c:if>
-	</td>
-	<td>${info.postDate }</td>
-	<td><button type="button" onclick="location.href='/admin/class/view?classno=${info.classNo }&view=post'">상세 정보</button></td>
-	<td>
-	<c:if test="${info.classCheck eq 0}">검토 신청</c:if>
-	<c:if test="${info.classCheck eq 2}">검토 중</c:if>
-	<c:if test="${info.classCheck eq 3}">반려</c:if>
-	</td>
+		<td><input type="checkbox" name="checkRow" value="${info.reviewNo }" /></td>
+		<td>${info.reviewNo }</td>
+		<td>${info.userId }</td>
+		<td style="text-align: left;">${info.className}</td>
+		<td style="text-align: left;">${info.reviewTitle }</td>
+		<td>${info.reviewDate }</td>
 	</tr>	
 	
 	</c:forEach>
 </table>
+<div id="btnBox" style="text-align: right;">
+<button id="btnDelete" class="btn btn-warning">삭제</button>
+</div>
 </div>
 <c:import url="/WEB-INF/paging/adminreviewpaging.jsp" />
 <c:import url="/WEB-INF/layout/admin/footer.jsp" />

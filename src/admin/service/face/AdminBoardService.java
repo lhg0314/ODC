@@ -1,11 +1,11 @@
 package admin.service.face;
 
 import java.util.List;
+import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 
 import dto.NoticeBoard;
-import dto.ReviewBoard;
 import util.Paging;
 
 public interface AdminBoardService {
@@ -14,8 +14,9 @@ public interface AdminBoardService {
 	Paging getPagingReview(HttpServletRequest req);
 
 	List<NoticeBoard> selectAllNotice(Paging paging);
-	List<ReviewBoard> selectAllReview(Paging paging);
+	List<Map<String, Object>> selectAllReview(Paging paging);
 	
-	void boardListDelete(String names);
+	void noticeListDelete(String names);
+	void reviewListDelete(String names);
 
 }

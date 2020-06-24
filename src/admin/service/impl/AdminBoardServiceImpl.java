@@ -1,6 +1,7 @@
 package admin.service.impl;
 
 import java.util.List;
+import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -50,26 +51,33 @@ public class AdminBoardServiceImpl implements AdminBoardService {
 		String search = (String) req.getParameter("search");
 		
 		// 클래스 전체 Paging 객체를 생성하고 반환
-//		int totalCount = adminBoardDao.selectCntAllReview(search);
+		int totalCount = adminBoardDao.selectCntAllReview(search);
 		
 		// Paging 객체 생성
-//		Paging paging = new Paging(totalCount, curPage);
+		Paging paging = new Paging(totalCount, curPage);
 		
 		// 검색어
-//		paging.setSearch(search);
+		paging.setSearch(search);
 		
-		return null;
+		return paging;
 	}
 	
 	@Override
-	public List<ReviewBoard> selectAllReview(Paging paging) {
-		return null;
+	public List<Map<String, Object>> selectAllReview(Paging paging) {
+		return adminBoardDao.selectAllReview(paging);
 	}
 
 
 	@Override
-	public void boardListDelete(String names) {
+	public void noticeListDelete(String names) {
 		adminBoardDao.deleteNoticeList(names);
+	}
+
+
+	@Override
+	public void reviewListDelete(String names) {
+		adminBoardDao.deleteReviewList(names);
+
 	}
 
 }

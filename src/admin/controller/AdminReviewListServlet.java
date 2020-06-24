@@ -3,6 +3,7 @@ package admin.controller;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -18,8 +19,8 @@ import util.Paging;
 
 /**
  * 관리자 - 후기게시판 관리
- * 작성중
- * 200623
+ * 완성
+ * 200624
  * 박주이
  */
 @WebServlet("/admin/reviewlist")
@@ -33,15 +34,12 @@ public class AdminReviewListServlet extends HttpServlet {
 		
 		Paging paging = adminBoardService.getPagingReview(req);
 		
-		List<ReviewBoard> list = adminBoardService.selectAllReview(paging);
+		List<Map<String, Object>> list = adminBoardService.selectAllReview(paging);
 		
 		req.setAttribute("paging", paging);
 		req.setAttribute("list", list);
 		
-		req.getRequestDispatcher("/WEB-INF/views/admin/board/reveiwlist.jsp").forward(req, resp);
-		
-		
-		
+		req.getRequestDispatcher("/WEB-INF/views/admin/board/reviewlist.jsp").forward(req, resp);
 		
 	}
 }

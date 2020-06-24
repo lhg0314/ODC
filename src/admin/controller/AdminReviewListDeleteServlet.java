@@ -12,13 +12,13 @@ import admin.service.face.AdminBoardService;
 import admin.service.impl.AdminBoardServiceImpl;
 
 /**
- * 관리자 - 공지사항 게시글 선택 삭제
+ * 관리자 - 후기게시판 선택 삭제
  * 완성
- * 200623
+ * 200624
  * 박주이
  */
-@WebServlet("/admin/nlistdelete")
-public class AdminNoticeListDeleteServlet extends HttpServlet {
+@WebServlet("/admin/rlistdelete")
+public class AdminReviewListDeleteServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	private AdminBoardService adminBoardService = new AdminBoardServiceImpl();
 	
@@ -27,9 +27,9 @@ public class AdminNoticeListDeleteServlet extends HttpServlet {
 		String names = req.getParameter("names");
 		
 		if( !"".equals(names) && names != null) {
-			adminBoardService.noticeListDelete(names);
+			adminBoardService.reviewListDelete(names);
 		}
 		
-		resp.sendRedirect("/admin/noticelist");
+		resp.sendRedirect("/admin/reviewlist");
 	}
 }

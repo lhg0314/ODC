@@ -133,7 +133,7 @@ public class DonationDaoImpl implements DonationDao {
 
 		String sql = "";
 		sql += "select * from ( select rownum rnum, b.* from (";
-		sql += "	select c.class_no, c.class_name, c.category, c.post_date, c.class_check, a.art_id, a.art_name";
+		sql += "	select c.class_no, c.class_name, c.category, c.post_date, c.class_check, c.location, a.art_id, a.art_name";
 		sql += "	from classinfo c inner join artistinfo a on (c.art_no = a.art_no)";
 		sql += "	where c.talent_donation = 1 and c.class_name like '%'||?||'%'";
 		sql += "	order by post_date desc ) b order by rnum ) t where rnum between ? and ?";
@@ -158,6 +158,7 @@ public class DonationDaoImpl implements DonationDao {
 				map.put("postDate", rs.getDate("post_date"));
 				map.put("artId", rs.getString("art_id"));
 				map.put("artName", rs.getString("art_name"));
+				map.put("location", rs.getString("location"));
 
 				list.add(map);
 			}
