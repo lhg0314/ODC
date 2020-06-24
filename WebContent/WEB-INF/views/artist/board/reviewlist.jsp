@@ -29,6 +29,7 @@ $(document).ready(function(){
 	background: #ecdfec;
 }
 </style>
+
 <div id="main">
 <a href="/artist/reviewlist" class="aTagStyleNone"><span id="boardtitle">게시판</span></a>
 <hr>
