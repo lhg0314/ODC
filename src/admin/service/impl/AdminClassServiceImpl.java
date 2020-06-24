@@ -8,6 +8,7 @@ import javax.servlet.http.HttpServletRequest;
 import admin.dao.face.ClassCheckPostDao;
 import admin.dao.impl.ClassCheckPostDaoImpl;
 import admin.service.face.AdminClassService;
+import dto.ClassFile;
 import dto.ClassInfo;
 import util.Paging;
 
@@ -155,7 +156,6 @@ public class AdminClassServiceImpl implements AdminClassService {
 		return classCheckPostDao.selectClassReviewByClassNo(paging, classno);
 	}
 
-	
 	//-----------------------------------------------------------------
 
 }

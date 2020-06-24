@@ -55,6 +55,10 @@ $(document).ready(function(){
 	width: 150px;
 	display: inline-block;
 }
+#classFile{
+	width: 70%;
+}
+
 
 </style>
 
@@ -141,7 +145,7 @@ $(document).ready(function(){
 	<th colspan="4">첨부 파일</th>
 </tr>
 <tr>
-	<td colspan="4">${info.classOriginFilename }</td>
+	<td colspan="4" style="text-align: center;"><img id="classFile" src="/upload/${info.classRenameFilename }"/></td>
 </tr>
 <tr>
 	<th colspan="4"><a href="/admin/class/review?classno=${info.classNo }">&raquo; 클래스 후기보기</a></th>

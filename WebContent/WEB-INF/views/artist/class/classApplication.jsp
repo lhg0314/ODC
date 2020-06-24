@@ -114,7 +114,7 @@ $(document).ready(function(){
 
 #classStartDate, #classEndDate, #recruitStartDate, #recruitEndDate{
 	display: inline-block;
-	width: 160px;
+	width: 180px;
 }
 
 #fileView{

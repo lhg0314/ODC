@@ -11,6 +11,7 @@ import java.util.Map;
 
 import admin.dao.face.ClassCheckPostDao;
 import dbutil.JDBCTemplate;
+import dto.ClassFile;
 import dto.ClassInfo;
 import util.Paging;
 
@@ -282,7 +283,7 @@ public class ClassCheckPostDaoImpl implements ClassCheckPostDao {
 
 				map.put("classFileNo", rs.getInt("class_file_no"));
 				map.put("classOriginFilename", rs.getString("class_origin_filename"));
-				map.put("classOriginFilename", rs.getString("class_rename_filename"));
+				map.put("classRenameFilename", rs.getString("class_rename_filename"));
 			}
 			
 		} catch (SQLException e) {

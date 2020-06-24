@@ -57,6 +57,9 @@ $(document).ready(function(){
 	width: 150px;
 	display: inline-block;
 }
+#classFile{
+	width: 70%;
+}
 
 
 </style>
@@ -88,7 +91,15 @@ $(document).ready(function(){
 		<c:if test="${info.category eq 7}">기타</c:if>
 	</td>
 	<th>지역</th>
-	<td></td>
+	<td>
+		<c:if test="${info.location eq 1}">서울</c:if>
+		<c:if test="${info.location eq 2}">경기</c:if>
+		<c:if test="${info.location eq 3}">강원</c:if>
+		<c:if test="${info.location eq 4}">충청</c:if>
+		<c:if test="${info.location eq 5}">경상</c:if>
+		<c:if test="${info.location eq 6}">전라</c:if>
+		<c:if test="${info.location eq 7}">제주</c:if>
+	</td>
 </tr>
 <tr>
 	<th>가격</th>
@@ -143,7 +154,7 @@ $(document).ready(function(){
 	<th colspan="4">첨부 파일</th>
 </tr>
 <tr>
-	<td colspan="4">${info.classOriginFilename }</td>
+	<td colspan="4" style="text-align: center;"><img id="classFile" src="/upload/${info.classRenameFilename }"/></td>
 </tr>
 
 
