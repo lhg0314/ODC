@@ -42,6 +42,9 @@ public class ClassViewServlet extends HttpServlet {
 		
 		// 포워드
 		if( "post".equals(view)){	
+			
+			
+			
 			req.getRequestDispatcher("/WEB-INF/views/admin/classManage/classPostView.jsp").forward(req, resp);	
 		}else if( "check".equals(view) ){
 			req.getRequestDispatcher("/WEB-INF/views/admin/classManage/classCheckView.jsp").forward(req, resp);	

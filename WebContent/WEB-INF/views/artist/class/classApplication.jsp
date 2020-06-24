@@ -38,7 +38,7 @@ $(document).ready(function(){
 	
 	$("#talentDonation").change(function(){
 		if( $(this).is(":checked")){
-			$("#classPrice").val(0);
+			$("#classPrice").val("");
 			$("#classPrice").attr("readOnly", "readOnly");
 		}else{
 			$("#classPrice").removeAttr("readOnly");			
@@ -83,13 +83,14 @@ $(document).ready(function(){
 	color: #e7717d;
 }
 
-#category{
-	width: 100px;
+#category, #location{
+	width: 150px;
 }
 
-#people{
-	margin-left: 302px;
+#locBox{
+	margin-left: 50px;
 }
+
 #classContentInfo{
 	font-size: 12px;
 	margin: 3px;
@@ -122,10 +123,6 @@ $(document).ready(function(){
 	border: 1px solid #ccc;
 	margin-top: 5px;
 	padding: 10px;
-}
-#LocDetail{
-	width: 628px;
-	margin-left: 20px;
 }
 
 .line{
@@ -175,14 +172,30 @@ $(document).ready(function(){
 				<option value="7">기타</option>
 			</select>    	
 	    </div>
+	    
+	    <div class="form-group line" id="locBox">
+	   	<label for="location">지역</label>
+		<select class="form-control" id="location" name="location" required="required" >
+			<option value="0" selected="selected">--선택--</option>
+			<option value="1">서울</option>
+			<option value="2">경기</option>
+			<option value="3">강원</option>
+			<option value="4">충청</option>
+			<option value="5">경상</option>
+			<option value="6">전라</option>
+			<option value="7">제주</option>
+		</select>    	
+	    </div>
+	    
+	    <br><br>
 		
-		<div class="form-group line" id="people">
+		<div class="form-group" id="people">
 	    	<label for="minPeople">인원 수</label><br>
 	    	<input type="number" min="1" class="form-control" id="minPeople" name="minPeople" required="required" />&nbsp;~&nbsp;
 	    	<input type="number" min="1" class="form-control" id="maxPeople" name="maxPeople" required="required" />
 	    </div>
 	    
-	    <br><br>
+	    <br>
 	    
 		<div class="form-group line">
 	    	<label for="classStartDate">클래스 진행기간</label><br>
@@ -208,27 +221,6 @@ $(document).ready(function(){
 		</div>
 		
 		<br>
-		
-		<div class="form-group line">
-	   	<label for="location">지역</label>
-		<select class="form-control" id="location" name="location" required="required" >
-			<option value="0" selected="selected">--선택--</option>
-			<option value="1">서울</option>
-			<option value="2">경기</option>
-			<option value="3">강원</option>
-			<option value="4">충청</option>
-			<option value="5">경상</option>
-			<option value="6">전라</option>
-			<option value="7">제주</option>
-		</select>    	
-	    </div>
-	    
-		<div class="form-group line" id="LocDetail">
-	    	<label for="addr">공방 위치</label><br>
-			<input type="text" class="form-control" id="addr" disabled="disabled" value="${artInfo.artAddr }">
-	    </div>
-	    
-		<br><br>
 		
 		<div class="form-group">
 	    	<label for="classFile">사진 첨부</label>
