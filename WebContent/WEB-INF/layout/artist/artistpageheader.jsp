@@ -91,7 +91,7 @@
 	margin: 10px 0;
 	font-size: 14px;
 }
-
+ 
 #table th {
 	background: thistle;
 	text-align: center;

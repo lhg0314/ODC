@@ -125,7 +125,7 @@ public class ArtistClassDaoImpl implements ArtistClassDao {
 	        
 	        d = new java.sql.Date(classInfo.getClassStartdate().getTime());
 	        ps.setDate(12, d );
-	        
+	         
 	        d = new java.sql.Date(classInfo.getClassEnddate().getTime());
 	        ps.setDate(13, d );
 	        

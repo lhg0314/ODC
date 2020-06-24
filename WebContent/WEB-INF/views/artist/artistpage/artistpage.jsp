@@ -17,7 +17,7 @@
 	<br>
 	
 	<div id="class_upload_notice">
-	
+	 
 	<span>클래스 등록을 위한 공지사항</span><br><br>
 	
 	<span>비둘기, 이국 오면 위에 그리고 별 오는 이름자를 버리었습니다.</span><br> 

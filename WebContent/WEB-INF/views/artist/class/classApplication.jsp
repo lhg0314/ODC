@@ -161,7 +161,7 @@ $(document).ready(function(){
 	    </div>
 		
 		<br><br>
-		
+		 
 		<div class="form-group line">
 	    	<label for="category">카테고리</label>
 			<select class="form-control" id="category" name="category" required="required" >

@@ -247,7 +247,7 @@ public class ArtistClassServiceImpl implements ArtistClassService {
 						e.printStackTrace();
 					}
 				}
-				
+				 
 				
 			}// f( item.isFormField()) end
 			

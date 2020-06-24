@@ -24,7 +24,7 @@ public interface ArtistClassDao {
 	 * @param classInfo
 	 */
 	public void insertClassInfo(ClassInfo classInfo);
-
+ 
 	/*
 	 * 클래스 첨부파일 DB 입력하기
 	 */

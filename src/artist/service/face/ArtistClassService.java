@@ -21,5 +21,5 @@ public interface ArtistClassService {
 	 * @param artNo 
 	 */
 	public void insertClassInfo(HttpServletRequest req, HttpServletResponse resp, int artNo);
-
+ 
 }

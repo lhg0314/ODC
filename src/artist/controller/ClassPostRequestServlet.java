@@ -45,7 +45,7 @@ public class ClassPostRequestServlet extends HttpServlet {
 	
 		// 포워드
 		req.getRequestDispatcher("/WEB-INF/views/artist/class/classApplication.jsp").forward(req, resp);
-	
+	 
 	}
 	
 	@Override

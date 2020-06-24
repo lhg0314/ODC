@@ -43,7 +43,7 @@
 	<span id="boardtitle">클래스 등록</span>
 	<hr>
 	<br>
-	
+	 
 	<div id="classAppSuccess" class="text-center">
 	
 	
