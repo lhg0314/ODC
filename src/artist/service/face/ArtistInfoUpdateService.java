@@ -1,6 +1,7 @@
 package artist.service.face;
 
-import dto.ArtistDetail;
+import javax.servlet.http.HttpServletRequest;
+
 import dto.ArtistInfo;
 
 public interface ArtistInfoUpdateService {
@@ -12,13 +13,15 @@ public interface ArtistInfoUpdateService {
 	 */
 	public ArtistInfo artInfoLoad(ArtistInfo a);
 
+	
 	/**
-	 * 작가소개글 가져오기
-	 * @param ad
-	 * @return
+	 * 작가 정보 수정
+	 * @param req
 	 */
-	public ArtistDetail artDetailLoad(ArtistDetail ad);
+	public void artInfoUpdate(HttpServletRequest req);
 	
 	
-
+	
+	
+	
 }

@@ -40,12 +40,7 @@
 	
 	<br>
 	
-<<<<<<< HEAD
-	<div id="btn"><a href="#"><button class="class_button"> + 클래스 등록</button></a></div>
-
-=======
 	<div id="btn"><a href="/artist/class/app"><button class="class_button">+ 클래스 등록</button></a></div>
->>>>>>> d92d98866ab695abe454e40913bcb0ad6223166e
 
 <div class="clearfix"></div>
 </div> <!-- 전체를 감싸는 div -->

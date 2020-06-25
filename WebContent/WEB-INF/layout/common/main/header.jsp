@@ -244,12 +244,8 @@ list-style: none;
 	   </ul>
    </div>
    
-<<<<<<< HEAD
-   <div class="wish" onclick="location.href='/user/info';">
-=======
-   <div class="wish" onclick="location.href='#';">
+   <div class="wish" onclick="location.href='/user/mypage';">
    <a href="/user/mypage">
->>>>>>> d92d98866ab695abe454e40913bcb0ad6223166e
    <div id="sizeup" class="glyphicon glyphicon-user" ></div>
    <br><small>마이페이지</small>
    </a>

@@ -58,14 +58,15 @@
 	font-weight: bold;
 }
 
-#userbox_cont img:first-child {
-    width: 100px;
-    height: 100px;
-}
+/* #userbox_cont img:first-child { */
+/*     width: 100px; */
+/*     height: 100px; */
+/* } */
 
-#userbox_cont img:nth-child(2) {
+#userbox_cont img{
     width: 170px;
     height: 55px;
+    margin: 20px 0;
 }
 
 </style>
@@ -251,13 +252,8 @@ ul.sub li a {
 
 	<div id="userbox">
 		<div id="userbox_cont">
-			<img src="/resources/img/mini.jpg" />		
 			<img src="/resources/img/grade/artistgrade.PNG" />		
-<<<<<<< HEAD
 			<span>${artid } 님 </span>
-=======
-			<span>${artid }님 </span>
->>>>>>> d92d98866ab695abe454e40913bcb0ad6223166e
 		</div>
 	</div>
 	

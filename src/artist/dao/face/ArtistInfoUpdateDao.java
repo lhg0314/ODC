@@ -1,6 +1,5 @@
 package artist.dao.face;
 
-import dto.ArtistDetail;
 import dto.ArtistInfo;
 
 public interface ArtistInfoUpdateDao {
@@ -14,10 +13,10 @@ public interface ArtistInfoUpdateDao {
 
 	
 	/**
-	 * 작가소개글 가져오기
-	 * @param ad
-	 * @return
+	 * 작가 정보 수정
+	 * @param ainfo
 	 */
-	ArtistDetail artDetailLoad(ArtistDetail ad);
+	void artInfoUpdate(ArtistInfo ainfo);
 
+	
 }

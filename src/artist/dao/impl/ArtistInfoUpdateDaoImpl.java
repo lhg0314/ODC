@@ -8,6 +8,7 @@ import java.sql.SQLException;
 import artist.dao.face.ArtistInfoUpdateDao;
 import dbutil.JDBCTemplate;
 import dto.ArtistDetail;
+import dto.ArtistFile;
 import dto.ArtistInfo;
 
 public class ArtistInfoUpdateDaoImpl implements ArtistInfoUpdateDao {
@@ -51,7 +52,8 @@ public class ArtistInfoUpdateDaoImpl implements ArtistInfoUpdateDao {
 				 ainfo.setArtTel(rs.getLong("art_tel"));
 				 ainfo.setArtBirth(rs.getDate("art_birth"));
 				 ainfo.setArtAddr(rs.getString("art_addr"));
-				 
+				 ainfo.setArtContent(rs.getString("art_content"));
+				 System.out.println("test"+ainfo);
 			}
 			
 		} catch (SQLException e) {
@@ -65,42 +67,51 @@ public class ArtistInfoUpdateDaoImpl implements ArtistInfoUpdateDao {
 	}
 
 
-	
-	
+
+
+
 	@Override
-	public ArtistDetail artDetailLoad(ArtistDetail ad) {
+	public void artInfoUpdate(ArtistInfo ainfo) {
 		
 		String sql = "";
-		sql += "SELECT art_content FROM artistdetail WHERE art_no = ?";
+		sql += "UPDATE artistinfo";
+		sql += " SET art_name=?, art_pw=?,";
+		sql += " art_phone=?, art_tel=?, art_nick=?,";
+		sql += " art_addr=?, art_birth=?";
+		sql += " WHERE art_id=?";
 		
-		
+			
 		conn = JDBCTemplate.getConnection();
-		
-		ArtistDetail adetail = null;
 		
 		try {
 			
 			ps = conn.prepareStatement(sql);
-			ps.setInt(1, ad.getArtno());
 			
-			rs = ps.executeQuery();
+			ps.setString(1, ainfo.getArtName());
+			ps.setString(2, ainfo.getArtpw());
+			ps.setLong(3, ainfo.getArtPhone());
+			ps.setLong(4, ainfo.getArtTel());
+			ps.setString(5, ainfo.getArtNick());
+			ps.setString(6, ainfo.getArtAddr());
 			
-			while(rs.next()) {
-				
-				adetail = new ArtistDetail();
-				
-				adetail.setArtContent(rs.getString("art_content"));
-				
-			}
+			//java.util.Date타입의 정보를 java.sql.Date로 변경해야함
+			// -> java.sql.Date(long millis)생성자를 이용한다
+			java.sql.Date d = new java.sql.Date(ainfo.getArtBirth().getTime());
+			ps.setDate(7, d); 
+			ps.setString(8, ainfo.getArtid());
+			
+			
+			ps.executeUpdate();
+			
 			
 		} catch (SQLException e) {
 			e.printStackTrace();
 		} finally {
 			JDBCTemplate.close(ps);
-			JDBCTemplate.close(rs);
 		}
 		
-		return adetail;
+		
 	}
+
 
 }

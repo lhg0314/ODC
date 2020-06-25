@@ -47,7 +47,7 @@
 input { 
 
 	border: 1px solid #aaa; 
-	width: 250px;
+	width: 150px;
 }
 
 #btn { text-align: center; }
@@ -107,6 +107,8 @@ $(document).ready(function() {
         	return false;
         }
 		
+        alert("회원정보가 수정되었습니다")
+        
 		//form submit 수행
 		$("form").submit();
 		
@@ -131,7 +133,7 @@ $(document).ready(function() {
 			
 			<tr>
 				<th>이름</th>
-				<td><input type="text" id="username" name="username" value="${uinfo.username }"/></td>
+				<td><input type="text" id="username" name="username" value="${uinfo.username }" required="required"/></td>
 			</tr>
 			<tr>
 				<th>아이디</th>
@@ -146,16 +148,20 @@ $(document).ready(function() {
 				<td><input type="password" id="userpwchk" name="userpwchk"/></td>
 			</tr>
 			<tr>
+			<tr>
+				<th>이메일</th>
+				<td>${uinfo.useremail }</td>
+			</tr>
 				<th>휴대폰번호</th>
-				<td><input type="tel" id="userphone" name="userphone" value="${uinfo.userphone }"/></td>
+				<td><input type="tel" id="userphone" name="userphone" value="${uinfo.userphone }" required="required"/></td>
 			</tr>
 			<tr>
 				<th>생년월일</th>
-				<td><input type="date" id="userbirth" name="userbirth" value="${uinfo.userbirth }"/></td>
+				<td><input type="date" id="userbirth" name="userbirth" value="${uinfo.userbirth }" required="required"/></td>
 			</tr>
 			<tr>
 				<th>닉네임</th>
-				<td><input type="text" id="usernick" name="usernick" value="${uinfo.usernick }"/></td>
+				<td><input type="text" id="usernick" name="usernick" value="${uinfo.usernick }" required="required"/></td>
 			</tr>
 			
 		</table>

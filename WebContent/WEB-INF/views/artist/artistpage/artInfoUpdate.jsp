@@ -48,7 +48,7 @@
 input { 
 
 	border: 1px solid #aaa; 
-	width: 250px;
+	width: 150px;
 }
 
 textarea { 
@@ -82,6 +82,14 @@ textarea {
 	height: 150px;
 	border: 1px solid #aaa;
 }
+
+#fimg {
+
+	width: 150px;
+	height: 150px;
+}
+
+#upfile { width: 250px; }
 
 #f { vertical-align: bottom; }
 
@@ -192,6 +200,11 @@ $(document).ready(function(){
 <script type="text/javascript">
 $(document).ready(function() {
 	
+	//경고문구 태그
+	var $pw="영어, 숫자만 가능합니다";
+	var $checkpw="비밀번호가 다릅니다";
+	
+	
 	//수정버튼 동작
 	$("#btnUpdate").click(function() {
 		
@@ -199,8 +212,8 @@ $(document).ready(function() {
 		var uphoneReg= /^[0-9]{10,11}$/;//전화번호는 숫자만 가능
 
 		
-        if( !uidReg.test( $("#artpw").val() ) ) {//비밀번호 체크
-        	alert($id)
+        if( $("#artpw").val() != "" && !uidReg.test( $("#artpw").val() ) ) {//비밀번호 체크
+        	alert($pw)
         	$("#artpw").focus()
             return false
         }
@@ -217,6 +230,7 @@ $(document).ready(function() {
         	return false;
         }
         
+        alert("회원정보가 수정되었습니다")
         
 		//form submit 수행
 		$("form").submit();
@@ -238,14 +252,14 @@ $(document).ready(function() {
 <hr>
 
 	
-	<form action="/artist/info" method="post">
+	<form action="/artist/info" method="post" >
 	
 	
 		<table class="infotable">
 			
 			<tr>
 				<th>이름</th>
-				<td><input type="text" id="artname" name="artname" value="${ainfo.artName }" /></td>
+				<td><input type="text" id="artname" name="artname" value="${ainfo.artName }" required="required"/></td>
 			</tr>
 			<tr>
 				<th>아이디</th>
@@ -257,30 +271,38 @@ $(document).ready(function() {
 			</tr>
 			<tr>
 				<th>새 비밀번호 확인</th>
-				<td><input type="password" id="artpwchk" name="artpwchk"/></td>
+				<td><input type="password" id="artpwchk" name="artpwchk" /></td>
+			</tr>
+			<tr>
+				<th>이메일</th>
+				<td>${ainfo.artEmail }</td>
+			</tr>
+			<tr>
+				<th>사업자등록번호</th>
+				<td>${ainfo.artCode }</td>
 			</tr>
 			<tr>
 				<th>휴대폰번호</th>
-				<td><input type="tel" id="artphone" name="artphone" value="${ainfo.artPhone }"/></td>
+				<td><input type="tel" id="artphone" name="artphone" value="${ainfo.artPhone }" required="required"/></td>
 			</tr>
 			<tr>
 				<th>공방전화번호</th>
-				<td><input type="tel" id="arttelephone" name="arttelephone" value="${ainfo.artTel }"/></td>
+				<td><input type="tel" id="arttelephone" name="arttelephone" value="${ainfo.artTel }" required="required"/></td>
 			</tr>
 			<tr>
 				<th>생년월일</th>
-				<td><input type="date" id="artbirth" name="artbirth" value="${ainfo.artBirth }"/></td>
+				<td><input type="date" id="artbirth" name="artbirth" value="${ainfo.artBirth }" required="required"/></td>
 			</tr>
 			<tr>
 				<th>닉네임</th>
-				<td><input type="text" id="artnick" name="artnick" value="${ainfo.artNick }"/></td>
+				<td><input type="text" id="artnick" name="artnick" value="${ainfo.artNick }" required="required"/></td>
 			</tr>
 			<tr>
 				<th>공방주소</th>
 				<td>
-					<input type="text" name="addr1" id="sample6_postcode" placeholder="우편번호" readonly="readonly" style="width: 250px;" value="${addr1 }"/>
+					<input type="text" name="addr1" id="sample6_postcode" placeholder="우편번호" readonly="readonly" style="width: 250px;" value="${addr1 }" required="required"/>
 					<input type="button" id="addrbtn" onclick="sample6_execDaumPostcode()" value="우편번호 찾기" style="width: 110px;"><br><br>
-					<input type="text" name="addr2" id="sample6_address" placeholder="주소" style="width: 500px;"  value="${addr2 }"><br><br>
+					<input type="text" name="addr2" id="sample6_address" placeholder="주소" style="width: 500px;"  value="${addr2 }" required="required"><br><br>
 					<input type="text" name="addr3" id="sample6_detailAddress" placeholder="상세주소" style="width: 500px;"  value="${addr3 }">
 					<input type="hidden" id="sample6_extraAddress" placeholder="참고항목">
 				</td>
@@ -292,24 +314,12 @@ $(document).ready(function() {
 		<table class="infotable">
 		
 			<tr>
-				<th>작가소개말</th>
-				<td><textarea id="artdetail" name="artdetail">${adetail.artContent }</textarea></td>
+				<th>작가소개글</th>
+				<td><textarea id="artdetail" name="artdetail">${ainfo.artContent }</textarea></td>
 			</tr>
 			
 		</table>
 	
-	
-		<table class="infotable">
-		
-			<tr>
-				<th>프로필사진</th>
-				<td id="prev"><div id="preview"></div></td>
-				<td id="f"><input type="file" id="upfile" name="upfile" accept="image"/></td>
-			</tr>
-			
-		</table>
-		
-		
 	</form>
 	
 	<br><br>
