@@ -7,7 +7,11 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-
+/**
+ * 클래스 상세보기 페이지
+ * @author Administrator
+ *
+ */
 @WebServlet("/class/view")
 public class UserClassViewServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;

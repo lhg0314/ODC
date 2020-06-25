@@ -13,4 +13,8 @@ public interface UserBoardDao {
 
 	List<Map<String, Object>> selectReviewByUserNo(Paging paging, int userno);
 
+	int selectCntAskByUserNo(String search, int userno);
+
+	List<Map<String, Object>> selectAskByUserNo(Paging paging, int userno);
+
 }

@@ -191,8 +191,8 @@ ul.sub li:hover a { color: #e7717d; }
 		<li class="group">
 		    <div class="title">활동 정보</div>
 		    <ul class="sub"> 
-		        <li><a href="#">클래스 수강 후기</a></li>
-		        <li><a href="#">클래스 문의 내용</a></li>
+		        <li><a href="/mypage/reviewlist">클래스 수강 후기</a></li>
+		        <li><a href="/mypage/asklist">클래스 문의 내용</a></li>
 		    </ul>
 		</li>
 	</ul>

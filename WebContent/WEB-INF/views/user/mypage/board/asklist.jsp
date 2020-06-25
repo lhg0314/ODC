@@ -29,10 +29,12 @@ $(document).ready(function(){
 	background: #ecdfec;
 }
 </style>
-<div>
-<h4>활동정보</h4>
+
+<div id="main">
+<a href="/mypage/asklist" class="aTagStyleNone"><span id="boardtitle">활동 정보</span></a>
 <hr>
-<h5>클래스 문의 내역</h5><br>
+<a href="/mypage/asklist" class="aTagStyleNone"><span id="boardtitle">클래스 문의 내역</span></a>
+<br>
 
 <div>
 <input type="text" id="asearch" placeholder="클래스명" value="${paging.search }"/>
@@ -41,11 +43,12 @@ $(document).ready(function(){
 
 <table id="askTable" class="table table-condensed text-center table-hover">
 	<tr>
-		<th>번호</th>
-		<th>작가명</th>
-		<th style="width: 30%;">클래스명</th>
-		<th style="width: 30%;">제목</th>
-		<th>게시 날짜</th>
+		<th style="width: 8%;">번호</th>
+		<th style="width: 17%;">작가 이름</th>
+		<th style="width: 23%;">클래스명</th>
+		<th style="width: 23%;">제목</th>
+		<th>문의 날짜</th>
+		<th>답변 여부</th>
 	</tr>
 
 	<c:if test="${empty list }">
@@ -62,6 +65,8 @@ $(document).ready(function(){
 		<td style="text-align: left;"><a href="/class/view?classno=${info.classNo }">${info.className}</a></td>
 		<td style="text-align: left;"><a href="/ask/view?askno=${info.askNo }">${info.askTitle }</a></td>
 		<td>${info.askDate }</td>
+		<c:if test="${info.commCnt eq 0 }"><td style="color: tomato">답변 없음</td></c:if>
+		<c:if test="${info.commCnt ge 1 }"><td style="color: blue">답변 완료</td></c:if>
 	</tr>	
 	
 	</c:forEach>
