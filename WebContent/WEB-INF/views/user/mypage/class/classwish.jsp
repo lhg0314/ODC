@@ -40,18 +40,6 @@
 
 </style>
 
-<script type="text/javascript">
-// function bookingcancel(bookingno) {
-// 	var result = confirm("클래스 예약 취소하시겠습니까?");
-
-// 	if( result ) {
-// 		location.href="/mypage/classbooking/cancel?bookingno="+bookingno;
-// 	}
-// }
-</script>
-
-
-
 <div id="main">
 	<span id="boardtitle">클래스</span>
 	<hr>
@@ -72,47 +60,33 @@
 	<th style="width: 15%">예약</th>
 	<th style="width: 10%">삭제</th>
 </tr>
+	
+<!-- 장바구니가 없을 때  -->
+<c:if  var="mon" test="${empty userwish }">
+<tr>
+<td colspan="8" style="color: thistle; font-weight: bold; text-align: center;">장바구니가 없습니다</td>
+</tr>
+</c:if>
 
+
+<!--장바구니가 있을 때 -->
+<c:if  var="mon" test="${!empty userwish }">
+<!-- 값 출력  -->
+<c:forEach items="${userwish }" var="wish" >
 
 <tr style="text-align: center;">
-	<!-- 사진을 누르면  bookingno 을 쿼리스트링 값으로 전달하여 페이지를 바꾼다 -->
-	<td><a href="#wishno=?${book.bookingno }"><img src="/upload/${book.classrenamefilename }" alt="..." class="img-rounded imgsize"></a></td>
-	<td>${book.classname }</td>
-	<td>${book.artid }</td>
-	<td>${book.wishDate }</td>
-	<td>${book.wishCount }</td>
-	<td>${book.wishtotalPrice }</td>
-	<td><button class="btn btn-default" onclick="bookingcancel(${book.bookingno });">예약</button></td>
-	<td><button class="btn btn-default" onclick="bookingcancel(${book.bookingno });">취소</button></td>
+	<!-- 사진을 누르면  classno 을 쿼리스트링 값으로 전달하여 페이지를 바꾼다-->
+	<td><a href="#?classno=${wish.classno }"><img src="/upload/${wish.classrenamefilename }" alt="..." class="img-rounded imgsize"></a></td>
+	<td>${wish.classname }</td>
+	<td>${wish.artid }</td>
+	<td>${wish.wishdate }</td>
+	<td>${wish.wishcount }</td>
+	<td>${wish.wishtotalprice }</td>
+	<td><a href="/mypage/class/payment?wishno=${wish.wishno }"><button class="btn btn-default">예약</button></a></td>
+	<td><a href="/mypage/class/wish/cancel?wishno=${wish.wishno }"><button class="btn btn-default">삭제</button></a></td>
 </tr>	
-	
-<!-- 예약리스트가 없을 때  -->
-<%-- <c:if  var="mon" test="${empty userbooking }"> --%>
-<!-- <tr> -->
-<!-- <td colspan="8" style="color: thistle; font-weight: bold; text-align: center;">예약리스트가 없습니다</td> -->
-<!-- </tr> -->
-<%-- </c:if> --%>
-
-
-<!--예약리스트가 있을 때 -->
-<%-- <c:if  var="mon" test="${!empty userbooking }"> --%>
-<!-- <!-- 값 출력 --> 
-<%-- <c:forEach items="${userbooking }" var="book" > --%>
-
-<!-- <tr style="text-align: center;"> -->
-<!-- 	<!-- 사진을 누르면  bookingno 을 쿼리스트링 값으로 전달하여 페이지를 바꾼다 --> 
-<%-- 	<td><a href="#bookingno=?${book.bookingno }"><img src="/upload/${book.classrenamefilename }" alt="..." class="img-rounded imgsize"></a></td> --%>
-<%-- 	<td>${book.classname }</td> --%>
-<%-- 	<td>${book.artid }</td> --%>
-<%-- 	<td>${book.paymentDate }</td> --%>
-<%-- 	<td>${book.bookingDate }</td> --%>
-<%-- 	<td>${book.bookingCount }</td> --%>
-<%-- 	<td>${book.totalPrice }</td> --%>
-<%-- 	<td><button class="btn btn-default" onclick="bookingcancel(${book.bookingno });">결제 취소</button></td> --%>
-<!-- </tr>	 -->
-<%-- </c:forEach> --%>
-<%-- </c:if> --%>
-
+</c:forEach>
+</c:if>
 
 
 

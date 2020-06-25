@@ -1,10 +1,6 @@
 package user.controller;
 
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.Map;
-
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -17,16 +13,14 @@ import user.service.UserMyPageClassServiceImpl;
 
 /**
  * 20200625 이인주
- * 마이페이지 - 클래스 - 장바구니
+ * 마이페이지 - 장바구니 - 삭제 
  */
-@WebServlet("/mypage/class/wish")
-public class MyPageClassWishServlet extends HttpServlet {
+@WebServlet("/mypage/class/wish/cancel")
+public class MypageClassWishCencelServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	private UserMyPageClassService usermypageclassService = new UserMyPageClassServiceImpl();
 	
-	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-
 		//사용자로 로그인한 아이디값 가져오기
 		HttpSession session = req.getSession();
 		
@@ -36,15 +30,16 @@ public class MyPageClassWishServlet extends HttpServlet {
 		//사용자  아이디  jsp로 넘기기
 		req.setAttribute("userid", userid);
 		
-		//장바구니 리스트 전체 조회
-		ArrayList<Map<String, Object>> userwish  = usermypageclassService.userwish(userid);
+		//쿼리스트링으로 받은 wishno 뽑아오기 
+		int wishno = usermypageclassService.wishnoparam(req);
 		
-		//장바구니 리스트 전체 조회 jsp로 넘기기
-		req.setAttribute("userwish", userwish);
-				
-		req.getRequestDispatcher("/WEB-INF/views/user/mypage/class/classwish.jsp").forward(req,resp);
-	
-	
+		//사용자 예약 리스트  선택 삭제
+		usermypageclassService.wishcancel(wishno);
+		
+		//성공 삭제하면 예약 클래스 리스트로 돌아가기
+		resp.sendRedirect("/mypage/class/wish");
+		
+		
 	}
 
 }
