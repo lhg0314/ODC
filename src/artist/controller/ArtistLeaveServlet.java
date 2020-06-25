@@ -57,10 +57,10 @@ public class ArtistLeaveServlet extends HttpServlet {
 			System.out.println("아이디 비번 다 맞네요");
 			
 			//탈퇴 진행
-//			aLeaveService.leave(ainfo);
+			aLeaveService.leave(ainfo);
 			
 			//로그아웃으로 리다이렉트
-//			resp.sendRedirect("/user/logout");
+			resp.sendRedirect("/user/logout");
 			
 			
 		} else { 

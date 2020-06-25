@@ -13,6 +13,11 @@ public interface ArtistLeaveService {
 	 */
 	Boolean pwcheck(ArtistInfo ainfo);
 
+	
+	/**
+	 * artno에 연결된 데이터들 삭제하기
+	 * @param ainfo
+	 */
 	void leave(ArtistInfo ainfo);
 
 }

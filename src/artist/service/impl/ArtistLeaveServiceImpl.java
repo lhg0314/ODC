@@ -27,20 +27,23 @@ public class ArtistLeaveServiceImpl implements ArtistLeaveService {
 	@Override
 	public void leave(ArtistInfo ainfo) {
 		
-////		artistDetail - art_no
-//		aLeaveDao.deleteArtistDetail(ainfo);
-//		
-////		ArtistFile - art_no
-//		aLeaveDao.deleteArtistFile(ainfo);
-//
-////		askboardcomm - ask_board_no
-//		aLeaveDao.deleteAskBoardComm();
-//		
-////		AskBoard - art_no
-//		aLeaveDao.deleteAskBoard(art_no);
-//		
-////		artistInfo - art_no
-//		aLeaveDao.deleteArtistInfo(ainfo);
+//		artistDetail - art_no
+		aLeaveDao.deleteArtistDetail(ainfo);
+		
+//		ArtistFile - art_no
+		aLeaveDao.deleteArtistFile(ainfo);
+		
+//		Donation - art_no
+		aLeaveDao.deleteDonation(ainfo);
+
+//		askboardcomm - ask_board_no - 조인해서 삭제해야함
+		aLeaveDao.deleteAskBoardComm();
+		
+//		AskBoard - art_no
+		aLeaveDao.deleteAskBoard(ainfo);
+		
+//		artistInfo - art_no
+		aLeaveDao.deleteArtistInfo(ainfo);
 
 		
 	}

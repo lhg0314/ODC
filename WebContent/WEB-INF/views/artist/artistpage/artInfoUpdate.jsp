@@ -51,7 +51,11 @@ input {
 	width: 250px;
 }
 
-textarea { border: 1px solid #aaa; }
+textarea { 
+	border: 1px solid #aaa;
+	width: 100%;
+	height: 100px;
+}
 
 #btn { text-align: center; }
 
@@ -82,7 +86,6 @@ textarea { border: 1px solid #aaa; }
 #f { vertical-align: bottom; }
 
 </style>
-
 
 
 
@@ -192,11 +195,37 @@ $(document).ready(function() {
 	//수정버튼 동작
 	$("#btnUpdate").click(function() {
 		
+		var upwReg = /^[A-Za-z0-9]{3,19}$/;//비밀번호는 대소문자 숫자만 가능
+		var uphoneReg= /^[0-9]{10,11}$/;//전화번호는 숫자만 가능
+
+		
+        if( !uidReg.test( $("#artpw").val() ) ) {//비밀번호 체크
+        	alert($id)
+        	$("#artpw").focus()
+            return false
+        }
+        
+        if($("#artpw").val() != $("#artpwchk").val()){//비밀번호 확인 체크
+        	alert($checkpw)
+        	$("#artpwchk").focus()
+        	return false
+        }
+        
+        if(!uphoneReg.test( $("#artphone").val() )){//전화번호 체크
+        	alert("전화번호는 10-11자리 숫자여야 합니다")
+        	$("#artphone").focus()
+        	return false;
+        }
+        
+        
 		//form submit 수행
 		$("form").submit();
 		
 	})
+		
+	
 })
+
 </script>
 
 
@@ -216,7 +245,7 @@ $(document).ready(function() {
 			
 			<tr>
 				<th>이름</th>
-				<td><input type="text" value="${ainfo.artName }"/></td>
+				<td><input type="text" id="artname" name="artname" value="${ainfo.artName }" /></td>
 			</tr>
 			<tr>
 				<th>아이디</th>
@@ -224,27 +253,27 @@ $(document).ready(function() {
 			</tr>
 			<tr>
 				<th>새 비밀번호</th>
-				<td><input type="password"/></td>
+				<td><input type="password" id="artpw" name="artpw"/></td>
 			</tr>
 			<tr>
 				<th>새 비밀번호 확인</th>
-				<td><input type="password"/></td>
+				<td><input type="password" id="artpwchk" name="artpwchk"/></td>
 			</tr>
 			<tr>
 				<th>휴대폰번호</th>
-				<td><input type="tel" value="${ainfo.artPhone }"/></td>
+				<td><input type="tel" id="artphone" name="artphone" value="${ainfo.artPhone }"/></td>
 			</tr>
 			<tr>
 				<th>공방전화번호</th>
-				<td><input type="tel" value="${ainfo.artTel }"/></td>
+				<td><input type="tel" id="arttelephone" name="arttelephone" value="${ainfo.artTel }"/></td>
 			</tr>
 			<tr>
 				<th>생년월일</th>
-				<td><input type="date" value="${ainfo.artBirth }"/></td>
+				<td><input type="date" id="artbirth" name="artbirth" value="${ainfo.artBirth }"/></td>
 			</tr>
 			<tr>
 				<th>닉네임</th>
-				<td><input type="text" value="${ainfo.artNick }"/></td>
+				<td><input type="text" id="artnick" name="artnick" value="${ainfo.artNick }"/></td>
 			</tr>
 			<tr>
 				<th>공방주소</th>
@@ -264,7 +293,7 @@ $(document).ready(function() {
 		
 			<tr>
 				<th>작가소개말</th>
-				<td><textarea style="width: 100%; height: 100px;">${adetail.artContent }</textarea></td>
+				<td><textarea id="artdetail" name="artdetail">${adetail.artContent }</textarea></td>
 			</tr>
 			
 		</table>
@@ -275,7 +304,7 @@ $(document).ready(function() {
 			<tr>
 				<th>프로필사진</th>
 				<td id="prev"><div id="preview"></div></td>
-				<td id="f"><input type="file" id="upfile" accept="image"/></td>
+				<td id="f"><input type="file" id="upfile" name="upfile" accept="image"/></td>
 			</tr>
 			
 		</table>
