@@ -23,9 +23,9 @@ public interface ArtistClassService {
 	 * 클래스 신청 정보 DB에 저장
 	 * @param req
 	 * @param resp
-	 * @param artNo 
+	 * @param artInfo 
 	 */
-	public void insertClassInfo(HttpServletRequest req, HttpServletResponse resp, int artNo);
+	public void insertClassInfo(HttpServletRequest req, HttpServletResponse resp, ArtistInfo artInfo);
 
 	/**
 	 * 검토클래스 정보 불러오기

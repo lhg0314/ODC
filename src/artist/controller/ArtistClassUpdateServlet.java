@@ -13,7 +13,7 @@ import artist.service.face.ArtistClassService;
 import artist.service.impl.ArtistClassServiceImpl;
 
 @WebServlet("/artist/class/update")
-public class ClassUpdateServlet extends HttpServlet {
+public class ArtistClassUpdateServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	
 	private ArtistClassService artistClassService = new ArtistClassServiceImpl();
@@ -30,8 +30,6 @@ public class ClassUpdateServlet extends HttpServlet {
 		
 		// 선택한 클래스 상세 정보
 		Map<String, Object> map = artistClassService.selectClassByClassNo(classno);
-
-		System.out.println(	map );
 		
 		req.setAttribute("info", map);
 	

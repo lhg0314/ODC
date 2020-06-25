@@ -12,6 +12,17 @@
 <script type="text/javascript">
 $(document).ready(function(){
 	
+	var talentDona = "<c:out value='${info.talentDonation }'/>" * 1;
+	
+	if( talentDona == 0){
+		$("#talentDonation").attr("disabled", "disabled");
+	}else{
+		$("#talentDonation").attr("checked", "checked");
+		$("#talentDonation").attr("disabled", "disabled");
+		$("#classPrice").attr("readOnly", "readOnly");
+	}
+	
+	
 	$("#classFile").change(function(){
 		
 		$("#fileView").html("");
@@ -45,17 +56,7 @@ $(document).ready(function(){
 		}
 	})
 	
-	var info = <% request.getAttribute("info"); %>
-	console.log(info);
-	
-	if( info.get("talentDonation") == 0){
-		$("#talentDonation").attr("disabled");
-	}else{
-		$("#talentDonation").attr("checked");
-		$("#talentDonation").attr("disabled");
-		$("#classPrice").attr("readOnly");
-	}
-	
+
 	$("#appForm").submit(function(){
 		if($("#category").val() == 0 ){
 			alert("카테고리를 선택하세요");
@@ -74,6 +75,10 @@ $(document).ready(function(){
 			$("#classStartDate").focus();
 			return false;
 		}
+		
+		$("#talentDonation").removeAttr("disabled");
+		$("#category").removeAttr("disabled");
+		
 	});
 	
 })
@@ -163,14 +168,13 @@ $(document).ready(function(){
 		<div class="form-group">
 	    	<label for="category">카테고리</label>
 			<select class="form-control" id="category" name="category" required="required" disabled="disabled">
-				<option value="0" selected="selected">--선택--</option>
-				<option value="1">플라워</option>
-				<option value="2">음악</option>
-				<option value="3">수공예</option>
-				<option value="4">요리</option>
-				<option value="5">뷰티</option>
-				<option value="6">미술</option>
-				<option value="7">기타</option>
+				<c:if test="${info.category eq 1 }"><option value="1" selected="selected">플라워</option></c:if>
+				<c:if test="${info.category eq 2 }"><option value="1" selected="selected">음악</option></c:if>
+				<c:if test="${info.category eq 3 }"><option value="1" selected="selected">수공예</option></c:if>
+				<c:if test="${info.category eq 4 }"><option value="1" selected="selected">요리</option></c:if>
+				<c:if test="${info.category eq 5 }"><option value="1" selected="selected">뷰티</option></c:if>
+				<c:if test="${info.category eq 6 }"><option value="1" selected="selected">미술</option></c:if>
+				<c:if test="${info.category eq 7 }"><option value="1" selected="selected">기타</option></c:if>
 			</select>    	
 	    </div>
 	   
@@ -189,8 +193,8 @@ $(document).ready(function(){
 	    
 		<div class="form-group">
 	    	<label for="recruitStartDate">클래스 모집기간</label><br>
-	    	<input type="date" class="form-control" id="recruitStartDate" name="recruitStartDate" readonly="readonly" value="${info.recruitStartDate }" required="required" />&nbsp;&nbsp;~&nbsp;
-	    	<input type="date" class="form-control" id="recruitEndDate" name="recruitEndDate" readonly="readonly" value="${info.recruitEndDate }" required="required" />
+	    	<input type="date" class="form-control" id="recruitStartDate" name="recruitStartDate" readonly="readonly" value="${info.recruitStartdate }" required="required" />&nbsp;&nbsp;~&nbsp;
+	    	<input type="date" class="form-control" id="recruitEndDate" name="recruitEndDate" readonly="readonly" value="${info.recruitEnddate }" required="required" />
 	    </div>
 	    
 	    <div class="form-group">
@@ -199,14 +203,15 @@ $(document).ready(function(){
 		- 클래스 소개를 입력해주십시오.<br>
 		- <span style="color: red;">클래스를 진행할 시간을 반드시 입력하셔야 합니다.</span>
 		</div>
-		<textarea class="form-control" rows="10" id="classContent" name="classContent" required="required" value="${info.classContent }" ></textarea>
+		<textarea class="form-control" rows="10" id="classContent" name="classContent" required="required" >${info.classContent }</textarea>
 		</div>
 		
 		<div class="form-group">
 	    	<label for="classFile">사진 첨부</label>
-	    	<input type="file" accept="image/*" id="classFile" name="classFile" required="required"/>
+	    	<span>${info.classOriginFilename }</span>
 			<div id="fileView">
 			</div>
+	    	<input type="file" accept="image/*" id="classFile" name="classFile" required="required"/>
 	    </div>
 		
 		<div class="text-center"><button class="class_button">클래스 수정</button></div>
