@@ -251,9 +251,11 @@ list-style: none;
    </a>
    </div>
    
+   <a href="/mypage/class/wish">
    <div class="cart" onclick="location.href='#';">
    <div id="sizeup" class="glyphicon glyphicon-shopping-cart" ></div>
    <br><small>장바구니</small>
+   </a>
    </div>
    
 </div>

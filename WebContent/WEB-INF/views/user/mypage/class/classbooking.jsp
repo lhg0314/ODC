@@ -87,8 +87,8 @@ function bookingcancel(bookingno) {
 <c:forEach items="${userbooking }" var="book" >
 
 <tr style="text-align: center;">
-	<!-- 사진을 누르면  bookingno 을 쿼리스트링 값으로 전달하여 페이지를 바꾼다 -->
-	<td><a href="#bookingno=?${book.bookingno }"><img src="/upload/${book.classrenamefilename }" alt="..." class="img-rounded imgsize"></a></td>
+	<!-- 사진을 누르면  classno 을 쿼리스트링 값으로 전달하여 페이지를 바꾼다 -->
+	<td><a href="#?classno=${book.classno }"><img src="/upload/${book.classrenamefilename }" alt="..." class="img-rounded imgsize"></a></td>
 	<td>${book.classname }</td>
 	<td>${book.artid }</td>
 	<td>${book.paymentDate }</td>

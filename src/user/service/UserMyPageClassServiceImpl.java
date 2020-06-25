@@ -57,5 +57,35 @@ public class UserMyPageClassServiceImpl implements UserMyPageClassService{
 		int bookingcancel  = usermypageclassDao.bookingcancel(bookingno);
 		return bookingcancel;
 	}
+	
+	@Override
+	public ArrayList<Map<String, Object>> userwish(String userid) {
+		ArrayList<Map<String, Object>> userwish = usermypageclassDao.userwish(userid);
+		return userwish;
+	}
+	
+	@Override
+	public int wishnoparam(HttpServletRequest req) {
+		String param = req.getParameter("wishno");
+		
+        int wishno = 0;
+        if( param != null && !"".equals(param)) {
+        	wishno  = Integer.parseInt(param);
+        }
+		
+		return wishno;
+	}
+	
+	@Override
+	public void wishcancel(int wishno) {
+		usermypageclassDao.wishcancel(wishno);
+	}
+	
+	@Override
+	public Map<String, Object> classpayment(String userid, int wishno) {
+		Map<String, Object> classpayment = usermypageclassDao.classpayment(userid,wishno);
+		return classpayment;
+	}
+	
 
 }
