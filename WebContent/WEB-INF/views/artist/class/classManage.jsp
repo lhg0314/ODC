@@ -11,22 +11,22 @@
 <c:import url="/WEB-INF/layout/artist/artistpageheader.jsp"></c:import> 
 
 <style type="text/css">
-#SvnClassCheck{
+#SvnClassManage{
 	color: #e7717d;
 }
 
-#classCheckTable{
+#classTable{
 	font-size: 14px;
 }
 
-#classCheckTable th{
+#classTable th{
 	text-align: center;
 }
-#classCheckTable tr:first-child{
+#classTable tr:first-child{
 	background: thistle;
 }
 
-#classCheckTable tr td{
+#classTable tr td{
 	vertical-align: middle;
 }
 
@@ -38,19 +38,19 @@
 </style>
 
 <div id="main">
-	<span id="boardtitle">클래스 검수 확인</span>
+	<span id="boardtitle">클래스 관리</span>
 	<hr>
 	<br>
 	
-	<table id="classCheckTable" class="table table-condensed text-center table-hover">
+	<table id="classTable" class="table table-condensed text-center table-hover">
 	<tr>
 		<th>번호</th>
 		<th>사진</th>
 		<th>클래스명</th>
 		<th>카테고리</th>
 		<th>지역</th>
-		<th>신청 날짜</th>
-		<th>진행 상황</th>
+		<th>게시 날짜</th>
+		<th>상세보기</th>
 	</tr>
 	<c:forEach var="info" items="${list }" varStatus="status">
 	<tr class="table-hover">
@@ -76,21 +76,17 @@
 		<c:if test="${info.location eq 7}">제주</c:if>
 		</td>
 		<td>${info.postDate }</td>
-		<td>
-		<c:if test="${info.classCheck eq 0}">검토 신청</c:if>
-		<c:if test="${info.classCheck eq 2}">검토 중</c:if>
-		<c:if test="${info.classCheck eq 3}">반려</c:if>
-		</td>
+		<td><button type="button" onclick="location.href='/artist/class/update?classno=${info.classNo }'">수정</button></td>
 	</tr>
 	</c:forEach>
 
 </table>
 
+<c:import url="/WEB-INF/paging/artistClassManage.jsp" />
 	
 <div class="clearfix"></div>
 </div> <!-- 전체를 감싸는 div -->
 </section>
-
 
 
 <c:import url="/WEB-INF/layout/common/main/footer.jsp"></c:import>

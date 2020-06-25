@@ -268,8 +268,8 @@ ul.sub li a {
 		    <div class="title">클래스</div>
 		    <ul class="sub"> 
 		        <li><a href="/artist/class/app" id="SvnclassApp">클래스 등록</a></li>
-		        <li><a href="#">클래스 검수 확인</a></li>
-		        <li><a href="#">클래스 관리</a></li>
+		        <li><a href="/artist/class/check" id="SvnClassCheck">클래스 검수 확인</a></li>
+		        <li><a href="/artist/class/manage" id="SvnClassManage">클래스 관리</a></li>
 		        <li><a href="/artistpage/class/sales">클래스 매출 현황</a></li>
 		    </ul>
 		</li>

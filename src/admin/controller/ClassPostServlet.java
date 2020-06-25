@@ -41,6 +41,8 @@ public class ClassPostServlet extends HttpServlet {
 //			map = adminService.selectAllClass();
 			List<Map<String, Object>> list = adminClassService.selectAllClass(paging);
 
+			list[0].get("classno");
+			
 //			System.out.println(map);
 			// list data VIEW 로 넘겨주기
 			req.setAttribute("list", list);

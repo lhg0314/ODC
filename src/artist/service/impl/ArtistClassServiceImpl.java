@@ -7,10 +7,12 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Iterator;
 import java.util.List;
+import java.util.Map;
 
 import javax.servlet.ServletContext;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import org.apache.commons.fileupload.FileItem;
 import org.apache.commons.fileupload.FileUploadException;
@@ -25,6 +27,7 @@ import artist.service.face.ArtistClassService;
 import dto.ArtistInfo;
 import dto.ClassFile;
 import dto.ClassInfo;
+import util.Paging;
 
 public class ArtistClassServiceImpl implements ArtistClassService {
 	
@@ -284,8 +287,54 @@ public class ArtistClassServiceImpl implements ArtistClassService {
 		} //while( iter.hasNext()) End
 		
 		System.out.println(classInfo);
+		System.out.println(classFile);
 		artistClassDao.insertClassFile(classFile);
 		
+	}
+
+	@Override
+	public List<Map<String, Object>> selectAllClassCheck(int artno) {
+		return artistClassDao.selectAllClassCheck(artno);
+	}
+
+	@Override
+	public Paging getPagingClassManage(HttpServletRequest req, int artno) {
+		
+		//요청파라미터 curPage를 파싱한다
+		String param = req.getParameter("curPage");
+		
+		int curPage = 0;
+		
+		if( param!=null && !"".equals(param) ) {
+			curPage = Integer.parseInt(param);
+		}
+//				System.out.println("curPage : " + curPage);
+		
+		//검색어
+		String search = (String)req.getParameter("search");
+
+
+		// 클래스 전체 Paging 객체를 생성하고 반환
+		int totalCount = artistClassDao.selectCntAll(search, artno);
+		
+		// Paging 객체 생성 
+		Paging paging = new Paging(totalCount, curPage);
+		
+		//검색어
+		paging.setSearch(search);
+
+		return paging;
+	}
+
+	@Override
+	public List<Map<String, Object>> selectAllClass(Paging paging, int artno) {
+		return artistClassDao.selectAllClass(paging, artno);
+	}
+
+	@Override
+	public Map<String, Object> selectClassByClassNo(int classno) {
+		
+		return artistClassDao.selectClassByClassNo(classno);
 	}
 
 }

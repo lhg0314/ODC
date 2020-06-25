@@ -11,7 +11,7 @@
 
 <script type="text/javascript">
 $(document).ready(function(){
-
+	
 	$("#classFile").change(function(){
 		
 		$("#fileView").html("");
@@ -45,6 +45,16 @@ $(document).ready(function(){
 		}
 	})
 	
+	var info = <% request.getAttribute("info"); %>
+	console.log(info);
+	
+	if( info.get("talentDonation") == 0){
+		$("#talentDonation").attr("disabled");
+	}else{
+		$("#talentDonation").attr("checked");
+		$("#talentDonation").attr("disabled");
+		$("#classPrice").attr("readOnly");
+	}
 	
 	$("#appForm").submit(function(){
 		if($("#category").val() == 0 ){
@@ -64,7 +74,6 @@ $(document).ready(function(){
 			$("#classStartDate").focus();
 			return false;
 		}
-		
 	});
 	
 })
@@ -77,7 +86,7 @@ $(document).ready(function(){
 }
 
 
-#SvnclassApp{
+#SvnclassManage{
 	color: #e7717d;
 }
 
@@ -126,7 +135,7 @@ $(document).ready(function(){
 </style>
 
 <div id="main">
-	<span id="boardtitle">클래스 등록</span>
+	<span id="boardtitle">클래스 관리</span>
 	<hr>
 	<br>
 	
@@ -135,12 +144,12 @@ $(document).ready(function(){
 		
 		<div class="form-group">
 	    	<label for="className">클래스 이름</label>
-	    	<input type="text" class="form-control" id="className" name="className" required="required" />
+	    	<input type="text" class="form-control" id="className" name="className" required="required" value="${info.className }" readonly="readonly"/>
 	    </div>
 
 		<div class="form-group line">
 	    	<label for="classPrice" style="display: block;">금액</label>
-	    	<input type="number" min="0" step ="1000" class="form-control" id="classPrice" name="classPrice" required="required"/><span>원</span>
+	    	<input type="number" min="0" step ="1000" class="form-control" id="classPrice" name="classPrice" value="${info.classPrice }" required="required"/><span>원</span>
 	    </div>
 
 	    <div class="form-group line" id="chkbox">
@@ -153,7 +162,7 @@ $(document).ready(function(){
 		 
 		<div class="form-group">
 	    	<label for="category">카테고리</label>
-			<select class="form-control" id="category" name="category" required="required" >
+			<select class="form-control" id="category" name="category" required="required" disabled="disabled">
 				<option value="0" selected="selected">--선택--</option>
 				<option value="1">플라워</option>
 				<option value="2">음악</option>
@@ -164,23 +173,24 @@ $(document).ready(function(){
 				<option value="7">기타</option>
 			</select>    	
 	    </div>
+	   
 	    
 		<div class="form-group" id="people">
 	    	<label for="minPeople">인원 수</label><br>
-	    	<input type="number" min="1" class="form-control" id="minPeople" name="minPeople" required="required" />&nbsp;&nbsp;~&nbsp;
-	    	<input type="number" min="1" class="form-control" id="maxPeople" name="maxPeople" required="required" />
+	    	<input type="number" min="1" class="form-control" id="minPeople" name="minPeople" required="required" value="${info.minPeople }" />&nbsp;&nbsp;~&nbsp;
+	    	<input type="number" min="1" class="form-control" id="maxPeople" name="maxPeople" required="required" value="${info.maxPeople }"/>
 	    </div>
 	    
 		<div class="form-group">
 	    	<label for="classStartDate">클래스 진행기간</label><br>
-	    	<input type="date" min="${today }" class="form-control" id="classStartDate" name="classStartDate" required="required" />&nbsp;&nbsp;~&nbsp;
-	    	<input type="date" min="${today }" class="form-control" id="classEndDate" name="classEndDate" required="required" />
+	    	<input type="date" class="form-control" id="classStartDate" value="${info.classStartdate }" name="classStartDate" required="required" />&nbsp;&nbsp;~&nbsp;
+	    	<input type="date" class="form-control" id="classEndDate" value="${info.classEnddate }" name="classEndDate" required="required"/>
 	    </div>
 	    
 		<div class="form-group">
 	    	<label for="recruitStartDate">클래스 모집기간</label><br>
-	    	<input type="date" class="form-control" id="recruitStartDate" name="recruitStartDate" readonly="readonly" value="${today }" required="required" />&nbsp;&nbsp;~&nbsp;
-	    	<input type="date" class="form-control" id="recruitEndDate" name="recruitEndDate" readonly="readonly" required="required" />
+	    	<input type="date" class="form-control" id="recruitStartDate" name="recruitStartDate" readonly="readonly" value="${info.recruitStartDate }" required="required" />&nbsp;&nbsp;~&nbsp;
+	    	<input type="date" class="form-control" id="recruitEndDate" name="recruitEndDate" readonly="readonly" value="${info.recruitEndDate }" required="required" />
 	    </div>
 	    
 	    <div class="form-group">
@@ -189,7 +199,7 @@ $(document).ready(function(){
 		- 클래스 소개를 입력해주십시오.<br>
 		- <span style="color: red;">클래스를 진행할 시간을 반드시 입력하셔야 합니다.</span>
 		</div>
-		<textarea class="form-control" rows="10" id="classContent" name="classContent" required="required" ></textarea>
+		<textarea class="form-control" rows="10" id="classContent" name="classContent" required="required" value="${info.classContent }" ></textarea>
 		</div>
 		
 		<div class="form-group">
@@ -199,7 +209,7 @@ $(document).ready(function(){
 			</div>
 	    </div>
 		
-		<div class="text-center"><button class="class_button">클래스 등록</button></div>
+		<div class="text-center"><button class="class_button">클래스 수정</button></div>
 		</form>
 	
 	
