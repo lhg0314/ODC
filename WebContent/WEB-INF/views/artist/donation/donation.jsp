@@ -1,19 +1,13 @@
-<!-- 관리자 페이지 - 작가 후원 내역 -->
+<!-- 작가페이지 - 후원내역 리스트 -->
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %> 
         
-<c:import url="/WEB-INF/layout/admin/header.jsp" />
+<!-- mian header -->
+<c:import url="/WEB-INF/layout/common/main/header.jsp"></c:import> 
 
-<script type="text/javascript">
-$(document).ready(function(){
-	$("#search").keydown(function(e) {
-		if( e.keyCode == 13 ) {
-			$("#btnSearch").click();
-		}
-	});
-});
-</script>
+<!-- artistpage header -->    
+<c:import url="/WEB-INF/layout/artist/artistpageheader.jsp"></c:import> 
 
 <style type="text/css">
 #donationTable th {
@@ -22,18 +16,14 @@ $(document).ready(function(){
 }
 </style>
 
-<div>
-<h4>기부 관리</h4>
+<div id="main">
+<a href="/artist/reviewlist" class="aTagStyleNone"><span id="boardtitle">게시판</span></a>
 <hr>
-<h5>작가 후원 관리</h5><br>
+<a href="/artist/reviewlist" class="aTagStyleNone"><span id="boardtitle">후기 게시판</span></a>
+<br>
+
 <div id="searchdonation">
-<form action="/admin/donation" method="get">
-
-<div style="float: left;">
-<input type="text" name="search" id="search" placeholder="작가 이름" value="${paging.search }"/>
-<button type="submit" id="btnSearch">검색</button>
-</div>
-
+<form action="/artist/donation" method="get">
 <div style="float: right;">
 	<select id='month' name='month' onchange="this.form.submit();">
 		<c:if test="${selectedmonth eq 0 }">
@@ -235,13 +225,10 @@ $(document).ready(function(){
 </div>
 </form>
 </div><!-- searchdonation -->
-<div class="clearfix"></div>
-<br>
 
+<br>
+<div id="donationContent">
 <h5 class="text-center">
-<c:if test="${not empty searchedartist }">
-${searchedartist }작가님&nbsp;&nbsp;
-</c:if>
 <c:if test="${selectedmonth ne 0 }">
 ${selectedmonth }월 후원 내역
 </c:if>
@@ -250,7 +237,6 @@ ${selectedmonth }월 후원 내역
 <table id="donationTable" class="table table-condensed text-center table-hover">
 	<tr>
 		<th>번호</th>
-		<th>작가명</th>
 		<th>후원한 사용자명</th>
 		<th>후원 날짜</th>
 		<th>후원 금액</th>
@@ -258,7 +244,7 @@ ${selectedmonth }월 후원 내역
 
 	<c:if test="${empty list }">
 	<tr>
-	<td colspan="5" style="color: thistle; font-weight: bold;">후원 내역이 없습니다</td>
+	<td colspan="4" style="color: thistle; font-weight: bold;">후원 내역이 없습니다</td>
 	</tr>
 	</c:if>
 
@@ -267,7 +253,6 @@ ${selectedmonth }월 후원 내역
 
 	<tr class="table-hover">
 	<td>${info.rnum }</td>
-	<td>${info.artName }</td>
 	<td>${info.userName }</td>
 	<td>${info.donationDate}</td>
 	<td><fmt:formatNumber pattern="#,###" value="${info.donationPrice }" /></td>
@@ -275,11 +260,16 @@ ${selectedmonth }월 후원 내역
 
 	</c:forEach>
 	<tr>
-	<th colspan="4" style="text-align: right;">총 후원금액</th>
+	<th colspan="3" style="text-align: right;">총 후원금액</th>
 	<th><fmt:formatNumber pattern="#,###" value="${total }" /></th>
 	</tr>
 </table>
 </div>
 
-<c:import url="/WEB-INF/paging/admindonationpaging.jsp" />
-<c:import url="/WEB-INF/layout/admin/footer.jsp" />
+</div>
+<c:import url="/WEB-INF/paging/artpagedonationpaging.jsp" />
+<!-- float 막기 -->
+<div class="clearfix"></div>
+
+<!-- 메인 footer -->
+<c:import url="/WEB-INF/layout/common/main/footer.jsp"></c:import>

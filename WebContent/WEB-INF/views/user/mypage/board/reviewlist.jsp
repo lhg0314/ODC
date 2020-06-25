@@ -5,19 +5,19 @@
 <!-- mian header -->
 <c:import url="/WEB-INF/layout/common/main/header.jsp"></c:import> 
 
-<!-- artistpage header -->    
+<!-- mypage header -->    
 <c:import url="/WEB-INF/layout/user/mypageheader.jsp"></c:import> 
 
 <script type="text/javascript">
 $(document).ready(function(){
 	//검색 버튼 클릭
-	$("#btnSearch").click(function() {
-		location.href="/mypage/reviewlist?search="+$("#search").val();
+	$("#btnrSearch").click(function() {
+		location.href="/mypage/reviewlist?search="+$("#rsearch").val();
 	});
 	
-	$("#search").keydown(function(e) {
+	$("#rsearch").keydown(function(e) {
 		if( e.keyCode == 13 ) {
-			$("#btnSearch").click();
+			$("#btnrSearch").click();
 		}
 	});
 });
@@ -31,28 +31,27 @@ $(document).ready(function(){
 </style>
 
 <div id="main">
-<a href="/artist/reviewlist" class="aTagStyleNone"><span id="boardtitle">게시판</span></a>
+<a href="/mypage/reviewlist" class="aTagStyleNone"><span id="boardtitle">활동 정보</span></a>
 <hr>
-<a href="/artist/reviewlist" class="aTagStyleNone"><span id="boardtitle">후기 게시판</span></a>
+<a href="/mypage/reviewlist" class="aTagStyleNone"><span id="boardtitle">클래스 수강 후기</span></a>
 <br>
 
 <div>
-<input type="text" id="search" placeholder="클래스명" value="${paging.search }"/>
-<button type="button" id="btnSearch">검색</button><br><br>
+<input type="text" id="rsearch" placeholder="클래스명" value="${paging.search }"/>
+<button type="button" id="btnrSearch">검색</button><br><br>
 </div>
 
 <table id="reviewTable" class="table table-condensed text-center table-hover">
 	<tr>
 		<th>번호</th>
-		<th>작성자 아이디</th>
-		<th style="width: 20%;">클래스명</th>
+		<th style="width: 30%;">클래스명</th>
 		<th style="width: 40%;">제목</th>
 		<th>게시 날짜</th>
 	</tr>
 
 	<c:if test="${empty list }">
 	<tr>
-		<td colspan="5" style="color: thistle; font-weight: bold;">후기게시판 리스트가 없습니다</td>
+		<td colspan="4" style="color: thistle; font-weight: bold;">후기게시판 리스트가 없습니다</td>
 	</tr>
 	</c:if>
 	
@@ -60,8 +59,7 @@ $(document).ready(function(){
 	
 	<tr class="table-hover">
 		<td>${info.reviewNo }</td>
-		<td>${info.userId }</td>
-		<td style="text-align: left;">${info.className}</td>
+		<td style="text-align: left;"><a href="/class/view?classno=${info.classNo }">${info.className}</a></td>
 		<td style="text-align: left;"><a href="/review/view?reviewno=${info.reviewNo }">${info.reviewTitle }</a></td>
 		<td>${info.reviewDate }</td>
 	</tr>	

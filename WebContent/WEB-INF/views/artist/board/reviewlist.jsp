@@ -11,13 +11,13 @@
 <script type="text/javascript">
 $(document).ready(function(){
 	//검색 버튼 클릭
-	$("#btnSearch").click(function() {
-		location.href="/artist/reviewlist?search="+$("#search").val();
+	$("#btnrSearch").click(function() {
+		location.href="/artist/reviewlist?search="+$("#rsearch").val();
 	});
 	
-	$("#search").keydown(function(e) {
+	$("#rsearch").keydown(function(e) {
 		if( e.keyCode == 13 ) {
-			$("#btnSearch").click();
+			$("#btnrSearch").click();
 		}
 	});
 });
@@ -37,8 +37,8 @@ $(document).ready(function(){
 <br>
 
 <div>
-<input type="text" id="search" placeholder="클래스명" value="${paging.search }"/>
-<button type="button" id="btnSearch">검색</button><br><br>
+<input type="text" id="rsearch" placeholder="클래스명" value="${paging.search }"/>
+<button type="button" id="btnrSearch">검색</button><br><br>
 </div>
 
 <table id="reviewTable" class="table table-condensed text-center table-hover">

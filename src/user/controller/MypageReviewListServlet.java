@@ -18,7 +18,7 @@ import util.Paging;
 /**
  * 
  * 마이페이지 - 후기게시판 리스트 출력
- * @author 200624 박주이
+ * @author 200625 박주이
  * 작성중
  *
  */
@@ -42,7 +42,7 @@ public class MypageReviewListServlet extends HttpServlet {
 		
 		int userno = userBoardService.getUserNoById(userid);
 		
-		Paging paging = userBoardService.getPagingReview(req, userno);
+		Paging paging = userBoardService.getPagingReviewByUserNo(req, userno);
 		
 		List<Map<String, Object>> list = userBoardService.selectReviewByUserNo(paging, userno);
 		

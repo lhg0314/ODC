@@ -19,7 +19,7 @@ public class UserBoardServiceImpl implements UserBoardService {
 	}
 
 	@Override
-	public Paging getPagingReview(HttpServletRequest req, int userno) {
+	public Paging getPagingReviewByUserNo(HttpServletRequest req, int userno) {
 		// 요청파라미터 curPage를 파싱한다
 		String param = req.getParameter("curPage");
 		int curPage = 0;
@@ -42,7 +42,7 @@ public class UserBoardServiceImpl implements UserBoardService {
 
 	@Override
 	public List<Map<String, Object>> selectReviewByUserNo(Paging paging, int userno) {
-		return userBoardDao.selectCntReviewByUserNo(paging, userno);
+		return userBoardDao.selectReviewByUserNo(paging, userno);
 	}
 
 }

@@ -11,67 +11,16 @@
 <script type="text/javascript">
 $(document).ready(function(){
 	//검색 버튼 클릭
-	$("#btnSearch").click(function() {
-		location.href="/artist/asklist?search="+$("#search").val();
+	$("#btnaSearch").click(function() {
+		location.href="/artist/asklist?search="+$("#asearch").val();
 	});
 	
-	$("#search").keydown(function(e) {
+	$("#asearch").keydown(function(e) {
 		if( e.keyCode == 13 ) {
-			$("#btnSearch").click();
+			$("#btnaSearch").click();
 		}
 	});
 });
-</script>
-
-<script type="text/javascript">
-$(document).ready(function() {
-	// 선택체크 삭제
-	$("#btnDelete").click(function() {
-		// 선택된 체크박스
-		var $checkboxes = $("input:checkbox[name='checkRow']:checked");
-
-		// 체크된 대상들을 map으로 만들고 map을 문자열로 만들기
-		var map = $checkboxes.map(function() {
-			return $(this).val();
-		});
-		var names = map.get().join(",");
-		
-		// 전송 폼
-		var $form = $("<form>")
-			.attr("action", "/admin/rlistdelete")
-			.attr("method", "post")
-			.append(
-				$("<input>")
-					.attr("type", "hidden")
-					.attr("name", "names")
-					.attr("value", names)
-			);
-		$(document.body).append($form);
-		$form.submit();
-	
-	});
-});
-
-//전체 체크/해제
-function checkAll() {
-	// checkbox들
-	var $checkboxes=$("input:checkbox[name='checkRow']");
-
-	// checkAll 체크상태 (true:전체선택, false:전체해제)
-	var check_status = $("#checkAll").is(":checked");
-	
-	if( check_status ) {
-		// 전체 체크박스를 checked로 바꾸기
-		$checkboxes.each(function() {
-			this.checked = true;	
-		});
-	} else {
-		// 전체 체크박스를 checked 해제하기
-		$checkboxes.each(function() {
-			this.checked = false;	
-		});
-	}
-}
 </script>
 
 <style type="text/css">
@@ -80,48 +29,45 @@ function checkAll() {
 	background: #ecdfec;
 }
 </style>
-<div>
-<h4>게시판</h4>
+
+<div id="main">
+<a href="/artist/reviewlist" class="aTagStyleNone"><span id="boardtitle">게시판</span></a>
 <hr>
-<h5>고객 문의 내역</h5><br>
+<a href="/artist/reviewlist" class="aTagStyleNone"><span id="boardtitle">고객 문의 내역</span></a>
+<br>
 
 <div>
-<input type="text" id="search" placeholder="클래스명" value="${paging.search }"/>
-<button type="button" id="btnSearch">검색</button><br><br>
+<input type="text" id="asearch" placeholder="클래스명" value="${paging.search }"/>
+<button type="button" id="btnaSearch">검색</button><br><br>
 </div>
 
-<table id="reviewTable" class="table table-condensed text-center table-hover">
+<table id="askTable" class="table table-condensed text-center table-hover">
 	<tr>
-		<th><input type="checkbox" id="checkAll" onclick="checkAll();" /></th>
 		<th>번호</th>
 		<th>작성자 아이디</th>
-		<th style="width: 40%;">클래스명</th>
-		<th style="width: 20%;">제목</th>
-		<th>게시 날짜</th>
+		<th style="width: 30%;">클래스명</th>
+		<th style="width: 30%;">제목</th>
+		<th>문의 날짜</th>
 	</tr>
 
 	<c:if test="${empty list }">
 	<tr>
-		<td colspan="6" style="color: thistle; font-weight: bold;">문의 내역이 없습니다</td>
+		<td colspan="5" style="color: thistle; font-weight: bold;">문의 내역이 없습니다</td>
 	</tr>
 	</c:if>
 	
 	<c:forEach var="info" items="${list }" varStatus="status">
 	
 	<tr class="table-hover">
-		<td><input type="checkbox" name="checkRow" value="${info.reviewNo }" /></td>
-		<td>${info.reviewNo }</td>
+		<td>${info.askNo }</td>
 		<td>${info.userId }</td>
-		<td style="text-align: left;">${info.className}</td>
-		<td style="text-align: left;">${info.reviewTitle }</td>
-		<td>${info.reviewDate }</td>
+		<td style="text-align: left;"><a href="/class/view?classno=${info.classNo }">${info.className}</a></td>
+		<td style="text-align: left;"><a href="/ask/view?askno=${info.askNo }">${info.askTitle }</a></td>
+		<td>${info.askDate }</td>
 	</tr>	
 	
 	</c:forEach>
 </table>
-<div id="btnBox" style="text-align: right;">
-<button id="btnDelete" class="btn btn-warning">삭제</button>
-</div>
 </div>
 <c:import url="/WEB-INF/paging/artpageaskpaging.jsp" />
 
