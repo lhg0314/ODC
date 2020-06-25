@@ -200,15 +200,6 @@ public class UserManageDaoImpl implements UserManageDao{
 			
 			while(rs.next()) {
 				
-//				booking = new ClassBooking();
-//				
-//				booking.setBookingNo(rs.getInt("booking_no"));
-//				booking.setClassno(rs.getInt("class_no"));
-//				booking.setBookingDate(rs.getDate("booking_date"));
-//				booking.setPaymentDate(rs.getDate("payment_date"));
-//				booking.setTotalPrice(rs.getInt("total_price"));
-//				
-//				list.add(booking);
 				
 				Map<String, Object> map = new HashMap<>();
 				

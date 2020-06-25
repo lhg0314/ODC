@@ -23,7 +23,7 @@ import dto.ReviewBoard;
  */
 
 @WebServlet("/admin/userviewall")
-public class UserViewAllController extends HttpServlet {
+public class UserViewAllServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	

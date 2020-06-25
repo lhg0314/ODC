@@ -24,7 +24,7 @@
 /* 	border: 1px solid #ccc; */
 	
 	width: 25%;
-	height: 700px;
+	height: 100%;
 }
 
 #userbox {
@@ -201,7 +201,7 @@ ul.sub li:hover a { color: #e7717d; }
 		<li class="group">
 		    <div class="title">회원 정보</div>
 		    <ul class="sub">
-		        <li><a href="#">회원 정보 조회 및 수정</a></li>                
+		        <li><a href="/user/info">회원 정보 조회 및 수정</a></li>                
 		        <li><a href="#">회원 탈퇴</a></li>                
 		    </ul>
 		</li>

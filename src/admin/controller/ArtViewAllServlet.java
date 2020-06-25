@@ -21,7 +21,7 @@ import dto.ClassInfo;
 
 
 @WebServlet("/admin/artviewall")
-public class ArtViewAllController extends HttpServlet {
+public class ArtViewAllServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	
