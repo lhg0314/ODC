@@ -11,7 +11,7 @@ public interface UserBoardService {
 
 	int getUserNoById(String userid);
 
-	Paging getPagingReview(HttpServletRequest req, int userno);
+	Paging getPagingReviewByUserNo(HttpServletRequest req, int userno);
 
 	List<Map<String, Object>> selectReviewByUserNo(Paging paging, int userno);
 

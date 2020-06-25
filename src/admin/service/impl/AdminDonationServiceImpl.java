@@ -23,15 +23,17 @@ public class AdminDonationServiceImpl implements AdminDonationService {
 		}
 		// 검색어
 		String search = (String) req.getParameter("search");
+		String month = (String) req.getParameter("month");
 
 		// 클래스 전체 Paging 객체를 생성하고 반환
-		int totalCount = donationDao.selectCntAllDonation(search);
+		int totalCount = donationDao.selectCntAllDonation(search, month);
 
 		// Paging 객체 생성
 		Paging paging = new Paging(totalCount, curPage);
 
 		// 검색어
 		paging.setSearch(search);
+		paging.setMonth(month);
 
 		return paging;
 	}
@@ -60,26 +62,6 @@ public class AdminDonationServiceImpl implements AdminDonationService {
 	}
 
 	@Override
-	public Paging getPagingDonationByMonth(HttpServletRequest req) {
-		// 요청파라미터 curPage를 파싱한다
-		String param = req.getParameter("curPage");
-		int curPage = 0;
-		if (param != null && !"".equals(param)) {
-			curPage = Integer.parseInt(param);
-		}
-		// 검색어
-		String month = (String) req.getParameter("month");
-
-		// 클래스 전체 Paging 객체를 생성하고 반환
-		int totalCount = donationDao.selectCntAllDonationByMonth(month);
-
-		// Paging 객체 생성
-		Paging paging = new Paging(totalCount, curPage);
-
-		return paging;
-	}
-
-	@Override
 	public List<Map<String, Object>> selectAllDonation(Paging paging) {
 		return donationDao.selectAllDonation(paging);
 	}
@@ -90,8 +72,10 @@ public class AdminDonationServiceImpl implements AdminDonationService {
 	}
 	
 	@Override
-	public List<Map<String, Object>> selectAllDonationByMonth(String month, Paging paging) {
-		return donationDao.selectAllDonationByMonth(month, paging);
+	public String getSearchedArtist(String search) {
+		return donationDao.selectArtist(search);
 	}
+
+	
 
 }

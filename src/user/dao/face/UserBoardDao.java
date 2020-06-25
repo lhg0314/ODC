@@ -11,6 +11,6 @@ public interface UserBoardDao {
 
 	int selectCntReviewByUserNo(String search, int userno);
 
-	List<Map<String, Object>> selectCntReviewByUserNo(Paging paging, int userno);
+	List<Map<String, Object>> selectReviewByUserNo(Paging paging, int userno);
 
 }

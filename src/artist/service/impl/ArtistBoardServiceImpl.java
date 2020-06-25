@@ -14,7 +14,7 @@ public class ArtistBoardServiceImpl implements ArtistBoardService {
 	private ArtistBoardDao artistBoardDao = new ArtistBoardDaoImpl();
 
 	@Override
-	public Paging getPagingReview(HttpServletRequest req, int artno) {
+	public Paging getPagingReviewByArtNo(HttpServletRequest req, int artno) {
 		// 요청파라미터 curPage를 파싱한다
 		String param = req.getParameter("curPage");
 		int curPage = 0;
@@ -44,6 +44,34 @@ public class ArtistBoardServiceImpl implements ArtistBoardService {
 	@Override
 	public int getArtNoById(String artid) {
 		return artistBoardDao.selectArtNoByArtId(artid);
+	}
+
+	@Override
+	public Paging getPagingAskByArtNo(HttpServletRequest req, int artno) {
+		// 요청파라미터 curPage를 파싱한다
+		String param = req.getParameter("curPage");
+		int curPage = 0;
+		if (param != null && !"".equals(param)) {
+			curPage = Integer.parseInt(param);
+		}
+		// 검색어
+		String search = (String) req.getParameter("search");
+
+		// 클래스 전체 Paging 객체를 생성하고 반환
+		int totalCount = artistBoardDao.selectCntAskByArtNo(search, artno);
+
+		// Paging 객체 생성
+		Paging paging = new Paging(totalCount, curPage);
+
+		// 검색어
+		paging.setSearch(search);
+
+		return paging;
+	}
+
+	@Override
+	public List<Map<String, Object>> selectAskByArtNo(Paging paging, int artno) {
+		return artistBoardDao.selectAskByArtNo(paging, artno);
 	}
 
 }

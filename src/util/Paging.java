@@ -17,8 +17,17 @@ public class Paging {
 	 private int endNo; // 화면에 보이는 페이지의 끝 게시글 번호(rownum)
 	 
 	 private String search; // 검색어
+	 private String month;
 	 
-	 @Override
+	 public String getMonth() {
+		return month;
+	}
+
+	public void setMonth(String month) {
+		this.month = month;
+	}
+
+	@Override
 	public String toString() {
 		return "Paging [curPage=" + curPage + ", totalCount=" + totalCount + ", listCount=" + listCount + ", totalPage="
 				+ totalPage + ", pageCount=" + pageCount + ", startPage=" + startPage + ", endPage=" + endPage

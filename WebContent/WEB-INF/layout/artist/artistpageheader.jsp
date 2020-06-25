@@ -279,7 +279,7 @@ ul.sub li a {
 		<li class="group">
 		    <div class="title">기부 및 후원</div>
 		    <ul class="sub">               
-		        <li><a href="#">후원 받은 내역</a></li>                
+		        <li><a href="/artist/donation">후원 받은 내역</a></li>                
 		    </ul>
 		</li>
 	</ul>
@@ -288,8 +288,8 @@ ul.sub li a {
 		<li class="group">
 		    <div class="title">게시판</div>
 		    <ul class="sub">
-		        <li><a href="#">고객 문의 내역</a></li>                
-		        <li><a href="#">후기 게시판</a></li>                
+		        <li><a href="/artist/asklist">고객 문의 내역</a></li>                
+		        <li><a href="/artist/reviewlist">후기 게시판</a></li>                
 		    </ul>
 		</li>
 	</ul>

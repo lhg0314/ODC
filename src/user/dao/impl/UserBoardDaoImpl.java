@@ -21,7 +21,7 @@ public class UserBoardDaoImpl implements UserBoardDao {
 	
 	@Override
 	public int selectUserNoById(String userid) {
-conn = JDBCTemplate.getConnection();
+		conn = JDBCTemplate.getConnection();
 		
 		int userno = -1;
 		
@@ -55,14 +55,14 @@ conn = JDBCTemplate.getConnection();
 		sql += "select count(*) from reviewboard r";
 		sql += "	inner join userinfo u on (r.user_no = u.user_no)";
 		sql += "	inner join classinfo c on (r.class_no = c.class_no)";
-		sql += "	where c.class_name like '%'||?||'%' and u.user_no = ?";
+		sql += "	where u.user_no = ? and c.class_name like '%'||?||'%'";
 		
 		int cnt = 0;
 		
 		try {
 			ps = conn.prepareStatement(sql);
-			ps.setString(1, search);
-			ps.setInt(2, userno);
+			ps.setInt(1, userno);
+			ps.setString(2, search);
 			
 			rs = ps.executeQuery();
 
@@ -79,15 +79,15 @@ conn = JDBCTemplate.getConnection();
 	}
 
 	@Override
-	public List<Map<String, Object>> selectCntReviewByUserNo(Paging paging, int userno) {
+	public List<Map<String, Object>> selectReviewByUserNo(Paging paging, int userno) {
 		conn = JDBCTemplate.getConnection();
 
 		String sql = "";
 		sql += "select * from ( select rownum rnum, b.* from (";
-		sql += "	select r.review_no, r.review_date, r.sat_level, r.review_title, u.user_id, c.class_name from reviewboard r";
+		sql += "	select r.review_no, r.review_date, r.class_no, r.sat_level, r.review_title, u.user_id, c.class_name from reviewboard r";
 		sql += "	inner join userinfo u on (r.user_no = u.user_no)";
 		sql += "	inner join classinfo c on (r.class_no = c.class_no)";
-		sql += "	where c.class_name like '%'||?||'%' and u.user_no = ? order by r.review_no desc";
+		sql += "	where u.user_no = ? and c.class_name like '%'||?||'%' order by r.review_no desc";
 		sql += "	) b order by rnum ) t where rnum between ? and ?";
 
 		List<Map<String, Object>> list = new ArrayList<>();
@@ -95,16 +95,18 @@ conn = JDBCTemplate.getConnection();
 
 		try {
 			ps = conn.prepareStatement(sql);
-			ps.setString(1, paging.getSearch());
-			ps.setInt(2, userno);
+			ps.setInt(1, userno);
+			ps.setString(2, paging.getSearch());
 			ps.setInt(3, paging.getStartNO());
 			ps.setInt(4, paging.getEndNo());
+			
 			rs = ps.executeQuery();
 
 			while (rs.next()) {
 				map = new HashMap<String, Object>();
 
 				map.put("reviewNo", rs.getInt("review_no"));
+				map.put("classNo", rs.getInt("class_no"));
 				map.put("reviewDate", rs.getDate("review_date"));
 				map.put("satLevel", rs.getInt("sat_level"));
 				map.put("userId", rs.getString("user_id"));
