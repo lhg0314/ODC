@@ -17,29 +17,31 @@ $(document).ready(function(){
 </script>
 
 <style type="text/css">
-
+#classCheckTable{
+	font-size: 14px;
+}
 #SnvClassCheck{
 	background: #ecdfec;
 }
-#classTable th{
+#classCheckTable th{
 	text-align: center;
 }
-#classTable tr:first-child{
-	background: #ecdfec;
+#classCheckTable tr:first-child{
+	background: thistle;
 }
 </style>
 
 <%-- 클래스 게시/삭제 페이지 --%>
 <%-- 20200620 구동영 --%>
-<h4 >&nbsp;클래스 관리</h4>
+<h4 style="font-weight: bold;">&nbsp;클래스 관리</h4>
 <hr>
-<h5>&nbsp;클래스 검토</h5>
+<h5 style="font-weight: bold;">&nbsp;클래스 검토</h5>
 <h6>&nbsp;&nbsp;검토 신청을 한 클래스의 계획서를 확인하고 검토 상태를 변경하거나 사이트에 등록할 수 있다.</h6>
 <br>
 <input type="text" id="search" placeholder="클래스명" value="${paging.search }"/>
 <button type="button" id="btnSearch">검색</button><br>
 <br>
-<table id="classTable" class="table table-condensed text-center table-hover">
+<table id="classCheckTable" class="table table-condensed text-center table-hover">
 	<tr>
 		<th>번호</th>
 		<th style="width: 23%;">클래스명</th>

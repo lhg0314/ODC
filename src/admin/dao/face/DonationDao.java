@@ -14,6 +14,7 @@ public interface DonationDao {
 	 */
 	public int selectCntAllTalent(String search);
 	public int selectCntAllDonation(String search);
+	public int selectCntAllDonationByMonth(String month);
 	
 	/**
 	 * 재능기부 클래스 목록 조회
@@ -28,5 +29,7 @@ public interface DonationDao {
 	 * @return List<Map<String, Object>>
 	 */
 	public List<Map<String, Object>> selectAllDonation(Paging paging); // 전체 후원 내역 조회
+	
+	public List<Map<String, Object>> selectAllDonationByMonth(String month, Paging paging);
 	
 }

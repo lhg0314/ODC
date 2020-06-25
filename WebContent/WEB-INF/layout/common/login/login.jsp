@@ -22,13 +22,37 @@ function logincheck(){
 	var pw=document.getElementById("pw").value;
 	opt=$('input[name=loginActor]:checked').val();
 	
-	console.log(id+","+pw)
-	console.log(opt)
+
 	
 	var param="id="+id+"&pw="+pw+"&opt="+opt;
 	console.log(param)
 	sendRequest("POST","/member/login",param,ajaxFromServer);
 
+	
+}
+
+
+function findid(){
+	
+	opt=$('input[name=loginActor]:checked').val();
+	console.log(opt)
+	if(opt=="user"){
+		location.href="/find/userid"
+	}else if(opt=="artist"){
+		location.href="/find/artid"
+	}
+	
+	
+}
+function findpw(){
+	opt=$('input[name=loginActor]:checked').val();
+	console.log(opt)
+	
+	if(opt=="user"){
+		location.href="/find/userpw"
+	}else if(opt=="artist"){
+		location.href="/find/artpw"
+	}
 	
 }
 
@@ -48,7 +72,7 @@ function ajaxFromServer(){
 				}else if("artist"==opt){
 					location.href="/artist/main";
 				}else if("admin"==opt){
-					location.href="/관리자 페이지";
+					location.href="/admin/main";
 				}
 			}
 			
@@ -223,11 +247,11 @@ function ajaxFromServer(){
 
 <div id="find">
 <ul>
-	<li><a href="#" class="ack">아이디 찾기</a></li>
+	<li><a href="javascript:findid();"  class="ack">아이디 찾기</a></li>
 	<li>&nbsp;|&nbsp;</li>
-	<li><a href="#" class="ack">비밀번호 찾기</a></li>
+	<li ><a href="javascript:findpw();"  class="ack">비밀번호 찾기</a></li>
 	<li>&nbsp;|&nbsp;</li>
-	<li><a href="#" class="ack">회원가입</a></li>
+	<li><a href="/user/join" class="ack">회원가입</a></li>
 </ul>
 </div>
 

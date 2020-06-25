@@ -89,9 +89,23 @@ ul.sub li:hover {
 #wrapper{
    width: 1200px;
    margin: 20px auto;
+   position: relative;
 
 /*    border: 1px solid #ccc; */
 
+}
+
+#minilist{
+
+list-style: none;
+ font-weight: bold;
+ white-space:nowrap;
+ width:400px;
+}
+#minilist > li{
+	float:left;
+	color:gray;
+	
 }
 
 </style>
@@ -100,6 +114,16 @@ ul.sub li:hover {
 
 <div id="wrapper"> <!-- 가운데 오게 하기  -->
 <a href="/admin/main"><h3>관리자 페이지</h3></a>
+
+   <div style="position: absolute; width: 350px; right: -18%; top:0%;"> 
+	   <ul id="minilist">
+	   		
+			<li><a href="/main" class="aNone" target="_blank">&nbsp; 사업자 페이지&nbsp;|</a></li>
+			<li><a href="/artist/main" class="aNone" target="_blank">&nbsp; 사용자 페이지&nbsp;|</a></li>
+			<li><a href="/user/logout" class="aNone">&nbsp; 로그아웃</a></li>
+
+	   </ul>
+   </div>
 <hr>
 
 <div id="sidenav">
@@ -141,8 +165,8 @@ ul.sub li:hover {
         <li class="group">
             <div class="title">게시판 관리</div>
             <ul class="sub">
-                <li><a href="#">공지사항 관리</a></li>                
-                <li><a href="#">후기게시판 관리</a></li>    
+                <li><a href="/admin/noticelist">공지사항 관리</a></li>                
+                <li><a href="/admin/reviewlist">후기게시판 관리</a></li>    
             </ul>
         </li> 
     </ul>

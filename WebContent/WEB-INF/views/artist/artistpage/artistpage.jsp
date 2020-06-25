@@ -5,7 +5,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>    
 
 <!-- mian header -->
-<c:import url="/WEB-INF/layout/common/main/header.jsp"></c:import> 
+<c:import url="/WEB-INF/layout/common/main/artHeader.jsp"></c:import> 
 
 <!-- artistpage header -->    
 <c:import url="/WEB-INF/layout/artist/artistpageheader.jsp"></c:import> 
@@ -17,7 +17,7 @@
 	<br>
 	
 	<div id="class_upload_notice">
-	
+	 
 	<span>클래스 등록을 위한 공지사항</span><br><br>
 	
 	<span>비둘기, 이국 오면 위에 그리고 별 오는 이름자를 버리었습니다.</span><br> 
@@ -40,9 +40,14 @@
 	
 	<br>
 	
+<<<<<<< HEAD
 	<div id="btn"><a href="#"><button class="class_button"> + 클래스 등록</button></a></div>
 
+=======
+	<div id="btn"><a href="/artist/class/app"><button class="class_button">+ 클래스 등록</button></a></div>
+>>>>>>> d92d98866ab695abe454e40913bcb0ad6223166e
 
+<div class="clearfix"></div>
 </div> <!-- 전체를 감싸는 div -->
 </section>
 

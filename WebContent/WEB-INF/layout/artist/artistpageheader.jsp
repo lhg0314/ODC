@@ -80,7 +80,7 @@
 	float: right;
 /* 	border: 1px solid #ccc; */
 	width: 75%;
-	height: 90%;
+/* 	height: 90%; */
 	
 	padding: 0 20px;
 /* 	margin: 20px 0; */
@@ -95,7 +95,7 @@
 	margin: 10px 0;
 	font-size: 14px;
 }
-
+ 
 #table th {
 	background: thistle;
 	text-align: center;
@@ -253,7 +253,11 @@ ul.sub li a {
 		<div id="userbox_cont">
 			<img src="/resources/img/mini.jpg" />		
 			<img src="/resources/img/grade/artistgrade.PNG" />		
+<<<<<<< HEAD
 			<span>${artid } 님 </span>
+=======
+			<span>${artid }님 </span>
+>>>>>>> d92d98866ab695abe454e40913bcb0ad6223166e
 		</div>
 	</div>
 	
@@ -261,10 +265,10 @@ ul.sub li a {
 		<li class="group">
 		    <div class="title">클래스</div>
 		    <ul class="sub"> 
-		        <li><a href="#">클래스 등록</a></li>
+		        <li><a href="/artist/class/app" id="SvnclassApp">클래스 등록</a></li>
 		        <li><a href="#">클래스 검수 확인</a></li>
 		        <li><a href="#">클래스 관리</a></li>
-		        <li><a href="#">클래스 매출 현황</a></li>
+		        <li><a href="/artistpage/class/sales">클래스 매출 현황</a></li>
 		    </ul>
 		</li>
 	</ul>
@@ -272,9 +276,7 @@ ul.sub li a {
 	<ul class="navi">
 		<li class="group">
 		    <div class="title">기부 및 후원</div>
-		    <ul class="sub">
-		        <li><a href="#">재능 기부 클래스 등록</a></li>                
-		        <li><a href="#">재능 기부 클래스 검수</a></li>                
+		    <ul class="sub">               
 		        <li><a href="#">후원 받은 내역</a></li>                
 		    </ul>
 		</li>

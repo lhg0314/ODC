@@ -15,24 +15,27 @@ $(document).ready(function(){
 </script>
 
 <style type="text/css">
+#classBookTable{
+	font-size: 14px;
+}
 
 #SnvClassPost{
 	background: #ecdfec;
 }
 
-#classTable th{
+#classBookTable th{
 	text-align: center;
 }
-#classTable tr:first-child{
-	background: #ecdfec;
+#classBookTable tr:first-child{
+	background: thistle;
 }
 </style>
 
 <%-- 클래스 예약 현황페이지 --%>
 <%-- 20200621 구동영 --%>
-<h4 >&nbsp;클래스 관리</h4>
+<h4 style="font-weight: bold;">&nbsp;클래스 관리</h4>
 <hr>
-<h5>&nbsp;클래스 정보 > 클래스 예약 현황</h5>
+<h5 style="font-weight: bold;">&nbsp;클래스 정보 > 클래스 예약 현황</h5>
 <br>
 
 <c:if test="${paging.totalCount eq 0 }">
@@ -40,7 +43,7 @@ $(document).ready(function(){
 <h3>예약 현황 없음</h3>
 </c:if>
 <c:if test="${paging.totalCount ne 0 }">
-<table id="classTable" class="table table-striped table-condensed text-center">
+<table id="classBookTable" class="table table-striped table-condensed text-center">
 	<tr>
 		<th>예약 번호</th>
 		<th>클래스명</th>

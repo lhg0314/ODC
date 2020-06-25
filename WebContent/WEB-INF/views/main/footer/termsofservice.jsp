@@ -18,6 +18,14 @@
 
 .liststylenon {
 	list-style: none;
+	
+}
+
+.liststylenon >li{
+
+	line-height: 1.4rem;
+	font-size: 1.1rem;
+	margin-top: 15px
 }
 
 #loginFooter {text-align: center; }
@@ -31,6 +39,15 @@
 }
 
 #loginFooter > a{
+	color: black;
+}
+
+.anone{
+	text-decoration: none;
+	color: black;
+}
+.anone:hover {
+	text-decoration: none;
 	color: black;
 }
 </style>
@@ -203,10 +220,10 @@
 <br>
 <hr>
 <div id="loginFooter" >	
-<a href="/footer/termsofservice" class="aTagNone left">서비스 이용약관</a>&nbsp;&nbsp;
-<a href="/fooer/privacypolicy" class="aTagNone">개인정보 처리방침</a>&nbsp;&nbsp;
-<a href="/fooer/memberIntroduce" class="aTagNone">제작자 소개</a>&nbsp;&nbsp;
-<a href="/fooer/siteIntroduce" class="aTagNone">사이트 소개</a>&nbsp;&nbsp;
+<a href="/footer/termsofservice" class="anone">서비스 이용약관</a>&nbsp;&nbsp;
+<a href="/fooer/privacypolicy" class="anone">개인정보 처리방침</a>&nbsp;&nbsp;
+<a href="/fooer/memberIntroduce" class="anone">제작자 소개</a>&nbsp;&nbsp;
+<a href="/fooer/siteIntroduce" class="anone">사이트 소개</a>&nbsp;&nbsp;
 <p>&copy; ODC</p>
 </div>
 <br>

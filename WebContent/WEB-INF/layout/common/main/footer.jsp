@@ -70,14 +70,25 @@
 }
 
 </style>
+
+<script type="text/javascript">
+function openService(){
+	window.open("/footer/termsofservice","serviceForm","width=400,height=500,screenX=-300")
+}
+function openPolicy(){
+	window.open("/fooer/privacypolicy","serviceForm","width=400,height=500,screenX=-300")
+}
+
+
+</script>
  
 <div class="wrappermain">
 <br>
 <hr>
 
 <div id="info1" >	
-<a href="/footer/termsofservice" class="aTagNone left">서비스 이용약관</a>&nbsp;&nbsp;
-<a href="/fooer/privacypolicy" class="aTagNone">개인정보 처리방침</a>&nbsp;&nbsp;
+<a style="cursor:pointer" onclick="openService();" class="aTagNone left">서비스 이용약관</a>&nbsp;&nbsp;
+<a style="cursor:pointer" onclick="openPolicy();" class="aTagNone">개인정보 처리방침</a>&nbsp;&nbsp;
 <a href="/fooer/memberIntroduce" class="aTagNone">제작자 소개</a>&nbsp;&nbsp;
 <a href="/fooer/siteIntroduce" class="aTagNone">사이트 소개</a>&nbsp;&nbsp;
 </div>
@@ -103,11 +114,6 @@
 메일  abc12345@gamil.com
 </div>
 
-<div id="info5" >
-<div class="glyphicon glyphicon-phone" onclick="location.href='#';"></div>
-<div class="glyphicon glyphicon-envelope" onclick="location.href='#';"></div>
-<div class="glyphicon glyphicon-map-marker" onclick="location.href='#';"></div>
-</div>
 
 </div>
 </div>

@@ -172,7 +172,7 @@ ul.sub li:hover a { color: #e7717d; }
 	<div id="userbox">
 		<div id="userbox_cont">
 			<img src="/resources/img/grade/grade1.PNG" />		
-			<span>홍길동 님 </span>
+			<span>${userid }님 </span>
 		</div>
 	</div>
 	
@@ -180,9 +180,9 @@ ul.sub li:hover a { color: #e7717d; }
 		<li class="group">
 		    <div class="title">클래스</div>
 		    <ul class="sub">
-		        <li><a href="#">예약한 클래스</a></li>
+		        <li><a href="/mypage/class/booking">예약 클래스 조회 및 결제취소</a></li>
 		        <li><a href="#">클래스 장바구니</a></li>
-		        <li><a href="#">클래스 수강 조회 및 취소</a></li>
+		        <li><a href="#">클래스 수강 조회</a></li>
 		    </ul>
 		</li>
 	</ul>

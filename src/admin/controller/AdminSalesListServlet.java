@@ -24,7 +24,7 @@ public class AdminSalesListServlet extends HttpServlet {
 
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		System.out.println("/admin/adminsales/list [get]");
+//		System.out.println("/admin/adminsales/list [get]");
 		
 		//현재 달
 		Date[] nowyearday = adminSalesService.nowyearday();

@@ -30,5 +30,25 @@ public class UserServiceImpl implements UserService {
 		}
 		return ismember;
 	}
+	@Override
+	public int selectUserIdByEN(String email, String name) {
+		int res=userDao.userIdChkByEN(email,name);
+		return res;
+	}
+	@Override
+	public String getIdByEN(String email, String name) {
+		String id=userDao.selectUserIdByEN(email,name);
+		return id;
+	}
+	@Override
+	public int selectUserPwByEN(String email, String name, String id) {
+		int res=userDao.userPwChkByEN(email,name,id);
+		return res;
+	}
+	@Override
+	public String getPwByEN(String email, String name, String id) {
+		String pw=userDao.selectUserPwByEN(email,name,id);
+		return pw;
+	}
 
 }
