@@ -76,5 +76,11 @@ public interface ArtistClassService {
 	 * @return
 	 */
 	public int BookingCntCheck(int classno);
+
+	/**
+	 * 클래스 내리기
+	 * @param classno
+	 */
+	public int removeClass(int classno);
  
 }

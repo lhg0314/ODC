@@ -95,4 +95,10 @@ public interface ArtistClassDao {
 	 */
 	public int BookingCntCheck(int classno);
 
+	/**
+	 * 클래스 내리기
+	 * @param classno
+	 */
+	public int removeClass(int classno);
+
 }

@@ -45,9 +45,9 @@ public class ArtistClassServiceImpl implements ArtistClassService {
 		String loc = artInfo.getArtAddr();
 		
 		String[] arr = loc.split(";");
-		System.out.println(arr[0]);
+
 		int num = Integer.parseInt(arr[0].substring(0, 2));
-		System.out.println(num);
+		
 		int location = 0;
 		
 		if( num <10 ) {
@@ -306,7 +306,6 @@ public class ArtistClassServiceImpl implements ArtistClassService {
 					mainFile.setClassOriginFilename(origin);
 					mainFile.setClassRenameFilename(stored);
 					
-					System.out.println(mainFile);
 					try {
 						item.write(up); // 실제 업로드
 						item.delete(); // 임시파일삭제
@@ -333,8 +332,6 @@ public class ArtistClassServiceImpl implements ArtistClassService {
 					
 					detailFile.setClassOriginFilename(origin);
 					detailFile.setClassRenameFilename(stored);
-					
-					System.out.println(detailFile);
 					
 					try {
 						item.write(up); // 실제 업로드
@@ -592,6 +589,14 @@ public class ArtistClassServiceImpl implements ArtistClassService {
 	@Override
 	public int BookingCntCheck(int classno) {
 		return artistClassDao.BookingCntCheck(classno);
+	}
+
+	@Override
+	public int removeClass(int classno) {
+		
+	 int res = artistClassDao.removeClass(classno);
+
+		return res;
 	}
 
 }

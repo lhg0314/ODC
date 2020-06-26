@@ -129,9 +129,10 @@ $(document).ready(function(){
 }
 
 
-#SvnclassManage{
+#SvnClassManage{
 	color: #e7717d;
 }
+
 
 #category, #location{
 	width: 150px;

@@ -255,7 +255,7 @@ public class ArtistClassDaoImpl implements ArtistClassDao {
 		sql += "	count(*)";
 		sql += " FROM classinfo";
 		sql += " WHERE 1=1";
-		sql += " AND class_check = 1";
+		sql += " AND post_status = 1";
 		sql += " AND art_no = ?";
 		if( search != null && !"".equals(search)) {
 			sql += " AND class_name LIKE ?";
@@ -314,7 +314,7 @@ public class ArtistClassDaoImpl implements ArtistClassDao {
 		sql += " 		LEFT OUTER JOIN classfile f";
 		sql += " 		ON (i.class_no = f.class_no)";
 		sql += " 		WHERE 1=1";
-		sql += "		AND i.class_check = 1";
+		sql += "		AND i.post_status = 1";
 		sql += " 		AND f.class_rename_filename LIKE 'main%'";
 		sql += "		AND i.art_no = ?"; 
 		sql += " 		ORDER BY i.class_no DESC";
@@ -518,12 +518,6 @@ public class ArtistClassDaoImpl implements ArtistClassDao {
 		String sql = "";
 		sql += "UPDATE classinfo";
 		sql += " SET class_price = ?";
-		sql += " , min_people = ?";
-		sql += " , max_people = ?";
-		sql += " , class_startdate = ?";
-		sql += " , class_enddate = ?";
-		sql += " , recruit_startdate  = ?";
-		sql += " , recruit_enddate  = ?";
 		sql += " , class_content  = ?";
 		sql += " WHERE class_no = ?";
 
@@ -535,25 +529,7 @@ public class ArtistClassDaoImpl implements ArtistClassDao {
 			int index = 1;
 			
 			ps.setInt(index++, classInfo.getClassprice());
-			ps.setInt(index++, classInfo.getMinPeople());
-			ps.setInt(index++, classInfo.getMaxPeople());
-			
-			java.sql.Date d = null;
-			
-			d = new java.sql.Date(classInfo.getClassStartdate().getTime());
-			ps.setDate(index++, d);
-
-			d = new java.sql.Date(classInfo.getClassEnddate().getTime());
-			ps.setDate(index++, d);
-			
-			d = new java.sql.Date(classInfo.getRecruitStartdate().getTime());
-			ps.setDate(index++, d);
-			
-			d = new java.sql.Date(classInfo.getRecruitEnddate().getTime());
-			ps.setDate(index++, d);
-			
 			ps.setString(index++, classInfo.getClassContent());
-			
 			ps.setInt(index++, classInfo.getClassno());
 			
 			
@@ -619,5 +595,82 @@ public class ArtistClassDaoImpl implements ArtistClassDao {
 		
 		//최종 결과 반환
 		return detailFile;
+	}
+	@Override
+	public int BookingCntCheck(int classno) {	
+		
+		conn = JDBCTemplate.getConnection(); //DB 연결
+	
+		//수행할 SQL
+		String sql = "";
+		sql += "SELECT count(*) FROM classbooking";
+		sql += " WHERE class_no = ?";
+		sql += " AND booking_date > sysdate";
+
+		//최종 결과 변수
+		int cnt = 0;
+		
+		try {
+			//SQL 수행 객체
+			ps = conn.prepareStatement(sql);
+			
+			ps.setInt(1, classno);
+			
+			//SQL 수행 및 결과 저장
+			rs = ps.executeQuery();
+			
+			//SQL 수행 결과 처리
+			while( rs.next() ) {
+				cnt = rs.getInt(1);
+			}
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				if(rs!=null)	rs.close();
+				if(ps!=null)	ps.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+		
+		//최종 결과 반환
+		return cnt;
+	}
+	@Override
+	public int removeClass(int classno) {
+		conn = JDBCTemplate.getConnection(); //DB 연결
+		
+		//수행할 SQL
+		String sql = "";
+		sql += "UPDATE classinfo";
+		sql += " SET post_status = 0";
+		sql += " WHERE class_no = ?";
+
+		int res = 0;
+		
+		try {
+			//SQL 수행 객체
+			ps = conn.prepareStatement(sql);
+			
+			ps.setInt(1, classno);
+			
+			//SQL 수행 및 결과 저장
+			res = ps.executeUpdate();
+			
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				if(ps!=null)	ps.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+		
+		return res;
+		
 	}
 }
