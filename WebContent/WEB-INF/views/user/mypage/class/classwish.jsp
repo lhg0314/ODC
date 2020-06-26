@@ -41,11 +41,8 @@
 </style>
 
 <div id="main">
-	<span id="boardtitle">클래스</span>
-	<hr>
 	<span id="boardtitle" ><a href="/mypage/class/wish" class="anone">장바구니</a></span>
-	<br><br>
-
+	<hr>
 
 <table class="table-striped table-hover table-condensed">
 

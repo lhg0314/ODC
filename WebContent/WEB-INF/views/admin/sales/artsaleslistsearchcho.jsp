@@ -27,6 +27,13 @@
 	float: right;
 }
 
+#serchbox{
+	width: 250px;
+	margin: 0 auto;
+	text-align: left;
+	float: left;
+}
+
 </style>
 
 
@@ -34,6 +41,23 @@
 <hr>
 <h5>&nbsp;<a href="/admin/artsales/list" class="aTagStyleNone">사업자 수익관리</a></h5>
 
+<!-- 사업자 아이디 검색 -->
+<div id="serchbox" >
+<form action="/admin/artsales/search" method="post">
+
+<div class="row">
+  <div class="col-lg-6">
+    <div class="input-group">
+      <input type="text" class="form-control" placeholder="사업자 아이디 검색" style="width: 180px;" name="artid">
+      <span class="input-group-btn">
+        <button class="btn btn-default" type="submit">Search</button>
+      </span>
+    </div><!-- /input-group -->
+  </div><!-- /.col-lg-6 -->
+</div><!-- /.row -->
+
+</form>
+</div>
 
 <div id="moncho">
 <form action="/admin/artsalessistserach/cho" method="post">

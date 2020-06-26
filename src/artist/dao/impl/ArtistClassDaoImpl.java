@@ -441,4 +441,97 @@ public class ArtistClassDaoImpl implements ArtistClassDao {
 	//최종 결과 반환
 	return map;
 	}
+	@Override
+	public void deleteClassFile(ClassFile classFile) {
+
+		conn = JDBCTemplate.getConnection(); //DB 연결
+		
+		//수행할 SQL
+		String sql = "";
+		sql += "DELETE FROM classfile";
+		sql += " WHERE class_no = ?";
+
+		
+		try {
+			//SQL 수행 객체
+			ps = conn.prepareStatement(sql);
+			
+			ps.setInt(1, classFile.getClassno());
+			
+			//SQL 수행 및 결과 저장
+			ps.executeUpdate();
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				if(ps!=null)	ps.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+		
+	}
+	@Override
+	public void updateClassInfo(ClassInfo classInfo) {
+		
+		conn = JDBCTemplate.getConnection(); //DB 연결
+		
+		//수행할 SQL
+		String sql = "";
+		sql += "UPDATE classinfo";
+		sql += " SET class_price = ?";
+		sql += " , min_people = ?";
+		sql += " , max_people = ?";
+		sql += " , class_startdate = ?";
+		sql += " , class_enddate = ?";
+		sql += " , recruit_startdate  = ?";
+		sql += " , recruit_enddate  = ?";
+		sql += " , class_content  = ?";
+		sql += " WHERE class_no = ?";
+
+		
+		try {
+			//SQL 수행 객체
+			ps = conn.prepareStatement(sql);
+			
+			int index = 1;
+			
+			ps.setInt(index++, classInfo.getClassprice());
+			ps.setInt(index++, classInfo.getMinPeople());
+			ps.setInt(index++, classInfo.getMaxPeople());
+			
+			java.sql.Date d = null;
+			
+			d = new java.sql.Date(classInfo.getClassStartdate().getTime());
+			ps.setDate(index++, d);
+
+			d = new java.sql.Date(classInfo.getClassEnddate().getTime());
+			ps.setDate(index++, d);
+			
+			d = new java.sql.Date(classInfo.getRecruitStartdate().getTime());
+			ps.setDate(index++, d);
+			
+			d = new java.sql.Date(classInfo.getRecruitEnddate().getTime());
+			ps.setDate(index++, d);
+			
+			ps.setString(index++, classInfo.getClassContent());
+			
+			ps.setInt(index++, classInfo.getClassno());
+			
+			
+			//SQL 수행 및 결과 저장
+			ps.executeUpdate();
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				if(ps!=null)	ps.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+				
+	}
 }

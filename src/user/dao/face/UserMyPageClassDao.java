@@ -1,18 +1,10 @@
-package user.service;
+package user.dao.face;
 
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.Map;
 
-import javax.servlet.http.HttpServletRequest;
-
-public interface UserMyPageClassService {
-
-	/**
-	 * 현재 날짜 가져오기
-	 * @return
-	 */
-	public Date nowday();
+public interface UserMyPageClassDao {
 
 	/**
 	 * 사용자 예약 리스트  전체 조회
@@ -21,13 +13,6 @@ public interface UserMyPageClassService {
 	 * @return
 	 */
 	public ArrayList<Map<String, Object>> userbooking(String userid, Date nowday);
-
-	/**
-	 * 삭제할  bookingno 파람에서 뽑기
-	 * @param req
-	 * @return
-	 */
-	public int bookingnoparam(HttpServletRequest req);
 
 	/**
 	 * 사용자 예약 리스트  선택 삭제
@@ -45,13 +30,6 @@ public interface UserMyPageClassService {
 	public ArrayList<Map<String, Object>> userwish(String userid);
 
 	/**
-	 * wishno param 빼오기
-	 * @param req
-	 * @return
-	 */
-	public int wishnoparam(HttpServletRequest req);
-
-	/**
 	 * wishno 삭제
 	 * @param userid
 	 * @param wishno
@@ -59,11 +37,32 @@ public interface UserMyPageClassService {
 	public void wishcancel(int wishno);
 
 	/**
-	 * 결제 정보 불러오rl
+	 * 결제 정보 불러오기
 	 * @param userid
 	 * @param wishno
 	 * @return
 	 */
 	public Map<String, Object> classpayment(String userid, int wishno);
+
+	/**
+	 * userno 가져오기
+	 * @param userid
+	 * @return
+	 */
+	public int userno(String userid);
+
+	/**
+	 * classbookingno 가져오기
+	 * @return
+	 */
+	public int classbookingno();
+
+	/**
+	 * classbooking 결제 완료후 insert
+	 * @param classbookingno
+	 * @param userno
+	 * @param paymentparam
+	 */
+	public void insertclassbooking(int classbookingno, int userno, Map<String, Object> paymentparam);
 
 }

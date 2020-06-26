@@ -55,5 +55,13 @@ public interface ArtistClassService {
 	 * @return
 	 */
 	public Map<String, Object> selectClassByClassNo(int classno);
+
+	/**
+	 * 클래스 정보 수정하기
+	 * @param req
+	 * @param resp
+	 * @param artInfo
+	 */
+	public void updateClassInfo(HttpServletRequest req, HttpServletResponse resp);
  
 }

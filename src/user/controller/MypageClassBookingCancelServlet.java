@@ -16,8 +16,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import user.service.UserMyPageClassService;
 import user.service.UserMyPageClassServiceImpl;
+import user.service.face.UserMyPageClassService;
 
 @WebServlet("/mypage/classbooking/cancel")
 public class MypageClassBookingCancelServlet extends HttpServlet {

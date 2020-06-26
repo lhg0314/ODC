@@ -12,6 +12,7 @@
 <script type="text/javascript">
 $(document).ready(function(){
 	
+	/* 재능기부 클래스여부는 변경할 수 없도록 처리 */
 	var talentDona = "<c:out value='${info.talentDonation }'/>" * 1;
 	
 	if( talentDona == 0){
@@ -22,7 +23,14 @@ $(document).ready(function(){
 		$("#classPrice").attr("readOnly", "readOnly");
 	}
 	
+	$("#btnX").click(function(){
+		$("#fileView").html("");
+		$("#originFile").css("display", "none");
+		$("#classFile").attr("type", "file");		
+	})
 	
+	
+	/* 첨부파일 이미지 미리보기 */
 	$("#classFile").change(function(){
 		
 		$("#fileView").html("");
@@ -43,10 +51,12 @@ $(document).ready(function(){
 		reader.readAsDataURL(file);		
 	});
 	
+	/* 클래스 모집기간 자동 처리 */
 	$("#classEndDate").blur(function(){
 		$("#recruitEndDate").val($(this).val());
 	});
 	
+	/* 재능기부클래스 체크하면 금액 비활성화 */
 	$("#talentDonation").change(function(){
 		if( $(this).is(":checked")){
 			$("#classPrice").val("");
@@ -57,6 +67,7 @@ $(document).ready(function(){
 	})
 	
 
+	/* submit 되기 전 유효성 검사 */
 	$("#appForm").submit(function(){
 		if($("#category").val() == 0 ){
 			alert("카테고리를 선택하세요");
@@ -133,6 +144,11 @@ $(document).ready(function(){
 	padding: 10px;
 }
 
+#imgFile{
+	width: 180px;
+	height: 180px;
+}
+
 .line{
 	display: inline-block;
 }
@@ -145,7 +161,9 @@ $(document).ready(function(){
 	<br>
 	
 	<div id="appContent">
-		<form action="/artist/class/app" method="post" encType="multipart/form-data" id="appForm">
+		<form action="/artist/class/update" method="post" encType="multipart/form-data" id="appForm">
+		
+		<input type="hidden" name="classNo" value="${info.classNo }" />
 		
 		<div class="form-group">
 	    	<label for="className">클래스 이름</label>
@@ -207,11 +225,14 @@ $(document).ready(function(){
 		</div>
 		
 		<div class="form-group">
-	    	<label for="classFile">사진 첨부</label>
-	    	<span>${info.classOriginFilename }</span>
-			<div id="fileView">
+	    	<label for="classFile">사진 첨부</label><br>
+	    	<input type="hidden" accept="image/*" id="classFile" name="classFile" required="required"/>
+	    	<div id="originFile">
+	    	<span >${info.classOriginFilename } </span><button type="button" id="btnX" class="btn btn-default btn-xs">X</button>
 			</div>
-	    	<input type="file" accept="image/*" id="classFile" name="classFile" required="required"/>
+			<div id="fileView">
+			<img id="imgFile" src="/upload/${info.classRenameFilename }" />
+			</div>
 	    </div>
 		
 		<div class="text-center"><button class="class_button">클래스 수정</button></div>

@@ -49,5 +49,5 @@ public class ArtistClassManageServlet extends HttpServlet {
 		req.getRequestDispatcher("/WEB-INF/views/artist/class/classManage.jsp").forward(req, resp);
 		
 	}
-
+	
 }

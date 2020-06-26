@@ -32,13 +32,21 @@
 	float: left;
 }
 
+.aTagStyleNone{
+color: black;
+text-decoration: none;
+}
+
+.aTagStyleNone:hover{
+color: black;
+text-decoration: none;
+}
+
 </style>
 
 <div id="main">
-<a href="/artistpage/class/sales" class="aTagStyleNone"><span id="boardtitle">클래스</span></a>
-<hr>
 <a href="/artistpage/class/sales" class="aTagStyleNone"><span id="boardtitle">클래스 매출 현황</span></a>
-<br>
+<hr>
 
 <!-- 사업자 클래스 이름 검색 -->
 <div id="serchbox" >
