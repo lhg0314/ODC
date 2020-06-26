@@ -45,7 +45,9 @@ public class ArtistClassServiceImpl implements ArtistClassService {
 		String loc = artInfo.getArtAddr();
 		
 		String[] arr = loc.split(";");
-		int num = Integer.parseInt(arr[0].substring(0, 1));
+		System.out.println(arr[0]);
+		int num = Integer.parseInt(arr[0].substring(0, 2));
+		System.out.println(num);
 		int location = 0;
 		
 		if( num <10 ) {
@@ -64,6 +66,7 @@ public class ArtistClassServiceImpl implements ArtistClassService {
 			location = 7;
 		}
 		
+		System.out.println(location);
 		return location;
 	}
 
@@ -85,7 +88,8 @@ public class ArtistClassServiceImpl implements ArtistClassService {
 		// 전달파라미터를 저장할 DTO 객체
 		int classno = artistClassDao.getClassNo();
 		ClassInfo classInfo = new ClassInfo();
-		ClassFile classFile = new ClassFile();
+		ClassFile mainFile = new ClassFile();
+		ClassFile detailFile = new ClassFile();
 		
 		classInfo.setArtno(artInfo.getArtno());
 		classInfo.setClassno(classno);
@@ -94,7 +98,8 @@ public class ArtistClassServiceImpl implements ArtistClassService {
 		int location = parseLocation(artInfo);
 		classInfo.setLocation(location);
 		
-		classFile.setClassno(classno);
+		mainFile.setClassno(classno);
+		detailFile.setClassno(classno);
 		
 		
 		// 2. 아이템 팩토리 객체 생성
@@ -277,39 +282,73 @@ public class ArtistClassServiceImpl implements ArtistClassService {
 			
 			if( !item.isFormField()) {
 				
-				// 3) 파일 처리
-				String rename = sdfName.format(new Date());
+				File up = null;
 				
-				String origin = item.getName(); // 원본 파일
-				String ext = origin.substring(origin.lastIndexOf(".") + 1);
-				
-				// 저장될 이름
-				String stored = rename + "." + ext;
-				
-				// 실제 업로드 파일
-				File up = new File(context.getRealPath("upload")// 업로드될 폴더
-//					, item.getName() // 업로드될 파일 이름
-						, stored // 저장 파일의 이름(변환됨)
-						);
-				
-				classFile.setClassOriginFilename(origin);
-				classFile.setClassRenameFilename(stored);
-				
-				artistClassDao.insertClassInfo(classInfo);
-
-				try {
-					item.write(up); // 실제 업로드
-					item.delete(); // 임시파일삭제
-				} catch (Exception e) {
-					e.printStackTrace();
+				if( "mainFile".equals(item.getFieldName()) ) {
+					
+					// 3) 파일 처리
+					String rename = sdfName.format(new Date());
+					
+					String origin = item.getName(); // 원본 파일
+					String ext = origin.substring(origin.lastIndexOf(".") + 1);
+					
+					// 저장될 이름
+					String stored = "main" + rename + "." + ext;
+					
+					// 실제 업로드 파일
+					up = new File(context.getRealPath("upload")// 업로드될 폴더
+//						, item.getName() // 업로드될 파일 이름
+							, stored // 저장 파일의 이름(변환됨)
+							);
+					
+					mainFile.setClassOriginFilename(origin);
+					mainFile.setClassRenameFilename(stored);
+					
+					System.out.println(mainFile);
+					try {
+						item.write(up); // 실제 업로드
+						item.delete(); // 임시파일삭제
+					} catch (Exception e) {
+						e.printStackTrace();
+					}
+					
+				}else if( "detailFile".equals(item.getFieldName())) {
+					
+					// 3) 파일 처리
+					String rename = sdfName.format(new Date());
+					
+					String origin = item.getName(); // 원본 파일
+					String ext = origin.substring(origin.lastIndexOf(".") + 1);
+					
+					// 저장될 이름
+					String stored = rename + "." + ext;
+					
+					// 실제 업로드 파일
+					up = new File(context.getRealPath("upload")// 업로드될 폴더
+//						, item.getName() // 업로드될 파일 이름
+							, stored // 저장 파일의 이름(변환됨)
+							);
+					
+					detailFile.setClassOriginFilename(origin);
+					detailFile.setClassRenameFilename(stored);
+					
+					System.out.println(detailFile);
+					
+					try {
+						item.write(up); // 실제 업로드
+						item.delete(); // 임시파일삭제
+					} catch (Exception e) {
+						e.printStackTrace();
+					}
 				}
+
 			} //if( !item.isFormField()) end
 			
 		} //while( iter.hasNext()) End
 		
-		System.out.println(classInfo);
-		System.out.println(classFile);
-		artistClassDao.insertClassFile(classFile);
+		artistClassDao.insertClassInfo(classInfo);
+		artistClassDao.insertClassFile(mainFile);
+		artistClassDao.insertClassFile(detailFile);
 		
 	}
 
@@ -375,7 +414,8 @@ public class ArtistClassServiceImpl implements ArtistClassService {
 		
 		// 전달파라미터를 저장할 DTO 객체
 		ClassInfo classInfo = new ClassInfo();
-		ClassFile classFile = new ClassFile();
+		ClassFile mainFile = new ClassFile();
+		ClassFile detailFile = new ClassFile();
 		
 		// 2. 아이템 팩토리 객체 생성
 		DiskFileItemFactory factory = new DiskFileItemFactory();
@@ -438,7 +478,8 @@ public class ArtistClassServiceImpl implements ArtistClassService {
 						if( param != null && !"".equals(param)) {
 							int classNo = Integer.parseInt(param);
 							classInfo.setClassno(classNo);
-							classFile.setClassno(classNo);
+							mainFile.setClassno(classNo);
+							detailFile.setClassno(classNo);
 						}
 					} catch (UnsupportedEncodingException e) {
 						e.printStackTrace();
@@ -541,41 +582,80 @@ public class ArtistClassServiceImpl implements ArtistClassService {
 			
 			if( !item.isFormField()) {
 				
-				// 기존 파일 삭제
-				artistClassDao.deleteClassFile(classFile);
+				File up = null;
 				
-				// 3) 파일 처리
-				String rename = sdfName.format(new Date());
-				
-				String origin = item.getName(); // 원본 파일
-				String ext = origin.substring(origin.lastIndexOf(".") + 1);
-				
-				// 저장될 이름
-				String stored = rename + "." + ext;
-				
-				// 실제 업로드 파일
-				File up = new File(context.getRealPath("upload")// 업로드될 폴더
-//					, item.getName() // 업로드될 파일 이름
-						, stored // 저장 파일의 이름(변환됨)
-						);
-				
-				classFile.setClassOriginFilename(origin);
-				classFile.setClassRenameFilename(stored);
-				
-				artistClassDao.insertClassFile(classFile);
-
-				try {
-					item.write(up); // 실제 업로드
-					item.delete(); // 임시파일삭제
-				} catch (Exception e) {
-					e.printStackTrace();
+				if( "mainFile".equals(item.getFieldName()) ) {
+					
+					// 3) 파일 처리
+					String rename = sdfName.format(new Date());
+					
+					String origin = item.getName(); // 원본 파일
+					String ext = origin.substring(origin.lastIndexOf(".") + 1);
+					
+					// 저장될 이름
+					String stored = "main" + rename + "." + ext;
+					
+					// 실제 업로드 파일
+					up = new File(context.getRealPath("upload")// 업로드될 폴더
+//						, item.getName() // 업로드될 파일 이름
+							, stored // 저장 파일의 이름(변환됨)
+							);
+					
+					mainFile.setClassOriginFilename(origin);
+					mainFile.setClassRenameFilename(stored);
+					
+					System.out.println(mainFile);
+					try {
+						item.write(up); // 실제 업로드
+						item.delete(); // 임시파일삭제
+					} catch (Exception e) {
+						e.printStackTrace();
+					}
+					
+				}else if( "detailFile".equals(item.getFieldName())) {
+					
+					// 기존 파일 삭제
+					artistClassDao.deleteClassFile(detailFile);
+					// 3) 파일 처리
+					String rename = sdfName.format(new Date());
+					
+					String origin = item.getName(); // 원본 파일
+					String ext = origin.substring(origin.lastIndexOf(".") + 1);
+					
+					// 저장될 이름
+					String stored = rename + "." + ext;
+					
+					// 실제 업로드 파일
+					up = new File(context.getRealPath("upload")// 업로드될 폴더
+//						, item.getName() // 업로드될 파일 이름
+							, stored // 저장 파일의 이름(변환됨)
+							);
+					
+					detailFile.setClassOriginFilename(origin);
+					detailFile.setClassRenameFilename(stored);
+					
+					System.out.println(detailFile);
+					
+					try {
+						item.write(up); // 실제 업로드
+						item.delete(); // 임시파일삭제
+					} catch (Exception e) {
+						e.printStackTrace();
+					}
 				}
 			} //if( !item.isFormField()) end
 			
 		} //while( iter.hasNext()) End
 		
 		artistClassDao.updateClassInfo(classInfo);
+		artistClassDao.insertClassFile(mainFile);
+		artistClassDao.insertClassFile(detailFile);
 		
+	}
+
+	@Override
+	public ClassFile selectDetailFileByClassno(int classno) {
+		return artistClassDao.selectDetailFileByClassno(classno);
 	}
 
 }

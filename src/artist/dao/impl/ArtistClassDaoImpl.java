@@ -184,6 +184,7 @@ public class ArtistClassDaoImpl implements ArtistClassDao {
 		sql += " WHERE 1=1";
 		sql += " AND c.art_no = ?";
 		sql += " AND c.class_check <> 1";
+		sql += " AND f.class_rename_filename LIKE 'main%'";
 		sql += " ORDER BY C.class_no DESC";
 
 		//최종 결과 변수
@@ -376,71 +377,71 @@ public class ArtistClassDaoImpl implements ArtistClassDao {
 	@Override
 	public Map<String, Object> selectClassByClassNo(int classno) {	
 	
-	conn = JDBCTemplate.getConnection(); //DB 연결
+		conn = JDBCTemplate.getConnection(); //DB 연결
+		
+		//수행할 SQL
+		String sql = "";
+		sql += "SELECT * ";
+		sql += " FROM classinfo c";
+		sql += " LEFT OUTER JOIN classfile f";
+		sql += " on (c.class_no = f.class_no)";
+		sql += " WHERE c.class_no = ?";
+		sql += " AND f.class_rename_filename LIKE 'main%'";
 	
-	//수행할 SQL
-	String sql = "";
-	sql += "SELECT * ";
-	sql += " FROM classinfo c";
-	sql += " LEFT OUTER JOIN classfile f";
-	sql += " on (c.class_no = f.class_no)";
-	sql += " WHERE c.class_no = ?";
-
-	//최종 결과 변수
-	Map<String, Object> map = null;
-	
-	try {
-		//SQL 수행 객체
-		ps = conn.prepareStatement(sql);
+		//최종 결과 변수
+		Map<String, Object> map = null;
 		
-		ps.setInt(1, classno);
-		
-		//SQL 수행 및 결과 저장
-		rs = ps.executeQuery();
-		
-//		System.out.println(rs.next());
-		
-		//SQL 수행 결과 처리
-		while( rs.next() ) {
-			
-			map = new HashMap<>();
-			
-			map.put("classNo", rs.getInt("class_no"));
-			map.put("className", rs.getString("class_name"));
-			map.put("category", rs.getInt("category"));
-			map.put("location", rs.getInt("location"));
-			map.put("classPrice", rs.getInt("class_price"));
-			map.put("talentDonation",rs.getInt("talent_donation"));
-			map.put("postDate",rs.getDate("post_date"));
-			map.put("recruitStartdate",rs.getDate("recruit_startdate"));
-			map.put("recruitEnddate",rs.getDate("recruit_enddate"));
-			map.put("maxPeople",rs.getInt("max_people"));
-			map.put("minPeople",rs.getInt("min_people"));
-			map.put("classStartdate",rs.getDate("class_startdate"));
-			map.put("classEnddate",rs.getDate("class_enddate"));
-			map.put("classContent",rs.getString("class_content"));
-			map.put("postStatus",rs.getInt("post_Status"));
-			map.put("classCheck",rs.getInt("class_check"));
-
-			map.put("classFileNo", rs.getInt("class_file_no"));
-			map.put("classOriginFilename", rs.getString("class_origin_filename"));
-			map.put("classRenameFilename", rs.getString("class_rename_filename"));
-		}
-		
-	} catch (SQLException e) {
-		e.printStackTrace();
-	} finally {
 		try {
-			if(rs!=null)	rs.close();
-			if(ps!=null)	ps.close();
+			//SQL 수행 객체
+			ps = conn.prepareStatement(sql);
+			
+			ps.setInt(1, classno);
+			
+			//SQL 수행 및 결과 저장
+			rs = ps.executeQuery();
+			
+			//SQL 수행 결과 처리
+			while( rs.next() ) {
+				
+				map.put("classNo", rs.getInt("class_no"));
+				map.put("className", rs.getString("class_name"));
+				map.put("category", rs.getInt("category"));
+				map.put("location", rs.getInt("location"));
+				map.put("classPrice", rs.getInt("class_price"));
+				map.put("talentDonation",rs.getInt("talent_donation"));
+				map.put("postDate",rs.getDate("post_date"));
+				map.put("recruitStartdate",rs.getDate("recruit_startdate"));
+				map.put("recruitEnddate",rs.getDate("recruit_enddate"));
+				map.put("maxPeople",rs.getInt("max_people"));
+				map.put("minPeople",rs.getInt("min_people"));
+				map.put("classStartdate",rs.getDate("class_startdate"));
+				map.put("classEnddate",rs.getDate("class_enddate"));
+				map.put("classContent",rs.getString("class_content"));
+				map.put("postStatus",rs.getInt("post_Status"));
+				map.put("classCheck",rs.getInt("class_check"));
+	
+				map.put("classFileNo", rs.getInt("class_file_no"));
+				map.put("classOriginFilename", rs.getString("class_origin_filename"));
+				map.put("classRenameFilename", rs.getString("class_rename_filename"));
+			}
+			
+			System.out.println(map);
+			
 		} catch (SQLException e) {
 			e.printStackTrace();
+		} finally {
+			try {
+				if(rs!=null)	rs.close();
+				if(ps!=null)	ps.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
 		}
+		
+		//최종 결과 반환
+		return map;
 	}
 	
-	//최종 결과 반환
-	return map;
-	}
 	@Override
 	public void deleteClassFile(ClassFile classFile) {
 
@@ -533,5 +534,54 @@ public class ArtistClassDaoImpl implements ArtistClassDao {
 			}
 		}
 				
+	}
+	@Override
+	public ClassFile selectDetailFileByClassno(int classno) {
+		conn = JDBCTemplate.getConnection(); //DB 연결
+		
+		//수행할 SQL
+		String sql = "";
+		sql += "SELECT * ";
+		sql += " FROM classfile";
+		sql += " WHERE class_no = ?";
+		sql += " AND class_rename_filename NOT LIKE 'main%'";
+	
+		//최종 결과 변수
+		ClassFile detailFile = new ClassFile();
+		
+		try {
+			//SQL 수행 객체
+			ps = conn.prepareStatement(sql);
+			
+			ps.setInt(1, classno);
+			
+			//SQL 수행 및 결과 저장
+			rs = ps.executeQuery();
+			
+	//		System.out.println(rs.next());
+			
+			//SQL 수행 결과 처리
+			while( rs.next() ) {
+
+				detailFile.setClassno(rs.getInt("class_no"));
+				detailFile.setClassFileno(rs.getInt("class_file_no"));
+				detailFile.setClassOriginFilename(rs.getString("class_origin_filename"));
+				detailFile.setClassRenameFilename(rs.getString("class_rename_filename"));
+
+			}
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				if(rs!=null)	rs.close();
+				if(ps!=null)	ps.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+		
+		//최종 결과 반환
+		return detailFile;
 	}
 }

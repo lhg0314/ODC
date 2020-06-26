@@ -7,6 +7,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import dto.ArtistInfo;
+import dto.ClassFile;
 import dto.ClassInfo;
 import util.Paging;
 
@@ -63,5 +64,10 @@ public interface ArtistClassService {
 	 * @param artInfo
 	 */
 	public void updateClassInfo(HttpServletRequest req, HttpServletResponse resp);
+
+	/* 
+	 * 클래스 상세 파일 가져오기
+	 */
+	public ClassFile selectDetailFileByClassno(int classno);
  
 }

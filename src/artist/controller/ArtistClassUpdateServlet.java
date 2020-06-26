@@ -13,6 +13,7 @@ import javax.servlet.http.HttpSession;
 import artist.service.face.ArtistClassService;
 import artist.service.impl.ArtistClassServiceImpl;
 import dto.ArtistInfo;
+import dto.ClassFile;
 
 @WebServlet("/artist/class/update")
 public class ArtistClassUpdateServlet extends HttpServlet {
@@ -32,8 +33,10 @@ public class ArtistClassUpdateServlet extends HttpServlet {
 		
 		// 선택한 클래스 상세 정보
 		Map<String, Object> map = artistClassService.selectClassByClassNo(classno);
+		ClassFile detailFile = artistClassService.selectDetailFileByClassno(classno);
 		
 		req.setAttribute("info", map);
+		req.setAttribute("detailFile", detailFile);
 	
 		// 포워드
 		req.getRequestDispatcher("/WEB-INF/views/artist/class/artistClassView.jsp").forward(req, resp);

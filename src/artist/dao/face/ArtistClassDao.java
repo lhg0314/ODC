@@ -75,4 +75,11 @@ public interface ArtistClassDao {
 	 */
 	public void updateClassInfo(ClassInfo classInfo);
 
+	/**
+	 * 클래스 상세 파일 가져오기
+	 * @param classno
+	 * @return
+	 */
+	public ClassFile selectDetailFileByClassno(int classno);
+
 }

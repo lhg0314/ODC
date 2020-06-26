@@ -4,7 +4,7 @@
     
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>    
 <!-- mian header -->
-<c:import url="/WEB-INF/layout/common/main/header.jsp"></c:import> 
+<c:import url="/WEB-INF/layout/common/main/artHeader.jsp"></c:import> 
 
 <!-- artistpage header -->    
 <c:import url="/WEB-INF/layout/artist/artistpageheader.jsp"></c:import> 
@@ -12,9 +12,29 @@
 <script type="text/javascript">
 $(document).ready(function(){
 
-	$("#classFile").change(function(){
+	$("#classFile1").change(function(){
+	
+		$("#fileView1").html("");
+		var file = this.files[0];
+		console.log(file);
+	
+		/* 파일리더 객체 생성 */
+		var reader = new FileReader();
+	
+		/* 리더 시작 시 함수 구현 */
+		reader.onload = function(e){
 		
-		$("#fileView").html("");
+			var url = e.target.result;
+		
+			$("#fileView1").html($("<img src=" + url + ">").css({"height" : "180px", "width" : "180px"}));
+		}
+
+		reader.readAsDataURL(file);		
+	});
+		
+	$("#classFile2").change(function(){
+	
+		$("#fileView2").html("");
 		var file = this.files[0];
 		console.log(file);
 		
@@ -23,24 +43,26 @@ $(document).ready(function(){
 		
 		/* 리더 시작 시 함수 구현 */
 		reader.onload = function(e){
-			
+		
 			var url = e.target.result;
 			
-			$("#fileView").html($("<img src=" + url + ">").css({"height" : "180px", "width" : "180px"}));
+			$("#fileView2").html($("<img src=" + url + ">").css({"height" : "180px", "width" : "180px"}));
 		}
-		
+	
 		reader.readAsDataURL(file);		
 	});
 	
+		
 	$("#classEndDate").blur(function(){
 		$("#recruitEndDate").val($(this).val());
 	});
 	
 	$("#talentDonation").change(function(){
 		if( $(this).is(":checked")){
-			$("#classPrice").val("");
+			$("#classPrice").val("100");
 			$("#classPrice").attr("readOnly", "readOnly");
 		}else{
+			$("#classPrice").val("");
 			$("#classPrice").removeAttr("readOnly");			
 		}
 	})
@@ -111,7 +133,7 @@ $(document).ready(function(){
 	width: 180px;
 }
 
-#fileView{
+#fileView1, #fileView2{
 	height: 200px;
 	width: 200px;
 	border: 1px solid #ccc;
@@ -193,12 +215,19 @@ $(document).ready(function(){
 		</div>
 		
 		<div class="form-group">
-	    	<label for="classFile">사진 첨부</label>
-	    	<input type="file" accept="image/*" id="classFile" name="classFile" required="required"/>
-			<div id="fileView">
+	    	<label for="classFile1">사진 첨부 - 메인 소개 사진</label>
+	    	<input type="file" accept="image/*" id="classFile1" name="mainFile" required="required"/>
+			<div id="fileView1">
 			</div>
 	    </div>
 		
+		<div class="form-group">
+	    	<label for="classFile2">사진 첨부 - 상세 사진</label>
+	    	<input type="file" accept="image/*" id="classFile2" name="detailFile" required="required"/>
+			<div id="fileView2">
+			</div>
+	    </div>
+	    
 		<div class="text-center"><button class="class_button">클래스 등록</button></div>
 		</form>
 	

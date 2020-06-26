@@ -23,17 +23,23 @@ $(document).ready(function(){
 		$("#classPrice").attr("readOnly", "readOnly");
 	}
 	
-	$("#btnX").click(function(){
-		$("#fileView").html("");
-		$("#originFile").css("display", "none");
-		$("#classFile").attr("type", "file");		
+	/* 기존 첨부파일 지우기 */
+	$("#btnX1").click(function(){
+		$("#fileView1").html("");
+		$("#originFile1").css("display", "none");
+		$("#classFile1").attr("type", "file");		
+	})
+	$("#btnX2").click(function(){
+		$("#fileView2").html("");
+		$("#originFile2").css("display", "none");
+		$("#classFile2").attr("type", "file");		
 	})
 	
 	
 	/* 첨부파일 이미지 미리보기 */
-	$("#classFile").change(function(){
+	$("#classFile1").change(function(){
 		
-		$("#fileView").html("");
+		$("#fileView1").html("");
 		var file = this.files[0];
 		console.log(file);
 		
@@ -45,7 +51,26 @@ $(document).ready(function(){
 			
 			var url = e.target.result;
 			
-			$("#fileView").html($("<img src=" + url + ">").css({"height" : "180px", "width" : "180px"}));
+			$("#fileView1").html($("<img src=" + url + ">").css({"height" : "180px", "width" : "180px"}));
+		}
+		
+		reader.readAsDataURL(file);		
+	});
+	$("#classFile2").change(function(){
+		
+		$("#fileView2").html("");
+		var file = this.files[0];
+		console.log(file);
+		
+		/* 파일리더 객체 생성 */
+		var reader = new FileReader();
+		
+		/* 리더 시작 시 함수 구현 */
+		reader.onload = function(e){
+			
+			var url = e.target.result;
+			
+			$("#fileView2").html($("<img src=" + url + ">").css({"height" : "180px", "width" : "180px"}));
 		}
 		
 		reader.readAsDataURL(file);		
@@ -136,7 +161,7 @@ $(document).ready(function(){
 	width: 180px;
 }
 
-#fileView{
+#fileView1, #fileView2{
 	height: 200px;
 	width: 200px;
 	border: 1px solid #ccc;
@@ -144,7 +169,7 @@ $(document).ready(function(){
 	padding: 10px;
 }
 
-#imgFile{
+#imgFile1, #imgFile2{
 	width: 180px;
 	height: 180px;
 }
@@ -225,13 +250,24 @@ $(document).ready(function(){
 		</div>
 		
 		<div class="form-group">
-	    	<label for="classFile">사진 첨부</label><br>
-	    	<input type="hidden" accept="image/*" id="classFile" name="classFile" required="required"/>
-	    	<div id="originFile">
-	    	<span >${info.classOriginFilename } </span><button type="button" id="btnX" class="btn btn-default btn-xs">X</button>
+	    	<label for="classFile1">사진 첨부</label><br>
+	    	<input type="hidden" accept="image/*" id="classFile1" name="mainFile" required="required"/>
+	    	<div id="originFile1">
+	    	<span >${info.classOriginFilename } </span><button type="button" id="btnX1" class="btn btn-default btn-xs">X</button>
 			</div>
-			<div id="fileView">
-			<img id="imgFile" src="/upload/${info.classRenameFilename }" />
+			<div id="fileView1">
+			<img id="imgFile1" src="/upload/${info.classRenameFilename }" />
+			</div>
+	    </div>
+
+		<div class="form-group">
+	    	<label for="classFile2">사진 첨부</label><br>
+	    	<input type="hidden" accept="image/*" id="classFile2" name="detailFile" required="required"/>
+	    	<div id="originFile2">
+	    	<span >${detailFile.classOriginFilename } </span><button type="button" id=" btnX2" class="btn btn-default btn-xs">X</button>
+			</div>
+			<div id="fileView2">
+			<img id="imgFile2" src="/upload/${detailFile.classRenameFilename }" />
 			</div>
 	    </div>
 		
