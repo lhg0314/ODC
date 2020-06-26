@@ -45,8 +45,8 @@ $(document).ready(function(){
 	<tr>
 		<th>번호</th>
 		<th>작성자 아이디</th>
-		<th style="width: 20%;">클래스명</th>
-		<th style="width: 40%;">제목</th>
+		<th style="width: 30%;">클래스명</th>
+		<th style="width: 30%;">제목</th>
 		<th>게시 날짜</th>
 	</tr>
 
@@ -61,7 +61,7 @@ $(document).ready(function(){
 	<tr class="table-hover">
 		<td>${info.reviewNo }</td>
 		<td>${info.userId }</td>
-		<td style="text-align: left;">${info.className}</td>
+		<td style="text-align: left;"><a href="/class/view?classno=${info.classNo }">${info.className}</a></td>
 		<td style="text-align: left;"><a href="/review/view?reviewno=${info.reviewNo }">${info.reviewTitle }</a></td>
 		<td>${info.reviewDate }</td>
 	</tr>	
