@@ -314,8 +314,9 @@ public class ArtistClassDaoImpl implements ArtistClassDao {
 		sql += " 		LEFT OUTER JOIN classfile f";
 		sql += " 		ON (i.class_no = f.class_no)";
 		sql += " 		WHERE 1=1";
-		sql += "		AND class_check = 1";
-		sql += "		AND art_no = ?"; 
+		sql += "		AND i.class_check = 1";
+		sql += " 		AND f.class_rename_filename LIKE 'main%'";
+		sql += "		AND i.art_no = ?"; 
 		sql += " 		ORDER BY i.class_no DESC";
 		sql += "    ) X";
 		sql += "    ORDER BY rnum";
@@ -403,6 +404,8 @@ public class ArtistClassDaoImpl implements ArtistClassDao {
 			//SQL 수행 결과 처리
 			while( rs.next() ) {
 				
+				map = new HashMap<String, Object>();
+				
 				map.put("classNo", rs.getInt("class_no"));
 				map.put("className", rs.getString("class_name"));
 				map.put("category", rs.getInt("category"));
@@ -425,8 +428,6 @@ public class ArtistClassDaoImpl implements ArtistClassDao {
 				map.put("classRenameFilename", rs.getString("class_rename_filename"));
 			}
 			
-			System.out.println(map);
-			
 		} catch (SQLException e) {
 			e.printStackTrace();
 		} finally {
@@ -443,7 +444,7 @@ public class ArtistClassDaoImpl implements ArtistClassDao {
 	}
 	
 	@Override
-	public void deleteClassFile(ClassFile classFile) {
+	public void deleteMainFile(ClassFile classFile) {
 
 		conn = JDBCTemplate.getConnection(); //DB 연결
 		
@@ -451,6 +452,7 @@ public class ArtistClassDaoImpl implements ArtistClassDao {
 		String sql = "";
 		sql += "DELETE FROM classfile";
 		sql += " WHERE class_no = ?";
+		sql += " AND class_rename_filename LIKE 'main%'";
 
 		
 		try {
@@ -473,6 +475,40 @@ public class ArtistClassDaoImpl implements ArtistClassDao {
 		}
 		
 	}
+	
+	@Override
+	public void deleteDetailFile(ClassFile classFile) {
+		
+		conn = JDBCTemplate.getConnection(); //DB 연결
+		
+		//수행할 SQL
+		String sql = "";
+		sql += "DELETE FROM classfile";
+		sql += " WHERE class_no = ?";
+		sql += " AND class_rename_filename NOT LIKE 'main%'";
+		
+		
+		try {
+			//SQL 수행 객체
+			ps = conn.prepareStatement(sql);
+			
+			ps.setInt(1, classFile.getClassno());
+			
+			//SQL 수행 및 결과 저장
+			ps.executeUpdate();
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				if(ps!=null)	ps.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+		
+	}
+	
 	@Override
 	public void updateClassInfo(ClassInfo classInfo) {
 		

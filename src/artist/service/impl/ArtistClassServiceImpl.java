@@ -148,7 +148,9 @@ public class ArtistClassServiceImpl implements ArtistClassService {
 			FileItem item = iter.next();
 			
 			// 1) 빈파일
-			if( item.getSize() <= 0) continue;
+			if( item.getSize() <= 0) {
+				continue;
+			}
 			
 			// 2) 기본 전달 파라미터 처리
 			if( item.isFormField()) {
@@ -463,10 +465,12 @@ public class ArtistClassServiceImpl implements ArtistClassService {
 			FileItem item = iter.next();
 			
 			// 1) 빈파일
-			if( item.getSize() <= 0) continue;
+			if( item.getSize() <= 0) {
+				continue;
+			}
 			
 			// 2) 기본 전달 파라미터 처리
-			if( item.isFormField()) {
+			else if( item.isFormField()) {
 				String key = item.getFieldName();
 				
 				String param = null;
@@ -495,81 +499,6 @@ public class ArtistClassServiceImpl implements ArtistClassService {
 					} catch (UnsupportedEncodingException e) {
 						e.printStackTrace();
 					}
-				}else if("minPeople".equals(key)) {
-					try {
-						param = item.getString("UTF-8");
-						
-						if( param != null && !"".equals(param)) {
-							int minPeople = Integer.parseInt(param);
-							classInfo.setMinPeople(minPeople);
-						}
-					} catch (UnsupportedEncodingException e) {
-						e.printStackTrace();
-					}
-				}else if("maxPeople".equals(key)) {
-					try {
-						param = item.getString("UTF-8");
-						
-						if( param != null && !"".equals(param)) {
-							int maxPeople = Integer.parseInt(param);
-							classInfo.setMaxPeople(maxPeople);
-						}
-					} catch (UnsupportedEncodingException e) {
-						e.printStackTrace();
-					}
-				}else if("classStartDate".equals(key)) {
-					try {
-						param = item.getString("UTF-8");
-						
-						try {
-							Date classStartdate = sdf.parse(param);
-							classInfo.setClassStartdate(classStartdate);
-						} catch (ParseException e) {
-							e.printStackTrace();
-						}
-					} catch (UnsupportedEncodingException e) {
-						e.printStackTrace();
-					}
-				}else if("classEndDate".equals(key)) {
-					try {
-						param = item.getString("UTF-8");
-						
-						try {
-							Date classEnddate = sdf.parse(param);
-							classInfo.setClassEnddate(classEnddate);
-						} catch (ParseException e) {
-							e.printStackTrace();
-						}
-					} catch (UnsupportedEncodingException e) {
-						e.printStackTrace();
-					}
-				}else if("recruitStartDate".equals(key)) {
-					try {
-						param = item.getString("UTF-8");
-						
-						try {
-							Date recruitStartdate = sdf.parse(param);
-							classInfo.setRecruitStartdate(recruitStartdate);
-						} catch (ParseException e) {
-							e.printStackTrace();
-						}
-						
-					} catch (UnsupportedEncodingException e) {
-						e.printStackTrace();
-					}
-				}else if("recruitEndDate".equals(key)) {
-					try {
-						param = item.getString("UTF-8");
-						
-						try {
-							Date recruitEnddate = sdf.parse(param);
-							classInfo.setRecruitEnddate(recruitEnddate);
-						} catch (ParseException e) {
-							e.printStackTrace();
-						}
-					} catch (UnsupportedEncodingException e) {
-						e.printStackTrace();
-					}
 				}else if("classContent".equals(key)) {
 					try {
 						classInfo.setClassContent(item.getString("UTF-8"));
@@ -580,11 +509,14 @@ public class ArtistClassServiceImpl implements ArtistClassService {
 				
 			}// f( item.isFormField()) end
 			
-			if( !item.isFormField()) {
+			else if( !item.isFormField()) {
 				
 				File up = null;
 				
 				if( "mainFile".equals(item.getFieldName()) ) {
+					
+					// 기존 파일 삭제
+					artistClassDao.deleteMainFile(mainFile);
 					
 					// 3) 파일 처리
 					String rename = sdfName.format(new Date());
@@ -604,7 +536,8 @@ public class ArtistClassServiceImpl implements ArtistClassService {
 					mainFile.setClassOriginFilename(origin);
 					mainFile.setClassRenameFilename(stored);
 					
-					System.out.println(mainFile);
+					artistClassDao.insertClassFile(mainFile);
+					
 					try {
 						item.write(up); // 실제 업로드
 						item.delete(); // 임시파일삭제
@@ -615,7 +548,7 @@ public class ArtistClassServiceImpl implements ArtistClassService {
 				}else if( "detailFile".equals(item.getFieldName())) {
 					
 					// 기존 파일 삭제
-					artistClassDao.deleteClassFile(detailFile);
+					artistClassDao.deleteDetailFile(detailFile);
 					// 3) 파일 처리
 					String rename = sdfName.format(new Date());
 					
@@ -634,7 +567,7 @@ public class ArtistClassServiceImpl implements ArtistClassService {
 					detailFile.setClassOriginFilename(origin);
 					detailFile.setClassRenameFilename(stored);
 					
-					System.out.println(detailFile);
+					artistClassDao.insertClassFile(detailFile);
 					
 					try {
 						item.write(up); // 실제 업로드
@@ -648,14 +581,17 @@ public class ArtistClassServiceImpl implements ArtistClassService {
 		} //while( iter.hasNext()) End
 		
 		artistClassDao.updateClassInfo(classInfo);
-		artistClassDao.insertClassFile(mainFile);
-		artistClassDao.insertClassFile(detailFile);
 		
 	}
 
 	@Override
 	public ClassFile selectDetailFileByClassno(int classno) {
 		return artistClassDao.selectDetailFileByClassno(classno);
+	}
+
+	@Override
+	public int BookingCntCheck(int classno) {
+		return artistClassDao.BookingCntCheck(classno);
 	}
 
 }

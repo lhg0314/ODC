@@ -11,6 +11,8 @@ import javax.servlet.http.HttpServletResponse;
 
 import admin.service.face.AdminClassService;
 import admin.service.impl.AdminClassServiceImpl;
+import artist.service.face.ArtistClassService;
+import artist.service.impl.ArtistClassServiceImpl;
 import dto.ClassFile;
 
 /**
@@ -21,6 +23,7 @@ public class ClassViewServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	
 	private AdminClassService adminClassService = new AdminClassServiceImpl();
+	private ArtistClassService artistClassService = new ArtistClassServiceImpl();
 	
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -34,8 +37,10 @@ public class ClassViewServlet extends HttpServlet {
 		
 		// 선택한 클래스 상세 정보
 		Map<String, Object> map = adminClassService.selectClassByClassNo(classno);
+		ClassFile detailFile = artistClassService.selectDetailFileByClassno(classno);
 
 		req.setAttribute("info", map);
+		req.setAttribute("detailFile", detailFile);
 //		System.out.println(map);
 		
 		// 요청받은 view

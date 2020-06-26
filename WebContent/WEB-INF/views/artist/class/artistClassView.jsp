@@ -29,6 +29,7 @@ $(document).ready(function(){
 		$("#originFile1").css("display", "none");
 		$("#classFile1").attr("type", "file");		
 	})
+	
 	$("#btnX2").click(function(){
 		$("#fileView2").html("");
 		$("#originFile2").css("display", "none");
@@ -56,6 +57,7 @@ $(document).ready(function(){
 		
 		reader.readAsDataURL(file);		
 	});
+	
 	$("#classFile2").change(function(){
 		
 		$("#fileView2").html("");
@@ -224,14 +226,14 @@ $(document).ready(function(){
 	    
 		<div class="form-group" id="people">
 	    	<label for="minPeople">인원 수</label><br>
-	    	<input type="number" min="1" class="form-control" id="minPeople" name="minPeople" required="required" value="${info.minPeople }" />&nbsp;&nbsp;~&nbsp;
-	    	<input type="number" min="1" class="form-control" id="maxPeople" name="maxPeople" required="required" value="${info.maxPeople }"/>
+	    	<input type="number" min="1" class="form-control" id="minPeople" name="minPeople" required="required" value="${info.minPeople }" readonly="readonly" />&nbsp;&nbsp;~&nbsp;
+	    	<input type="number" min="1" class="form-control" id="maxPeople" name="maxPeople" required="required" value="${info.maxPeople }" readonly="readonly"/>
 	    </div>
 	    
 		<div class="form-group">
 	    	<label for="classStartDate">클래스 진행기간</label><br>
-	    	<input type="date" class="form-control" id="classStartDate" value="${info.classStartdate }" name="classStartDate" required="required" />&nbsp;&nbsp;~&nbsp;
-	    	<input type="date" class="form-control" id="classEndDate" value="${info.classEnddate }" name="classEndDate" required="required"/>
+	    	<input type="date" class="form-control" id="classStartDate" value="${info.classStartdate }" readonly="readonly" name="classStartDate" required="required" />&nbsp;&nbsp;~&nbsp;
+	    	<input type="date" class="form-control" id="classEndDate" value="${info.classEnddate }" readonly="readonly" name="classEndDate" required="required"/>
 	    </div>
 	    
 		<div class="form-group">
@@ -251,23 +253,23 @@ $(document).ready(function(){
 		
 		<div class="form-group">
 	    	<label for="classFile1">사진 첨부</label><br>
-	    	<input type="hidden" accept="image/*" id="classFile1" name="mainFile" required="required"/>
+	    	<input type="hidden" accept="image/*" id="classFile1" name="mainFile" required="required" />
 	    	<div id="originFile1">
-	    	<span >${info.classOriginFilename } </span><button type="button" id="btnX1" class="btn btn-default btn-xs">X</button>
+	    		<span>${info.classOriginFilename } </span><button type="button" id="btnX1" class="btn btn-default btn-xs">X</button>
 			</div>
 			<div id="fileView1">
-			<img id="imgFile1" src="/upload/${info.classRenameFilename }" />
+				<img id="imgFile1" src="/upload/${info.classRenameFilename }" />
 			</div>
 	    </div>
 
 		<div class="form-group">
 	    	<label for="classFile2">사진 첨부</label><br>
-	    	<input type="hidden" accept="image/*" id="classFile2" name="detailFile" required="required"/>
+	    	<input type="hidden" accept="image/*" id="classFile2" name="detailFile" required="required" />
 	    	<div id="originFile2">
-	    	<span >${detailFile.classOriginFilename } </span><button type="button" id=" btnX2" class="btn btn-default btn-xs">X</button>
+	    		<span>${detailFile.classOriginFilename } </span><button type="button" id="btnX2" class="btn btn-default btn-xs">X</button>
 			</div>
 			<div id="fileView2">
-			<img id="imgFile2" src="/upload/${detailFile.classRenameFilename }" />
+				<img id="imgFile2" src="/upload/${detailFile.classRenameFilename }" />
 			</div>
 	    </div>
 		

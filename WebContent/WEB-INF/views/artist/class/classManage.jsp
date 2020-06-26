@@ -9,6 +9,17 @@
 
 <!-- artistpage header -->    
 <c:import url="/WEB-INF/layout/artist/artistpageheader.jsp"></c:import> 
+<script type="text/javascript">
+function classDelete(classno){
+	
+	var res = confirm("클래스를 정말 삭제하시겠습니까?");
+	
+	if(res){
+		location.href = "/artist/class/delete?classno=" + classno;
+	}
+}
+</script>
+
 
 <style type="text/css">
 #SvnClassManage{
@@ -52,6 +63,12 @@
 		<th>게시 날짜</th>
 		<th>상세보기</th>
 	</tr>
+	<c:if test="${empty list }">
+		<tr>
+			<th colspan="7" style="color: thistle; font-weight: bold;">등록된 클래스가 없습니다</th>
+		</tr>
+	</c:if>
+	
 	<c:forEach var="info" items="${list }" varStatus="status">
 	<tr class="table-hover">
 		<td>${status.count }</td>
@@ -76,14 +93,19 @@
 		<c:if test="${info.location eq 7}">제주</c:if>
 		</td>
 		<td>${info.postDate }</td>
-		<td><button type="button" onclick="location.href='/artist/class/update?classno=${info.classNo }'">수정</button></td>
+		<td>
+		<button type="button" onclick="location.href='/artist/class/update?classno=${info.classNo }'">수정</button>
+		<button type="button" onclick="classDelete(${info.classNo})">삭제</button>
+		</td>
 	</tr>
 	</c:forEach>
 
 </table>
 
-<c:import url="/WEB-INF/paging/artistClassManage.jsp" />
-	
+<c:if test="${not empty list }">
+	<c:import url="/WEB-INF/paging/artistClassManage.jsp" />
+</c:if>	
+
 <div class="clearfix"></div>
 </div> <!-- 전체를 감싸는 div -->
 </section>
