@@ -129,6 +129,7 @@ function requestPayment() {
 			        msg += '\n[done]';
 
 					alert(msg);
+					location.href="/mypage/class/booking";
 					
 	    		} else {
 	    			//[3] 아직 제대로 결제가 되지 않았습니다.
@@ -141,6 +142,7 @@ function requestPayment() {
 	        msg += '에러내용 : ' + rsp.error_msg;
 	    }
 	    alert(msg);
+	    location.href="/mypage/class/wish";
 	});
 }
 
