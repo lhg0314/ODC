@@ -21,7 +21,7 @@ function logincheck(){
 	var id=document.getElementById("id").value;
 	var pw=document.getElementById("pw").value;
 	opt=$('input[name=loginActor]:checked').val();
-	
+	 
 
 	
 	var param="id="+id+"&pw="+pw+"&opt="+opt;
