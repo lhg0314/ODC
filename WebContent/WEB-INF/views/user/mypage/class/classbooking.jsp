@@ -53,16 +53,15 @@ function bookingcancel(bookingno) {
 
 
 <div id="main">
-	<span id="boardtitle">클래스</span>
-	<hr>
 	<span id="boardtitle" ><a href="/mypage/class/booking" class="anone">예약 클래스</a></span>
-	<br><br>
+	<hr>
 
 
 <table class="table-striped table-hover table-condensed">
 
 <!-- 테이블 th -->
 <tr style="background: thistle;" >
+	<th style="width: 20%">주문번호</th>
 	<th style="width: 15%">대표 사진</th>
 	<th style="width: 15%">클래스 이름</th>
 	<th style="width: 15%">작가 이름</th>
@@ -88,6 +87,7 @@ function bookingcancel(bookingno) {
 
 <tr style="text-align: center;">
 	<!-- 사진을 누르면  classno 을 쿼리스트링 값으로 전달하여 페이지를 바꾼다 -->
+	<td>${book.merchantuid }</td>
 	<td><a href="#?classno=${book.classno }"><img src="/upload/${book.classrenamefilename }" alt="..." class="img-rounded imgsize"></a></td>
 	<td>${book.classname }</td>
 	<td>${book.artid }</td>

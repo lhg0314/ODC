@@ -110,25 +110,35 @@ function requestPayment() {
 	        // 결제 완료 처리 로직
 			//[1] 서버단에서 결제정보 조회를 위해 jQuery ajax로 imp_uid 전달하기
 			jQuery.ajax({
-				url: "/pay/complete", //cross-domain error가 발생하지 않도록 동일한 도메인으로 전송
+				url: "/mypage/class/payment", //cross-domain error가 발생하지 않도록 동일한 도메인으로 전송
 				type: 'POST',
 				dataType: 'json',
 				data: {
 					// rsp객체를 통해 전달된 데이터를 DB에 저장할 때 사용한다
-					imp_uid : rsp.imp_uid
+					merchant_uid : 'merchant_' + new Date().getTime(), //고유주문번호 - random, unique
+// 				    name : '${classpayment.classname }', //주문명 - 선택항목, 결제정보 확인을 위한 입력, 16자 이내로 작성
+				    amount : '${classpayment.wishtotalprice }', //결제금액 - 필수항목
+// 				    buyer_email : '${classpayment.useremail }', //주문자Email - 선택항목
+// 				    buyer_name : '${classpayment.username }', //주문자명 - 선택항목
+// 				    buyer_tel : '${classpayment.userphone }', //주문자연락처 - 필수항목, 누락되면 PG사전송 시 오류 발생
+				    bookingdate : '${classpayment.wishdate }', //클래스 예약날짜
+				    wishcount :'${classpayment.wishcount}', // 예약인원
+				    classno :'${classpayment.classno}', // 클래스 번호\
+				    	
 				}
 			
 			}).done(function(data) {
 				//[2] 서버에서의 응답 처리
 				if ( data == 'success' ) {
 					var msg = '결제가 완료되었습니다.';
-					msg += '\n고유ID : ' + rsp.imp_uid;
-					msg += '\n상점 거래ID : ' + rsp.merchant_uid;
-					msg += '\n결제 금액 : ' + rsp.paid_amount;
-					msg += '\n카드 승인번호 : ' + rsp.apply_num;
-			        msg += '\n[done]';
+// 					msg += '\n고유ID : ' + rsp.imp_uid;
+// 					msg += '\n상점 거래ID : ' + rsp.merchant_uid;
+// 					msg += '\n결제 금액 : ' + rsp.paid_amount;
+// 					msg += '\n카드 승인번호 : ' + rsp.apply_num;
+// 			        msg += '\n[done]';
 
 					alert(msg);
+// 					location.href="/mypage/class/wish"
 					
 	    		} else {
 	    			//[3] 아직 제대로 결제가 되지 않았습니다.
@@ -141,20 +151,18 @@ function requestPayment() {
 	        msg += '에러내용 : ' + rsp.error_msg;
 	    }
 	    alert(msg);
+	   
 	});
+	
+	
 }
 
 </script>
 
-
-
-
-
 <div id="main">
-	<span id="boardtitle">클래스</span>
-	<hr>
+
 	<span id="boardtitle" ><a href="/mypage/class/wish" class="anone">결제확인</a></span>
-	<br><br>
+	<hr>
 
 <table class="table-striped table-hover table-condensed">
 
@@ -198,7 +206,7 @@ function requestPayment() {
 
 <!-- 값 출력  -->
 <tr style="text-align: center;">
-	<td><img src="/upload/${classpayment.classrenamefilename }" alt="..." class="img-rounded imgsize"></a></td>
+	<td><img src="/upload/${classpayment.classrenamefilename }" alt="..." class="img-rounded imgsize"></td>
 	<td>${classpayment.classname }</td>
 	<td>${classpayment.artid }</td>
 	<td>${addr2 }&nbsp;${addr3 }</td>
@@ -216,6 +224,7 @@ function requestPayment() {
 <button id="pay" class="btn btn-default" disabled="disabled">결제</button>
 	
 <br>
+
 
 </div> <!-- 전체를 감싸는 div -->
 

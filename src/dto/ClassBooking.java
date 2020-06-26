@@ -3,7 +3,8 @@ package dto;
 import java.util.Date;
 
 public class ClassBooking {
-    private int bookingNo;      
+    private int bookingNo;
+    private int merchantuid;
     private int classno;          
     private int userno;           
     private Date paymentDate;    
@@ -13,9 +14,9 @@ public class ClassBooking {
     
 	@Override
 	public String toString() {
-		return "ClassBooking [bookingNo=" + bookingNo + ", classno=" + classno + ", userno=" + userno + ", paymentDate="
-				+ paymentDate + ", bookingDate=" + bookingDate + ", bookingCount=" + bookingCount + ", totalPrice="
-				+ totalPrice + "]";
+		return "ClassBooking [bookingNo=" + bookingNo + ", merchantuid=" + merchantuid + ", classno=" + classno
+				+ ", userno=" + userno + ", paymentDate=" + paymentDate + ", bookingDate=" + bookingDate
+				+ ", bookingCount=" + bookingCount + ", totalPrice=" + totalPrice + "]";
 	}
 	
 	public int getBookingNo() {
@@ -23,6 +24,12 @@ public class ClassBooking {
 	}
 	public void setBookingNo(int bookingNo) {
 		this.bookingNo = bookingNo;
+	}
+	public int getMerchantuid() {
+		return merchantuid;
+	}
+	public void setMerchantuid(int merchantuid) {
+		this.merchantuid = merchantuid;
 	}
 	public int getClassno() {
 		return classno;
@@ -60,7 +67,8 @@ public class ClassBooking {
 	public void setTotalPrice(int totalPrice) {
 		this.totalPrice = totalPrice;
 	}
-   
+    
+	
     
     
 }
