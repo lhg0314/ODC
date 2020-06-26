@@ -3,8 +3,8 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %> 
         
-<!-- mian header -->
-<c:import url="/WEB-INF/layout/common/main/header.jsp"></c:import> 
+<!-- main header -->
+<c:import url="/WEB-INF/layout/common/main/artHeader.jsp"></c:import> 
 
 <!-- artistpage header -->    
 <c:import url="/WEB-INF/layout/artist/artistpageheader.jsp"></c:import> 
@@ -12,14 +12,14 @@
 <style type="text/css">
 #donationTable th {
 	text-align: center;
-	background: #ecdfec;
+	background: thistle;
 }
 </style>
 
 <div id="main">
-<a href="/artist/reviewlist" class="aTagStyleNone"><span id="boardtitle">게시판</span></a>
+<a href="/artist/reviewlist" class="aTagStyleNone"><span id="boardtitle">후원</span></a>
 <hr>
-<a href="/artist/reviewlist" class="aTagStyleNone"><span id="boardtitle">후기 게시판</span></a>
+<a href="/artist/reviewlist" class="aTagStyleNone"><span id="boardtitle">후원 받은 내역</span></a>
 <br>
 
 <div id="searchdonation">
@@ -228,11 +228,11 @@
 
 <br>
 <div id="donationContent">
-<h5 class="text-center">
+<h4 style="font-weight: bold;" class="text-center">
 <c:if test="${selectedmonth ne 0 }">
 ${selectedmonth }월 후원 내역
 </c:if>
-</h5>
+</h4>
 
 <table id="donationTable" class="table table-condensed text-center table-hover">
 	<tr>

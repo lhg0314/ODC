@@ -19,4 +19,10 @@ public interface UserBoardService {
 
 	List<Map<String, Object>> selectAskByUserNo(Paging paging, int userno);
 
+	void reviewListDeleteByUserNo(String names, int userno);
+
+	void askListDeleteByUserNo(String names, int userno);
+
+	Map<String, Object> selectAskByAskNo(int askno);
+
 }

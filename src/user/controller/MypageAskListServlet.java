@@ -48,8 +48,6 @@ public class MypageAskListServlet extends HttpServlet {
 		req.setAttribute("paging", paging);
 		req.setAttribute("list", list);
 		
-		System.out.println(list);
-		
 		req.getRequestDispatcher("/WEB-INF/views/user/mypage/board/asklist.jsp").forward(req, resp);
 		
 	}

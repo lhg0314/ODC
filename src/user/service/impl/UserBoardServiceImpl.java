@@ -75,4 +75,19 @@ public class UserBoardServiceImpl implements UserBoardService {
 		return userBoardDao.selectAskByUserNo(paging, userno);
 	}
 
+	@Override
+	public void reviewListDeleteByUserNo(String names, int userno) {
+		userBoardDao.deleteReviewListByUserNo(names, userno);
+	}
+
+	@Override
+	public void askListDeleteByUserNo(String names, int userno) {
+		userBoardDao.deleteAskListByUserNo(names, userno);
+	}
+
+	@Override
+	public Map<String, Object> selectAskByAskNo(int askno) {
+		return userBoardDao.selectAskByAskNo(askno);
+	}
+
 }

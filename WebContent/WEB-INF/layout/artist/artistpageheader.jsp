@@ -271,7 +271,7 @@ ul.sub li a {
 		
 	<ul class="navi">
 		<li class="group">
-		    <div class="title">기부 및 후원</div>
+		    <div class="title">후원</div>
 		    <ul class="sub">               
 		        <li><a href="/artist/donation">후원 받은 내역</a></li>                
 		    </ul>

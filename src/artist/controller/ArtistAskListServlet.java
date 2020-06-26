@@ -33,7 +33,7 @@ public class ArtistAskListServlet extends HttpServlet {
 		HttpSession session = req.getSession();
 		
 		if(session.getAttribute("artid") == null) {
-			resp.sendRedirect("/");
+			resp.sendRedirect("/member/login");
 			return;
 		}
 		

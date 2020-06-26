@@ -20,7 +20,7 @@ $(document).ready(function(){
 <style type="text/css">
 #talentTable th {
 	text-align: center;
-	background: #ecdfec;
+	background: thistle;
 }
 </style>
 <div>

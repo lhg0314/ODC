@@ -22,4 +22,6 @@ public interface ArtistBoardService {
 
 	List<Map<String, Object>> selectAskByArtNo(Paging paging, int artno);
 
+	Map<String, Object> selectAskByAskNo(int askno);
+
 }
