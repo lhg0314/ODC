@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import admin.service.face.AdminClassService;
 import admin.service.impl.AdminClassServiceImpl;
+import dto.ClassFile;
 
 /**
  * Servlet implementation class ClassViewServlet
@@ -33,7 +34,7 @@ public class ClassViewServlet extends HttpServlet {
 		
 		// 선택한 클래스 상세 정보
 		Map<String, Object> map = adminClassService.selectClassByClassNo(classno);
-		
+
 		req.setAttribute("info", map);
 //		System.out.println(map);
 		

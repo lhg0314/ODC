@@ -12,7 +12,7 @@ import javax.servlet.http.HttpSession;
 //20200623 이인주
 // 작가페이지 
 @WebServlet("/artist/artistpage")
-public class ArtistpageController extends HttpServlet {
+public class ArtistpageServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	
 	

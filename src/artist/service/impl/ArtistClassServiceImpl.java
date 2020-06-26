@@ -7,10 +7,12 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Iterator;
 import java.util.List;
+import java.util.Map;
 
 import javax.servlet.ServletContext;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import org.apache.commons.fileupload.FileItem;
 import org.apache.commons.fileupload.FileUploadException;
@@ -25,6 +27,7 @@ import artist.service.face.ArtistClassService;
 import dto.ArtistInfo;
 import dto.ClassFile;
 import dto.ClassInfo;
+import util.Paging;
 
 public class ArtistClassServiceImpl implements ArtistClassService {
 	
@@ -36,19 +39,37 @@ public class ArtistClassServiceImpl implements ArtistClassService {
 		ArtistInfo artInfo = artistClassDao.getArtInfoByArtId(artId);
 		return artInfo;
 	}
+	
+	public int parseLocation(ArtistInfo artInfo) {
+		
+		String loc = artInfo.getArtAddr();
+		
+		String[] arr = loc.split(";");
+		int num = Integer.parseInt(arr[0].substring(0, 1));
+		int location = 0;
+		
+		if( num <10 ) {
+			location = 1;
+		}else if( num < 24 ) {
+			location = 2;
+		}else if( num < 27) {
+			location = 3;
+		}else if( num < 36 ) {
+			location = 4;
+		}else if( num < 54 ) {
+			location = 5;
+		}else if( num < 63 ) {
+			location = 6;
+		}else {
+			location = 7;
+		}
+		
+		return location;
+	}
 
 	@Override
-	public void insertClassInfo(HttpServletRequest req, HttpServletResponse resp, int artNo) {
-		
-		// 전달파라미터를 저장할 DTO 객체
-		int classno = artistClassDao.getClassNo();
-		ClassInfo classInfo = new ClassInfo();
-		ClassFile classFile = new ClassFile();
-		
-		classInfo.setArtno(artNo);
-		classInfo.setClassno(classno);
-		classFile.setClassno(classno);
-		
+	public void insertClassInfo(HttpServletRequest req, HttpServletResponse resp, ArtistInfo artInfo) {
+
 		// 응답 객체 Content-Type 설정
 		resp.setContentType("text/html; charset=utf-8");
 		
@@ -60,6 +81,21 @@ public class ArtistClassServiceImpl implements ArtistClassService {
 			System.out.println("인코딩 타입이 멀티파트데이터가 아닙니다");
 			return;
 		}
+		
+		// 전달파라미터를 저장할 DTO 객체
+		int classno = artistClassDao.getClassNo();
+		ClassInfo classInfo = new ClassInfo();
+		ClassFile classFile = new ClassFile();
+		
+		classInfo.setArtno(artInfo.getArtno());
+		classInfo.setClassno(classno);
+		
+		// 지역 우편번호로 파싱 처리
+		int location = parseLocation(artInfo);
+		classInfo.setLocation(location);
+		
+		classFile.setClassno(classno);
+		
 		
 		// 2. 아이템 팩토리 객체 생성
 		DiskFileItemFactory factory = new DiskFileItemFactory();
@@ -235,19 +271,7 @@ public class ArtistClassServiceImpl implements ArtistClassService {
 					} catch (UnsupportedEncodingException e) {
 						e.printStackTrace();
 					}
-				}else if("location".equals(key)) {
-					try {
-						param = item.getString("UTF-8");
-						
-						if( param != null && !"".equals(param)) {
-							int location = Integer.parseInt(param);
-							classInfo.setLocation(location);
-						}
-					} catch (UnsupportedEncodingException e) {
-						e.printStackTrace();
-					}
 				}
-				 
 				
 			}// f( item.isFormField()) end
 			
@@ -284,8 +308,54 @@ public class ArtistClassServiceImpl implements ArtistClassService {
 		} //while( iter.hasNext()) End
 		
 		System.out.println(classInfo);
+		System.out.println(classFile);
 		artistClassDao.insertClassFile(classFile);
 		
+	}
+
+	@Override
+	public List<Map<String, Object>> selectAllClassCheck(int artno) {
+		return artistClassDao.selectAllClassCheck(artno);
+	}
+
+	@Override
+	public Paging getPagingClassManage(HttpServletRequest req, int artno) {
+		
+		//요청파라미터 curPage를 파싱한다
+		String param = req.getParameter("curPage");
+		
+		int curPage = 0;
+		
+		if( param!=null && !"".equals(param) ) {
+			curPage = Integer.parseInt(param);
+		}
+//				System.out.println("curPage : " + curPage);
+		
+		//검색어
+		String search = (String)req.getParameter("search");
+
+
+		// 클래스 전체 Paging 객체를 생성하고 반환
+		int totalCount = artistClassDao.selectCntAll(search, artno);
+		
+		// Paging 객체 생성 
+		Paging paging = new Paging(totalCount, curPage);
+		
+		//검색어
+		paging.setSearch(search);
+
+		return paging;
+	}
+
+	@Override
+	public List<Map<String, Object>> selectAllClass(Paging paging, int artno) {
+		return artistClassDao.selectAllClass(paging, artno);
+	}
+
+	@Override
+	public Map<String, Object> selectClassByClassNo(int classno) {
+		
+		return artistClassDao.selectClassByClassNo(classno);
 	}
 
 }

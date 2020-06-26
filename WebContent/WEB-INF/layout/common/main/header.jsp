@@ -244,16 +244,18 @@ list-style: none;
 	   </ul>
    </div>
    
-   <div class="wish" onclick="location.href='#';">
+   <div class="wish" onclick="location.href='/user/mypage';">
    <a href="/user/mypage">
    <div id="sizeup" class="glyphicon glyphicon-user" ></div>
    <br><small>마이페이지</small>
    </a>
    </div>
    
+   <a href="/mypage/class/wish">
    <div class="cart" onclick="location.href='#';">
    <div id="sizeup" class="glyphicon glyphicon-shopping-cart" ></div>
    <br><small>장바구니</small>
+   </a>
    </div>
    
 </div>
