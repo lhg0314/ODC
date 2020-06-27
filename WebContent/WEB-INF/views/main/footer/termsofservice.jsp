@@ -225,9 +225,10 @@
 <hr>
 <div id="loginFooter" >	
 <a href="/footer/termsofservice" class="anone">서비스 이용약관</a>&nbsp;&nbsp;
-<a href="/fooer/privacypolicy" class="anone">개인정보 처리방침</a>&nbsp;&nbsp;
-<a href="/fooer/memberIntroduce" class="anone">제작자 소개</a>&nbsp;&nbsp;
-<a href="/fooer/siteIntroduce" class="anone">사이트 소개</a>&nbsp;&nbsp;
+<a href="/footer/privacypolicy" class="anone">개인정보 처리방침</a>&nbsp;&nbsp;
+<a href="/footer/memberIntroduce" class="anone">제작자 소개</a>&nbsp;&nbsp;
+<a href="/footer/siteIntroduce" class="anone">사이트 소개</a>&nbsp;&nbsp;
+<a href="/footer/askToAdmin" class="aTagNone">문의하기</a>&nbsp;&nbsp;
 <p>&copy; ODC</p>
 </div>
 <br>

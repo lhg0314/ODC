@@ -39,7 +39,6 @@ public class MypageServlet extends HttpServlet {
 		UserInfo u = new UserInfo();
 		u.setUserid(userid);
 		
-		System.out.println(userid);
 		
 		//사용자 정보 가져오기(등급)
 		UserInfo uinfo = userUpdateService.userInfoLoad(u);

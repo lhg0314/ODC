@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>ODC::사이트소개</title>
 <!-- jQuery 2.2.4.min -->
 <script type="text/javascript" src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
 <!-- 부트스트랩 -->
@@ -205,9 +205,11 @@ geocoder.addressSearch('서울 강남구 테헤란로10길 9 (우)06234 ', funct
 <hr> 
 <div id="loginFooter" >	
 <a href="/footer/termsofservice" class="aTagNone left">서비스 이용약관</a>&nbsp;&nbsp;
-<a href="/fooer/privacypolicy" class="aTagNone">개인정보 처리방침</a>&nbsp;&nbsp;
-<a href="/fooer/memberIntroduce" class="aTagNone">제작자 소개</a>&nbsp;&nbsp;
-<a href="/fooer/siteIntroduce" class="aTagNone">사이트 소개</a>&nbsp;&nbsp;<p>&copy; ODC</p>
+<a href="/footer/privacypolicy" class="aTagNone">개인정보 처리방침</a>&nbsp;&nbsp;
+<a href="/footer/memberIntroduce" class="aTagNone">제작자 소개</a>&nbsp;&nbsp;
+<a href="/footer/siteIntroduce" class="aTagNone">사이트 소개</a>&nbsp;&nbsp;
+<a href="/footer/askToAdmin" class="aTagNone">문의하기</a>&nbsp;&nbsp;
+<p>&copy; ODC</p>
 </div>
 
 <br><br>

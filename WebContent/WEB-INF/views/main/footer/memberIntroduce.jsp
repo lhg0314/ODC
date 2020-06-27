@@ -247,9 +247,10 @@ span#ment {
 <hr> 
 <div id="loginFooter" >	
 <a href="/footer/termsofservice" class="aTagNone left">서비스 이용약관</a>&nbsp;&nbsp;
-<a href="/fooer/privacypolicy" class="aTagNone">개인정보 처리방침</a>&nbsp;&nbsp;
-<a href="/fooer/memberIntroduce" class="aTagNone">제작자 소개</a>&nbsp;&nbsp;
-<a href="/fooer/siteIntroduce" class="aTagNone">사이트 소개</a>&nbsp;&nbsp;
+<a href="/footer/privacypolicy" class="aTagNone">개인정보 처리방침</a>&nbsp;&nbsp;
+<a href="/footer/memberIntroduce" class="aTagNone">제작자 소개</a>&nbsp;&nbsp;
+<a href="/footer/siteIntroduce" class="aTagNone">사이트 소개</a>&nbsp;&nbsp;
+<a href="/footer/askToAdmin" class="aTagNone">문의하기</a>&nbsp;&nbsp;
 <p>&copy; ODC</p>
 </div>
 <br><br> 

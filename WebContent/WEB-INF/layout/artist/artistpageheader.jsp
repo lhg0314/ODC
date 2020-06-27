@@ -194,7 +194,7 @@ ul.sub li a {
 	text-align: center;
 	border: 1px solid #ccc;
 	border-radius: 20px;
-	padding: 50px 150px;
+	padding: 50px 100px;
 }
 
 

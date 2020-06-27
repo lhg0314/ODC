@@ -130,9 +130,9 @@ function openPolicy(){
 <div id="info1" >	
 <a class="btn" data-toggle="modal" data-target="#myModal">서비스 이용약관</a>&nbsp;&nbsp;
 <a class="btn" data-toggle="modal" data-target="#myModal2">개인정보 처리방침</a>&nbsp;&nbsp;
-<a href="/fooer/memberIntroduce" class="aTagNone btn" >제작자 소개</a>&nbsp;&nbsp;
-<a href="/fooer/siteIntroduce" class="aTagNone btn">사이트 소개</a>&nbsp;&nbsp;
-<a href="/문의하기 url" class="aTagNone btn">문의사항</a>&nbsp;&nbsp;
+<a href="/footer/memberIntroduce" class="aTagNone btn" >제작자 소개</a>&nbsp;&nbsp;
+<a href="/footer/siteIntroduce" class="aTagNone btn">사이트 소개</a>&nbsp;&nbsp;
+<a href="/footer/askToAdmin" class="aTagNone btn">문의사항</a>&nbsp;&nbsp;
 
 
 </div>
