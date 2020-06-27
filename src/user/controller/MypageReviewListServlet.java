@@ -29,7 +29,7 @@ public class MypageReviewListServlet extends HttpServlet {
 
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		System.out.println("/user/reviewlist - [GET]");
+//		System.out.println("/user/reviewlist - [GET]");
 		
 		HttpSession session = req.getSession();
 		

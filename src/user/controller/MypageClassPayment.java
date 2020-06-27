@@ -88,12 +88,12 @@ public class MypageClassPayment extends HttpServlet {
 		
 		//ajax가 보낸 파라미터 값 받기
 		Map<String,Object> paymentparam = usermypageclassService.paymentparam(req);
+		
+//		System.out.println("paymentparam" +paymentparam);
 	
 		//classbooking에 넣기
 		usermypageclassService.insertclassbooking(classbookingno,userno,paymentparam);
 		
-		//이후 classwish로 redirect
-//		resp.sendRedirect("/mypage/class/wish");
 	
 //		req.getRequestDispatcher("/WEB-INF/views/user/mypage/class/classbooking.jsp").forward(req,resp);
 	
