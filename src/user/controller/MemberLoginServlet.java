@@ -37,7 +37,7 @@ public class MemberLoginServlet extends HttpServlet {
 		String pw=req.getParameter("pw");
 		String opt=(String)req.getParameter("opt");
 		
-		System.out.println("id: "+id+", pw: "+pw+", loginActor: "+opt);
+		//System.out.println("id: "+id+", pw: "+pw+", loginActor: "+opt);
 		
 		boolean ismember=false;
 		

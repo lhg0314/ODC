@@ -477,7 +477,7 @@ public class ArtistClassDaoImpl implements ArtistClassDao {
 	}
 	
 	@Override
-	public void deleteDetailFile(ClassFile classFile) {
+	public void deleteDetailFile(int classno) {
 		
 		conn = JDBCTemplate.getConnection(); //DB 연결
 		
@@ -492,7 +492,7 @@ public class ArtistClassDaoImpl implements ArtistClassDao {
 			//SQL 수행 객체
 			ps = conn.prepareStatement(sql);
 			
-			ps.setInt(1, classFile.getClassno());
+			ps.setInt(1, classno);
 			
 			//SQL 수행 및 결과 저장
 			ps.executeUpdate();
@@ -548,7 +548,8 @@ public class ArtistClassDaoImpl implements ArtistClassDao {
 				
 	}
 	@Override
-	public ClassFile selectDetailFileByClassno(int classno) {
+	public List<ClassFile> selectDetailFileByClassno(int classno) {
+		
 		conn = JDBCTemplate.getConnection(); //DB 연결
 		
 		//수행할 SQL
@@ -558,8 +559,8 @@ public class ArtistClassDaoImpl implements ArtistClassDao {
 		sql += " WHERE class_no = ?";
 		sql += " AND class_rename_filename NOT LIKE 'main%'";
 	
+		List<ClassFile> list=new ArrayList<ClassFile>();
 		//최종 결과 변수
-		ClassFile detailFile = new ClassFile();
 		
 		try {
 			//SQL 수행 객체
@@ -574,12 +575,13 @@ public class ArtistClassDaoImpl implements ArtistClassDao {
 			
 			//SQL 수행 결과 처리
 			while( rs.next() ) {
+				ClassFile detailFile = new ClassFile();
 
 				detailFile.setClassno(rs.getInt("class_no"));
 				detailFile.setClassFileno(rs.getInt("class_file_no"));
 				detailFile.setClassOriginFilename(rs.getString("class_origin_filename"));
 				detailFile.setClassRenameFilename(rs.getString("class_rename_filename"));
-
+				list.add(detailFile);
 			}
 			
 		} catch (SQLException e) {
@@ -594,7 +596,7 @@ public class ArtistClassDaoImpl implements ArtistClassDao {
 		}
 		
 		//최종 결과 반환
-		return detailFile;
+		return list;
 	}
 	@Override
 	public int BookingCntCheck(int classno) {	

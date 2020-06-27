@@ -8,7 +8,7 @@
 
 <!-- artistpage header -->    
 <c:import url="/WEB-INF/layout/artist/artistpageheader.jsp"></c:import> 
-
+<script type="text/javascript" src="/resources/js/httpRequest.js" ></script>
 <script type="text/javascript">
 $(document).ready(function(){
 	
@@ -31,10 +31,66 @@ $(document).ready(function(){
 	})
 	
 	$("#btnX2").click(function(){
-		$("#fileView2").html("");
-		$("#originFile2").css("display", "none");
-		$("#classFile2").attr("type", "file");		
+		$("#word2").remove();
+		$("#fileView2").remove();
+		$("#originFile2").remove();
+		$("#classFile2").remove();	
+		var param="classno=${detailFile[0].classno }&name=${detailFile[0].classOriginFilename }";
+		console.log(param)
+		sendRequest("GET","/delete/artClassFile",param,ajaxFromServer);
 	})
+	
+	$("#btnX3").click(function(){
+		$("#word3").remove();
+		$("#fileView3").remove();
+		$("#originFile3").remove();
+		$("#classFile3").remove();	
+		var param="classno=${detailFile[1].classno }&name=${detailFile[1].classOriginFilename }";
+		console.log(param)
+		sendRequest("GET","/delete/artClassFile",param,ajaxFromServer);
+	})
+	
+	$("#btnX4").click(function(){
+		$("#word4").remove();
+		$("#fileView4").remove();
+		$("#originFile4").remove();
+		$("#classFile4").remove();		
+		var param="classno=${detailFile[2].classno }&name=${detailFile[2].classOriginFilename }";
+		console.log(param)
+		sendRequest("GET","/delete/artClassFile",param,ajaxFromServer);
+	})
+	
+	$("#btnX5").click(function(){
+		$("#word5").remove();
+		$("#fileView5").remove();
+		$("#originFile5").remove();
+		$("#classFile5").remove();		
+		var param="classno=${detailFile[3].classno }&name=${detailFile[3].classOriginFilename }";
+		console.log(param)
+		sendRequest("GET","/delete/artClassFile",param,ajaxFromServer);
+	})
+	
+	$("#btnX6").click(function(){
+		$("#fileView6").html("");
+		$("#originFile6").css("display", "none");
+		$("#classFile6").attr("type", "file");		
+		var param="classno=${detailFile[4].classno }&name=${detailFile[4].classOriginFilename }";
+		console.log(param)
+		sendRequest("GET","/delete/artClassFile",param,ajaxFromServer);
+	})
+	
+	
+	function ajaxFromServer(){
+		if(httpRequest.readyState==4){//DONE,응답완료
+			if(httpRequest.status==200){//OK
+				console.log("성공")
+				
+			}else{
+				console.log("AJAX요청/응답 에러")
+			}
+		}
+	}
+	
 	
 	
 	/* 첨부파일 이미지 미리보기 */
@@ -77,6 +133,94 @@ $(document).ready(function(){
 		
 		reader.readAsDataURL(file);		
 	});
+	
+	
+	
+	
+	$("#classFile3").change(function(){
+		
+		$("#fileView3").html("");
+		var file = this.files[0];
+		console.log(file);
+		
+		/* 파일리더 객체 생성 */
+		var reader = new FileReader();
+		
+		/* 리더 시작 시 함수 구현 */
+		reader.onload = function(e){
+			
+			var url = e.target.result;
+			
+			$("#fileView3").html($("<img src=" + url + ">").css({"height" : "180px", "width" : "180px"}));
+		}
+		
+		reader.readAsDataURL(file);		
+	});
+	
+	
+	
+	
+	$("#classFile4").change(function(){
+	
+	$("#fileView4").html("");
+	var file = this.files[0];
+	console.log(file);
+	
+	/* 파일리더 객체 생성 */
+	var reader = new FileReader();
+	
+	/* 리더 시작 시 함수 구현 */
+	reader.onload = function(e){
+		
+		var url = e.target.result;
+		
+		$("#fileView4").html($("<img src=" + url + ">").css({"height" : "180px", "width" : "180px"}));
+	}
+	
+	reader.readAsDataURL(file);		
+});
+
+
+
+$("#classFile5").change(function(){
+	
+	$("#fileView5").html("");
+	var file = this.files[0];
+	console.log(file);
+	
+	/* 파일리더 객체 생성 */
+	var reader = new FileReader();
+	
+	/* 리더 시작 시 함수 구현 */
+	reader.onload = function(e){
+		
+		var url = e.target.result;
+		
+		$("#fileView5").html($("<img src=" + url + ">").css({"height" : "180px", "width" : "180px"}));
+	}
+	
+	reader.readAsDataURL(file);		
+});
+
+$("#classFile6").change(function(){
+	
+	$("#fileView6").html("");
+	var file = this.files[0];
+	console.log(file);
+	
+	/* 파일리더 객체 생성 */
+	var reader = new FileReader();
+	
+	/* 리더 시작 시 함수 구현 */
+	reader.onload = function(e){
+		
+		var url = e.target.result;
+		
+		$("#fileView6").html($("<img src=" + url + ">").css({"height" : "180px", "width" : "180px"}));
+	}
+	
+	reader.readAsDataURL(file);		
+});
 	
 	/* 클래스 모집기간 자동 처리 */
 	$("#classEndDate").blur(function(){
@@ -164,15 +308,15 @@ $(document).ready(function(){
 	width: 180px;
 }
 
-#fileView1, #fileView2{
+#fileView1, #fileView2,#fileView3,#fileView4,#fileView5{
 	height: 200px;
 	width: 200px;
-	border: 1px solid #ccc;
+	/* border: 1px solid #ccc; */
 	margin-top: 5px;
 	padding: 10px;
 }
 
-#imgFile1, #imgFile2{
+#imgFile1, #imgFile2,#imgFile3,#imgFile4,#imgFile5{
 	width: 180px;
 	height: 180px;
 }
@@ -264,15 +408,38 @@ $(document).ready(function(){
 	    </div>
 
 		<div class="form-group">
-	    	<label for="classFile2">사진 첨부</label><br>
-	    	<input type="hidden" accept="image/*" id="classFile2" name="detailFile" required="required" />
-	    	<div id="originFile2">
-	    		<span>${detailFile.classOriginFilename } </span><button type="button" id="btnX2" class="btn btn-default btn-xs">X</button>
+		<c:if test="${detailFile.size() >= 1 }"><!-- detailfile이 있을때만 실행 -->
+	    	<c:forEach var="i" begin="0" end="${detailFile.size()-1 }">
+	    	<label for="classFile${i+2 }" id="word${i+2 }">사진 첨부</label><br>
+	    	<input type="hidden" accept="image/*" id="classFile${i+2 }" name="detailFile"  />
+	    	<div id="originFile${i+2 }">
+	    		<span>${detailFile[i].classOriginFilename } </span><button type="button" id="btnX${i+2 }" class="btn btn-default btn-xs">X</button>
 			</div>
-			<div id="fileView2">
-				<img id="imgFile2" src="/upload/${detailFile.classRenameFilename }" />
+			
+			<div id="fileView${i+2 }">
+				<img id="imgFile${i+2 }" src="/upload/${detailFile[i].classRenameFilename }" />
 			</div>
+			</c:forEach>
+		</c:if>
 	    </div>
+	    
+	    <c:if test="${detailFile.size() eq 0 }">
+	    <div class="form-group">
+	    	<label for="classFile1">사진 첨부 - 추가할 사진</label>
+	    	<input type="file" accept="image/*" id="classFile1" name="detailFile" multiple="multiple" required="required"/>
+			<div id="fileView1">
+			</div>
+	    </div> 
+	    </c:if>
+	    
+ 	    <c:if test="${detailFile.size() ne 0 }">
+	    <div class="form-group">
+	    	<label for="classFile1">사진 첨부 - 추가할 사진</label>
+	    	<input type="file" accept="image/*" id="classFile1" name="detailFile" multiple="multiple"/>
+			<div id="fileView1">
+			</div>
+	    </div> 
+ 	    </c:if>
 		
 		<div class="text-center"><button class="class_button">클래스 수정</button></div>
 		</form>

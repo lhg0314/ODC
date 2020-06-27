@@ -50,5 +50,10 @@ public class ArtistServiceImpl implements ArtistService {
 		String pw=artistDao.selectUserPwByEN(email,name,id);
 		return pw;
 	}
+	@Override
+	public void deleteClassFile(int classno, String filename) {
+		artistDao.deleteClassFile(classno,filename);
+		
+	}
 
 }
