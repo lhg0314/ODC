@@ -7,7 +7,7 @@
 <c:import url="/WEB-INF/layout/common/main/header.jsp"></c:import> 
 
 <!-- artistpage header -->    
-<c:import url="/WEB-INF/layout/artist/artistpageheader.jsp"></c:import> 
+<c:import url="/WEB-INF/layout/user/mypageheader.jsp"></c:import> 
 
 
 <script type="text/javascript" 
@@ -27,7 +27,11 @@
 	padding: 50px;
 }
 	
-#pw { font-weight: bold; }
+#pw { 
+
+	font-weight: bold; 
+
+}
 
 span { margin: 0 12px; }
 
@@ -80,11 +84,11 @@ $(document).ready(function() {
 	<div id="pwdiv">
 	
 		<h4 id="pw">정말로 탈퇴 하시겠습니까?</h4><br>
-		<h5 id="pw">탈퇴 이후에는 계정 복구가 불가능합니다</h5>
-		<h5 id="pw">회원 탈퇴를 위하여 비밀번호를 입력해주세요 </h5><br>
+		<h6 id="pw">탈퇴 이후에는 계정 복구가 불가능합니다</h6>
+		<h6 id="pw">회원 탈퇴를 위하여 비밀번호를 입력해주세요 </h6><br>
 		
-		<form action="/artist/leave" method="post">
-			<span>비밀번호</span><input type="password" name="pwcheck" id="pwcheck"/>	
+		<form action="/user/leave" method="post">
+			<span>비밀번호</span><input type="password" name="pwcheck"/>	
 		</form>
 		
 	</div>

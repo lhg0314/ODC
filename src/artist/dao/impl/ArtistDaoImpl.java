@@ -68,8 +68,8 @@ public class ArtistDaoImpl implements ArtistDao {
 		conn=JDBCTemplate.getConnection();
 		String sql="";
 		sql+="insert into artistinfo(art_no,art_id,art_pw,art_name,art_nick,art_code,";
-		sql+="art_phone,art_tel,art_addr,art_email,art_birth,art_email_auth)";
-		sql+="  values(ArtistInfo_SEQ.nextval,?,?,?,?,?,?,?,?,?,?,1)";
+		sql+="art_phone,art_tel,art_addr,art_email,art_birth)";
+		sql+="  values(ArtistInfo_SEQ.nextval,?,?,?,?,?,?,?,?,?,?)";
 		
 		try {
 			ps=conn.prepareStatement(sql);

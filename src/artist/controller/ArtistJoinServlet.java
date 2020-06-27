@@ -33,7 +33,7 @@ public class ArtistJoinServlet extends HttpServlet {
 		req.setCharacterEncoding("UTF-8");
 		ArtistInfo artist=new ArtistInfo();
 		
-		artist.setArtEmailAuth(1);
+//		artist.setArtAuth(1);
 		
 		String birth=req.getParameter("artbirth");
 		SimpleDateFormat transFormat = new SimpleDateFormat("yyyy-MM-dd");

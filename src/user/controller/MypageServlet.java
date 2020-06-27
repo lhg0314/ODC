@@ -9,11 +9,18 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import dto.UserInfo;
+import user.service.UserInfoUpdateService;
+import user.service.UserInfoUpdateServiceImpl;
+
 
 @WebServlet("/user/mypage")
 public class MypageServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
+	
+	UserInfoUpdateService userUpdateService = new UserInfoUpdateServiceImpl();
+	
 	
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -25,11 +32,28 @@ public class MypageServlet extends HttpServlet {
 		HttpSession session = req.getSession();
 		
 		// 세션으로 사용자 아이디값 불러서 변수에 저장하기
-		String  userid = (String)session.getAttribute("userid");
+		String userid = (String)session.getAttribute("userid");
+		
+		
+		//UserInfo 객체 만들어서 id 넣어주기
+		UserInfo u = new UserInfo();
+		u.setUserid(userid);
+		
+		System.out.println(userid);
+		
+		//사용자 정보 가져오기(등급)
+		UserInfo uinfo = userUpdateService.userInfoLoad(u);
+		int grade = uinfo.getUsergrade();
+		
+		
 		
 		//사용자  아이디  jsp로 넘기기
 		req.setAttribute("userid", userid);
 	
+		//사용자 정보 결과 전달
+		req.setAttribute("grade", grade);
+		 
+		
 	
 		req.getRequestDispatcher("/WEB-INF/views/user/mypage/mypage.jsp").forward(req, resp);
 	

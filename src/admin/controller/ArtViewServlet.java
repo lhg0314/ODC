@@ -39,10 +39,6 @@ public class ArtViewServlet extends HttpServlet {
 		ArtistInfo artistInfo = adminManageService.selectArtistno(req);
 		
 		
-		//사업자 정보상세 조회
-		ArtistDetail artistDetail = adminManageService.selectArtistDetail(req);
-		
-		
 		//개설 클래스 조회
 		ClassInfo classInfo = new ClassInfo();
 		
@@ -60,9 +56,6 @@ public class ArtViewServlet extends HttpServlet {
 		
 		//조회결과 model값 전달
 		req.setAttribute("artistInfo", artistInfo);
-		
-		//조회결과 model값 전달
-		req.setAttribute("artistDetail", artistDetail);
 		
 		//조회결과 model값 전달
 		req.setAttribute("classList", classList);

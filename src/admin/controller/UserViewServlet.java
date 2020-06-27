@@ -65,7 +65,7 @@ public class UserViewServlet extends HttpServlet {
 		
 		askBoard.setUserno(Integer.parseInt(req.getParameter("userno")));
 		
-		List<AskBoard> ask = adminManageService.askList(askBoard);
+		List<Map<String, Object>> ask = adminManageService.askList(askBoard);
 		
 		
 		

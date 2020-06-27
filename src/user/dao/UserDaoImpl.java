@@ -48,8 +48,8 @@ public class UserDaoImpl implements UserDao {
 		conn=JDBCTemplate.getConnection();
 		String sql="";
 		sql+="insert into userinfo(user_no,user_id,user_pw,user_name,";
-		sql+="user_phone,user_email,user_birth,user_nick,user_email_auth)";
-		sql+="  values(UserInfo_SEQ.nextval,?,?,?,?,?,?,?,1)";
+		sql+="user_phone,user_email,user_birth,user_nick)";
+		sql+="  values(UserInfo_SEQ.nextval,?,?,?,?,?,?,?)";
 		
 		try {
 			ps=conn.prepareStatement(sql);

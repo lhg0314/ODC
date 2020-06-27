@@ -81,7 +81,7 @@ public interface AdminManageService {
 	 * @param ask - userno 담긴 askboard
 	 * @return 문의글 정보
 	 */
-	public List<AskBoard> askList(AskBoard ask);
+	public List<Map<String, Object>> askList(AskBoard ask);
 	
 	
 	/**
@@ -91,14 +91,6 @@ public interface AdminManageService {
 	 */
 	public ArtistInfo selectArtistno(HttpServletRequest req);
 	
-	
-	/**
-	 * 사업자 소개말 가져오기
-	 * @param req
-	 * @return
-	 */
-	public ArtistDetail selectArtistDetail(HttpServletRequest req);
-
 	
 	/**
 	 * 사업자 개설 클래스 가져오기

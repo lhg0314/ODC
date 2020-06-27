@@ -33,7 +33,7 @@ public class UserJoinServlet extends HttpServlet {
 		req.setCharacterEncoding("UTF-8");
 		UserInfo user=new UserInfo();//param값으로 받아온 사용자의 정보를 저장함
 		
-		user.setUserEmailAuth(1);
+//		user.setUserAuth(1);
 		
 		String birth=req.getParameter("userbirth");
 		SimpleDateFormat transFormat = new SimpleDateFormat("yyyy-MM-dd");

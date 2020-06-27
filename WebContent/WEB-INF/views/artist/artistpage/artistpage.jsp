@@ -4,7 +4,7 @@
     
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>    
 
-<!-- mian header -->
+<!-- main header -->
 <c:import url="/WEB-INF/layout/common/main/artHeader.jsp"></c:import> 
 
 <!-- artistpage header -->    
@@ -16,26 +16,17 @@
 	<hr>
 	<br>
 	
-	<div id="class_upload_notice">
 	 
-	<span>클래스 등록을 위한 공지사항</span><br><br>
-	
-	<span>비둘기, 이국 오면 위에 그리고 별 오는 이름자를 버리었습니다.</span><br> 
-	<span>이름과 불러 북간도에 무성할 마리아 토끼, 패, 봅니다.</span><br>   
-	<span>강아지, 남은 경, 계십니다. 불러 소학교 나의 있습니다.</span><br>   
-	<span>않은 내일 속의 보고, 봅니다.</span><br>  
-	<span>강아지, 이름과 시와 계절이 밤을 언덕 별 다하지 계집애들의 계십니다.</span><br>   
-	<span>이웃 동경과 이름과, 멀리 별에도 있습니다. 멀리 때 이름을 말 봅니다.</span><br>  
-	<span>토끼, 했던 이름을 아이들의 너무나 하나에 까닭입니다.</span><br>   
-	<span>아무 나는 묻힌 차 된 있습니다.</span><br>  
-	<span>비둘기, 이국 오면 위에 그리고 별 오는 이름자를 버리었습니다.</span><br> 
-	<span>이름과 불러 북간도에 무성할 마리아 토끼, 패, 봅니다.</span><br>   
-	<span>강아지, 남은 경, 계십니다. 불러 소학교 나의 있습니다.</span><br>   
-	<span>않은 내일 속의 보고, 봅니다.</span><br>  
-	<span>강아지, 이름과 시와 계절이 밤을 언덕 별 다하지 계집애들의 계십니다.</span><br>   
-	<span>이웃 동경과 이름과, 멀리 별에도 있습니다. 멀리 때 이름을 말 봅니다.</span><br>  
-	<span>토끼, 했던 이름을 아이들의 너무나 하나에 까닭입니다.</span><br>   
-	<span>아무 나는 묻힌 차 된 있습니다.</span><br>  
+	<div id="class_upload_notice">
+		<span id="ctitle">&nbsp;클래스 등록을 위한 공지사항&nbsp;</span><br><br><hr><br>
+			<div id="class_upload_notice_content">
+				<span>ODC 클래스를 등록하기 전 꼭 숙지해주시기 바랍니다.</span><br><br>  
+				<span>ODC 규정상 클래스 등록 시 개인정보 및 SNS 등은 노출이 불가능합니다.</span><br><br>
+				<span>클래스 문의 및 안내 등은 ODC 문의 게시판을 통해주세요.</span><br><br>
+				<span>수강생이 먼저 연락이 오지 않더라도 연락을 취하셔서 스케줄 조정을 해주세요.</span><br><br>
+				<span>이상 ODC를 이용하시는데 불편이 없으시길 바랍니다.</span><br><br>
+				<span>감사합니다.</span><br>
+			</div>
 	</div>
 	
 	<br>

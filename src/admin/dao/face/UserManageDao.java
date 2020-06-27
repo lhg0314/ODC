@@ -61,7 +61,7 @@ public interface UserManageDao {
 	 * @param ask
 	 * @return
 	 */
-	public List<AskBoard> askList(AskBoard ask);
+	public List<Map<String, Object>> askList(AskBoard ask);
 	
 	
 }

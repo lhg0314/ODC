@@ -47,6 +47,7 @@ public class UserInfoUpdateDaoImpl implements UserInfoUpdateDao {
 				 uinfo.setUserphone(rs.getLong("user_phone"));
 				 uinfo.setUserbirth(rs.getDate("user_birth"));
 				 uinfo.setUseremail(rs.getString("user_email"));
+				 uinfo.setUsergrade(rs.getInt("user_grade"));
 			}
 			
 		} catch (SQLException e) {
