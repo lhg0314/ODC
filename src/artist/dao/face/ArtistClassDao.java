@@ -63,4 +63,42 @@ public interface ArtistClassDao {
 	 */
 	public Map<String, Object> selectClassByClassNo(int classno);
 
+	/**
+	 * 기존 메인 파일 삭제
+	 * @param classFile
+	 */
+	public void deleteMainFile(ClassFile classFile);
+
+	/**
+	 * 기존 상세 파일 삭제
+	 * @param classFile
+	 */
+	public void deleteDetailFile(ClassFile classFile);
+
+	/**
+	 * 클래스 정보 수정하기
+	 * @param classInfo
+	 */
+	public void updateClassInfo(ClassInfo classInfo);
+
+	/**
+	 * 클래스 상세 파일 가져오기
+	 * @param classno
+	 * @return
+	 */
+	public ClassFile selectDetailFileByClassno(int classno);
+
+	/**
+	 * 부킹된 클래스가 있는지 확인
+	 * @param classno
+	 * @return
+	 */
+	public int BookingCntCheck(int classno);
+
+	/**
+	 * 클래스 내리기
+	 * @param classno
+	 */
+	public int removeClass(int classno);
+
 }

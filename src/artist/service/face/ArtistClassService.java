@@ -7,6 +7,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import dto.ArtistInfo;
+import dto.ClassFile;
 import dto.ClassInfo;
 import util.Paging;
 
@@ -23,9 +24,9 @@ public interface ArtistClassService {
 	 * 클래스 신청 정보 DB에 저장
 	 * @param req
 	 * @param resp
-	 * @param artNo 
+	 * @param artInfo 
 	 */
-	public void insertClassInfo(HttpServletRequest req, HttpServletResponse resp, int artNo);
+	public void insertClassInfo(HttpServletRequest req, HttpServletResponse resp, ArtistInfo artInfo);
 
 	/**
 	 * 검토클래스 정보 불러오기
@@ -55,5 +56,31 @@ public interface ArtistClassService {
 	 * @return
 	 */
 	public Map<String, Object> selectClassByClassNo(int classno);
+
+	/**
+	 * 클래스 정보 수정하기
+	 * @param req
+	 * @param resp
+	 * @param artInfo
+	 */
+	public void updateClassInfo(HttpServletRequest req, HttpServletResponse resp);
+
+	/* 
+	 * 클래스 상세 파일 가져오기
+	 */
+	public ClassFile selectDetailFileByClassno(int classno);
+
+	/**
+	 *  클래스 삭제 전 부킹된 사용자가 있는지 확인
+	 * @param classno 
+	 * @return
+	 */
+	public int BookingCntCheck(int classno);
+
+	/**
+	 * 클래스 내리기
+	 * @param classno
+	 */
+	public int removeClass(int classno);
  
 }

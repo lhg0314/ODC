@@ -244,6 +244,7 @@ public class ClassCheckPostDaoImpl implements ClassCheckPostDao {
 		sql += " LEFT OUTER JOIN classfile f";
 		sql += " on (c.class_no = f.class_no)";
 		sql += " WHERE c.class_no = ?";
+		sql += " AND class_rename_filename LIKE 'main%'";
 
 		//최종 결과 변수
 		Map<String, Object> map = null;
@@ -271,24 +272,16 @@ public class ClassCheckPostDaoImpl implements ClassCheckPostDao {
 				map.put("classPrice", rs.getInt("class_price"));
 				map.put("talentDonation",rs.getInt("talent_donation"));
 				map.put("postDate",rs.getDate("post_date"));
-
-				java.util.Date recruitStartdate = new java.util.Date(rs.getDate("recruit_startdate").getTime());
-				java.util.Date recruitEnddate = new java.util.Date(rs.getDate("recruit_enddate").getTime());
-				java.util.Date classStartdate = new java.util.Date(rs.getDate("class_startdate").getTime());
-				java.util.Date classEnddate = new java.util.Date(rs.getDate("class_enddate").getTime());
-
-				map.put("recruitStartdate", recruitStartdate);
-				map.put("recruitEnddate",recruitEnddate);
-				map.put("classStartdate",classStartdate);
-				map.put("classEnddate",classEnddate);
-				
+				map.put("recruitStartdate",rs.getDate("recruit_startdate"));
+				map.put("recruitEnddate",rs.getDate("recruit_enddate"));
 				map.put("maxPeople",rs.getInt("max_people"));
 				map.put("minPeople",rs.getInt("min_people"));
-				
+				map.put("classStartdate",rs.getDate("class_startdate"));
+				map.put("classEnddate",rs.getDate("class_enddate"));
 				map.put("classContent",rs.getString("class_content"));
 				map.put("postStatus",rs.getInt("post_Status"));
 				map.put("classCheck",rs.getInt("class_check"));
-
+	
 				map.put("classFileNo", rs.getInt("class_file_no"));
 				map.put("classOriginFilename", rs.getString("class_origin_filename"));
 				map.put("classRenameFilename", rs.getString("class_rename_filename"));

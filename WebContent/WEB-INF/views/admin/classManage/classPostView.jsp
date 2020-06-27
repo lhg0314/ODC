@@ -55,7 +55,7 @@ $(document).ready(function(){
 	width: 150px;
 	display: inline-block;
 }
-#classFile{
+.classFile{
 	width: 70%;
 }
 
@@ -142,10 +142,16 @@ $(document).ready(function(){
 	<td colspan="4">${info.classContent }</td>
 </tr>
 <tr>
-	<th colspan="4">첨부 파일</th>
+	<th colspan="4">첨부 파일 - 메인 사진</th>
 </tr>
 <tr>
-	<td colspan="4" style="text-align: center;"><img id="classFile" src="/upload/${info.classRenameFilename }"/></td>
+	<td colspan="4" style="text-align: center;"><img class="classFile" src="/upload/${info.classRenameFilename }"/></td>
+</tr>
+<tr>
+	<th colspan="4">첨부 파일 - 상세 사진</th>
+</tr>
+<tr>
+	<td colspan="4" style="text-align: center;"><img class="classFile" src="/upload/${detailFile.classRenameFilename }"/></td>
 </tr>
 <tr>
 	<th colspan="4"><a href="/admin/class/review?classno=${info.classNo }">&raquo; 클래스 후기보기</a></th>

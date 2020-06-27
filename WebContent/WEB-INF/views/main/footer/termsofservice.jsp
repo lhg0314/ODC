@@ -1,5 +1,9 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
+
+
+ <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    
+ <%--   
 <!DOCTYPE html>
 <html>
 <head>
@@ -52,14 +56,14 @@
 }
 </style>
 </head>
-<body>
+<body> --%>
 
 <div id="box">
-<div id="header">
-<a href="/"><img alt="logo" src="/resources/img/logo2.png" width="200px;" height="200px;"></a>
+<!-- <div id="header">
+ <a href="/"><img alt="logo" src="/resources/img/logo2.png" width="200px;" height="200px;"></a> 
 <h2>서비스 이용약관</h2>
 <hr>
-</div>
+</div> -->
 
 <h2>목차</h2>
 <ol class="liststylenon">
@@ -229,5 +233,5 @@
 <br>
 </div>
 
-</body>
-</html>
+<!-- </body>
+</html> -->

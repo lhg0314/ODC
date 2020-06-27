@@ -38,11 +38,56 @@ public class UserBoardServiceImpl implements UserBoardService {
 		// 검색어
 		paging.setSearch(search);
 
-		return paging;	}
+		return paging;	
+		
+	}
 
 	@Override
 	public List<Map<String, Object>> selectReviewByUserNo(Paging paging, int userno) {
 		return userBoardDao.selectReviewByUserNo(paging, userno);
+	}
+
+	@Override
+	public Paging getPagingAskByUserNo(HttpServletRequest req, int userno) {
+		// 요청파라미터 curPage를 파싱한다
+		String param = req.getParameter("curPage");
+		int curPage = 0;
+		if (param != null && !"".equals(param)) {
+			curPage = Integer.parseInt(param);
+		}
+		// 검색어
+		String search = (String) req.getParameter("search");
+
+		// 클래스 전체 Paging 객체를 생성하고 반환
+		int totalCount = userBoardDao.selectCntAskByUserNo(search, userno);
+
+		// Paging 객체 생성
+		Paging paging = new Paging(totalCount, curPage);
+
+		// 검색어
+		paging.setSearch(search);
+
+		return paging;
+	}
+
+	@Override
+	public List<Map<String, Object>> selectAskByUserNo(Paging paging, int userno) {
+		return userBoardDao.selectAskByUserNo(paging, userno);
+	}
+
+	@Override
+	public void reviewListDeleteByUserNo(String names, int userno) {
+		userBoardDao.deleteReviewListByUserNo(names, userno);
+	}
+
+	@Override
+	public void askListDeleteByUserNo(String names, int userno) {
+		userBoardDao.deleteAskListByUserNo(names, userno);
+	}
+
+	@Override
+	public Map<String, Object> selectAskByAskNo(int askno) {
+		return userBoardDao.selectAskByAskNo(askno);
 	}
 
 }

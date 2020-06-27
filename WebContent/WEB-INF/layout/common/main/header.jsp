@@ -295,7 +295,6 @@ list-style: none;
 		<a href="#">게시판</a>
 		<ul>
 			<li><a href="#">후기게시판</a></li>
-			<li><a href="#">문의게시판</a></li>
 			<li><a href="#">고객센터</a></li>
 		</ul>
 	</li>

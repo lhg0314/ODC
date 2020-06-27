@@ -19,7 +19,7 @@ import dto.ArtistInfo;
  * Servlet implementation class ArtistClassApplicationServlet
  */
 @WebServlet("/artist/class/app")
-public class ClassPostRequestServlet extends HttpServlet {
+public class AritistClassPostServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	
 	private ArtistClassService artistClassService = new ArtistClassServiceImpl();
@@ -61,7 +61,7 @@ public class ClassPostRequestServlet extends HttpServlet {
 		ArtistInfo artInfo = artistClassService.getArtInfoByArtId(artId);
 		
 		// 클래스 신청 정보 저장하기
-		artistClassService.insertClassInfo(req, resp, artInfo.getArtno());
+		artistClassService.insertClassInfo(req, resp, artInfo);
 		
 		// 포워드
 		req.getRequestDispatcher("/WEB-INF/views/artist/class/appSuccess.jsp").forward(req, resp);
