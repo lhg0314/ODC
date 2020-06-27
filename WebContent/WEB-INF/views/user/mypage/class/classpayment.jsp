@@ -1,13 +1,11 @@
 <!-- 20200625 이인주 -->
 <!-- 마이페이지 - 장바구니 - 결제(예약) -->
 
-<!-- 20200625 이인주 -->
-<!-- 마이페이지 - 클래스 - 장바구니 -->
-
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
     
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>    
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %> 
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>     
 
 <!-- mian header -->
 <c:import url="/WEB-INF/layout/common/main/header.jsp"></c:import>
@@ -123,7 +121,7 @@ function requestPayment() {
 // 				    buyer_tel : '${classpayment.userphone }', //주문자연락처 - 필수항목, 누락되면 PG사전송 시 오류 발생
 				    bookingdate : '${classpayment.wishdate }', //클래스 예약날짜
 				    wishcount :'${classpayment.wishcount}', // 예약인원
-				    classno :'${classpayment.classno}', // 클래스 번호\
+				    classno :'${classpayment.classno}', // 클래스 번호
 				    	
 				}
 			
@@ -138,7 +136,7 @@ function requestPayment() {
 // 			        msg += '\n[done]';
 
 					alert(msg);
-// 					location.href="/mypage/class/wish"
+					location.href="/mypage/class/wish"
 					
 	    		} else {
 	    			//[3] 아직 제대로 결제가 되지 않았습니다.
@@ -151,6 +149,7 @@ function requestPayment() {
 	        msg += '에러내용 : ' + rsp.error_msg;
 	    }
 	    alert(msg);
+	    location.href="/mypage/class/wish"
 	   
 	});
 	
@@ -211,7 +210,7 @@ function requestPayment() {
 	<td>${classpayment.artid }</td>
 	<td>${addr2 }&nbsp;${addr3 }</td>
 	<td>${classpayment.wishdate }</td>
-	<td>${classpayment.wishcount }</td>
+	<td><fmt:formatNumber pattern="#,###" value="${classpayment.wishcount }" /></td>
 	<td>${classpayment.wishtotalprice }</td>
 </tr>	
 

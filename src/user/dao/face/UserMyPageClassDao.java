@@ -4,6 +4,9 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.Map;
 
+import dto.ReviewBoard;
+import dto.ReviewFile;
+
 public interface UserMyPageClassDao {
 
 	/**
@@ -64,5 +67,40 @@ public interface UserMyPageClassDao {
 	 * @param paymentparam
 	 */
 	public void insertclassbooking(int classbookingno, int userno, Map<String, Object> paymentparam);
+
+	/**
+	 * 사용자 예약 리스트  전체 조회
+	 * @param userid
+	 * @param nowday
+	 * @return
+	 */
+	public ArrayList<Map<String, Object>> usersignup(String userid, Date nowday);
+
+	/**
+	 * reviewboardno 
+	 * @return
+	 */
+	public int reviewboardno();
+	
+	/**
+	 * 후기작성여부 판단
+	 * @param bookingno
+	 * @return
+	 */
+	public int reviewcount(int bookingno);
+
+	/**
+	 * insert reviewboard
+	 * @param reviewboard
+	 */
+	public void insertreviewboard(ReviewBoard reviewboard);
+
+	/**
+	 * insert reviewfile
+	 * @param reviewfile
+	 */
+	public void insertreviewfile(ReviewFile reviewfile);
+
+	
 
 }
