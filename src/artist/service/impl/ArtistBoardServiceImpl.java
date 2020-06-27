@@ -74,4 +74,9 @@ public class ArtistBoardServiceImpl implements ArtistBoardService {
 		return artistBoardDao.selectAskByArtNo(paging, artno);
 	}
 
+	@Override
+	public Map<String, Object> selectAskByAskNo(int askno) {
+		return artistBoardDao.selectAskByAskNo(askno);
+	}
+
 }

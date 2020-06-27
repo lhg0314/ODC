@@ -66,7 +66,7 @@ function checkAll() {
 <style type="text/css">
 #noticeTable th {
 	text-align: center;
-	background: #ecdfec;
+	background: thistle;
 }
 </style>
 <div>
@@ -91,7 +91,7 @@ function checkAll() {
 	<c:forEach var="info" items="${list }" varStatus="status">
 	
 	<tr class="table-hover">
-	<td><input type="checkbox" name="checkRow" value="${info.noticeNo }" /></td>
+		<td><input type="checkbox" name="checkRow" value="${info.noticeNo }" /></td>
 		<td>${info.noticeNo }</td>
 		<td style="text-align: left;"><a href="/notice/view?noticeno=${info.noticeNo }">${info.noticeTitle }</a></td>
 		<td>${info.noticeDate}</td>

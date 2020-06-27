@@ -23,10 +23,61 @@ $(document).ready(function(){
 });
 </script>
 
+<script type="text/javascript">
+$(document).ready(function() {
+	// 선택체크 삭제
+	$("#btnDelete").click(function() {
+		// 선택된 체크박스
+		var $checkboxes = $("input:checkbox[name='checkRow']:checked");
+
+		// 체크된 대상들을 map으로 만들고 map을 문자열로 만들기
+		var map = $checkboxes.map(function() {
+			return $(this).val();
+		});
+		var names = map.get().join(",");
+		
+		// 전송 폼
+		var $form = $("<form>")
+			.attr("action", "/user/rlistdelete")
+			.attr("method", "get")
+			.append(
+				$("<input>")
+					.attr("type", "hidden")
+					.attr("name", "names")
+					.attr("value", names)
+			);
+		$(document.body).append($form);
+		$form.submit();
+	
+	});
+});
+
+//전체 체크/해제
+function checkAll() {
+	// checkbox들
+	var $checkboxes=$("input:checkbox[name='checkRow']");
+
+	// checkAll 체크상태 (true:전체선택, false:전체해제)
+	var check_status = $("#checkAll").is(":checked");
+	
+	if( check_status ) {
+		// 전체 체크박스를 checked로 바꾸기
+		$checkboxes.each(function() {
+			this.checked = true;	
+		});
+	} else {
+		// 전체 체크박스를 checked 해제하기
+		$checkboxes.each(function() {
+			this.checked = false;	
+		});
+	}
+}
+</script>
+
 <style type="text/css">
 #reviewTable th {
 	text-align: center;
-	background: #ecdfec;
+	background: thistle;
 }
 </style>
 
@@ -34,7 +85,7 @@ $(document).ready(function(){
 <a href="/mypage/reviewlist" class="aTagStyleNone"><span id="boardtitle">활동 정보</span></a>
 <hr>
 <a href="/mypage/reviewlist" class="aTagStyleNone"><span id="boardtitle">클래스 수강 후기</span></a>
-<br>
+<br><br>
 
 <div>
 <input type="text" id="rsearch" placeholder="클래스명" value="${paging.search }"/>
@@ -43,6 +94,7 @@ $(document).ready(function(){
 
 <table id="reviewTable" class="table table-condensed text-center table-hover">
 	<tr>
+		<th><input type="checkbox" id="checkAll" onclick="checkAll();" /></th>
 		<th>번호</th>
 		<th style="width: 30%;">클래스명</th>
 		<th style="width: 40%;">제목</th>
@@ -58,6 +110,7 @@ $(document).ready(function(){
 	<c:forEach var="info" items="${list }" varStatus="status">
 	
 	<tr class="table-hover">
+		<td><input type="checkbox" name="checkRow" value="${info.reviewNo }" /></td>
 		<td>${info.reviewNo }</td>
 		<td style="text-align: left;"><a href="/class/view?classno=${info.classNo }">${info.className}</a></td>
 		<td style="text-align: left;"><a href="/review/view?reviewno=${info.reviewNo }">${info.reviewTitle }</a></td>
@@ -66,6 +119,11 @@ $(document).ready(function(){
 	
 	</c:forEach>
 </table>
+
+<div id="btnBox" style="text-align: right;">
+<button id="btnDelete" class="btn btn-warning">후기 삭제</button>
+</div>
+
 </div>
 
 <c:import url="/WEB-INF/paging/mypagereviewpaging.jsp" />

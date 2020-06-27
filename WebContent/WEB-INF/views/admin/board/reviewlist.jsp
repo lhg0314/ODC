@@ -73,7 +73,7 @@ function checkAll() {
 <style type="text/css">
 #reviewTable th {
 	text-align: center;
-	background: #ecdfec;
+	background: thistle;
 }
 </style>
 <div>
@@ -91,8 +91,8 @@ function checkAll() {
 		<th><input type="checkbox" id="checkAll" onclick="checkAll();" /></th>
 		<th>번호</th>
 		<th>작성자 아이디</th>
-		<th style="width: 40%;">클래스명</th>
-		<th style="width: 20%;">제목</th>
+		<th style="width: 20%;">클래스명</th>
+		<th style="width: 40%;">제목</th>
 		<th>게시 날짜</th>
 	</tr>
 
