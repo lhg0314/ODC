@@ -68,7 +68,7 @@ public interface ArtistClassService {
 	/* 
 	 * 클래스 상세 파일 가져오기
 	 */
-	public ClassFile selectDetailFileByClassno(int classno);
+	public List<ClassFile> selectDetailFileByClassno(int classno);
 
 	/**
 	 *  클래스 삭제 전 부킹된 사용자가 있는지 확인

@@ -18,4 +18,6 @@ public interface ArtistService {
 
 	String getPwByEN(String email, String name, String id);
 
+	void deleteClassFile(int classno, String filename);
+
 }

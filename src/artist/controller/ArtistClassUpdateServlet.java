@@ -1,6 +1,7 @@
 package artist.controller;
 
 import java.io.IOException;
+import java.util.List;
 import java.util.Map;
 
 import javax.servlet.ServletException;
@@ -33,7 +34,7 @@ public class ArtistClassUpdateServlet extends HttpServlet {
 		
 		// 선택한 클래스 상세 정보
 		Map<String, Object> map = artistClassService.selectClassByClassNo(classno);
-		ClassFile detailFile = artistClassService.selectDetailFileByClassno(classno);
+		List<ClassFile> detailFile = artistClassService.selectDetailFileByClassno(classno);
 		
 		req.setAttribute("info", map);
 		req.setAttribute("detailFile", detailFile);

@@ -24,7 +24,7 @@ public class UserJoinServlet extends HttpServlet {
 	
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		System.out.println("doget[user/join]");
+		//System.out.println("doget[user/join]");
 		req.getRequestDispatcher("/WEB-INF/views/user/join/userjoin.jsp").forward(req, resp);
 	}
 	
@@ -57,7 +57,7 @@ public class UserJoinServlet extends HttpServlet {
 		
 		user.setUserpw(req.getParameter("userpw"));
 		
-		System.out.println(user);
+		//System.out.println(user);
 		
 		userService.insertUser(user);//회원정보를 디비에 저장함
 		

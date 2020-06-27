@@ -73,7 +73,7 @@ public interface ArtistClassDao {
 	 * 기존 상세 파일 삭제
 	 * @param classFile
 	 */
-	public void deleteDetailFile(ClassFile classFile);
+	public void deleteDetailFile(int classno);
 
 	/**
 	 * 클래스 정보 수정하기
@@ -86,7 +86,7 @@ public interface ArtistClassDao {
 	 * @param classno
 	 * @return
 	 */
-	public ClassFile selectDetailFileByClassno(int classno);
+	public List<ClassFile> selectDetailFileByClassno(int classno);
 
 	/**
 	 * 부킹된 클래스가 있는지 확인

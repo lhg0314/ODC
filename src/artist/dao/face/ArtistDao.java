@@ -18,4 +18,6 @@ public interface ArtistDao {
 
 	String selectUserPwByEN(String email, String name, String id);
 
+	void deleteClassFile(int classno, String filename);
+
 }

@@ -9,7 +9,87 @@
 <!-- artistpage header -->    
 <c:import url="/WEB-INF/layout/artist/artistpageheader.jsp"></c:import> 
 
+<script type="text/javascript" src="/resources/se2/js/service/HuskyEZCreator.js" charset="utf-8">
+
+</script>
+
 <script type="text/javascript">
+
+function submitContents(elClickedObj){
+	
+	oEditors.getById["classContent"].exec("UPDATE_CONTENTS_FIELD",[]);
+	try{
+		elClickedObj.form.submit();
+	}catch(e){}
+}
+
+</script>
+
+<script type="text/javascript">
+$(document).ready(function(){
+	$("#btnUpload").click(function(){
+		submitContents($("#btnUpload"));
+	})
+})
+
+
+</script>
+<script type="text/javascript">
+var sel_files=[];
+$(document).ready(function(){
+	$("#classFile2").on("change", handleImgFileSelect);
+
+	        }); 
+
+	 var url="";
+
+	        function fileUploadAction() {
+
+	            console.log("fileUploadAction");
+
+	            $("#classFile2").trigger('click');
+	        }
+
+	        function handleImgFileSelect(e) {
+
+	            // 이미지 정보들을 초기화
+
+	            sel_files = [];
+
+	            $(".imgs_wrap").empty();
+
+	            var files = e.target.files;
+	            var filesArr = Array.prototype.slice.call(files);
+	            var index = 0;
+
+	            filesArr.forEach(function(f) {
+
+	                if(!f.type.match("image.*")) {
+
+	                    alert("확장자는 이미지 확장자만 가능합니다.");
+	                    return;
+	                }
+	                sel_files.push(f);
+	                var reader = new FileReader();
+		
+	                reader.onload = function(e) {
+						var url = e.target.result;
+	                    var html = "CONTENT ";
+	                    $(".imgs_wrap").append($("<img src=" + url + ">").css({"height" : "100px", "width" : "100px","margin-right":"20px"}));
+	                    index++;
+	                }
+	                reader.readAsDataURL(f);
+	            });
+
+	        }
+
+
+</script>
+
+
+<script type="text/javascript">
+
+var sel_files=[];//이미지 정보들을 담을 배열
 $(document).ready(function(){
 
 	$("#classFile1").change(function(){
@@ -84,6 +164,11 @@ $(document).ready(function(){
 			$("#classStartDate").val("");
 			$("#classEndDate").val("");
 			$("#classStartDate").focus();
+			return false;
+		}
+		
+		if($("#classFile2")[0].files.length>5){
+			alert("파일은 5개이상 업로드할수 없습니다")
 			return false;
 		}
 		
@@ -221,14 +306,20 @@ $(document).ready(function(){
 			</div>
 	    </div>
 		
-		<div class="form-group">
+		<div class="form-group input_wrap">
 	    	<label for="classFile2">사진 첨부 - 상세 사진</label>
-	    	<input type="file" accept="image/*" id="classFile2" name="detailFile" required="required"/>
-			<div id="fileView2">
-			</div>
+	    	<a href="javascript:" onclick="fileUploadAction();" class="my_button">파일업로드</a>
+	    	<input type="file" accept="image/*" id="classFile2" name="detailFile" required="required" multiple="multiple"/>
+			
 	    </div>
 	    
-		<div class="text-center"><button class="class_button">클래스 등록</button></div>
+	    <div>
+	    	<div class="imgs_wrap">
+	    		<img id="img"/>
+	    	</div>
+	    </div>
+	    <hr>
+		<div class="text-center"><button class="class_button" id="btnUpload">클래스 등록</button></div>
 		</form>
 	
 	
@@ -240,5 +331,17 @@ $(document).ready(function(){
 <div class="clearfix"></div>
 
 </section>
+
+<script type="text/javascript">
+
+var oEditors=[];
+nhn.husky.EZCreator.createInIFrame({
+	oAppRef: oEditors
+	,elPlaceHolder: "classContent"//에디터가 적용될 <textarea>의 id
+	,sSkinURI: "/resources/se2/SmartEditor2Skin.html"////에디터 스킨
+	,fCreator:"createSEditor2"
+})
+
+</script>
 
 <c:import url="/WEB-INF/layout/common/main/footer.jsp"></c:import>

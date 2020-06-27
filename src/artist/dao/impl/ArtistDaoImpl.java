@@ -195,5 +195,22 @@ public class ArtistDaoImpl implements ArtistDao {
 		}
 		return res;
 	}
+	@Override
+	public void deleteClassFile(int classno, String filename) {
+		conn=JDBCTemplate.getConnection();
+		String sql="delete from classfile where class_no=? and class_origin_filename=?";
+		
+		try {
+			ps=conn.prepareStatement(sql);
+			ps.setInt(1, classno);
+			ps.setString(2, filename);
+			ps.executeUpdate();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		
+	}
 
 }
