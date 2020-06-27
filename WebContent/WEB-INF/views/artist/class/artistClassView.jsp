@@ -200,7 +200,7 @@ $(document).ready(function(){
 
 		<div class="form-group line">
 	    	<label for="classPrice" style="display: block;">금액</label>
-	    	<input type="number" min="0" step ="1000" class="form-control" id="classPrice" name="classPrice" value="${info.classPrice }" required="required"/><span>원</span>
+	    	<input type="number" min="100" step ="1000" class="form-control" id="classPrice" name="classPrice" value="${info.classPrice }" required="required"/><span>원</span>
 	    </div>
 
 	    <div class="form-group line" id="chkbox">
