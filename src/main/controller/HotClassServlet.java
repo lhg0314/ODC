@@ -10,17 +10,11 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import dto.ClassInfo;
 import main.service.NewClassService;
 import main.service.NewClassServiceImpl;
 
-/*
- * 0627 이서연 
- * 메인 > 네비게이션 메뉴 > 신규클래스
- */
-
-@WebServlet("/newclass")
-public class NewClassServlet extends HttpServlet {
+@WebServlet("/hotclass")
+public class HotClassServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	
@@ -29,18 +23,18 @@ public class NewClassServlet extends HttpServlet {
 	
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+
 		
-		
-		//최신클래스 불러오기
-		List<Map<String, Object>> cinfo = nClassService.newclass();
+		//인기클래스 불러오기
+		List<Map<String, Object>> cinfo = nClassService.hotclass();
 		
 //		System.out.println(cinfo);
 		
 		
-		
 		req.setAttribute("cinfo", cinfo);
 		
-		req.getRequestDispatcher("/WEB-INF/views/main/navMenu/newClass.jsp").forward(req, resp);
+		req.getRequestDispatcher("/WEB-INF/views/main/navMenu/hotClass.jsp").forward(req, resp);
+	
 	}
 	
 }

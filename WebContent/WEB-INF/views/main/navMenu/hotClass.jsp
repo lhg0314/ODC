@@ -132,8 +132,8 @@ select {
 <div id="main">
 
 	
-	<div id="title">신규 클래스</div>
-	<div style="color: #666;">새롭게 등록된 클래스들을 구경하세요</div><br>
+	<div id="title">인기 클래스</div>
+	<div style="color: #666;">많은 분들이 사랑해주신 클래스입니다</div><br>
 	<hr>
 	
 	
@@ -158,7 +158,7 @@ select {
 			<div id="eachClass">
 				<div id="img"><!-- 링크 누르면 클래스 상세 페이지로 이동 -->
 					<a href="#"><img src="/upload/${c.filename }" alt="썸네일" width="200px;" height="200px;"></a>
-		<!--테스트용	<a href="#"><img src="/resources/img/Tulips.jpg" alt="썸네일" width="200px;" height="200px;"></a> -->
+<!-- 	테스트용		<a href="#"><img src="/resources/img/Tulips.jpg" alt="썸네일" width="200px;" height="200px;"></a> -->
 				</div>
 				<div id="sort">
 					<c:if test="${c.location eq 1 }">
