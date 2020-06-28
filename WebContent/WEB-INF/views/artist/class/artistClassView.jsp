@@ -31,10 +31,9 @@ $(document).ready(function(){
 	})
 	
 	$("#btnX2").click(function(){
-		$("#word2").remove();
-		$("#fileView2").remove();
-		$("#originFile2").remove();
-		$("#classFile2").remove();	
+		$("#fileView2").html("");
+		$("#originFile2").css("display", "none");
+		$("#classFile2").attr("type", "file");
 		var param="classno=${detailFile[0].classno }&name=${detailFile[0].classOriginFilename }";
 		console.log(param)
 		sendRequest("GET","/delete/artClassFile",param,ajaxFromServer);
@@ -84,6 +83,7 @@ $(document).ready(function(){
 		if(httpRequest.readyState==4){//DONE,응답완료
 			if(httpRequest.status==200){//OK
 				console.log("성공")
+				document.location.reload();
 				
 			}else{
 				console.log("AJAX요청/응답 에러")
@@ -423,7 +423,7 @@ $("#classFile6").change(function(){
 		</c:if>
 	    </div>
 	    
-	    <c:if test="${detailFile.size() eq 0 }">
+	    <c:if test="${detailFile.size() eq 0 }"><!-- 상세사진이 0개이면 상세사진 추가해야한다 -->
 	    <div class="form-group">
 	    	<label for="classFile1">사진 첨부 - 추가할 사진</label>
 	    	<input type="file" accept="image/*" id="classFile1" name="detailFile" multiple="multiple" required="required"/>
@@ -432,7 +432,7 @@ $("#classFile6").change(function(){
 	    </div> 
 	    </c:if>
 	    
- 	    <c:if test="${detailFile.size() ne 0 }">
+ 	    <c:if test="${detailFile.size() > 0 && detailFile.size() < 5  }"><!-- 상세사진이 5개이하면 추가할수있는창 나타남   -->
 	    <div class="form-group">
 	    	<label for="classFile1">사진 첨부 - 추가할 사진</label>
 	    	<input type="file" accept="image/*" id="classFile1" name="detailFile" multiple="multiple"/>

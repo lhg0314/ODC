@@ -315,6 +315,7 @@ public class ArtistClassServiceImpl implements ArtistClassService {
 					} catch (Exception e) {
 						e.printStackTrace();
 					}
+					System.out.println(classInfo);
 					artistClassDao.insertClassInfo(classInfo);//메인파일 삽입전에 클래스 정보파일 먼저 삽입
 					artistClassDao.insertClassFile(mainFile);
 					

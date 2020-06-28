@@ -12,8 +12,8 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import dto.ClassBooking;
-import user.service.UserMyPageClassServiceImpl;
 import user.service.face.UserMyPageClassService;
+import user.service.impl.UserMyPageClassServiceImpl;
 
 //20200625 이인주
 //마이페이지 - 장바구니 - 결제확인 - 결제

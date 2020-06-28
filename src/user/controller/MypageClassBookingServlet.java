@@ -12,8 +12,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import user.service.UserMyPageClassServiceImpl;
 import user.service.face.UserMyPageClassService;
+import user.service.impl.UserMyPageClassServiceImpl;
 
 // 20200624 이인주
 // 마이페이지 - class - Booking 
