@@ -62,7 +62,7 @@ public class Send extends HttpServlet {
 			msg.setHeader("content-Type", "text/html");
 			
 			javax.mail.Transport.send(msg);
-			System.out.println("보냄!");
+			//System.out.println("보냄!");
 			
 			
 		}catch(AddressException addr_e) {

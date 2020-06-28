@@ -4,12 +4,12 @@ public class ReviewFile {
 
     private int reviewFileno;
     private int reviewno; 
-    private String reviewOriginFilename; 
-    private String reviewRenameFilename;
+    private String revieworigin; 
+    private String reviewrename;
 	@Override
 	public String toString() {
-		return "ReviewFile [reviewFileno=" + reviewFileno + ", reviewno=" + reviewno + ", reviewOriginFilename="
-				+ reviewOriginFilename + ", reviewRenameFilename=" + reviewRenameFilename + "]";
+		return "ReviewFile [reviewFileno=" + reviewFileno + ", reviewno=" + reviewno + ", revieworigin=" + revieworigin
+				+ ", reviewrename=" + reviewrename + "]";
 	}
 	public int getReviewFileno() {
 		return reviewFileno;
@@ -23,18 +23,20 @@ public class ReviewFile {
 	public void setReviewno(int reviewno) {
 		this.reviewno = reviewno;
 	}
-	public String getReviewOriginFilename() {
-		return reviewOriginFilename;
+	public String getRevieworigin() {
+		return revieworigin;
 	}
-	public void setReviewOriginFilename(String reviewOriginFilename) {
-		this.reviewOriginFilename = reviewOriginFilename;
+	public void setRevieworigin(String revieworigin) {
+		this.revieworigin = revieworigin;
 	}
-	public String getReviewRenameFilename() {
-		return reviewRenameFilename;
+	public String getReviewrename() {
+		return reviewrename;
 	}
-	public void setReviewRenameFilename(String reviewRenameFilename) {
-		this.reviewRenameFilename = reviewRenameFilename;
+	public void setReviewrename(String reviewrename) {
+		this.reviewrename = reviewrename;
 	}
+
+    
     
     
 }

@@ -59,6 +59,7 @@ public class AritistClassPostServlet extends HttpServlet {
 		
 		// 해당 아이디 작가 정보 가져오기
 		ArtistInfo artInfo = artistClassService.getArtInfoByArtId(artId);
+		System.out.println(artInfo);
 		
 		// 클래스 신청 정보 저장하기
 		artistClassService.insertClassInfo(req, resp, artInfo);

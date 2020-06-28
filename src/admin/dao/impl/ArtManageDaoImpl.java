@@ -163,11 +163,11 @@ public class ArtManageDaoImpl implements ArtManageDao {
 				ainfo.setArtNick(rs.getString("art_nick"));
 				ainfo.setArtBirth(rs.getDate("art_birth"));
 				ainfo.setArtEmail(rs.getString("art_email"));
-				ainfo.setArtEmailAuth(rs.getInt("art_email_auth"));
 				ainfo.setArtCode(rs.getInt("art_code"));
 				ainfo.setArtPhone(rs.getLong("art_phone"));
 				ainfo.setArtTel(rs.getLong("art_tel"));
 				ainfo.setArtAddr(rs.getString("art_addr"));
+				ainfo.setArtContent(rs.getString("art_content"));
 			}
 			
 			
@@ -179,45 +179,6 @@ public class ArtManageDaoImpl implements ArtManageDao {
 		}
 		
 		return ainfo;
-	}
-
-
-
-
-	@Override
-	public ArtistDetail selectArtDetail(ArtistDetail artistDetail) {
-		
-		String sql = "";
-		sql += "SELECT * FROM artistdetail WHERE art_no = ?";
-				
-		conn = JDBCTemplate.getConnection();
-		
-		ArtistDetail aDetail = null;
-		
-		
-		try {
-			
-			ps = conn.prepareStatement(sql);
-			ps.setInt(1, artistDetail.getArtno());
-			
-			rs = ps.executeQuery();
-			
-			while(rs.next()) {
-				
-				aDetail = new ArtistDetail();
-				
-				aDetail.setArtContent(rs.getString("art_content"));
-				
-			}
-			
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}finally {
-			JDBCTemplate.close(rs);
-			JDBCTemplate.close(ps);
-		}
-		
-		return aDetail;
 	}
 
 

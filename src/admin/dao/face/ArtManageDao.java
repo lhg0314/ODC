@@ -40,14 +40,6 @@ public interface ArtManageDao {
 
 	
 	/**
-	 * 사업자 소개글 가져오기
-	 * @param artistDetail
-	 * @return
-	 */
-	public ArtistDetail selectArtDetail(ArtistDetail artistDetail);
-
-	
-	/**
 	 * 사업자 개설 클래스 가져오기
 	 * @param classInfo
 	 * @return

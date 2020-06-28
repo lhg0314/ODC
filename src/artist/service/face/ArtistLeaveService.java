@@ -20,4 +20,12 @@ public interface ArtistLeaveService {
 	 */
 	void leave(ArtistInfo ainfo);
 
+
+	/**
+	 * 게시중인 클래스 있는지 체크
+	 * @param ainfo
+	 * @return
+	 */
+	boolean classcheck(ArtistInfo ainfo);
+
 }

@@ -10,6 +10,8 @@ import java.util.HashMap;
 import java.util.Map;
 
 import dbutil.JDBCTemplate;
+import dto.ReviewBoard;
+import dto.ReviewFile;
 import user.dao.face.UserMyPageClassDao;
 
 public class UserMyPageClassDaoImpl implements UserMyPageClassDao{
@@ -32,7 +34,7 @@ public class UserMyPageClassDaoImpl implements UserMyPageClassDao{
 		sql += " AND userinfo.user_no = classbooking.user_no";
 		sql += " AND classinfo.class_no = classfile.class_no";
 		sql += " AND user_id = ? ";
-		sql += " AND booking_date < ? ";
+		sql += " AND booking_date > ? ";
 		sql += " order by booking_no desc";
 		
 		ArrayList<Map<String, Object>> userbooking = new ArrayList<Map<String,Object>>();
@@ -100,7 +102,6 @@ public class UserMyPageClassDaoImpl implements UserMyPageClassDao{
 			e.printStackTrace();
 			JDBCTemplate.rollback(conn);
 		}finally {
-			JDBCTemplate.close(rs);
 			JDBCTemplate.close(ps);
 			
 		}
@@ -177,7 +178,6 @@ public class UserMyPageClassDaoImpl implements UserMyPageClassDao{
 			e.printStackTrace();
 			JDBCTemplate.rollback(conn);
 		}finally {
-			JDBCTemplate.close(rs);
 			JDBCTemplate.close(ps);
 			
 		}
@@ -325,7 +325,186 @@ public class UserMyPageClassDaoImpl implements UserMyPageClassDao{
 			e.printStackTrace();
 			JDBCTemplate.rollback(conn);
 		}finally {
+			JDBCTemplate.close(ps);
+			
+		}
+	}
+	
+	@Override
+	public ArrayList<Map<String, Object>> usersignup(String userid, Date nowday) {
+		conn = JDBCTemplate.getConnection();//디비 연결
+		
+		String sql = "";
+		sql += "select ";
+		sql += " classinfo.class_no,class_rename_filename,class_name, art_id, payment_date, booking_date, booking_count, total_price,classbooking.booking_no";
+		sql += " from classinfo,artistinfo, userinfo, classbooking,classfile ";
+		sql += " WHERE classinfo.art_no = artistinfo.art_no";
+		sql += " AND classinfo.class_no = classbooking.class_no";
+		sql += " AND userinfo.user_no = classbooking.user_no";
+		sql += " AND classinfo.class_no = classfile.class_no";
+		sql += " AND user_id = ? ";
+		sql += " AND booking_date < ? ";
+		sql += " order by booking_no desc";
+		
+		ArrayList<Map<String, Object>> usersignup = new ArrayList<Map<String,Object>>();
+		
+		try {
+			ps = conn.prepareStatement(sql);
+
+			ps.setString(1, userid);
+			
+			//java.util.Date타입의 정보를 java.sql.Date로 변경해야함
+			// -> java.sql.Date(long millis)생성자를 이용한다
+			java.sql.Date d = new java.sql.Date(nowday.getTime());
+			ps.setDate(2, d );
+			
+			rs = ps.executeQuery();
+			
+			while(rs.next()) {
+
+				Map<String, Object> map = new HashMap<String, Object>();
+
+				map.put("classno",rs.getInt("class_no"));
+				map.put("classrenamefilename",rs.getString("class_rename_filename"));
+				map.put("classname",rs.getString("class_name"));
+				map.put("artid",rs.getString("art_id"));
+				map.put("paymentDate",rs.getDate("payment_date"));
+				map.put("bookingDate",rs.getDate("booking_date"));
+				map.put("bookingCount",rs.getInt("booking_count"));
+				map.put("totalPrice",rs.getInt("total_price"));
+				map.put("bookingno",rs.getInt("booking_no"));
+
+				usersignup.add(map);
+
+		}
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}finally {
 			JDBCTemplate.close(rs);
+			JDBCTemplate.close(ps);
+			
+		}
+		
+		return usersignup;
+	}
+	
+	@Override
+	public int reviewboardno() {
+		conn = JDBCTemplate.getConnection();//디비 연결
+		
+		String sql = "";
+		sql += "select ReviewBoard_SEQ.nextval from dual";
+		
+		//결과 저장할 변수
+		int reviewboardno = 0 ;
+		
+		try {
+			ps = conn.prepareStatement(sql);
+			rs = ps.executeQuery();
+			
+			while(rs.next()) {
+				reviewboardno = rs.getInt(1);
+			}
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}finally {
+			JDBCTemplate.close(rs);
+			JDBCTemplate.close(ps);
+		}
+		
+		return reviewboardno;
+	}
+	
+	@Override
+	public int reviewcount(int bookingno) {
+		conn = JDBCTemplate.getConnection();//디비 연결
+		
+		String sql = "";
+		sql += "select count(*)";
+		sql += " from reviewboard";
+		sql += " WHERE booking_no = ?";
+		
+		//결과 저장할 변수
+		int reviewcount = 0 ;
+		
+		try {
+			ps = conn.prepareStatement(sql);
+			ps.setInt(1, bookingno);
+			rs = ps.executeQuery();
+			
+			while(rs.next()) {
+				reviewcount = rs.getInt(1);
+			}
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}finally {
+			JDBCTemplate.close(rs);
+			JDBCTemplate.close(ps);
+		}
+		
+		return reviewcount;
+	}
+	
+	@Override
+	public void insertreviewboard(ReviewBoard reviewboard) {
+		conn = JDBCTemplate.getConnection();//디비 연결
+		
+		String sql = "";
+		sql += "INSERT INTO reviewboard(review_no,user_no,class_no,sat_level,review_content, review_title,booking_no)";
+		sql += " values(?,?,?,?,?,?,?)";
+		
+		
+		try {
+			ps = conn.prepareStatement(sql);
+			
+			ps.setInt(1, reviewboard.getReviewno());
+			ps.setInt(2, reviewboard.getUserno());
+			ps.setInt(3, reviewboard.getClassno());
+			ps.setInt(4, reviewboard.getSatlevel());
+			ps.setString(5, reviewboard.getReviewContent());
+			ps.setString(6, reviewboard.getReviewtitle());
+			ps.setInt(7, reviewboard.getBookingno());
+			
+			ps.executeUpdate();
+			
+			JDBCTemplate.commit(conn);
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+			JDBCTemplate.rollback(conn);
+		}finally {
+			JDBCTemplate.close(ps);
+			
+		}
+		
+	}
+	
+	@Override
+	public void insertreviewfile(ReviewFile reviewfile) {
+		conn = JDBCTemplate.getConnection();//디비 연결
+		
+		String sql = "";
+		sql += "INSERT INTO ReviewFile(review_file_no,review_no,review_origin,review_rename)";
+		sql += " values(ReviewFile_SEQ.nextval,?,?,?)";
+		
+		try {
+			ps = conn.prepareStatement(sql);
+			
+			ps.setInt(1, reviewfile.getReviewno());
+			ps.setString(2, reviewfile.getRevieworigin());
+			ps.setString(3, reviewfile.getReviewrename());
+			
+			ps.executeUpdate();
+			
+			JDBCTemplate.commit(conn);
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+			JDBCTemplate.rollback(conn);
+		}finally {
 			JDBCTemplate.close(ps);
 			
 		}

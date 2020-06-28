@@ -150,9 +150,14 @@ $(document).ready(function(){
 <tr>
 	<th colspan="4">첨부 파일 - 상세 사진</th>
 </tr>
+<c:forEach var="i" begin="0" end="${detailFile.size()-1 }">
+
 <tr>
-	<td colspan="4" style="text-align: center;"><img class="classFile" src="/upload/${detailFile.classRenameFilename }"/></td>
+	
+	<td colspan="4" style="text-align: center;"><img class="classFile" src="/upload/${detailFile[i].classRenameFilename}"/></td>
 </tr>
+
+</c:forEach>
 <tr>
 	<th colspan="4"><a href="/admin/class/review?classno=${info.classNo }">&raquo; 클래스 후기보기</a></th>
 </tr>

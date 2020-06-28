@@ -12,8 +12,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import dto.UserInfo;
-import user.service.UserService;
-import user.service.UserServiceImpl;
+import user.service.face.UserService;
+import user.service.impl.UserServiceImpl;
 
 
 @WebServlet("/user/join")
@@ -24,7 +24,7 @@ public class UserJoinServlet extends HttpServlet {
 	
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		System.out.println("doget[user/join]");
+		//System.out.println("doget[user/join]");
 		req.getRequestDispatcher("/WEB-INF/views/user/join/userjoin.jsp").forward(req, resp);
 	}
 	
@@ -33,7 +33,7 @@ public class UserJoinServlet extends HttpServlet {
 		req.setCharacterEncoding("UTF-8");
 		UserInfo user=new UserInfo();//param값으로 받아온 사용자의 정보를 저장함
 		
-		user.setUserEmailAuth(1);
+//		user.setUserAuth(1);
 		
 		String birth=req.getParameter("userbirth");
 		SimpleDateFormat transFormat = new SimpleDateFormat("yyyy-MM-dd");
@@ -57,7 +57,7 @@ public class UserJoinServlet extends HttpServlet {
 		
 		user.setUserpw(req.getParameter("userpw"));
 		
-		System.out.println(user);
+		//System.out.println(user);
 		
 		userService.insertUser(user);//회원정보를 디비에 저장함
 		

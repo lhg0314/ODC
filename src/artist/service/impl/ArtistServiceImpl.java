@@ -4,6 +4,7 @@ import artist.dao.face.ArtistDao;
 import artist.dao.impl.ArtistDaoImpl;
 import artist.service.face.ArtistService;
 import dto.ArtistInfo;
+import dto.ClassInfo;
 
 public class ArtistServiceImpl implements ArtistService {
 
@@ -49,6 +50,21 @@ public class ArtistServiceImpl implements ArtistService {
 	public String getPwByEN(String email, String name, String id) {
 		String pw=artistDao.selectUserPwByEN(email,name,id);
 		return pw;
+	}
+	@Override
+	public void deleteClassFile(int classno, String filename) {
+		artistDao.deleteClassFile(classno,filename);
+		
+	}
+	@Override
+	public ArtistInfo getArtInfobyartNo(int artno) {
+		
+		return artistDao.getArtistInfo(artno);
+	}
+	@Override
+	public ClassInfo selectClassByClassNo(int classno) {
+		// TODO Auto-generated method stub
+		return artistDao.getClassInfo(classno);
 	}
 
 }

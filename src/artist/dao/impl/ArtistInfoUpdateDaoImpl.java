@@ -53,7 +53,6 @@ public class ArtistInfoUpdateDaoImpl implements ArtistInfoUpdateDao {
 				 ainfo.setArtBirth(rs.getDate("art_birth"));
 				 ainfo.setArtAddr(rs.getString("art_addr"));
 				 ainfo.setArtContent(rs.getString("art_content"));
-				 System.out.println("test"+ainfo);
 			}
 			
 		} catch (SQLException e) {

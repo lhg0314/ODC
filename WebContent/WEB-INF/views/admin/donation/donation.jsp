@@ -18,7 +18,7 @@ $(document).ready(function(){
 <style type="text/css">
 #donationTable th {
 	text-align: center;
-	background: #ecdfec;
+	background: thistle;
 }
 </style>
 
@@ -238,14 +238,14 @@ $(document).ready(function(){
 <div class="clearfix"></div>
 <br>
 
-<h5 class="text-center">
+<h4 class="text-center" style="font-weight: bold;">
 <c:if test="${not empty searchedartist }">
 ${searchedartist }작가님&nbsp;&nbsp;
 </c:if>
 <c:if test="${selectedmonth ne 0 }">
 ${selectedmonth }월 후원 내역
 </c:if>
-</h5>
+</h4>
 
 <table id="donationTable" class="table table-condensed text-center table-hover">
 	<tr>

@@ -10,8 +10,8 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import dto.UserInfo;
-import user.service.UserInfoUpdateService;
-import user.service.UserInfoUpdateServiceImpl;
+import user.service.face.UserInfoUpdateService;
+import user.service.impl.UserInfoUpdateServiceImpl;
 
 @WebServlet("/user/info")
 public class UserInfoUpdateServlet extends HttpServlet {
@@ -53,6 +53,12 @@ public class UserInfoUpdateServlet extends HttpServlet {
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		System.out.println("/user/info [POST]");
+		
+		
+		 req.setCharacterEncoding("UTF-8");
+			
+		 
+		 resp.setContentType("text/html; charset=utf-8");
 		
 		
 		//정보 수정하기

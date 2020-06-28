@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<!DOCTYPE html>
+<!-- <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
@@ -40,14 +40,14 @@
 
 </style>
 </head>
-<body>
+<body> -->
 
 <div id="box">
-<div id="header">
+<!-- <div id="header">
 <a href="/"><img alt="logo" src="/resources/img/logo2.png" width="200px;" height="200px;"></a>
 <h2>개인정보 처리방침</h2>
 <hr>
-</div>
+</div> -->
 
 <h2>1. 이용약관</h2>
 <p>&nbsp;(주)ODC 사이트(이하 "회사" 또는 "해외쇼핑서비스"이라 함)는 정보통신망 이용촉진 및 정보보호 등에 관한 법률, 개인정보보호법, 통신비밀보호법, 전기통신사업법 등 정보통신서비스제공자가 준수하여야 할 관련 법령상의 개인정보보호 규정을 준수하며, 관련 법령에 의거한 개인정보처리방침을 정하여 이용자 권익 보호에 최선을 다하고 있습니다. 본 개인정보처리방침은 해외쇼핑서비스에서 제공하는 서비스에 적용되며 다음과 같은 내용을 담고 있습니다.</p>
@@ -127,7 +127,7 @@
 <h2>10.기타</h2>
 <p>해외쇼핑서비스에 링크되어 있는 웹사이트들이 개인정보를 수집하는 행위에 대해서는 본 "해외쇼핑서비스 개인정보처리방침"이 적용되지 않음을 알려 드립니다.</p>
 
-<br>
+<!-- <br>
 <hr>
 <div id="loginFooter" >	
 <a href="/footer/termsofservice" class="anone">서비스 이용약관</a>&nbsp;&nbsp;
@@ -136,8 +136,8 @@
 <a href="/fooer/siteIntroduce" class="anone">사이트 소개</a>&nbsp;&nbsp;
 <p>&copy; ODC</p>
 </div>
-<br>
+<br> -->
 </div>
 
-</body>
-</html>
+<!-- </body>
+</html> -->

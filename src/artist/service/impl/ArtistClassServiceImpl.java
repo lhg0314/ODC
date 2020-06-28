@@ -88,8 +88,8 @@ public class ArtistClassServiceImpl implements ArtistClassService {
 		// 전달파라미터를 저장할 DTO 객체
 		int classno = artistClassDao.getClassNo();
 		ClassInfo classInfo = new ClassInfo();
-		ClassFile mainFile = new ClassFile();
-		ClassFile detailFile = new ClassFile();
+		//ClassFile mainFile = new ClassFile();
+		//ClassFile detailFile = new ClassFile();
 		
 		classInfo.setArtno(artInfo.getArtno());
 		classInfo.setClassno(classno);
@@ -98,8 +98,8 @@ public class ArtistClassServiceImpl implements ArtistClassService {
 		int location = parseLocation(artInfo);
 		classInfo.setLocation(location);
 		
-		mainFile.setClassno(classno);
-		detailFile.setClassno(classno);
+		//mainFile.setClassno(classno);
+		//detailFile.setClassno(classno);
 		
 		
 		// 2. 아이템 팩토리 객체 생성
@@ -288,6 +288,9 @@ public class ArtistClassServiceImpl implements ArtistClassService {
 				
 				if( "mainFile".equals(item.getFieldName()) ) {
 					
+					
+					ClassFile mainFile = new ClassFile();
+					mainFile.setClassno(classno);
 					// 3) 파일 처리
 					String rename = sdfName.format(new Date());
 					
@@ -312,9 +315,14 @@ public class ArtistClassServiceImpl implements ArtistClassService {
 					} catch (Exception e) {
 						e.printStackTrace();
 					}
+					System.out.println(classInfo);
+					artistClassDao.insertClassInfo(classInfo);//메인파일 삽입전에 클래스 정보파일 먼저 삽입
+					artistClassDao.insertClassFile(mainFile);
 					
 				}else if( "detailFile".equals(item.getFieldName())) {
 					
+					ClassFile detailFile = new ClassFile();
+					detailFile.setClassno(classno);
 					// 3) 파일 처리
 					String rename = sdfName.format(new Date());
 					
@@ -339,15 +347,17 @@ public class ArtistClassServiceImpl implements ArtistClassService {
 					} catch (Exception e) {
 						e.printStackTrace();
 					}
+					
+					artistClassDao.insertClassFile(detailFile);
 				}
 
 			} //if( !item.isFormField()) end
 			
 		} //while( iter.hasNext()) End
 		
-		artistClassDao.insertClassInfo(classInfo);
-		artistClassDao.insertClassFile(mainFile);
-		artistClassDao.insertClassFile(detailFile);
+		//artistClassDao.insertClassInfo(classInfo);
+		//artistClassDao.insertClassFile(mainFile);
+		//artistClassDao.insertClassFile(detailFile);
 		
 	}
 
@@ -414,7 +424,9 @@ public class ArtistClassServiceImpl implements ArtistClassService {
 		// 전달파라미터를 저장할 DTO 객체
 		ClassInfo classInfo = new ClassInfo();
 		ClassFile mainFile = new ClassFile();
-		ClassFile detailFile = new ClassFile();
+		//ClassFile detailFile = new ClassFile();
+		int classNo=0;
+		//artistClassDao.deleteDetailFile(classNo);
 		
 		// 2. 아이템 팩토리 객체 생성
 		DiskFileItemFactory factory = new DiskFileItemFactory();
@@ -477,10 +489,10 @@ public class ArtistClassServiceImpl implements ArtistClassService {
 						param = item.getString("UTF-8");
 						
 						if( param != null && !"".equals(param)) {
-							int classNo = Integer.parseInt(param);
+							classNo = Integer.parseInt(param);
 							classInfo.setClassno(classNo);
 							mainFile.setClassno(classNo);
-							detailFile.setClassno(classNo);
+							
 						}
 					} catch (UnsupportedEncodingException e) {
 						e.printStackTrace();
@@ -542,10 +554,13 @@ public class ArtistClassServiceImpl implements ArtistClassService {
 						e.printStackTrace();
 					}
 					
-				}else if( "detailFile".equals(item.getFieldName())) {
+				}else if("detailFile".equals(item.getFieldName())){
 					
 					// 기존 파일 삭제
-					artistClassDao.deleteDetailFile(detailFile);
+					System.out.println("111");
+					
+					ClassFile detailFile = new ClassFile();
+					detailFile.setClassno(classNo);
 					// 3) 파일 처리
 					String rename = sdfName.format(new Date());
 					
@@ -564,7 +579,7 @@ public class ArtistClassServiceImpl implements ArtistClassService {
 					detailFile.setClassOriginFilename(origin);
 					detailFile.setClassRenameFilename(stored);
 					
-					artistClassDao.insertClassFile(detailFile);
+					
 					
 					try {
 						item.write(up); // 실제 업로드
@@ -572,7 +587,9 @@ public class ArtistClassServiceImpl implements ArtistClassService {
 					} catch (Exception e) {
 						e.printStackTrace();
 					}
-				}
+					
+					artistClassDao.insertClassFile(detailFile);
+				}//if detail
 			} //if( !item.isFormField()) end
 			
 		} //while( iter.hasNext()) End
@@ -582,7 +599,7 @@ public class ArtistClassServiceImpl implements ArtistClassService {
 	}
 
 	@Override
-	public ClassFile selectDetailFileByClassno(int classno) {
+	public List<ClassFile> selectDetailFileByClassno(int classno) {
 		return artistClassDao.selectDetailFileByClassno(classno);
 	}
 

@@ -77,20 +77,15 @@
 		<tr class="tablehead">	
 			<th style="width: 20%; text-align: center;">닉네임</th>
 			<th style="width: 20%; text-align: center;">생년월일</th>
-			<th style="width: 30%; text-align: center;">이메일</th>
-			<th style="width: 10%; text-align: center;">이메일인증</th>
+			<th style="width: 40%; text-align: center;">이메일</th>
+			<th style="width: 20%; text-align: center;">사업자등록번호</th>
 		</tr>
 		
 		<tr>
 			<td>${artistInfo.artNick }</td>
 			<td>${artistInfo.artBirth }</td>
 			<td>${artistInfo.artEmail }</td>
-			<c:if test="${artistInfo.artEmailAuth eq 0 }">
-				<td>X</td>
-			</c:if>
-			<c:if test="${artistInfo.artEmailAuth eq 1 }">
-				<td>O</td>
-			</c:if>
+			<td>${artistInfo.artCode }</td>
 		</tr>
 		
 	</table>
@@ -98,14 +93,13 @@
 	<table class="table table-condensed">
 		
 		<tr class="tablehead">	
-			<th style="width: 15%; text-align: center;">사업자등록번호</th>
-			<th style="width: 15%; text-align: center;">휴대폰번호</th>
-			<th style="width: 15%; text-align: center;">공방전화번호</th>
-			<th style="width: 55%; text-align: center;">공방주소</th>
+			
+			<th style="width: 20%; text-align: center;">휴대폰번호</th>
+			<th style="width: 20%; text-align: center;">공방전화번호</th>
+			<th style="width: 60%; text-align: center;">공방주소</th>
 		</tr>
 		
 		<tr>
-			<td>${artistInfo.artCode }</td>
 			<td>${artistInfo.artPhone }</td>
 			<td>${artistInfo.artTel }</td>
 			<td>${artistInfo.artAddr }</td>
@@ -116,11 +110,11 @@
 	<table class="table table-condensed">
 		
 		<tr class="tablehead">	
-			<th style="width: 100%; text-align: center;">작가소개말</th>
+			<th style="width: 100%; text-align: center;">작가소개글</th>
 		</tr>
 		
 		<tr>
-			<td>${artistDetail.artContent }</td>
+			<td>${artistInfo.artContent }</td>
 		</tr>
 	
 	</table>

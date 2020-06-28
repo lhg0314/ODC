@@ -194,18 +194,23 @@ ul.sub li a {
 	text-align: center;
 	border: 1px solid #ccc;
 	border-radius: 20px;
-	padding: 20px;
-
+	padding: 50px 100px;
 }
 
 
-#class_upload_notice span:first-child {
+#ctitle {
 	
 	font-size: 25px;
 	font-weight: bold;
-
+ 	font-style: italic; 
+	background: thistle;
 }
 
+#class_upload_notice_content {
+
+	text-align: left;
+	font-size: 15px;
+}
 
 </style>
 
@@ -271,7 +276,7 @@ ul.sub li a {
 		
 	<ul class="navi">
 		<li class="group">
-		    <div class="title">기부 및 후원</div>
+		    <div class="title">후원</div>
 		    <ul class="sub">               
 		        <li><a href="/artist/donation">후원 받은 내역</a></li>                
 		    </ul>

@@ -1,5 +1,9 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
+
+
+ <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    
+ <%--   
 <!DOCTYPE html>
 <html>
 <head>
@@ -52,14 +56,14 @@
 }
 </style>
 </head>
-<body>
+<body> --%>
 
 <div id="box">
-<div id="header">
-<a href="/"><img alt="logo" src="/resources/img/logo2.png" width="200px;" height="200px;"></a>
+<!-- <div id="header">
+ <a href="/"><img alt="logo" src="/resources/img/logo2.png" width="200px;" height="200px;"></a> 
 <h2>서비스 이용약관</h2>
 <hr>
-</div>
+</div> -->
 
 <h2>목차</h2>
 <ol class="liststylenon">
@@ -221,13 +225,14 @@
 <hr>
 <div id="loginFooter" >	
 <a href="/footer/termsofservice" class="anone">서비스 이용약관</a>&nbsp;&nbsp;
-<a href="/fooer/privacypolicy" class="anone">개인정보 처리방침</a>&nbsp;&nbsp;
-<a href="/fooer/memberIntroduce" class="anone">제작자 소개</a>&nbsp;&nbsp;
-<a href="/fooer/siteIntroduce" class="anone">사이트 소개</a>&nbsp;&nbsp;
+<a href="/footer/privacypolicy" class="anone">개인정보 처리방침</a>&nbsp;&nbsp;
+<a href="/footer/memberIntroduce" class="anone">제작자 소개</a>&nbsp;&nbsp;
+<a href="/footer/siteIntroduce" class="anone">사이트 소개</a>&nbsp;&nbsp;
+<a href="/footer/askToAdmin" class="aTagNone">문의하기</a>&nbsp;&nbsp;
 <p>&copy; ODC</p>
 </div>
 <br>
 </div>
 
-</body>
-</html>
+<!-- </body>
+</html> -->

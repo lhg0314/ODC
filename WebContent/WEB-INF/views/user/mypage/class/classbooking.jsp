@@ -4,7 +4,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
     
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>    
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %> 
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>     
 
 <!-- mian header -->
 <c:import url="/WEB-INF/layout/common/main/header.jsp"></c:import>
@@ -37,6 +38,7 @@
 	height: 100px;
 }
 
+.center{text-align: center;}
 
 </style>
 
@@ -61,15 +63,15 @@ function bookingcancel(bookingno) {
 
 <!-- 테이블 th -->
 <tr style="background: thistle;" >
-	<th style="width: 20%">주문번호</th>
-	<th style="width: 15%">대표 사진</th>
-	<th style="width: 15%">클래스 이름</th>
-	<th style="width: 15%">작가 이름</th>
-	<th style="width: 15%">결제날짜</th>
-	<th style="width: 15%">예약날짜</th>
-	<th style="width: 15%">예약 인원</th>
-	<th style="width: 15%">결제 금액</th>
-	<th style="width: 10%">결제 취소</th>
+<!-- 	<th style="width: 20%">주문번호</th> -->
+	<th style="width: 15%" class="center">대표 사진</th>
+	<th style="width: 15%" class="center">클래스이름</th>
+	<th style="width: 10%" class="center">작가이름</th>
+	<th style="width: 15%" class="center">결제날짜</th>
+	<th style="width: 15%" class="center">예약날짜</th>
+	<th style="width: 10%" class="center">예약인원</th>
+	<th style="width: 15%" class="center">결제금액</th>
+	<th style="width: 15%" class="center">결제취소</th>
 </tr>
 	
 <!-- 예약리스트가 없을 때  -->
@@ -87,14 +89,14 @@ function bookingcancel(bookingno) {
 
 <tr style="text-align: center;">
 	<!-- 사진을 누르면  classno 을 쿼리스트링 값으로 전달하여 페이지를 바꾼다 -->
-	<td>${book.merchantuid }</td>
+<%-- 	<td>${book.merchantuid }</td> --%>
 	<td><a href="#?classno=${book.classno }"><img src="/upload/${book.classrenamefilename }" alt="..." class="img-rounded imgsize"></a></td>
 	<td>${book.classname }</td>
 	<td>${book.artid }</td>
 	<td>${book.paymentDate }</td>
 	<td>${book.bookingDate }</td>
 	<td>${book.bookingCount }</td>
-	<td>${book.totalPrice }</td>
+	<td><fmt:formatNumber pattern="#,###" value="${book.totalPrice }" /></td>
 	<td><button class="btn btn-default" onclick="bookingcancel(${book.bookingno });">결제 취소</button></td>
 </tr>	
 </c:forEach>

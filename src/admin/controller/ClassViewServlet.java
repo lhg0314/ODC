@@ -1,6 +1,7 @@
 package admin.controller;
 
 import java.io.IOException;
+import java.util.List;
 import java.util.Map;
 
 import javax.servlet.ServletException;
@@ -37,8 +38,9 @@ public class ClassViewServlet extends HttpServlet {
 		
 		// 선택한 클래스 상세 정보
 		Map<String, Object> map = adminClassService.selectClassByClassNo(classno);
-		ClassFile detailFile = artistClassService.selectDetailFileByClassno(classno);
+		List detailFile = artistClassService.selectDetailFileByClassno(classno);
 
+		System.out.println(detailFile);
 		req.setAttribute("info", map);
 		req.setAttribute("detailFile", detailFile);
 //		System.out.println(map);

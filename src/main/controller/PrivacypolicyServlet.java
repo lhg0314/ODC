@@ -11,7 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 // 메인 fooer a (2)
 //개인정보 처리방침
 // 이인주 20200620
-@WebServlet("/fooer/privacypolicy")
+@WebServlet("/footer/privacypolicy")
 public class PrivacypolicyServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	

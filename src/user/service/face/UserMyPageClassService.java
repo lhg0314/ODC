@@ -5,6 +5,7 @@ import java.util.Date;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
 import dto.ClassBooking;
 
@@ -95,6 +96,63 @@ public interface UserMyPageClassService {
 	 * @param paymentparam
 	 */
 	public void insertclassbooking(int classbookingno, int userno, Map<String, Object> paymentparam);
+
+	/**
+	 * 사용자 예약 리스트  전체 조회
+	 * @param userid
+	 * @param nowday
+	 * @return
+	 */
+	public ArrayList<Map<String, Object>> usersignup(String userid, Date nowday);
+
+	/**
+	 * 쿼리스트링의 classno 값 빼오기
+	 * @param req
+	 * @return
+	 */
+	public int classno(HttpServletRequest req);
+
+	/**
+	 * 쿼리스트링의 bookingno 값 빼오기
+	 * @param req
+	 * @return
+	 */
+	public int bookingno(HttpServletRequest req);
+	
+	/**
+	 * classno insert할 reviewboardno
+	 * @param req
+	 * @return
+	 */
+	public int reviewboardno();
+	
+	/**
+	 * 후기 작성여부 판단
+	 * @param bookingno
+	 * @return
+	 */
+	public int reviewcount(int bookingno);
+	
+	/**
+	 * 후기 작성 insert 
+	 * @param req
+	 * @param resp
+	 * @param userno
+	 * @param classno
+	 * @param merchantuid 
+	 * @param nowday
+	 * @param reviewboardno 
+	 */
+	public void insertreview(HttpServletRequest req, HttpServletResponse resp, int userno, int classno, int bookingno, int reviewboardno);
+
+	
+
+	
+
+	
+
+	
+	
 
 	
 
