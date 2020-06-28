@@ -3,6 +3,7 @@ package user.service.impl;
 import java.util.List;
 import java.util.Map;
 
+import dto.AskBoard;
 import dto.ReviewBoard;
 import dto.UserInfo;
 import user.dao.UserDao;
@@ -65,6 +66,22 @@ public class UserServiceImpl implements UserService {
 		userDao.insertReview(board);
 		// TODO Auto-generated method stub
 		
+	}
+	@Override
+	public int getUsernoBy(String id) {
+		// TODO Auto-generated method stub
+		return userDao.getUserIdById(id);
+	}
+	@Override
+	public void insertAskBoard(AskBoard a) {
+		// TODO Auto-generated method stub
+		userDao.insertAskBoard(a);
+		
+	}
+	@Override
+	public List<AskBoard> selectAskByClassno(int classno) {
+		// TODO Auto-generated method stub
+		return userDao.selectAskByClassno(classno);
 	}
 
 }

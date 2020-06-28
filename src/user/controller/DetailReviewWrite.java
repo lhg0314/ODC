@@ -23,10 +23,14 @@ public class DetailReviewWrite extends HttpServlet {
 	}
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		req.setCharacterEncoding("UTF-8");
 		ReviewBoard board=new ReviewBoard();
-		board.setReviewContent(req.getParameter("review"));
+		String r=req.getParameter("review");
+		System.out.println(r);
+		board.setReviewContent(r);
+		System.out.println(board);
 		u.insertReview(board);
-		System.out.println("넣음");
+		//System.out.println("넣음");
 		
 	}
 
