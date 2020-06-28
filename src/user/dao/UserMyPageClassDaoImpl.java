@@ -463,7 +463,7 @@ public class UserMyPageClassDaoImpl implements UserMyPageClassDao{
 			ps.setInt(1, reviewboard.getReviewno());
 			ps.setInt(2, reviewboard.getUserno());
 			ps.setInt(3, reviewboard.getClassno());
-			ps.setInt(4, reviewboard.getSatlevel());
+			ps.setString(4, reviewboard.getSatlevel());
 			ps.setString(5, reviewboard.getReviewContent());
 			ps.setString(6, reviewboard.getReviewtitle());
 			ps.setInt(7, reviewboard.getBookingno());
