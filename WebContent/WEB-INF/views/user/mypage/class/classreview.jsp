@@ -83,11 +83,11 @@ $(document).ready(function(){
 	    	<label for="satlevel">만족도</label>
 			<select class="form-control" id="satlevel" name="satlevel" required="required" >
 				<option value="0" selected="selected">--선택--</option>
-				<option value="1">매우불만족</option>
-				<option value="2">불만족</option>
-				<option value="3">보통</option>
-				<option value="4">만족</option>
-				<option value="5">매우만족</option>
+				<option value="매우불만족">매우불만족</option>
+				<option value="불만족">불만족</option>
+				<option value="보통">보통</option>
+				<option value="만족">만족</option>
+				<option value="매우만족">매우만족</option>
 			</select>    	
 	    </div>
 	    
@@ -105,7 +105,7 @@ $(document).ready(function(){
 	    
 	    <div class="form-group" >
 	    	<label for="ReviewFile">사진 첨부</label>
-	    	<input type="file" accept="image/*" id="ReviewFile" name="ReviewFile" required="required"/>
+	    	<input type="file" accept="image/*" id="ReviewFile" name="ReviewFile"/>
 			<div id="fileView">
 			</div>
 	    </div>

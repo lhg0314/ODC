@@ -294,7 +294,12 @@ list-style: none;
 	<li>
 		<a href="#">게시판</a>
 		<ul>
+<<<<<<< HEAD
 			<li><a href="#">후기게시판</a></li>
+=======
+			<li><a href="/review/board">후기게시판</a></li>
+			<li><a href="#">문의게시판</a></li>
+>>>>>>> inju21
 			<li><a href="#">고객센터</a></li>
 		</ul>
 	</li>
