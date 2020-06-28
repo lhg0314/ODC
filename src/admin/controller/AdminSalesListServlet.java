@@ -43,6 +43,7 @@ public class AdminSalesListServlet extends HttpServlet {
 		
 		//관리자현재달 총 수익금
 		int nowtotalsales = adminSalesService.nowtotalsales(nowyearday);
+		
 		//관리자현재달 총 수익금 넘기기
 		req.setAttribute("nowtotalsales", nowtotalsales);
 		

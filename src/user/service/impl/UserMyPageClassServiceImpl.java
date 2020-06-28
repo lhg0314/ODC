@@ -385,25 +385,20 @@ public class UserMyPageClassServiceImpl implements UserMyPageClassService{
 				//키 값 꺼내기
 				String key = item.getFieldName();
 				
-				 if ("reviewtitle".equals(key)) { //전달파라미터 name이 "title"
+				 if ("reviewtitle".equals(key)) { //전달파라미터 name이 "reviewtitle"
 					try {
 						reviewboard.setReviewtitle(item.getString("UTF-8"));
 					} catch (UnsupportedEncodingException e) {
 						e.printStackTrace();
 					}
-				} else if("satlevel".equals(key)) {
+				}else if ("satlevel".equals(key)) { //전달파라미터 name이 "satlevel"
 					try {
-						String param = item.getString("UTF-8");
-						
-						if( param != null && !"".equals(param)) {
-							int satlevel = Integer.parseInt(param);
-							reviewboard.setSatlevel(satlevel);
-						}
+						reviewboard.setSatlevel(item.getString("UTF-8"));
 					} catch (UnsupportedEncodingException e) {
 						e.printStackTrace();
 					}
 					
-				}else if ("reviewcontent".equals(key)) { //전달파라미터 name이 "content"
+				}else if ("reviewcontent".equals(key)) { //전달파라미터 name이 "reviewcontent"
 					try {
 						reviewboard.setReviewContent(item.getString("UTF-8"));
 					} catch (UnsupportedEncodingException e) {

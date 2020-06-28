@@ -8,7 +8,7 @@ public class ReviewBoard {
     private int userno;
     private int classno;
     private Date reviewDate; 
-    private int satlevel; 
+    private String satlevel; 
     private String reviewContent;
     private String reviewtitle;
     private int bookingno;
@@ -42,10 +42,10 @@ public class ReviewBoard {
 	public void setReviewDate(Date reviewDate) {
 		this.reviewDate = reviewDate;
 	}
-	public int getSatlevel() {
+	public String getSatlevel() {
 		return satlevel;
 	}
-	public void setSatlevel(int satlevel) {
+	public void setSatlevel(String satlevel) {
 		this.satlevel = satlevel;
 	}
 	public String getReviewContent() {

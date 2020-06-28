@@ -10,38 +10,40 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import dto.ClassInfo;
 import user.service.face.LocationCategoryService;
 import user.service.impl.LocationCategoryServiceImpl;
 
-@WebServlet("/location")
-public class ClassLocationServlet extends HttpServlet {
+@WebServlet("/category")
+public class ClassCategoryServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	
-	private LocationCategoryService locationService = new LocationCategoryServiceImpl();
-
+	private LocationCategoryService categoryService = new LocationCategoryServiceImpl();
+	
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+
+		String param = req.getParameter("category");
 		
-		String param = req.getParameter("location");
-		
-		int location = 0;
+		int category = 0;
 		
 		if( param != null && !"".equals(param)) {
-			location = Integer.parseInt(param);
+			category = Integer.parseInt(param);
 		}
 
-		List<Map<String, Object>> list = locationService.selectClassByLocation(location);
+		List<Map<String, Object>> list = categoryService.selectClassByCategory(category);
 		
-		// 지역별 처리
-		String msg = locationService.getLocation(req, location);
+		// 카테고리별 처리
+		String msg = categoryService.getCategory(req, category);
 		
 		req.setAttribute("list", list);
 		req.setAttribute("message", msg);
 		
-		req.getRequestDispatcher("/WEB-INF/views/main/navMenu/location.jsp").forward(req, resp);
+		req.getRequestDispatcher("/WEB-INF/views/main/navMenu/category.jsp").forward(req, resp);
+	
 	
 	
 	}
 	
+	
+
 }

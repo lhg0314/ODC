@@ -5,7 +5,7 @@ import java.util.Map;
 
 import dto.ClassInfo;
 
-public interface LocationDao {
+public interface LocationCategoryDao {
 
 	/**
 	 * 지역별 클래스 모아보기
@@ -13,5 +13,12 @@ public interface LocationDao {
 	 * @return
 	 */
 	public List<Map<String, Object>> selectClassByLocation(int location);
+
+	/**
+	 * 카테고리별 클래스 모아보기
+	 * @param category
+	 * @return
+	 */
+	public List<Map<String, Object>> selectClassByCategory(int category);
 
 }
