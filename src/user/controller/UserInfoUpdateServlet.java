@@ -10,8 +10,8 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import dto.UserInfo;
-import user.service.UserInfoUpdateService;
-import user.service.UserInfoUpdateServiceImpl;
+import user.service.face.UserInfoUpdateService;
+import user.service.impl.UserInfoUpdateServiceImpl;
 
 @WebServlet("/user/info")
 public class UserInfoUpdateServlet extends HttpServlet {

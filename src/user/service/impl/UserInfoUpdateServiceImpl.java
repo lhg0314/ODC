@@ -1,4 +1,4 @@
-package user.service;
+package user.service.impl;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -10,6 +10,7 @@ import javax.servlet.http.HttpSession;
 import dto.UserInfo;
 import user.dao.UserInfoUpdateDao;
 import user.dao.UserInfoUpdateDaoImpl;
+import user.service.face.UserInfoUpdateService;
 
 public class UserInfoUpdateServiceImpl implements UserInfoUpdateService {
 

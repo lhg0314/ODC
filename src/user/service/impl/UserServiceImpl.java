@@ -1,8 +1,13 @@
-package user.service;
+package user.service.impl;
 
+import java.util.List;
+import java.util.Map;
+
+import dto.ReviewBoard;
 import dto.UserInfo;
 import user.dao.UserDao;
 import user.dao.UserDaoImpl;
+import user.service.face.UserService;
 
 public class UserServiceImpl implements UserService {
 
@@ -49,6 +54,17 @@ public class UserServiceImpl implements UserService {
 	public String getPwByEN(String email, String name, String id) {
 		String pw=userDao.selectUserPwByEN(email,name,id);
 		return pw;
+	}
+	@Override
+	public List<Map<String, Object>> getDetailReview(int classno) {
+		// TODO Auto-generated method stub
+		return userDao.getDetailReview(classno);
+	}
+	@Override
+	public void insertReview(ReviewBoard board) {
+		userDao.insertReview(board);
+		// TODO Auto-generated method stub
+		
 	}
 
 }

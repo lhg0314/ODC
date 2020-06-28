@@ -12,8 +12,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import dto.UserInfo;
-import user.service.UserService;
-import user.service.UserServiceImpl;
+import user.service.face.UserService;
+import user.service.impl.UserServiceImpl;
 
 
 @WebServlet("/user/join")

@@ -65,6 +65,7 @@ public class ArtistJoinServlet extends HttpServlet {
 		artist.setArtNick(req.getParameter("artnick"));
 		
 		artist.setArtTel(Long.parseLong(req.getParameter("arttelephone")));
+		artist.setArtContent(req.getParameter("artintro"));
 		
 		System.out.println(artist);
 		

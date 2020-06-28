@@ -1,6 +1,7 @@
 package artist.service.face;
 
 import dto.ArtistInfo;
+import dto.ClassInfo;
 
 public interface ArtistService {
 
@@ -19,5 +20,8 @@ public interface ArtistService {
 	String getPwByEN(String email, String name, String id);
 
 	void deleteClassFile(int classno, String filename);
+	ArtistInfo getArtInfobyartNo(int artno);
+
+	ClassInfo selectClassByClassNo(int classno);
 
 }

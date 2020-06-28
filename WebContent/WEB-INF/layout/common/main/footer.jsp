@@ -12,6 +12,7 @@
 
 #wrap {
 	border:  1px solid #ccc;
+	
 
 	width: 1200px;
  	
@@ -31,6 +32,7 @@
 	border-top:none;
 
 	border-bottom:none;
+	
 }
 
 #wrap > div {

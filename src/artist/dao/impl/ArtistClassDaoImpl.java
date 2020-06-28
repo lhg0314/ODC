@@ -422,6 +422,7 @@ public class ArtistClassDaoImpl implements ArtistClassDao {
 				map.put("classContent",rs.getString("class_content"));
 				map.put("postStatus",rs.getInt("post_Status"));
 				map.put("classCheck",rs.getInt("class_check"));
+				map.put("artno",rs.getInt("art_No"));
 	
 				map.put("classFileNo", rs.getInt("class_file_no"));
 				map.put("classOriginFilename", rs.getString("class_origin_filename"));

@@ -1,5 +1,9 @@
-package user.service;
+package user.service.face;
 
+import java.util.List;
+import java.util.Map;
+
+import dto.ReviewBoard;
 import dto.UserInfo;
 
 public interface UserService {
@@ -16,4 +20,8 @@ public interface UserService {
 	public int selectUserPwByEN(String email, String name, String id);
 
 	public String getPwByEN(String email, String name, String id);
+
+	public List<Map<String, Object>> getDetailReview(int classno);
+
+	public void insertReview(ReviewBoard board);
 }

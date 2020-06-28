@@ -5,8 +5,13 @@ import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 import dbutil.JDBCTemplate;
+import dto.ReviewBoard;
 import dto.UserInfo;
 
 
@@ -48,8 +53,8 @@ public class UserDaoImpl implements UserDao {
 		conn=JDBCTemplate.getConnection();
 		String sql="";
 		sql+="insert into userinfo(user_no,user_id,user_pw,user_name,";
-		sql+="user_phone,user_email,user_birth,user_nick,user_email_auth)";
-		sql+="  values(UserInfo_SEQ.nextval,?,?,?,?,?,?,?,1)";
+		sql+="user_phone,user_email,user_birth,user_nick)";
+		sql+="  values(UserInfo_SEQ.nextval,?,?,?,?,?,?,?)";
 		
 		try {
 			ps=conn.prepareStatement(sql);
@@ -204,6 +209,73 @@ public class UserDaoImpl implements UserDao {
 			JDBCTemplate.close(ps);
 		}
 		return res;
+	}
+
+
+	@Override
+	public List<Map<String, Object>> getDetailReview(int classno) {
+		conn=JDBCTemplate.getConnection();
+
+		String sql = "";
+		sql += "SELECT * ";
+		sql += " FROM userinfo u";
+		sql += " JOIN reviewboard r";
+		sql += " on (u.user_no = r.user_no)";
+		sql += " WHERE 1=1";
+		sql += " AND r.class_no = ?";
+		List<Map<String, Object>> list=new ArrayList<Map<String,Object>>();
+		try {
+			ps=conn.prepareStatement(sql);
+			ps.setInt(1, classno);
+			rs=ps.executeQuery();
+			
+			while(rs.next()) {
+				Map<String, Object> map = new HashMap<>();
+				System.out.println("dao:"+rs.getDate("review_date"));
+				map.put("reviewDate", rs.getDate("review_date"));
+				map.put("sat", rs.getString("sat_level"));
+				map.put("content", rs.getString("review_content"));
+				map.put("userid", rs.getString("user_id"));
+				System.out.println(map);
+				list.add(map);
+			}
+			
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			JDBCTemplate.close(rs);
+			JDBCTemplate.close(ps);
+		}
+		return list;
+	}
+
+
+	@Override
+	public void insertReview(ReviewBoard board) {
+		
+		conn=JDBCTemplate.getConnection();
+		String sql="";
+		sql+="insert into ReviewBoard(review_no,user_no, class_no,sat_level,review_content,review_title,booking_no)";
+		sql+=" values(ReviewBoard_SEQ.nextval,?,?,?,?,?,1)";
+		
+		try {
+			ps=conn.prepareStatement(sql);
+			ps.setInt(1, 6);
+			ps.setInt(2, 25);
+			ps.setString(3, "만족");
+			ps.setString(4, board.getReviewContent());
+			ps.setString(5, "제목");
+			ps.executeUpdate();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			JDBCTemplate.close(ps);
+		}
+		// TODO Auto-generated method stub
+		
 	}
 
 }
