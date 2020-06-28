@@ -50,8 +50,9 @@ public class ClassDetailServlet extends HttpServlet {
 			ArtistInfo artistinfo=as.getArtInfobyartNo(artno);
 			
 			System.out.println(classinfo);
+			System.out.println(artistinfo);
 			String addr=artistinfo.getArtAddr().split(";")[1];
-			System.out.println(addr);
+			
 			artistinfo.setArtAddr(artistinfo.getArtAddr().split(";")[0]+" "+artistinfo.getArtAddr().split(";")[1]+" "+artistinfo.getArtAddr().split(";")[2]);
 			req.setAttribute("classaddr", addr);
 			req.setAttribute("artistinfo", artistinfo);

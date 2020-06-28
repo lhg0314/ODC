@@ -7,7 +7,12 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.5.1/css/swiper.min.css">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.5.1/js/swiper.min.js"></script>
 <script type="text/javascript" src="/resources/js/httpRequest.js" ></script>
+ 
+<link rel="stylesheet" href="http://code.jquery.com/ui/1.8.18/themes/base/jquery-ui.css" type="text/css" />  
 
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>  
+
+<script src="http://code.jquery.com/ui/1.8.18/jquery-ui.min.js"></script>  
 <script type="text/javascript">
 function writeCmt()
 {
@@ -46,6 +51,19 @@ function ajaxFromServer(){
 	}
 }
 
+var date='${classinfo.recruitEnddate }';
+console.log(date)
+$(function() {
+    $( "#testDatepicker" ).datepicker({
+    	dateFormat: 'yyyy-mm-dd',
+    	minDate: new Date(),
+    	 maxDate:new Date('${classinfo.recruitEnddate }')
+    
+    });
+});
+
+
+
 
 $(document).ready(function() {
 	$(".ask").click(function(){//탭의 리뷰를 눌렀을때
@@ -75,6 +93,29 @@ $(document).ready(function() {
 		})
 		
 	})
+	
+	
+	
+	$("#num-add").off('click').on('click', function(){				
+		var quantity = parseInt($('#quantity').val(), 10) + 1;
+		var price = ${classinfo.classPrice}
+		
+		$('#quantity').val( quantity );				
+		$('#price').empty().append( (price * quantity) + ' <span> 원</span>' );				
+	});
+	
+	$('#num-sub').off('click').on('click', function(){
+		
+		var quantity = parseInt($('#quantity').val(), 10);
+		var price = ${classinfo.classPrice};
+		
+		if(quantity > 1){
+			quantity = 	quantity - 1;
+		}
+		
+		$('#quantity').val( quantity );				
+		$('#price').empty().append( (price * quantity) + ' <span> 원</span>' );
+	});
 	
 	
 	
@@ -234,6 +275,45 @@ $(document).ready(function() {
 #cassinfotext{
 	position:absolute;
 	left:100px;
+}
+
+#class-confirm{
+    border: 1px solid #e4e9ef;
+    box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    padding: 0;
+    margin-top: 18px;
+}
+
+.text01 {
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.text02 {
+    font-size: 12px;
+    color: #9faab7;
+}
+
+#class-bookin1{
+
+}
+#class-bookin2{
+
+}
+#class-bookin3{
+
+}
+#class-bookin4{
+
+}
+
+
+.calendar{
+	border-bottom: 1px solid #e4e9ef;
+    padding: 10px 0 30px;
+    align-content: center;
+        margin-left: 67px;
 }
 </style>
 
@@ -458,18 +538,43 @@ $(document).ready(function() {
 				</div>
 			<div id="content-right"><!--오른쪽   -->
 				<div id="class-confirm"><!-- 결제창  -->
-				
+
 					<div id="class-bookin1">
+						<div class="text01">
+							클래스 예약
+						</div>
+						<div class="text02">예약일자, 신청 인원수 선택 후 신청하기 버튼을 눌러주세요.</div>
+
 					</div>
 					<div id="class-bookin2">
+					<div class="text01">
+							날짜 선택
+						</div>
+						<div class="calendar" id="scheduleCalendar">
+						
+
+							<input type="text" id="testDatepicker">
+						</div>
 					</div>
 					<div id="class-bookin3">
+						<div class="text01">
+							예약인원
+						</div>
+						<div class="c03-count">
+		                        <a class="btn"  id="num-sub">-</a>
+		                        <input type="text" id="quantity" value="1" class="only-number"/>
+		                        <a class="btn" id="num-add">+</a>
+		                    </div>
+		                    <span><h4>총인원:</h4></span><div class="c03-charge" id="price"></div>
 					</div>
 					<div id="class-bookin4">
+					
+						
 					</div>
 				
+			 <input class="btn btn-default" type="button" value="예약하기" style="margin-right:20px;margin-top:20px;">
+			 <input class="btn btn-default" type="button" value="장바구니" style="margin-right:20px;margin-top:20px;">
 				</div>
-			
 			</div>
 		</div>
 		
