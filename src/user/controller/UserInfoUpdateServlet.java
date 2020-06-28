@@ -55,6 +55,12 @@ public class UserInfoUpdateServlet extends HttpServlet {
 		System.out.println("/user/info [POST]");
 		
 		
+		 req.setCharacterEncoding("UTF-8");
+			
+		 
+		 resp.setContentType("text/html; charset=utf-8");
+		
+		
 		//정보 수정하기
 		userUpdateService.userInfoUpdate(req);
 		

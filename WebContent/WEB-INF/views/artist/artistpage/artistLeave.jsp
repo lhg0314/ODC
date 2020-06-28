@@ -60,6 +60,7 @@ $(document).ready(function() {
 	//탈퇴버튼 동작
 	$("#btnLeave").click(function() {
 		
+		
 		//form submit 수행
 		$("form").submit();
 		
@@ -83,7 +84,7 @@ $(document).ready(function() {
 		<h5 id="pw">회원 탈퇴를 위하여 비밀번호를 입력해주세요 </h5><br>
 		
 		<form action="/artist/leave" method="post">
-			<span>비밀번호</span><input type="password" name="pwcheck"/>	
+			<span>비밀번호</span><input type="password" name="pwcheck" id="pwcheck"/>	
 		</form>
 		
 	</div>

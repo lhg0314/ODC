@@ -194,18 +194,23 @@ ul.sub li a {
 	text-align: center;
 	border: 1px solid #ccc;
 	border-radius: 20px;
-	padding: 20px;
-
+	padding: 50px 100px;
 }
 
 
-#class_upload_notice span:first-child {
+#ctitle {
 	
 	font-size: 25px;
 	font-weight: bold;
-
+ 	font-style: italic; 
+	background: thistle;
 }
 
+#class_upload_notice_content {
+
+	text-align: left;
+	font-size: 15px;
+}
 
 </style>
 

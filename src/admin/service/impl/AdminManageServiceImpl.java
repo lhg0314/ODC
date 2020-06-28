@@ -139,7 +139,7 @@ public class AdminManageServiceImpl implements AdminManageService {
 
 
 	@Override
-	public List<AskBoard> askList(AskBoard ask) {
+	public List<Map<String, Object>> askList(AskBoard ask) {
 		
 		return userManageDao.askList(ask);
 	}
@@ -156,17 +156,6 @@ public class AdminManageServiceImpl implements AdminManageService {
 		return artManageDao.selectByArtno(artistInfo);
 	}
 
-
-
-	@Override
-	public ArtistDetail selectArtistDetail(HttpServletRequest req) {
-		
-		ArtistDetail artistDetail = new ArtistDetail();
-		
-		artistDetail.setArtno(Integer.parseInt(req.getParameter("artno")));
-		
-		return artManageDao.selectArtDetail(artistDetail);
-	}
 
 
 

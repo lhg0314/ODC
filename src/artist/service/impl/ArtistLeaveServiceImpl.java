@@ -1,6 +1,5 @@
 package artist.service.impl;
 
-import javax.servlet.http.HttpServletRequest;
 
 import artist.dao.face.ArtistLeaveDao;
 import artist.dao.impl.ArtistLeaveDaoImpl;
@@ -27,20 +26,20 @@ public class ArtistLeaveServiceImpl implements ArtistLeaveService {
 	@Override
 	public void leave(ArtistInfo ainfo) {
 		
+		aLeaveDao.leave(ainfo);
 		
-//		Donation - art_no
-		aLeaveDao.deleteDonation(ainfo);
+	}
 
-//		askboardcomm - ask_board_no - 조인해서 삭제해야함
-		aLeaveDao.deleteAskBoardComm();
-		
-//		AskBoard - art_no
-		aLeaveDao.deleteAskBoard(ainfo);
-		
-//		artistInfo - art_no
-		aLeaveDao.deleteArtistInfo(ainfo);
 
+	@Override
+	public boolean classcheck(ArtistInfo ainfo) {
 		
+		int res = aLeaveDao.classcheck(ainfo);
+		
+		//게시중인 클래스가 없을 때 true 반환해서 탈퇴하도록
+		if(res==0) return true;
+		
+		return false;
 	}
 
 	

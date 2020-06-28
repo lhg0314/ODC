@@ -15,7 +15,6 @@ public class ArtistInfo {
     private String artAddr;         
     private String artEmail;
     private Date artBirth;
-    private int artEmailAuth;
     private String artContent;
     
     
@@ -23,8 +22,7 @@ public class ArtistInfo {
 	public String toString() {
 		return "ArtistInfo [artno=" + artno + ", artid=" + artid + ", artpw=" + artpw + ", artName=" + artName
 				+ ", artNick=" + artNick + ", artCode=" + artCode + ", artPhone=" + artPhone + ", artTel=" + artTel
-				+ ", artAddr=" + artAddr + ", artEmail=" + artEmail + ", artBirth=" + artBirth + ", artEmailAuth="
-				+ artEmailAuth + ", artContent=" + artContent + "]";
+				+ ", artAddr=" + artAddr + ", artEmail=" + artEmail + ", artBirth=" + artBirth + ", artContent=" + artContent + "]";
 	}
 
 	
@@ -114,14 +112,6 @@ public class ArtistInfo {
 
 	public void setArtBirth(Date artBirth) {
 		this.artBirth = artBirth;
-	}
-
-	public int getArtEmailAuth() {
-		return artEmailAuth;
-	}
-
-	public void setArtEmailAuth(int artEmailAuth) {
-		this.artEmailAuth = artEmailAuth;
 	}
 
 	public String getArtContent() {

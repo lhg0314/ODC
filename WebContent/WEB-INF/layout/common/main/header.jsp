@@ -277,8 +277,8 @@ list-style: none;
 			<li><a href="#">기타</a></li>
 		</ul>
 	</li>
-	<li><a href="#">인기클래스</a></li>
-	<li><a href="#">신규 클래스</a></li>
+	<li><a href="/hotclass">인기클래스</a></li>
+	<li><a href="/newclass">신규 클래스</a></li>
 	<li>
 		<a href="#">지역별 클래스</a>
 		<ul>
