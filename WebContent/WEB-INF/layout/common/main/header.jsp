@@ -252,7 +252,7 @@ list-style: none;
    </div>
    
    <a href="/mypage/class/wish">
-   <div class="cart" onclick="location.href='#';">
+   <div class="cart" onclick="location.href='#'">
    <div id="sizeup" class="glyphicon glyphicon-shopping-cart" ></div>
    <br><small>장바구니</small>
    </a>
@@ -266,37 +266,36 @@ list-style: none;
 <ul class="nav nav nav-pills navst">
 	<li><a href="#"> </a></li>
 	<li>
-		<a href="#">카테고리</a>
+		<a href="/category">카테고리</a>
 		<ul>
-			<li><a href="#">플라워</a></li>
-			<li><a href="#">음악</a></li>
-			<li><a href="#">수공예</a></li>
-			<li><a href="#">요리</a></li>
-			<li><a href="#">뷰티</a></li>
-			<li><a href="#">미술</a></li>
-			<li><a href="#">기타</a></li>
+			<li><a href="/category?category=1">플라워</a></li>
+			<li><a href="/category?category=2">음악</a></li>
+			<li><a href="/category?category=3">수공예</a></li>
+			<li><a href="/category?category=4">요리</a></li>
+			<li><a href="/category?category=5">뷰티</a></li>
+			<li><a href="/category?category=6">미술</a></li>
+			<li><a href="/category?category=7">기타</a></li>
 		</ul>
 	</li>
 	<li><a href="/hotclass">인기클래스</a></li>
 	<li><a href="/newclass">신규 클래스</a></li>
 	<li>
-		<a href="/class/location">지역별 클래스</a>
+		<a href="/location">지역별 클래스</a>
 		<ul>
-			<li><a href="#">서울</a></li>
-			<li><a href="#">경기</a></li>
-			<li><a href="#">강원</a></li>
-			<li><a href="#">충청</a></li>
-			<li><a href="#">경상</a></li>
-			<li><a href="#">전라</a></li>
-			<li><a href="#">제주</a></li>
+			<li><a href="/location?location=1">서울</a></li>
+			<li><a href="/location?location=2">경기</a></li>
+			<li><a href="/location?location=3">강원</a></li>
+			<li><a href="/location?location=4">충청</a></li>
+			<li><a href="/location?location=5">경상</a></li>
+			<li><a href="/location?location=6">전라</a></li>
+			<li><a href="/location?location=7">제주</a></li>
 		</ul>
 	</li>
 	<li>
 		<a href="#">게시판</a>
 		<ul>
 			<li><a href="#">후기게시판</a></li>
-			<li><a href="#">문의게시판</a></li>
-			<li><a href="/notice/list">고객센터</a></li>
+			<li><a href="/notice/list">공지사항</a></li>
 		</ul>
 	</li>
 	

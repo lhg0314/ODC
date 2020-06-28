@@ -12,6 +12,11 @@
 	width: 1100px;
 	margin: 0 auto;
 }
+
+#noticeTable{
+	width: 1000px;
+	margin: 0 auto;
+}
 </style>
 <div id="noticeBoard" >
 <br>

@@ -12,6 +12,11 @@
 	width: 1100px;
 	margin: 0 auto;
 }
+
+#noticeTable{
+	width: 1000px;
+	margin: 0 auto;
+}
 </style>
 <div id="noticeBoard" >
 <br>
@@ -32,7 +37,7 @@
 		<td>${noticeBoard.noticeContent }</td>
 	</tr>
 </table>
-
+<br>
 <div class="text-center">
 <button id="btnDelete" class="btn btn-default" onclick="history.go(-1)">목록</button>
 </div>
