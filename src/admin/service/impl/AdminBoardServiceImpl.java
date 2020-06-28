@@ -80,4 +80,11 @@ public class AdminBoardServiceImpl implements AdminBoardService {
 
 	}
 
+
+	@Override
+	public Map<String, Object> selectReviewByReviewNo(int reviewno) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 }

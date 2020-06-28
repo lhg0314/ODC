@@ -109,4 +109,9 @@ public class ArtistBoardServiceImpl implements ArtistBoardService {
 		artistBoardDao.insertComment(comm);
 	}
 
+	@Override
+	public Map<String, Object> selectReviewByReviewNo(int reviewno) {
+		return artistBoardDao.selectReviewByReviewNo(reviewno);
+	}
+
 }

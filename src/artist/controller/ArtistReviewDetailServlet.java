@@ -14,24 +14,21 @@ import artist.service.face.ArtistBoardService;
 import artist.service.impl.ArtistBoardServiceImpl;
 import dto.AskBoardComm;
 
-@WebServlet("/artist/askdetail")
-public class ArtistAskDetailServlet extends HttpServlet {
+@WebServlet("/artist/reviewdetail")
+public class ArtistReviewDetailServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	private ArtistBoardService artistBoardService = new ArtistBoardServiceImpl();
 	
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		System.out.println("/artist/askdetail - [GET]");
+		int reviewno = Integer.parseInt(req.getParameter("askno"));
 		
-		int askno = Integer.parseInt(req.getParameter("askno"));
+		Map<String, Object> reviewdetail = artistBoardService.selectReviewByReviewNo(reviewno);
 		
-		Map<String, Object> askdetail = artistBoardService.selectAskByAskNo(askno);
-		List<AskBoardComm> commlist = artistBoardService.selectCommByAskNo(askno);
-		
-		req.setAttribute("askdetail", askdetail);
-		req.setAttribute("commlist", commlist);
+		req.setAttribute("reviewdetail", reviewdetail);
 		
 		req.getRequestDispatcher("/WEB-INF/views/artist/board/askdetail.jsp").forward(req, resp);
-		
+	
 	}
+
 }

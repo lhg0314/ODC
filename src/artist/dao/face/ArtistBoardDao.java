@@ -27,4 +27,6 @@ public interface ArtistBoardDao {
 
 	void insertComment(AskBoardComm comm);
 
+	Map<String, Object> selectReviewByReviewNo(int reviewno);
+
 }

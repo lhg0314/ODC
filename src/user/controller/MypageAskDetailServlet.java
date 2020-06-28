@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import dto.AskBoardComm;
+import dto.UserInfo;
 import user.service.face.UserBoardService;
 import user.service.impl.UserBoardServiceImpl;
 

@@ -1,12 +1,8 @@
-<!-- 마이페이지 - 문의내역 상세 -->
+<!-- 관리자 후기상세 -->
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
         
-<!-- mian header -->
-<c:import url="/WEB-INF/layout/common/main/header.jsp"></c:import> 
-
-<!-- mypage header -->    
-<c:import url="/WEB-INF/layout/user/mypageheader.jsp"></c:import> 
+<c:import url="/WEB-INF/layout/admin/header.jsp" />
 
 <style type="text/css">
 #askViewTable th {
@@ -80,5 +76,4 @@
 <!-- float 막기 -->
 <div class="clearfix"></div>
 
-<!-- 메인 footer -->
-<c:import url="/WEB-INF/layout/common/main/footer.jsp"></c:import>
+<c:import url="/WEB-INF/layout/admin/footer.jsp" />

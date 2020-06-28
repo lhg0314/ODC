@@ -24,7 +24,7 @@ public class MainDaoImpl implements MainDao {
 
 		String sql = "";
 		sql += "select count(*) from classinfo c left outer join classfile f on (c.class_no = f.class_no)";
-		sql += "where class_name like '%'||?||'%' and post_status = 1 order by post_date desc, c.class_no desc";
+		sql += "where class_name like '%'||?||'%' and post_status = 1 AND f.class_rename_filename LIKE 'main%' order by post_date desc, c.class_no desc";
 		
 		int cnt = 0;
 		

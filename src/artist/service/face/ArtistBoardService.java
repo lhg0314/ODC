@@ -32,4 +32,6 @@ public interface ArtistBoardService {
 
 	void insertComment(AskBoardComm comm);
 
+	Map<String, Object> selectReviewByReviewNo(int reviewno);
+
 }

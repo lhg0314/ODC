@@ -44,9 +44,9 @@ $(document).ready(function() {
 </style>
 
 <div id="main">
-<span id="boardtitle">활동 정보</span>
+<span id="boardtitle">게시판</span>
 <hr>
-<span id="boardtitle">클래스 문의 내역</span>
+<span id="boardtitle">고객 문의 내역</span>
 <br><br>
 
 <table id="askViewTable" class="table table-condensed">
@@ -104,6 +104,10 @@ $(document).ready(function() {
 </div>	<!-- 댓글 입력 end -->
 
 </div>	<!-- 댓글 처리 end -->
+
+<div class="text-center">
+<button class="btn btn-default" onclick="history.go(-1)">목록</button>
+</div>
 
 </div>
 
