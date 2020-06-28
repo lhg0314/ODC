@@ -280,7 +280,7 @@ list-style: none;
 	<li><a href="#">인기클래스</a></li>
 	<li><a href="#">신규 클래스</a></li>
 	<li>
-		<a href="#">지역별 클래스</a>
+		<a href="/class/location">지역별 클래스</a>
 		<ul>
 			<li><a href="#">서울</a></li>
 			<li><a href="#">경기</a></li>
@@ -296,7 +296,7 @@ list-style: none;
 		<ul>
 			<li><a href="#">후기게시판</a></li>
 			<li><a href="#">문의게시판</a></li>
-			<li><a href="#">고객센터</a></li>
+			<li><a href="/notice/list">고객센터</a></li>
 		</ul>
 	</li>
 	
