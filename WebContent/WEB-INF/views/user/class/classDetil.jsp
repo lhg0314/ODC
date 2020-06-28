@@ -6,16 +6,99 @@
 
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.5.1/css/swiper.min.css">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.5.1/js/swiper.min.js"></script>
+<script type="text/javascript" src="/resources/js/httpRequest.js" ></script>
 
+<script type="text/javascript">
+function writeCmt()
+{
+	var form = document.getElementById("writeCommentForm");
+	
+	var userno = ${userno};
+	var artno = ${artistinfo.artno};
+	var classno=${classinfo.classNo};
+	var content = writeCommentForm.comment.value;
+	console.log(userno+","+artno+","+classno+","+content)
+	
+	if(!content)
+	{
+		alert("내용을 입력하세요.");
+		return false;
+	}
+	else
+	{	
+		var param="userno="+userno+"&artno="+artno+"&comment="+content+"&classno="+classno;
+			
+		console.log(param);
+		sendRequest("POST","/add/ask",param,ajaxFromServer);
+	}
+}
+
+function ajaxFromServer(){
+	if(httpRequest.readyState==4){//DONE,응답완료
+		if(httpRequest.status==200){//OK
+			console.log("정상응답")
+			console.log("응답: "+httpRequest.responseText);
+			document.location.reload(); // 상세보기 창 새로고침 댓글 새로고침
+			
+		}else{
+			console.log("AJAX요청/응답 에러")
+		}
+	}
+}
+
+
+$(document).ready(function() {
+	$(".ask").click(function(){//탭의 리뷰를 눌렀을때
+		
+		$.ajax({
+			url: "/ask/show",
+            type: "GET",
+            dataType:"json",
+            data: {
+                classno: '${classinfo.classNo}'
+      
+            },
+            success: function (res) {
+            	console.log(res)
+            	console.log(res["asklist"].length)
+            	
+            	
+            	for(var i=0;i<res["asklist"].length;i++){
+            		$("<div><p class='show'>"
+            				+res["asklist"][i].userno+"<span class='showRight'>"+res["asklist"][i].askDate+"</span></p>"
+            				+"<p>"+res["asklist"][i].askContent+"</p></div><hr>").appendTo("#ask-wrap")
+            	}
+            	
+            	
+            	
+            },
+		})
+		
+	})
+	
+	
+	
+})
+
+</script>
 
 
 <style>
+.show{
+	position: relative;
+}
+.showRight{
+	position: absolute;
+	right: 0;
+	font-size: 11px;
+}
 #content{
 	position: relative;
     width: 1200px;
     margin: 0 auto;
     padding-top: 30px;
     height:auto;
+    
 }
 
 #content-left{
@@ -167,11 +250,14 @@
                 },
                 success: function (res) {
                 	console.log("가져왔음")
-                	console.log(res)
+                	
                 },
 			})
 			
 		})
+		
+		
+		
 	})
 </script>
 
@@ -217,7 +303,7 @@
 								aria-controls="home" role="tab" data-toggle="tab">상세정보</a></li>
 							<li role="presentation" class="review"><a href="#profile"
 								aria-controls="profile" role="tab" data-toggle="tab">후기</a></li>
-							<li role="presentation"><a href="#messages"
+							<li role="presentation" class="ask"><a href="#messages"
 								aria-controls="messages" role="tab" data-toggle="tab">Q&A</a></li>
 							<li role="presentation"><a href="#settings"
 								aria-controls="settings" role="tab" data-toggle="tab">작가 정보</a></li>
@@ -333,6 +419,33 @@
 							
 							</div>
 							<div role="tabpanel" class="tab-pane" id="messages"><!-- 문의  -->
+								<div>
+								문의 댓글창
+								<c:if test="${userid !=null}">
+									
+										<form id="writeCommentForm">
+												<div>${sessionScope.userid}</div>
+											<!-- 본문 작성-->
+												<div>
+													<textarea name="comment" rows="4" cols="70"></textarea>
+												</div>
+											<!-- 댓글 등록 버튼 -->
+												<div id="btn" style="text-align: center;">
+													<p>
+														<a href="#" onclick="writeCmt()">[댓글등록]</a>
+													</p>
+												</div>
+										</form>
+									
+								</c:if>
+
+							</div>
+							
+								<div id="ask-wrap"><!-- 리뷰 전체 감싸기 -->
+									<div>     </div><!-- 리뷰 타이틀  -->
+									
+								
+								</div>
 							
 							</div>
 							<div role="tabpanel" class="tab-pane" id="settings"><!-- 작가정보  -->
