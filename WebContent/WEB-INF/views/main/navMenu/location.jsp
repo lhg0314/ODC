@@ -229,7 +229,7 @@ a:hover { color: none; text-decoration: none;}
       <div class="caption">
         <div align="center" class="CateLoc">${info.category }/${info.location }</div>
         <div class="className">${info.className }</div>
-        <div class="price"><fmt:formatNumber value="${info.classPrice }" type="currency" currencyCode="KRW"/></div>
+<%--         <div class="price"><fmt:formatNumber value="${info.classPrice }" type="currency" currencyCode="KRW"/></div> --%>
         <div align="center" class="btnBox"><a style="background: thistle;" href="/userclass/detail?classno=${info.classNo }"><img src="/resources/img/classbutton/reservation_btnimg.png"></a> <a style="background: #ccc;" href="#"><img src="/resources/img/classbutton/wishlist_btnimg.png"></a></div>
       </div>
      </div>
