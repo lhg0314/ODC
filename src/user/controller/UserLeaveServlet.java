@@ -9,11 +9,10 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import dto.ArtistInfo;
 import dto.UserInfo;
-import user.service.UserInfoUpdateService;
-import user.service.UserInfoUpdateServiceImpl;
+import user.service.face.UserInfoUpdateService;
 import user.service.face.UserLeaveService;
+import user.service.impl.UserInfoUpdateServiceImpl;
 import user.service.impl.UserLeaveServiceImpl;
 
 @WebServlet("/user/leave")
