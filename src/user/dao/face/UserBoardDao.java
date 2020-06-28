@@ -3,6 +3,7 @@ package user.dao.face;
 import java.util.List;
 import java.util.Map;
 
+import dto.AskBoardComm;
 import util.Paging;
 
 public interface UserBoardDao {
@@ -22,5 +23,7 @@ public interface UserBoardDao {
 	void deleteAskListByUserNo(String names, int userno);
 
 	Map<String, Object> selectAskByAskNo(int askno);
+
+	List<AskBoardComm> selectCommByAskNo(int askno);
 
 }

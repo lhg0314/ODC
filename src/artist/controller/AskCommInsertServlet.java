@@ -1,8 +1,6 @@
 package artist.controller;
 
 import java.io.IOException;
-import java.util.List;
-import java.util.Map;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -14,26 +12,23 @@ import artist.service.face.ArtistBoardService;
 import artist.service.impl.ArtistBoardServiceImpl;
 import dto.AskBoardComm;
 
-@WebServlet("/artist/askdetail")
-public class ArtistAskDetailServlet extends HttpServlet {
+@WebServlet("/askcomm/insert")
+public class AskCommInsertServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	private ArtistBoardService artistBoardService = new ArtistBoardServiceImpl();
-	
-	@Override
+
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		System.out.println("/artist/askdetail - [GET]");
+		doPost(req, resp);
+	}
+
+	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+
+		AskBoardComm comm = artistBoardService.getComment(req);
 		
-int askno = Integer.parseInt(req.getParameter("askno"));
+		artistBoardService.insertComment(comm);
 		
-		Map<String, Object> askdetail = artistBoardService.selectAskByAskNo(askno);
-		List<AskBoardComm> commlist = artistBoardService.selectCommByAskNo(askno);
+		System.out.println(comm);
 		
-		req.setAttribute("askdetail", askdetail);
-		req.setAttribute("commlist", commlist);
-		
-		System.out.println(commlist);
-		
-		req.getRequestDispatcher("/WEB-INF/views/artist/board/askdetail.jsp").forward(req, resp);
-		
+		resp.sendRedirect("/artist/askdetail?askno="+comm.getAskBoardno());
 	}
 }

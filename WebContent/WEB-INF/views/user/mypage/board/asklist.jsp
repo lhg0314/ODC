@@ -115,7 +115,7 @@ function checkAll() {
 		<td><input type="checkbox" name="checkRow" value="${info.askNo }" /></td>
 		<td>${info.askNo }</td>
 		<td>${info.artName }</td>
-		<td style="text-align: left;"><a href="/class/view?classno=${info.classNo }">${info.className}</a></td>
+		<td style="text-align: left;">${info.className}</td>
 		<td style="text-align: left;"><a href="/mypage/askdetail?askno=${info.askNo }">${info.askTitle }</a></td>
 		<td>${info.askDate }</td>
 		<c:if test="${info.commCnt eq 0 }"><td style="color: tomato">답변 없음</td></c:if>

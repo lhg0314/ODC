@@ -5,6 +5,7 @@ import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 
+import dto.AskBoardComm;
 import util.Paging;
 
 public interface ArtistBoardService {
@@ -23,5 +24,12 @@ public interface ArtistBoardService {
 	List<Map<String, Object>> selectAskByArtNo(Paging paging, int artno);
 
 	Map<String, Object> selectAskByAskNo(int askno);
+
+	List<AskBoardComm> selectCommByAskNo(int askno);
+
+	//----- 문의내역 댓글 -----
+	AskBoardComm getComment(HttpServletRequest req);
+
+	void insertComment(AskBoardComm comm);
 
 }

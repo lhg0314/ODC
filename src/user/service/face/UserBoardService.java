@@ -5,6 +5,7 @@ import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 
+import dto.AskBoardComm;
 import util.Paging;
 
 public interface UserBoardService {
@@ -24,5 +25,7 @@ public interface UserBoardService {
 	void askListDeleteByUserNo(String names, int userno);
 
 	Map<String, Object> selectAskByAskNo(int askno);
+
+	List<AskBoardComm> selectCommByAskNo(int askno);
 
 }

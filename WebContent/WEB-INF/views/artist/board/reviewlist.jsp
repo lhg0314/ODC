@@ -28,12 +28,16 @@ $(document).ready(function(){
 	text-align: center;
 	background: thistle;
 }
+
+#reviewTable a {
+	color: black;
+}
 </style>
 
 <div id="main">
-<a href="/artist/reviewlist" class="aTagStyleNone"><span id="boardtitle">게시판</span></a>
+<span id="boardtitle">게시판</span>
 <hr>
-<a href="/artist/reviewlist" class="aTagStyleNone"><span id="boardtitle">후기 게시판</span></a>
+<span id="boardtitle">후기 게시판</span>
 <br><br>
 
 <div>
@@ -61,7 +65,7 @@ $(document).ready(function(){
 	<tr class="table-hover">
 		<td>${info.reviewNo }</td>
 		<td>${info.userId }</td>
-		<td style="text-align: left;"><a href="/class/view?classno=${info.classNo }">${info.className}</a></td>
+		<td style="text-align: left;">${info.className}</td>
 		<td style="text-align: left;"><a href="/review/view?reviewno=${info.reviewNo }">${info.reviewTitle }</a></td>
 		<td>${info.reviewDate }</td>
 	</tr>	
