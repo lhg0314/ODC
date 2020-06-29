@@ -23,8 +23,6 @@ public class MainServlet extends HttpServlet {
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		
-		
-		
 		List<Map<String, Object>> talentList = talentDonationService.selectClassByTalentDonation(0);
 		
 		req.setAttribute("talentList", talentList);
