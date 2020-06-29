@@ -120,20 +120,20 @@ ul#classIntro {
 
 .bannerborder{
 	border-radius: 10px;
-	width:250px;
+	width:249px;
 	border:1px solid #ccc;
 	overflow: hidden;
 }
 
 .imgBox{
-	width: 248px;
-	height: 248px;
+	width: 250px;
+	height: 250px;
 	overflow: hidden;
 }
 
 .imgsize{
-	width:248px;
-	height:248px;
+	width:250px;
+	height:250px;
 	
 }
 
@@ -168,8 +168,10 @@ a:hover { color: none; text-decoration: none;}
 .CateLoc{
 	font-size: small;
 	font-weight: bold;
-	color: #666;
+	margin: 5px;
+ 	color: #666;
 }
+
 
 .price{
 	padding: 0 14px;
@@ -222,7 +224,7 @@ a:hover { color: none; text-decoration: none;}
      </div>
       <div class="caption">
         <div align="center" class="CateLoc">${info.category }/${info.location }</div>
-        <div class="className">${info.className }</div>
+        <div class="className" align="center">${info.className }</div>
 <%--         <div class="price"><fmt:formatNumber value="${info.classPrice }" type="currency" currencyCode="KRW"/></div> --%>
         <div align="center" class="btnBox"><a style="background: thistle;" href="/userclass/detail?classno=${info.classNo }"><img src="/resources/img/classbutton/reservation_btnimg.png"></a> <a style="background: #ccc;" href="#"><img src="/resources/img/classbutton/wishlist_btnimg.png"></a></div>
       </div>

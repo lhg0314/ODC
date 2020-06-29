@@ -21,4 +21,11 @@ public interface LocationCategoryDao {
 	 */
 	public List<Map<String, Object>> selectClassByCategory(int category);
 
+	/**
+	 * 재능기부 클래스 모아보기
+	 * @param category 
+	 * @return
+	 */
+	public List<Map<String, Object>> selectClassByTalentDonation(int category);
+
 }

@@ -3,6 +3,16 @@
         
 <c:import url="/WEB-INF/layout/common/main/header.jsp"></c:import>
 <style type="text/css">
+#body{
+	width: 1200px;
+	margin: 0 auto;
+}
+
+#noticeHead{
+	margin-top: 30px;
+}
+
+
 #noticeTable th {
 	text-align: center;
 	background: #ecdfec;
@@ -18,16 +28,22 @@
 	margin: 0 auto;
 }
 </style>
-<div id="noticeBoard" >
-<br>
-<h4>게시판</h4>
+
+
+<div id="body">
+
+<div align="center" id="noticeHead">
+<h3 style="color: thistle; font-weight: bold; ">&nbsp;공지사항</h3>
+<small>사이트 이용에 관한 공지사항을 확인하세요</small>
+</div>
+
 <hr>
-<h5>공지사항</h5><br>
+
 <table id="noticeTable" class="table table-condensed text-center table-hover">
 	<tr>
-		<th style="width: 15%;">글번호</th>
-		<th style="width: 55%;">제목</th>
-		<th style="width: 30%;">작성일</th>
+		<th style="width: 7%;">No.</th>
+		<th style="width: 80%;">제목</th>
+		<th style="width: 13%;">작성일</th>
 	</tr>
 
 	<c:if test="${empty list }">
@@ -46,6 +62,8 @@
 	
 	</c:forEach>
 </table>
+
 </div>
-<c:import url="/WEB-INF/paging/adminnoticepaging.jsp" />
+
+<c:import url="/WEB-INF/paging/usernoticepaging.jsp" />
 <c:import url="/WEB-INF/layout/common/main/footer.jsp"></c:import>

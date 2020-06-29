@@ -1,17 +1,16 @@
-package user.service.impl;
+package main.service;
 
 import java.util.List;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 
+import main.dao.LocationCategoryTalentDaoImpl;
 import user.dao.face.LocationCategoryDao;
-import user.dao.impl.LocationCategoryDaoImpl;
-import user.service.face.LocationCategoryService;
 
-public class LocationCategoryServiceImpl implements LocationCategoryService {
+public class LocationCategoryTalentServiceImpl implements LocationCategoryTalentService {
 	
-	private LocationCategoryDao locCateDao = new LocationCategoryDaoImpl();
+	private LocationCategoryDao locCateDao = new LocationCategoryTalentDaoImpl();
 	
 	public List<Map<String, Object>> changeString(List<Map<String, Object>> list){
 	
@@ -127,6 +126,15 @@ public class LocationCategoryServiceImpl implements LocationCategoryService {
 	@Override
 	public List<Map<String, Object>> selectClassByCategory(int category) {
 		List<Map<String, Object>> list = locCateDao.selectClassByCategory(category);
+		
+		list = changeString(list);
+		
+		return list;
+	}
+
+	@Override
+	public List<Map<String, Object>> selectClassByTalentDonation(int category) {
+		List<Map<String, Object>> list = locCateDao.selectClassByTalentDonation(category);
 		
 		list = changeString(list);
 		

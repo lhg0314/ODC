@@ -1,4 +1,4 @@
-package user.service.face;
+package main.service;
 
 import java.util.List;
 import java.util.Map;
@@ -7,7 +7,7 @@ import javax.servlet.http.HttpServletRequest;
 
 import dto.ClassInfo;
 
-public interface LocationCategoryService {
+public interface LocationCategoryTalentService {
 
 	/**
 	 * 지역별 클래스 페이지
@@ -36,5 +36,12 @@ public interface LocationCategoryService {
 	 * @return
 	 */
 	public List<Map<String, Object>> selectClassByCategory(int category);
+
+	/**
+	 * 재능기부 클래스 페이지
+	 * @param category 
+	 * @return
+	 */
+	public List<Map<String, Object>> selectClassByTalentDonation(int category);
 
 }
