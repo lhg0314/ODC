@@ -34,6 +34,30 @@ $(document).ready(function() {
 	});
 	
 });
+
+//댓글 삭제
+function deleteComment(commentNo) {
+	$.ajax({
+		type: "post"
+		, url: "/artist/cdelete"
+		, dataType: "json"
+		, data: {
+			commentNo: commentNo
+		}
+		, success: function(data){
+			if(data.success) {
+				
+				$("[data-commentno='"+commentNo+"']").remove();
+				
+			} else {
+				alert("댓글 삭제 실패");
+			}
+		}
+		, error: function() {
+			console.log("error");
+		}
+	});
+}
 </script>
 
 <style type="text/css">
@@ -68,10 +92,10 @@ $(document).ready(function() {
 		<td colspan="4">${askdetail.askContent }</td>
 	</tr>
 </table>
+<br><br>
 
 <!-- 댓글 처리 -->
 <div>
-
 <hr>
 
 <!-- 댓글 리스트 -->
@@ -83,30 +107,34 @@ $(document).ready(function() {
 	<th style="width: 5%;">번호</th>
 	<th style="text-align: center;">답변</th>
 	<th style="width: 20%;">작성일</th>
+	<th style="width: 10%;">&nbsp;</th>
 </tr>
 </thead>
 <tbody id="commentBody">
 <c:forEach items="${commlist }" var="comment">
-<tr>
+<tr data-commentno="${comment.askCommno }">
 	<td>${comment.askCommno }</td>
 	<td>${comment.commContent }</td>
 	<td>${comment.commDate }</td>
+	<td><button class="btn btn-xs w3-button w3-black"
+			onclick="deleteComment(${comment.askCommno });">답변 삭제</button></td>
 </tr>
 </c:forEach>
 </tbody>	
 </table>	<!-- 댓글 리스트 end -->
 </c:if>
 
+<br>
 <!-- 댓글 입력 -->
 <div class="form-inline text-center">
 	<textarea rows="2" cols="100" class="form-control" id="commentContent"></textarea>
-	<button id="btnCommInsert" class="btn" style="height: 54px;">답변 달기</button>
+	<button id="btnCommInsert" class="btn w3-button" style="height: 54px; background: thistle;">답변 달기</button>
 </div>	<!-- 댓글 입력 end -->
 
 </div>	<!-- 댓글 처리 end -->
-
+<br>
 <div class="text-center">
-<button class="btn btn-default" onclick="history.go(-1)">목록</button>
+<button class="btn btn-default" onclick="location.href='/artist/asklist'">목록</button>
 </div>
 
 </div>

@@ -347,4 +347,27 @@ public class ArtistBoardDaoImpl implements ArtistBoardDao {
 		return map;
 	}
 
+	@Override
+	public int deleteComm(int commNo) {
+		conn = JDBCTemplate.getConnection();
+		
+		int res = 0;
+		String sql = "";
+		sql += "delete askboardcomm where ask_comm_no = ?";
+		
+		try {
+			ps = conn.prepareStatement(sql);
+			ps.setInt(1, commNo);
+			
+			res = ps.executeUpdate();
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			JDBCTemplate.close(ps);
+		}
+		
+		return res;
+	}
+
 }
