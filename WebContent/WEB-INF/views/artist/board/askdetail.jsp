@@ -126,10 +126,14 @@ function deleteComment(commentNo) {
 
 <br>
 <!-- 댓글 입력 -->
+<c:if test="${empty commlist }">
 <div class="form-inline text-center">
 	<textarea rows="2" cols="100" class="form-control" id="commentContent"></textarea>
 	<button id="btnCommInsert" class="btn w3-button" style="height: 54px; background: thistle;">답변 달기</button>
-</div>	<!-- 댓글 입력 end -->
+</div>
+
+</c:if>
+	<!-- 댓글 입력 end -->
 
 </div>	<!-- 댓글 처리 end -->
 <br>
