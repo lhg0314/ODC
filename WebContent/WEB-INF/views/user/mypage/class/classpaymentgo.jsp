@@ -108,7 +108,7 @@ function requestPayment() {
 	        // 결제 완료 처리 로직
 			//[1] 서버단에서 결제정보 조회를 위해 jQuery ajax로 imp_uid 전달하기
 			jQuery.ajax({
-				url: "/mypage/class/payment", //cross-domain error가 발생하지 않도록 동일한 도메인으로 전송
+				url: "/userclass/payment", //cross-domain error가 발생하지 않도록 동일한 도메인으로 전송
 				type: 'POST',
 				dataType: 'json',
 				data: {
