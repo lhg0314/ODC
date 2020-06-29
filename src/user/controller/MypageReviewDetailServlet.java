@@ -26,6 +26,6 @@ public class MypageReviewDetailServlet extends HttpServlet {
 		
 		req.setAttribute("reviewdetail", reviewdetail);
 		
-		req.getRequestDispatcher("/WEB-INF/views/user/mypage/board/askdetail.jsp").forward(req, resp);
+		req.getRequestDispatcher("/WEB-INF/views/user/mypage/board/reviewdetail.jsp").forward(req, resp);
 	}
 }

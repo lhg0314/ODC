@@ -28,7 +28,7 @@ public class ArtistReviewDetailServlet extends HttpServlet {
 		
 		req.setAttribute("reviewdetail", reviewdetail);
 		
-		req.getRequestDispatcher("/WEB-INF/views/artist/board/askdetail.jsp").forward(req, resp);
+		req.getRequestDispatcher("/WEB-INF/views/artist/board/reviewdetail.jsp").forward(req, resp);
 	
 	}
 

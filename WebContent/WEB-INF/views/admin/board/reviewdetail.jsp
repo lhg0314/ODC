@@ -14,7 +14,7 @@
 <div id="main">
 <a href="/mypage/reviewlist" class="aTagStyleNone"><span id="boardtitle">활동 정보</span></a>
 <hr>
-<a href="/mypage/reviewlist" class="aTagStyleNone"><span id="boardtitle">클래스 문의 내역</span></a>
+<a href="/mypage/reviewlist" class="aTagStyleNone"><span id="boardtitle">클래스 후기</span></a>
 <br><br>
 
 <table id="reviewViewTable" class="table table-condensed">

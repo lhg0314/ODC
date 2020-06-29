@@ -120,7 +120,7 @@ public class AdminBoardDaoImpl implements AdminBoardDao {
 
 		String sql = "";
 		sql += "select * from ( select rownum rnum, b.* from (";
-		sql += "	select r.review_no, r.review_date, r.sat_level, r.review_title, u.user_id, c.class_name from reviewboard r";
+		sql += "	select r.review_no, r.review_date, r.review_title, u.user_id, c.class_name from reviewboard r";
 		sql += "	inner join userinfo u on (r.user_no = u.user_no)";
 		sql += "	inner join classinfo c on (r.class_no = c.class_no)";
 		sql += "	where c.class_name like '%'||?||'%' order by r.review_no desc";
@@ -141,7 +141,6 @@ public class AdminBoardDaoImpl implements AdminBoardDao {
 
 				map.put("reviewNo", rs.getInt("review_no"));
 				map.put("reviewDate", rs.getDate("review_date"));
-				map.put("satLevel", rs.getInt("sat_level"));
 				map.put("userId", rs.getString("user_id"));
 				map.put("className", rs.getString("class_name"));
 				map.put("reviewTitle", rs.getString("review_title"));
@@ -199,8 +198,8 @@ public class AdminBoardDaoImpl implements AdminBoardDao {
 		conn = JDBCTemplate.getConnection();
 
 		String sql = "";
-		sql += "select r.review_no, u.user_nick, c.class_name, a.art_name, r.review_content, r.review_date, r.sat_level, r.review_title,";
-		sql += "	f.review_rename_filename from reviewboard r";
+		sql += "select r.review_no, u.user_name, c.class_name, a.art_name, r.review_content, r.review_date, r.sat_level, r.review_title,";
+		sql += "	f.review_rename from reviewboard r";
 		sql += "	inner join userinfo u on (r.user_no = u.user_no)";
 		sql += "	inner join classinfo c on (r.class_no = c.class_no)";
 		sql += "	inner join artistinfo a on (c.art_no = a.art_no)";
@@ -225,8 +224,8 @@ public class AdminBoardDaoImpl implements AdminBoardDao {
 				map.put("reviewTitle", rs.getString("review_title"));
 				map.put("reviewContent", rs.getString("review_content"));
 				map.put("reviewDate", rs.getDate("review_date"));
-//				map.put("satLevel", rs.getString("sat_level"));
-				map.put("filename", rs.getString("review_rename_filename"));
+				map.put("satLevel", rs.getString("sat_level"));
+				map.put("filename", rs.getString("review_rename"));
 			}
 
 		} catch (SQLException e) {
