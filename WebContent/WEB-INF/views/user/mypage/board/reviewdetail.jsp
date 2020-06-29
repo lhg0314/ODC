@@ -35,6 +35,7 @@
 		<th style="width: 10%;">작가명</th>
 		<td>${reviewdetail.artName }</td>
 	</tr>
+	<tr><th>만족도</th><td>${reviewdetail.satLevel }</td></tr>
 </thead>
 	<c:if test="${not empty reviewdetail.filename }">
 		<tr><td><img src="/upload/${reviewdetail.filename }"></td></tr>
