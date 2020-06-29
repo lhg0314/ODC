@@ -6,16 +6,140 @@
 
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.5.1/css/swiper.min.css">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.5.1/js/swiper.min.js"></script>
+<script type="text/javascript" src="/resources/js/httpRequest.js" ></script>
+ 
+<link rel="stylesheet" href="http://code.jquery.com/ui/1.8.18/themes/base/jquery-ui.css" type="text/css" />  
 
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>  
+
+<script src="http://code.jquery.com/ui/1.8.18/jquery-ui.min.js"></script>  
+<script type="text/javascript">
+function writeCmt()
+{
+	var form = document.getElementById("writeCommentForm");
+	
+	var userno = ${userno};
+	var artno = ${artistinfo.artno};
+	var classno=${classinfo.classNo};
+	var content = writeCommentForm.comment.value;
+	console.log(userno+","+artno+","+classno+","+content)
+	
+	if(!content)
+	{
+		alert("내용을 입력하세요.");
+		return false;
+	}
+	else
+	{	
+		var param="userno="+userno+"&artno="+artno+"&comment="+content+"&classno="+classno;
+			
+		console.log(param);
+		sendRequest("POST","/add/ask",param,ajaxFromServer);
+	}
+}
+
+function ajaxFromServer(){
+	if(httpRequest.readyState==4){//DONE,응답완료
+		if(httpRequest.status==200){//OK
+			console.log("정상응답")
+			console.log("응답: "+httpRequest.responseText);
+			document.location.reload(); // 상세보기 창 새로고침 댓글 새로고침
+			
+		}else{
+			console.log("AJAX요청/응답 에러")
+		}
+	}
+}
+
+var date='${classinfo.recruitEnddate }';
+console.log(date)
+$(function() {
+    $( "#testDatepicker" ).datepicker({
+    	dateFormat: 'yyyy-mm-dd',
+    	minDate: new Date(),
+    	 maxDate:new Date('${classinfo.recruitEnddate }')
+    
+    });
+});
+
+
+
+
+$(document).ready(function() {
+	$(".ask").click(function(){//탭의 리뷰를 눌렀을때
+		
+		$.ajax({
+			url: "/ask/show",
+            type: "GET",
+            dataType:"json",
+            data: {
+                classno: '${classinfo.classNo}'
+      
+            },
+            success: function (res) {
+            	console.log(res)
+            	console.log(res["asklist"].length)
+            	
+            	
+            	for(var i=0;i<res["asklist"].length;i++){
+            		$("<div><p class='show'>"
+            				+res["asklist"][i].userno+"<span class='showRight'>"+res["asklist"][i].askDate+"</span></p>"
+            				+"<p>"+res["asklist"][i].askContent+"</p></div><hr>").appendTo("#ask-wrap")
+            	}
+            	
+            	
+            	
+            },
+		})
+		
+	})
+	
+	
+	
+	$("#num-add").off('click').on('click', function(){				
+		var quantity = parseInt($('#quantity').val(), 10) + 1;
+		var price = ${classinfo.classPrice}
+		
+		$('#quantity').val( quantity );				
+		$('#price').empty().append( (price * quantity) + ' <span> 원</span>' );				
+	});
+	
+	$('#num-sub').off('click').on('click', function(){
+		
+		var quantity = parseInt($('#quantity').val(), 10);
+		var price = ${classinfo.classPrice};
+		
+		if(quantity > 1){
+			quantity = 	quantity - 1;
+		}
+		
+		$('#quantity').val( quantity );				
+		$('#price').empty().append( (price * quantity) + ' <span> 원</span>' );
+	});
+	
+	
+	
+})
+
+</script>
 
 
 <style>
+.show{
+	position: relative;
+}
+.showRight{
+	position: absolute;
+	right: 0;
+	font-size: 11px;
+}
 #content{
 	position: relative;
     width: 1200px;
     margin: 0 auto;
     padding-top: 30px;
     height:auto;
+    
 }
 
 #content-left{
@@ -152,6 +276,45 @@
 	position:absolute;
 	left:100px;
 }
+
+#class-confirm{
+    border: 1px solid #e4e9ef;
+    box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    padding: 0;
+    margin-top: 18px;
+}
+
+.text01 {
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.text02 {
+    font-size: 12px;
+    color: #9faab7;
+}
+
+#class-bookin1{
+
+}
+#class-bookin2{
+
+}
+#class-bookin3{
+
+}
+#class-bookin4{
+
+}
+
+
+.calendar{
+	border-bottom: 1px solid #e4e9ef;
+    padding: 10px 0 30px;
+    align-content: center;
+        margin-left: 67px;
+}
 </style>
 
 <script type="text/javascript">
@@ -167,11 +330,14 @@
                 },
                 success: function (res) {
                 	console.log("가져왔음")
-                	console.log(res)
+                	
                 },
 			})
 			
 		})
+		
+		
+		
 	})
 </script>
 
@@ -217,7 +383,7 @@
 								aria-controls="home" role="tab" data-toggle="tab">상세정보</a></li>
 							<li role="presentation" class="review"><a href="#profile"
 								aria-controls="profile" role="tab" data-toggle="tab">후기</a></li>
-							<li role="presentation"><a href="#messages"
+							<li role="presentation" class="ask"><a href="#messages"
 								aria-controls="messages" role="tab" data-toggle="tab">Q&A</a></li>
 							<li role="presentation"><a href="#settings"
 								aria-controls="settings" role="tab" data-toggle="tab">작가 정보</a></li>
@@ -333,6 +499,33 @@
 							
 							</div>
 							<div role="tabpanel" class="tab-pane" id="messages"><!-- 문의  -->
+								<div>
+								문의 댓글창
+								<c:if test="${userid !=null}">
+									
+										<form id="writeCommentForm">
+												<div>${sessionScope.userid}</div>
+											<!-- 본문 작성-->
+												<div>
+													<textarea name="comment" rows="4" cols="70"></textarea>
+												</div>
+											<!-- 댓글 등록 버튼 -->
+												<div id="btn" style="text-align: center;">
+													<p>
+														<a href="#" onclick="writeCmt()">[댓글등록]</a>
+													</p>
+												</div>
+										</form>
+									
+								</c:if>
+
+							</div>
+							
+								<div id="ask-wrap"><!-- 리뷰 전체 감싸기 -->
+									<div>     </div><!-- 리뷰 타이틀  -->
+									
+								
+								</div>
 							
 							</div>
 							<div role="tabpanel" class="tab-pane" id="settings"><!-- 작가정보  -->
@@ -345,18 +538,43 @@
 				</div>
 			<div id="content-right"><!--오른쪽   -->
 				<div id="class-confirm"><!-- 결제창  -->
-				
+
 					<div id="class-bookin1">
+						<div class="text01">
+							클래스 예약
+						</div>
+						<div class="text02">예약일자, 신청 인원수 선택 후 신청하기 버튼을 눌러주세요.</div>
+
 					</div>
 					<div id="class-bookin2">
+					<div class="text01">
+							날짜 선택
+						</div>
+						<div class="calendar" id="scheduleCalendar">
+						
+
+							<input type="text" id="testDatepicker">
+						</div>
 					</div>
 					<div id="class-bookin3">
+						<div class="text01">
+							예약인원
+						</div>
+						<div class="c03-count">
+		                        <a class="btn"  id="num-sub">-</a>
+		                        <input type="text" id="quantity" value="1" class="only-number"/>
+		                        <a class="btn" id="num-add">+</a>
+		                    </div>
+		                    <span><h4>총인원:</h4></span><div class="c03-charge" id="price"></div>
 					</div>
 					<div id="class-bookin4">
+					
+						
 					</div>
 				
+			 <input class="btn btn-default" type="button" value="예약하기" style="margin-right:20px;margin-top:20px;">
+			 <input class="btn btn-default" type="button" value="장바구니" style="margin-right:20px;margin-top:20px;">
 				</div>
-			
 			</div>
 		</div>
 		
