@@ -6,22 +6,18 @@
 <c:import url="/WEB-INF/layout/common/main/header.jsp"></c:import>
 
 <style type="text/css">
-
 .slideWrapper{
-
-
 	position: relative;
 	margin:0 auto;
 	width:1200px;
+	height: 400px;
 	
 }
-
 .imgsize{
 	width:210px;
 	height:150px;
 	
 }
-
 .carousel-inner>.item>a>img, .carousel-inner>.item>img, .img-responsive, .thumbnail a>img, .thumbnail>img {
     display: block;
     /* max-width: 100%; */
@@ -29,45 +25,41 @@
     width: 1200px;
     margin: 0 auto;
 }
-
-
 .bannerborder{
 	width:215px;
 	border:1px solid black;
 }
-
 .prev {
 	color:#888;
     font-size: 20px;
     position: absolute;
     top: 14px;
-    border: 1px solid #888;
+/*     border: 1px solid #888; */
     padding: 3px;
     right: 49px;
 }
-
-
 .next{
 	color:#888;
 	font-size: 20px;
 	position: absolute;
-	top: 4%;
+	top: 3.45%;
 	right: 18px;
-	border: 1px solid #888;
+/* 	border: 1px solid #888; */
 	padding: 3px;
 }
 
-
-#sliderbox1{
+div[id^=sliderbox]{
 	width:1000px;
-	height:275px;
+	height:330px;
 	
 	/* 외부정렬 가운데  */
 	margin:0 auto;
 	position: relative;
 	/* div영역을 벗어난 부분 안부이게 처리하기  */
 	overflow:hidden; 
+
 }
+
 /* 이미지 목록 */
 #slider1 {
 	padding:0;
@@ -76,28 +68,13 @@
 	list-style:none;
 	position:absolute;
 	/* 자식요소 absolute박스의 기준점이 되는 설정 */
-	
-	
-	}
+}
 	
 #slider1 li{
-	margin-right: 35px;
+	margin: 0 25px;
 	float:left;	
 }
 
-/*  */
-
-
-#sliderbox2{
-	width:1000px;
-	height:275px;
-	
-	/* 외부정렬 가운데  */
-	margin:0 auto;
-	position: relative;
-	/* div영역을 벗어난 부분 안부이게 처리하기  */
-	overflow:hidden; 
-}
 /* 이미지 목록 */
 #slider2 {
 	top:0;
@@ -109,20 +86,10 @@
 	}
 	
 #slider2 li{
-	margin-right: 35px;
+	margin: 0 25px;
 	float:left;	
 }
 
-#sliderbox3{
-	width:1000px;
-	height:275px;
-	
-	/* 외부정렬 가운데  */
-	margin:0 auto;
-	position: relative;
-	/* div영역을 벗어난 부분 안부이게 처리하기  */
-	overflow:hidden; 
-}
 /* 이미지 목록 */
 #slider3 {
 	top:0;
@@ -134,8 +101,86 @@
 	}
 	
 #slider3 li{
-	margin-right: 35px;
+	margin: 0 25px;
 	float:left;	
+}
+
+
+/* 스타일 복사 */
+#li { 
+	list-style: none; 
+	width: 200px;
+ 	height: 320px;
+	margin: 0 25px;
+	float: left;
+	display: inline-block;
+
+}
+
+#eachClass {
+	color: black;
+	border: 1px solid #eee;
+}
+
+#eachClass #img {
+	width: 100%;
+	height: 200px;
+	overflow: hidden;
+}
+
+#eachClass #img:hover img {
+
+	/* 커서 올렸을때 살짝 확대되게 하기 */
+	width: 205px;
+	height: 205px;
+}
+
+#eachClass a:hover { 
+	text-decoration: none; 
+	color: black;
+} 
+
+#sort { 
+	margin: 5px;
+	
+ 	font-size: 15px; 
+ 	font-weight: bold;
+ 	color: #666;
+ 	text-align: center;
+} 
+
+#classname { 
+	width: 200px;
+	height: 40px;
+ 	
+ 	font-size: 17px; 
+ 	color: black; 
+ 	
+ 	/* 제목 길때 ...으로 생략하기 */
+	overflow: hidden;
+ 	white-space: nowrap; 
+    text-overflow: ellipsis; 
+ 	text-align: center;
+} 
+
+#btns { 
+	margin: 0 0 5px; 
+ 	text-align: center;
+}
+
+.aTagClear:hover{
+	text-decoration: none; 
+	color: black;
+}
+
+.aTagClear:visited{
+	text-decoration: none; 
+	color: black;
+}
+
+.aTagClear:link{
+	text-decoration: none; 
+	color: black;
 }
 
 </style>
@@ -154,7 +199,6 @@ $(document).ready(function(){
 	 var curSlide1=0;
 	 var curSlide2=0;
 	 var curSlide3=0;
-
 	 var slideCount1=$slider_list1.length;
 	 var slideCount2=$slider_list2.length;
 	 var slideCount3=$slider_list3.length;
@@ -167,11 +211,9 @@ $(document).ready(function(){
 	 var slideMargin=50;
 	 
 	 var ulwidth=(slideWidth+slideMargin)*slideCount1-50+'px';
-
 	 $slider1.css("width",ulwidth);
 	 $slider2.css("width",ulwidth);
 	 $slider3.css("width",ulwidth);
-
 	 $slider1.css("left",0);
 	 
 	 
@@ -192,7 +234,6 @@ $(document).ready(function(){
 	 
 	 	 $(".next").eq(0).on("click",function (){
 		 //console.log("clicked")
-
 		 curSlide1++;
 		 console.log(curSlide1)
 		 if(curSlide1<=slideCount1-4){
@@ -224,7 +265,6 @@ $(document).ready(function(){
 	 
 	 	 $(".next").eq(1).on("click",function (){
 		 //console.log("clicked")
-
 		 curSlide2++;
 		 console.log("curSlide2: "+curSlide2)
 		 if(curSlide2<=slideCount2-4){
@@ -256,7 +296,6 @@ $(document).ready(function(){
 	 
 	 	 $(".next").eq(2).on("click",function (){
 		 //console.log("clicked")
-
 		 curSlide3++;
 		 console.log("curSlide3: "+curSlide3)
 		 if(curSlide3<=slideCount3-4){
@@ -272,35 +311,6 @@ $(document).ready(function(){
 	 
 })
  </script>
-
-<style type="text/css">
-#sliderbox{
-	width:1100px;
-	height:600px;
-	
-	/* 외부정렬 가운데  */
-	margin:0 auto;
-	/* div영역을 벗어난 부분 안부이게 처리하기  */
-	/* overflow:hidden; */
-}
-/* 이미지 목록 */
-#slider {
-	padding:0;
-	margin:0;
-	list-style:none;
-	/* 자식요소 absolute박스의 기준점이 되는 설정 */
-	position:relative;
-	}
-#slider li{
-
-	position:absolute;
-	
-}
-#slider li img{
-	width:1100px;
-	height:600px;
-}
-</style>
 
 <br>
 
@@ -364,69 +374,37 @@ $(document).ready(function(){
 <br>
 <div class="slideWrapper">
    <div style="font-size: 15pt;">
-    <a class="mainAc" href="#"><span class="glyphicon glyphicon-thumbs-up" aria-hidden="true"></span><strong>&nbsp;인기 클래스</strong></a>
+    <a class="mainAc aTagClear" href="#"><span class="glyphicon glyphicon-thumbs-up" aria-hidden="true"></span><strong>&nbsp;인기 클래스</strong></a>
    </div>
 <hr>
 <span class="glyphicon glyphicon-chevron-left prev"></span>
 <div id="sliderbox1">
 
 	<ul id="slider1">
-    <li><div class="bannerborder">
-      <img class="imgsize" src="/resources/img/mini.jpg" alt="...">
-      <div class="caption">
-        <h3 align="center">클래스이름</h3>
-        <p align="center">클래스 소개 </p>
-       <p align="center"><a style="background: thistle;"  href="#"><img src="/resources/img/classbutton/reservation_btnimg.png"></a> <a style="background: #ccc;" href="#"><img src="/resources/img/classbutton/wishlist_btnimg.png"></a></p>
-      </div>
-    </div> </li>
-    
-     <li><div class="bannerborder">
-      <img class="imgsize" src="/resources/img/mini.jpg" alt="...">
-      <div class="caption">
-        <h3 align="center">클래스이름</h3>
-        <p align="center">클래스 소개 </p>
-       <p align="center"><a style="background: thistle;"  href="#"><img src="/resources/img/classbutton/reservation_btnimg.png"></a> <a style="background: #ccc;" href="#"><img src="/resources/img/classbutton/wishlist_btnimg.png"></a></p>
-      </div>
-    </div></li> 
-    
-    <li><div class="bannerborder">
-      <img class="imgsize" src="/resources/img/mini.jpg" alt="...">
-      <div class="caption">
-        <h3 align="center">클래스이름</h3>
-        <p align="center">클래스 소개 </p>
-       <p align="center"><a style="background: thistle;"  href="#"><img src="/resources/img/classbutton/reservation_btnimg.png"></a> <a style="background: #ccc;" href="#"><img src="/resources/img/classbutton/wishlist_btnimg.png"></a></p>
-      </div>
-    </div></li> 
-    
-        <li><div class="bannerborder">
-      <img class="imgsize" src="/resources/img/mini.jpg" alt="...">
-      <div class="caption">
-        <h3 align="center">클래스이름</h3>
-        <p align="center">클래스 소개 </p>
-       <p align="center"><a style="background: thistle;"  href="#"><img src="/resources/img/classbutton/reservation_btnimg.png"></a> <a style="background: #ccc;" href="#"><img src="/resources/img/classbutton/wishlist_btnimg.png"></a></p>
-      </div>
-    </div></li> 
-    
-    
-        <li><div class="bannerborder">
-      <img class="imgsize" src="/resources/img/mini.jpg" alt="...">
-      <div class="caption">
-        <h3 align="center">클래스이름</h3>
-        <p align="center">클래스 소개 </p>
-       <p align="center"><a style="background: thistle;"  href="#"><img src="/resources/img/classbutton/reservation_btnimg.png"></a> <a style="background: #ccc;" href="#"><img src="/resources/img/classbutton/wishlist_btnimg.png"></a></p>
-      </div>
-    </div></li> 
-    
-    
-        <li><div class="bannerborder">
-      <img class="imgsize" src="/resources/img/mini.jpg" alt="...">
-      <div class="caption">
-        <h3 align="center">클래스이름</h3>
-        <p align="center">클래스 소개 </p>
-       <p align="center"><a style="background: thistle;"  href="#"><img src="/resources/img/classbutton/reservation_btnimg.png"></a> <a style="background: #ccc;" href="#"><img src="/resources/img/classbutton/wishlist_btnimg.png"></a></p>
-      </div>
-    </div></li> 
-    
+
+    <c:forEach var="tal" items="${talentList }"  begin="1" end="10">
+		
+			<li id="li">
+			<div id="eachClass">
+				<div id="img"><!-- 링크 누르면 클래스 상세 페이지로 이동 -->
+					<a href="/talentDonation"><img src="/upload/${tal.filename }" alt="썸네일" width="200px;" height="200px;"></a>
+	<!-- 	테스트용		<a href="#"><img src="/resources/img/Tulips.jpg" alt="썸네일" width="200px;" height="200px;"></a> -->
+				</div>
+				<div id="sort">
+					<span>${tal.location }</span>|<span>${tal.category }</span>
+				</div>
+				<div id="classname"><!-- 링크 누르면 클래스 상세 페이지로 이동 -->
+					<a href="/userclass/detail?classno=${tal.classNo }"><span>${tal.className }</span></a>
+				</div>
+				<div id="btns"><!-- 각각 상세 페이지로 이동 / 장바구니 담기 -->
+			        <a style="background: thistle;" href="/userclass/detail?classno=${tal.classNo }"><img src="/resources/img/classbutton/reservation_btnimg.png"></a> 
+			        <a style="background: #ccc;" href="#"><img src="/resources/img/classbutton/wishlist_btnimg.png"></a>
+		       </div>
+			</div>
+			</li>
+				
+	 </c:forEach>
+	 
      </ul>
 </div>
      <span class="glyphicon glyphicon-chevron-right next" ></span>
@@ -439,67 +417,35 @@ $(document).ready(function(){
 <div class="slideWrapper">
 
    <div style="font-size: 15pt;">
-    <a class="mainAc" href="#"><span class="glyphicon glyphicon-search" aria-hidden="true"></span><strong>&nbsp;신규 클래스</strong></a>
+    <a class="mainAc aTagClear" href="#"><span class="glyphicon glyphicon-search" aria-hidden="true"></span><strong>&nbsp;신규 클래스</strong></a>
     </div><hr>
 <span class="glyphicon glyphicon-chevron-left prev"></span>
 <div id="sliderbox2">
 
 	<ul id="slider2">
-    <li><div class="bannerborder">
-      <img class="imgsize" src="/resources/img/mini.jpg" alt="...">
-      <div class="caption">
-        <h3 align="center">클래스이름</h3>
-        <p align="center">클래스 소개 </p>
-       <p align="center"><a style="background: thistle;"  href="#"><img src="/resources/img/classbutton/reservation_btnimg.png"></a> <a style="background: #ccc;" href="#"><img src="/resources/img/classbutton/wishlist_btnimg.png"></a></p>
-      </div>
-    </div> </li>
-    
-     <li><div class="bannerborder">
-      <img class="imgsize" src="/resources/img/mini.jpg" alt="...">
-      <div class="caption">
-        <h3 align="center">클래스이름</h3>
-        <p align="center">클래스 소개 </p>
-       <p align="center"><a style="background: thistle;"  href="#"><img src="/resources/img/classbutton/reservation_btnimg.png"></a> <a style="background: #ccc;" href="#"><img src="/resources/img/classbutton/wishlist_btnimg.png"></a></p>
-      </div>
-    </div></li> 
-    
-    <li><div class="bannerborder">
-      <img class="imgsize" src="/resources/img/mini.jpg" alt="...">
-      <div class="caption">
-        <h3 align="center">클래스이름</h3>
-        <p align="center">클래스 소개 </p>
-       <p align="center"><a style="background: thistle;"  href="#"><img src="/resources/img/classbutton/reservation_btnimg.png"></a> <a style="background: #ccc;" href="#"><img src="/resources/img/classbutton/wishlist_btnimg.png"></a></p>
-      </div>
-    </div></li> 
-    
-        <li><div class="bannerborder">
-      <img class="imgsize" src="/resources/img/mini.jpg" alt="...">
-      <div class="caption">
-        <h3 align="center">클래스이름</h3>
-        <p align="center">클래스 소개 </p>
-       <p align="center"><a style="background: thistle;"  href="#"><img src="/resources/img/classbutton/reservation_btnimg.png"></a> <a style="background: #ccc;" href="#"><img src="/resources/img/classbutton/wishlist_btnimg.png"></a></p>
-      </div>
-    </div></li> 
-    
-    
-        <li><div class="bannerborder">
-      <img class="imgsize" src="/resources/img/mini.jpg" alt="...">
-      <div class="caption">
-        <h3 align="center">클래스이름</h3>
-        <p align="center">클래스 소개 </p>
-       <p align="center"><a style="background: thistle;"  href="#"><img src="/resources/img/classbutton/reservation_btnimg.png"></a> <a style="background: #ccc;" href="#"><img src="/resources/img/classbutton/wishlist_btnimg.png"></a></p>
-      </div>
-    </div></li> 
-    
-    
-        <li><div class="bannerborder">
-      <img class="imgsize" src=/resources/img/mini.jpg alt="...">
-      <div class="caption">
-        <h3 align="center">클래스이름</h3>
-        <p align="center">클래스 소개 </p>
-        <p align="center"><a style="background: thistle;"  href="#"><img src="/resources/img/classbutton/reservation_btnimg.png"></a> <a style="background: #ccc;" href="#"><img src="/resources/img/classbutton/wishlist_btnimg.png"></a></p>
-      </div>
-    </div></li> 
+	
+    <c:forEach var="tal" items="${talentList }" begin="1" end="10">
+		
+			<li id="li">
+			<div id="eachClass">
+				<div id="img"><!-- 링크 누르면 클래스 상세 페이지로 이동 -->
+					<a href="/talentDonation"><img src="/upload/${tal.filename }" alt="썸네일" width="200px;" height="200px;"></a>
+	<!-- 	테스트용		<a href="#"><img src="/resources/img/Tulips.jpg" alt="썸네일" width="200px;" height="200px;"></a> -->
+				</div>
+				<div id="sort">
+					<span>${tal.location }</span>|<span>${tal.category }</span>
+				</div>
+				<div id="classname"><!-- 링크 누르면 클래스 상세 페이지로 이동 -->
+					<a href="/userclass/detail?classno=${tal.classNo }"><span>${tal.className }</span></a>
+				</div>
+				<div id="btns"><!-- 각각 상세 페이지로 이동 / 장바구니 담기 -->
+			        <a style="background: thistle;" href="/userclass/detail?classno=${tal.classNo }"><img src="/resources/img/classbutton/reservation_btnimg.png"></a> 
+			        <a style="background: #ccc;" href="#"><img src="/resources/img/classbutton/wishlist_btnimg.png"></a>
+		       </div>
+			</div>
+			</li>
+				
+	 </c:forEach>
     
      </ul>
 </div>
@@ -509,71 +455,44 @@ $(document).ready(function(){
 <div class="slideWrapper">
 
    <div style="font-size: 15pt;">
-    <a class="mainAc" href="#"><span class="glyphicon glyphicon-heart glyphicon " aria-hidden="true"></span><strong>&nbsp;재능기부 클래스</strong></a>
-    </div><hr>
+    <a class="mainAc aTagClear" href="#"><span class="glyphicon glyphicon-heart glyphicon " aria-hidden="true"></span><strong>&nbsp;재능기부 클래스</strong></a>
+   </div>
+    
+
 <span class="glyphicon glyphicon-chevron-left prev"></span>
+
+<hr>
+
 <div id="sliderbox3">
 
 	<ul id="slider3">
-    <li><div class="bannerborder">
-      <img class="imgsize" src="/resources/img/mini.jpg" alt="...">
-      <div class="caption">
-        <h3 align="center">클래스이름</h3>
-        <p align="center">클래스 소개 </p>
-       <p align="center"><a style="background: thistle;"  href="#"><img src="/resources/img/classbutton/reservation_btnimg.png"></a> <a style="background: #ccc;" href="#"><img src="/resources/img/classbutton/wishlist_btnimg.png"></a></p>
-      </div>
-    </div> </li>
     
-     <li><div class="bannerborder">
-      <img class="imgsize" src="/resources/img/mini.jpg" alt="...">
-      <div class="caption">
-        <h3 align="center">클래스이름</h3>
-        <p align="center">클래스 소개 </p>
-       <p align="center"><a style="background: thistle;"  href="#"><img src="/resources/img/classbutton/reservation_btnimg.png"></a> <a style="background: #ccc;" href="#"><img src="/resources/img/classbutton/wishlist_btnimg.png"></a></p>
-      </div>
-    </div></li> 
-    
-    <li><div class="bannerborder">
-      <img class="imgsize" src="/resources/img/mini.jpg" alt="...">
-      <div class="caption">
-        <h3 align="center">클래스이름</h3>
-        <p align="center">클래스 소개 </p>
-       <p align="center"><a style="background: thistle;"  href="#"><img src="/resources/img/classbutton/reservation_btnimg.png"></a> <a style="background: #ccc;" href="#"><img src="/resources/img/classbutton/wishlist_btnimg.png"></a></p>
-      </div>
-    </div></li> 
-    
-        <li><div class="bannerborder">
-      <img class="imgsize" src="/resources/img/mini.jpg" alt="...">
-      <div class="caption">
-        <h3 align="center">클래스이름</h3>
-        <p align="center">클래스 소개 </p>
-       <p align="center"><a style="background: thistle;"  href="#"><img src="/resources/img/classbutton/reservation_btnimg.png"></a> <a style="background: #ccc;" href="#"><img src="/resources/img/classbutton/wishlist_btnimg.png"></a></p>
-      </div>
-    </div></li> 
-    
-    
-        <li><div class="bannerborder">
-      <img class="imgsize" src="/resources/img/mini.jpg" alt="...">
-      <div class="caption">
-        <h3 align="center">클래스이름</h3>
-        <p align="center">클래스 소개 </p>
-       <p align="center"><a style="background: thistle;"  href="#"><img src="/resources/img/classbutton/reservation_btnimg.png"></a> <a style="background: #ccc;" href="#"><img src="/resources/img/classbutton/wishlist_btnimg.png"></a></p>
-      </div>
-    </div></li> 
-    
-    
-        <li><div class="bannerborder">
-      <img class="imgsize" src="/resources/img/mini.jpg" alt="...">
-      <div class="caption">
-        <h3 align="center">클래스이름</h3>
-        <p align="center">클래스 소개 </p>
-        <p align="center"><a style="background: thistle;"  href="#"><img src="/resources/img/classbutton/reservation_btnimg.png"></a> <a style="background: #ccc;" href="#"><img src="/resources/img/classbutton/wishlist_btnimg.png"></a></p>
-      </div>
-    </div></li> 
+    <c:forEach var="tal" items="${talentList }" begin="1" end="10">
+		
+			<li id="li">
+			<div id="eachClass">
+				<div id="img"><!-- 링크 누르면 클래스 상세 페이지로 이동 -->
+					<a href="/talentDonation"><img src="/upload/${tal.filename }" alt="썸네일" width="200px;" height="200px;"></a>
+	<!-- 	테스트용		<a href="#"><img src="/resources/img/Tulips.jpg" alt="썸네일" width="200px;" height="200px;"></a> -->
+				</div>
+				<div id="sort">
+					<span>${tal.location }</span>|<span>${tal.category }</span>
+				</div>
+				<div id="classname"><!-- 링크 누르면 클래스 상세 페이지로 이동 -->
+					<a href="/userclass/detail?classno=${tal.classNo }"><span>${tal.className }</span></a>
+				</div>
+				<div id="btns"><!-- 각각 상세 페이지로 이동 / 장바구니 담기 -->
+			        <a style="background: thistle;" href="/userclass/detail?classno=${tal.classNo }"><img src="/resources/img/classbutton/reservation_btnimg.png"></a> 
+			        <a style="background: #ccc;" href="#"><img src="/resources/img/classbutton/wishlist_btnimg.png"></a>
+		       </div>
+			</div>
+			</li>
+				
+	 </c:forEach>
     
      </ul>
 </div>
-     <span class="glyphicon glyphicon-chevron-right next" ></span>
+<span class="glyphicon glyphicon-chevron-right next" ></span>
 </div>
 <br>
 

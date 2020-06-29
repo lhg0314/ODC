@@ -264,8 +264,7 @@ list-style: none;
 
 <div id="menudiv" >
 <ul class="nav nav nav-pills navst">
-	<li><a href="#"> </a></li>
-	<li>
+	<li style="border-left: 1px solid white;">
 		<a href="/category">카테고리</a>
 		<ul>
 			<li><a href="/category?category=1">플라워</a></li>
@@ -291,6 +290,7 @@ list-style: none;
 			<li><a href="/location?location=7">제주</a></li>
 		</ul>
 	</li>
+	<li><a href="/talentDonation">재능기부 클래스</a></li>
 	<li>
 		<a href="#">게시판</a>
 		<ul>

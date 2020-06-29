@@ -1,4 +1,4 @@
-package user.controller;
+package main.controller;
 
 import java.io.IOException;
 import java.util.List;
@@ -11,14 +11,14 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import dto.ClassInfo;
-import user.service.face.LocationCategoryService;
-import user.service.impl.LocationCategoryServiceImpl;
+import main.service.LocationCategoryTalentService;
+import main.service.LocationCategoryTalentServiceImpl;
 
 @WebServlet("/location")
 public class ClassLocationServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	
-	private LocationCategoryService locationService = new LocationCategoryServiceImpl();
+	private LocationCategoryTalentService locationService = new LocationCategoryTalentServiceImpl();
 
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {

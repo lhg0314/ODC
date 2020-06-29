@@ -120,20 +120,20 @@ ul#classIntro {
 
 .bannerborder{
 	border-radius: 10px;
-	width:250px;
+	width:249px;
 	border:1px solid #ccc;
 	overflow: hidden;
 }
 
 .imgBox{
-	width: 248px;
-	height: 248px;
+	width: 250px;
+	height: 250px;
 	overflow: hidden;
 }
 
 .imgsize{
-	width:248px;
-	height:248px;
+	width:250px;
+	height:250px;
 	
 }
 
