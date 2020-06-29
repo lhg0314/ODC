@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Map;
 
 import dto.AskBoard;
+import dto.Classwish;
 import dto.ReviewBoard;
 import dto.UserInfo;
 import user.dao.UserDao;
@@ -82,6 +83,11 @@ public class UserServiceImpl implements UserService {
 	public List<AskBoard> selectAskByClassno(int classno) {
 		// TODO Auto-generated method stub
 		return userDao.selectAskByClassno(classno);
+	}
+	@Override
+	public int insertWish(Classwish c) {
+		return userDao.insertWish(c);
+		
 	}
 
 }

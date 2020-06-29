@@ -55,7 +55,7 @@ var date='${classinfo.recruitEnddate }';
 console.log(date)
 $(function() {
     $( "#testDatepicker" ).datepicker({
-    	dateFormat: 'yyyy-mm-dd',
+    	//dateFormat: 'yyyy-mm-dd',
     	minDate: new Date(),
     	 maxDate:new Date('${classinfo.recruitEnddate }')
     
@@ -67,11 +67,26 @@ $(function() {
 
 $(document).ready(function() {
 	
+	var userno = ${userno};
+	var artno = ${artistinfo.artno};
+	var classno=${classinfo.classNo};
+	
+	var quantity = parseInt($('#quantity').val(), 10) + 1;
+	var price = ${classinfo.classPrice}
+	
+	
+	$(".ask").click(function(){//장바구니를 눌렀을때
+		var param="userno="+userno+"&count="+artno+"&totalPrice="+content+"&classno="+classno;
+		
+		console.log(param);
+		sendRequest("POST","/add/ask",param,ajaxFromServer);
+		
+	})
 	
 	
 	
 	
-	$(".ask").click(function(){//탭의 리뷰를 눌렀을때
+		$(".ask").click(function(){//탭의 리뷰를 눌렀을때
 		
 		$.ajax({
 			url: "/ask/show",
@@ -85,15 +100,11 @@ $(document).ready(function() {
             	console.log(res)
             	console.log(res["asklist"].length)
             	
-            	
             	for(var i=0;i<res["asklist"].length;i++){
             		$("<div><p class='show'>"
             				+res["asklist"][i].userno+"<span class='showRight'>"+res["asklist"][i].askDate+"</span></p>"
             				+"<p>"+res["asklist"][i].askContent+"</p></div><hr>").appendTo("#ask-wrap")
             	}
-            	
-            	
-            	
             },
 		})
 		
@@ -102,8 +113,8 @@ $(document).ready(function() {
 	
 	
 	$("#num-add").off('click').on('click', function(){				
-		var quantity = parseInt($('#quantity').val(), 10) + 1;
-		var price = ${classinfo.classPrice}
+		quantity = parseInt($('#quantity').val(), 10) + 1;
+		price = ${classinfo.classPrice}
 		
 		$('#quantity').val( quantity );				
 		$('#price').empty().append( (price * quantity) + ' <span> 원</span>' );				
@@ -111,8 +122,8 @@ $(document).ready(function() {
 	
 	$('#num-sub').off('click').on('click', function(){
 		
-		var quantity = parseInt($('#quantity').val(), 10);
-		var price = ${classinfo.classPrice};
+		quantity = parseInt($('#quantity').val(), 10);
+		price = ${classinfo.classPrice};
 		
 		if(quantity > 1){
 			quantity = 	quantity - 1;
@@ -121,6 +132,34 @@ $(document).ready(function() {
 		$('#quantity').val( quantity );				
 		$('#price').empty().append( (price * quantity) + ' <span> 원</span>' );
 	});
+	
+	$("#wishlist").click(function(){//장바구니를 눌렀을때
+		var param="userno="+userno+"&count="+quantity+"&totalPrice="+(price * quantity)+"&classno="+classno+"&wishdate="+$("#testDatepicker").val();
+		
+		console.log(param);
+		sendRequest("POST","/insert/wishlist",param,ajaxFromServer1);
+		
+	})
+	
+	function ajaxFromServer1(){
+		if(httpRequest.readyState==4){//DONE,응답완료
+			if(httpRequest.status==200){//OK
+				var resultText = httpRequest.responseText;
+			
+				if(resultText == 0){
+					alert("장바구니 넣기 실패");
+					
+				} 
+				else if(resultText == 1){ //이메일 전송 완료
+					alert("장바구니 추가")
+				}
+				document.location.reload(); // 상세보기 창 새로고침 댓글 새로고침
+				
+			}else{
+				console.log("AJAX요청/응답 에러")
+			}
+		}
+	}
 	
 	
 	
@@ -579,8 +618,8 @@ $(document).ready(function() {
 						
 					</div>
 				
+			 <input class="btn btn-default" type="button" id="wishlist" value="장바구니" style="margin-right:20px;margin-top:20px;">
 			 <input class="btn btn-default" type="button" value="예약하기" style="margin-right:20px;margin-top:20px;">
-			 <input class="btn btn-default" type="button" value="장바구니" style="margin-right:20px;margin-top:20px;">
 				</div>
 			</div>
 		</div>
