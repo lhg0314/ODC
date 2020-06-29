@@ -9,7 +9,7 @@
 <c:import url="/WEB-INF/layout/artist/artistpageheader.jsp"></c:import> 
 
 <style type="text/css">
-#askViewTable th {
+#reviewViewTable th {
 	text-align: center;
 	background: thistle;
 }
@@ -36,7 +36,9 @@
 		<td>${reviewdetail.userName }</td>
 	</tr>
 </thead>
-	<tr><td><img src="/upload/${reviewdetail.filename }"></td></tr>
+	<c:if test="${not empty reviewdetail.filename }">
+		<tr><td><img src="/upload/${reviewdetail.filename }"></td></tr>
+	</c:if>
 	<tr>
 		<td colspan="4">${reviewdetail.reviewContent }</td>
 	</tr>

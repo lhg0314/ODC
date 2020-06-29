@@ -5,67 +5,41 @@
 <c:import url="/WEB-INF/layout/admin/header.jsp" />
 
 <style type="text/css">
-#askViewTable th {
+#reviewViewTable th {
 	text-align: center;
 	background: thistle;
 }
 </style>
 
 <div id="main">
-<a href="/mypage/asklist" class="aTagStyleNone"><span id="boardtitle">활동 정보</span></a>
+<a href="/mypage/reviewlist" class="aTagStyleNone"><span id="boardtitle">활동 정보</span></a>
 <hr>
-<a href="/mypage/asklist" class="aTagStyleNone"><span id="boardtitle">클래스 문의 내역</span></a>
+<a href="/mypage/reviewlist" class="aTagStyleNone"><span id="boardtitle">클래스 문의 내역</span></a>
 <br><br>
 
-<table id="askViewTable" class="table table-condensed">
+<table id="reviewViewTable" class="table table-condensed">
 <thead>
 	<tr>
 		<th style="width: 10%;">제목</th>
-		<td>${askdetail.askTitle }</td>
+		<td>${reviewdetail.reviewTitle }</td>
 		<th style="width: 10%;">작성일</th>
-		<td>${askdetail.askDate }</td>
+		<td>${reviewdetail.reviewDate }</td>
 	</tr>
 	<tr>
 		<th style="width: 10%;">클래스명</th>
-		<td>${askdetail.className }</td>
+		<td>${reviewdetail.className }</td>
 		<th style="width: 10%;">작가명</th>
-		<td>${askdetail.artName }</td>
+		<td>${reviewdetail.artName }</td>
 	</tr>
 </thead>
+	<c:if test="${not empty reviewdetail.filename }">
+		<tr><td><img src="/upload/${reviewdetail.filename }"></td></tr>
+	</c:if>
 	<tr>
-		<td colspan="4">${askdetail.askContent }</td>
+		<td colspan="4">${reviewdetail.reviewContent }</td>
 	</tr>
 </table>
 
-<!-- 댓글 처리 -->
-<div>
-
-<hr>
-
-<!-- 댓글 리스트 -->
-<c:if test="${empty commlist }"></c:if>
-<c:if test="${not empty commlist }">
-<table class="table table-condensed">
-<thead>
-<tr>
-	<th style="width: 5%;">번호</th>
-	<th style="text-align: center;">답변</th>
-	<th style="width: 20%;">작성일</th>
-</tr>
-</thead>
-<tbody id="commentBody">
-<c:forEach items="${commlist }" var="comment">
-<tr>
-	<td>${comment.askCommno }</td>
-	<td>${comment.commContent }</td>
-	<td>${comment.commDate }</td>
-</tr>
-</c:forEach>
-</tbody>
-</table>	<!-- 댓글 리스트 end -->
-</c:if>
-
-</div>	<!-- 댓글 처리 end -->
 
 <div class="text-center">
 <button class="btn btn-default" onclick="history.go(-1)">목록</button>

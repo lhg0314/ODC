@@ -28,4 +28,6 @@ public interface UserBoardService {
 
 	List<AskBoardComm> selectCommByAskNo(int askno);
 
+	Map<String, Object> selectReviewByReviewNo(int reviewno);
+
 }

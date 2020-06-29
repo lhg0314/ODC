@@ -96,4 +96,9 @@ public class UserBoardServiceImpl implements UserBoardService {
 		return userBoardDao.selectCommByAskNo(askno);
 	}
 
+	@Override
+	public Map<String, Object> selectReviewByReviewNo(int reviewno) {
+		return userBoardDao.selectReviewByReviewNo(reviewno);
+	}
+
 }

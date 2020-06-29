@@ -22,11 +22,11 @@ public class AdminReviewDetailServlet extends HttpServlet {
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		
-		int reviewno = Integer.parseInt(req.getParameter("reviewno"));
+int reviewno = Integer.parseInt(req.getParameter("reviewno"));
 		
-		Map<String, Object> askdetail = adminBoardService.selectReviewByReviewNo(reviewno);
+		Map<String, Object> reviewdetail = adminBoardService.selectReviewByReviewNo(reviewno);
 		
-		req.setAttribute("askdetail", askdetail);
+		req.setAttribute("reviewdetail", reviewdetail);
 		
 		req.getRequestDispatcher("/WEB-INF/views/admin/board/reviewdetail.jsp").forward(req, resp);
 		

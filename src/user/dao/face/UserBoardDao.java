@@ -26,4 +26,6 @@ public interface UserBoardDao {
 
 	List<AskBoardComm> selectCommByAskNo(int askno);
 
+	Map<String, Object> selectReviewByReviewNo(int reviewno);
+
 }
