@@ -25,7 +25,7 @@
 	margin: 10px;
 }
 
-select { 
+#main > section { 
 
 	float: left;
 	margin: 0 40px; 
@@ -206,7 +206,7 @@ select {
 					</c:if>
 				</div>
 				<div id="classname"><!-- 링크 누르면 클래스 상세 페이지로 이동 -->
-					<a href="#"><span>${c.className }</span></a>
+					<a href="/userclass/detail?classno=${info.classNo }"><span>${c.className }</span></a>
 				</div>
 				<div id="btns"><!-- 각각 상세 페이지로 이동 / 장바구니 담기 -->
 			        <a style="background: thistle;" href="#"><img src="/resources/img/classbutton/reservation_btnimg.png"></a> 

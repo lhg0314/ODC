@@ -114,4 +114,15 @@ public class ArtistBoardServiceImpl implements ArtistBoardService {
 		return artistBoardDao.selectReviewByReviewNo(reviewno);
 	}
 
+	@Override
+	public boolean deleteComm(int commNo) {
+		int res = artistBoardDao.deleteComm(commNo);
+		
+		if(res > 0) {
+			return true;
+		} else {
+			return false;
+		}
+	}
+
 }
