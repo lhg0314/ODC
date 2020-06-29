@@ -161,7 +161,7 @@ list-style: none;
 	float:left;
 	position: absolute;
     left: 60%; 
-    top: 8%;
+    top: 6%;
 }
 
 #sizeup{
@@ -210,7 +210,39 @@ list-style: none;
    color: black;
 }
 
+#topcl{
+	font-size: small;
+	font-weight: bold;
+	color: #666;
+}
+
+#topWrap{
+	width: 150px;
+	height: 22px;
+	border: 1px solid #ccc;
+	margin: 0;
+	padding: 0;
+	list-style: none;
+}
+
+div[id^=topClass]{
+	width: 149px;
+	height: 22px;
+	margin: 0;
+	padding: 0;
+}
+
 </style>
+
+<script type="text/javascript">
+$(document).ready(function(){
+	
+	
+	
+	
+	
+})
+</script>
 
 </head>
 <body>
@@ -253,7 +285,16 @@ list-style: none;
       </div>
    </div>
    
-    <div class="chart"><b>1</b> 인기 클래스 top5</div>
+    <div class="chart">
+    	<span id="topcl">인기 클래스 top5</span>
+    	<ul id="topWrap">
+	    	<li class="topClass"><b>1</b><span></span></li>
+	    	<li class="topClass"><b>2</b><span></span></li>
+	    	<li class="topClass"><b>3</b><span></span></li>
+	    	<li class="topClass"><b>4</b><span></span></li>
+	    	<li class="topClass"><b>5</b><span></span></li>
+    	</ul>
+    </div>
    
    <div style="position: absolute; width: 300px; right: 2%; top: 2%;">
 	   <ul id="minilist">

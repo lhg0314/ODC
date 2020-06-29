@@ -7,9 +7,9 @@
 <style type="text/css">
 
 #wrapper {
-	width: 1200px;
- 	height: 100%;
- 	margin-top: 20px;
+   width: 1200px;
+    height: 100%;
+    margin-top: 20px;
 }
 
 </style>
@@ -18,34 +18,34 @@
 <style type="text/css">
 
 #sidenav {
-	display: inline-block;
-	float: left;
+   display: inline-block;
+   float: left;
 
-/* 	border: 1px solid #ccc; */
-	
-	width: 25%;
-	height: 100%;
+/*    border: 1px solid #ccc; */
+   
+   width: 25%;
+   height: 100%;
 }
 
 #userbox {
-	width: 200px;
-	height: 200px;
-	border: 1px solid #ccc;
-	color: black;
-	
-	margin: 20px auto;
-	
-	display: table;
+   width: 200px;
+   height: 200px;
+   border: 1px solid #ccc;
+   color: black;
+   
+   margin: 20px auto;
+   
+   display: table;
 }
 
 #userbox_cont {
-	display: table-cell;
-	padding: 10px;
-	
-	text-align: center;
-	vertical-align: middle;
-	font-size: 15px;
-	font-weight: bold;
+   display: table-cell;
+   padding: 10px;
+   
+   text-align: center;
+   vertical-align: middle;
+   font-size: 15px;
+   font-weight: bold;
 }
 
 #userbox_cont img {
@@ -61,29 +61,29 @@
 <style type="text/css">
 
 #main {
-	display: inline-block;
-	float: right;
-/* 	border: 1px solid #ccc; */
-	width: 75%;
-	height: 90%;
-	
-	padding: 0 20px;
-/* 	margin: 20px 0; */
+   display: inline-block;
+   float: right;
+/*    border: 1px solid #ccc; */
+   width: 75%;
+   height: 90%;
+   
+   padding: 0 20px;
+/*    margin: 20px 0; */
 }
 
 .row { margin: 10px 0; }
 
 
 #table  {
-	width: 100%;
-	text-align: center;
-	margin: 10px 0;
-	font-size: 14px;
+   width: 100%;
+   text-align: center;
+   margin: 10px 0;
+   font-size: 14px;
 }
 
 #table th {
-	background: thistle;
-	text-align: center;
+   background: thistle;
+   text-align: center;
 }
 
 #table tr:hover { background-color:#f5f5f5; }
@@ -142,18 +142,22 @@ ul.sub li:hover a { color: #e7717d; }
 <style type="text/css">
 
 #mypage {
-	font-size: 30px;
-	font-family: serif;
- 	font-weight: bolder;
-	text-align: center; 
-	margin: 20px 0;
- 	color: #8b6d8b;
+   font-size: 30px;
+   font-family: serif;
+    font-weight: bolder;
+   text-align: center; 
+   margin: 20px 0;
+    color: #8b6d8b;
+}
+#mypage a {
+   text-decoration: none;
+   color:#8b6d8b;
 }
 
 #viewmore { 
-	float:right; 
-	text-decoration: none;
-	color: #999;
+   float:right; 
+   text-decoration: none;
+   color: #999;
     font-size: 14px;
 }
 
@@ -169,54 +173,54 @@ ul.sub li:hover a { color: #e7717d; }
 <div id="wrapper" class="container"> <!-- 전체를 감싸는 div -->
 <div id="sidenav">
 
-	<div id="userbox">
-		<div id="userbox_cont">
-			<c:if test="${grade eq 1}">
-				<img alt="grade1" src="/resources/img/grade/grade1.PNG" />
-			</c:if>		
-			<c:if test="${grade eq 2}">
-				<img alt="grade2" src="/resources/img/grade/grade2.PNG" />
-			</c:if>		
-			<c:if test="${grade eq 3}">
-				<img alt="grade3" src="/resources/img/grade/grade3.PNG" />
-			</c:if>		
-			<span>${userid }님 </span>
-		</div>
-	</div>
-	
-	<ul class="navi">
-		<li class="group">
-		    <div class="title">클래스</div>
-		    <ul class="sub">
-		        <li><a href="/mypage/class/booking">예약 클래스</a></li>
-		        <li><a href="/mypage/class/wish">장바구니</a></li>
-		        <li><a href="/mypage/class/signup">수강 클래스</a></li>
-		    </ul>
-		</li>
-	</ul>
-		
-	<ul class="navi">
-		<li class="group">
-		    <div class="title">활동 정보</div>
-		    <ul class="sub"> 
-		        <li><a href="/mypage/reviewlist">클래스 수강 후기</a></li>
-		        <li><a href="/mypage/asklist">클래스 문의 내용</a></li>
-		    </ul>
-		</li>
-	</ul>
-		
-	<ul class="navi">
-		<li class="group">
-		    <div class="title">회원 정보</div>
-		    <ul class="sub">
-		        <li><a href="/user/info">회원 정보 조회 및 수정</a></li>                
-		        <li><a href="/user/leave">회원 탈퇴</a></li>                
-		    </ul>
-		</li>
-	</ul>
-	    
+   <div id="userbox">
+      <div id="userbox_cont">
+         <c:if test="${grade eq 1}">
+            <img alt="grade1" src="/resources/img/grade/grade1.PNG" />
+         </c:if>      
+         <c:if test="${grade eq 2}">
+            <img alt="grade2" src="/resources/img/grade/grade2.PNG" />
+         </c:if>      
+         <c:if test="${grade eq 3}">
+            <img alt="grade3" src="/resources/img/grade/grade3.PNG" />
+         </c:if>      
+         <span>${userid }님 </span>
+      </div>
+   </div>
+   
+   <ul class="navi">
+      <li class="group">
+          <div class="title">클래스</div>
+          <ul class="sub">
+              <li><a href="/mypage/class/booking">예약 클래스</a></li>
+              <li><a href="/mypage/class/wish">장바구니</a></li>
+              <li><a href="/mypage/class/signup">수강 클래스</a></li>
+          </ul>
+      </li>
+   </ul>
+      
+   <ul class="navi">
+      <li class="group">
+          <div class="title">활동 정보</div>
+          <ul class="sub"> 
+              <li><a href="/mypage/reviewlist">클래스 수강 후기</a></li>
+              <li><a href="/mypage/asklist">클래스 문의 내용</a></li>
+          </ul>
+      </li>
+   </ul>
+      
+   <ul class="navi">
+      <li class="group">
+          <div class="title">회원 정보</div>
+          <ul class="sub">
+              <li><a href="/user/info">회원 정보 조회 및 수정</a></li>                
+              <li><a href="/user/leave">회원 탈퇴</a></li>                
+          </ul>
+      </li>
+   </ul>
+       
 </div>
 
 
-<div id="mypage">MY PAGE</div>
-	
+<div id="mypage"><a href="/user/mypage">MY PAGE</a></div>
+   
