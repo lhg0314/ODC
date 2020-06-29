@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Map;
 
 import dto.AskBoard;
+import dto.Classwish;
 import dto.ReviewBoard;
 import dto.UserInfo;
 
@@ -31,4 +32,6 @@ public interface UserService {
 	public void insertAskBoard(AskBoard a);
 
 	public List<AskBoard> selectAskByClassno(int classno);
+
+	public int insertWish(Classwish c);
 }

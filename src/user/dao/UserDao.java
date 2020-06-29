@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Map;
 
 import dto.AskBoard;
+import dto.Classwish;
 import dto.ReviewBoard;
 import dto.UserInfo;
 
@@ -32,5 +33,7 @@ public interface UserDao {
 	void insertAskBoard(AskBoard a);
 
 	List<AskBoard> selectAskByClassno(int classno);
+
+	int insertWish(Classwish c);
 
 }

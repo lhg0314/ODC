@@ -1,15 +1,19 @@
 package dto;
 
+import java.util.Date;
+
 public class Classwish {
 
 	   private int classno; 
 	   private int user_no; 
 	   private int wishCount;
 	   private int wishno;
+	   private Date wishDate;
+	   private int totalPrice;
 	@Override
 	public String toString() {
 		return "Classwish [classno=" + classno + ", user_no=" + user_no + ", wishCount=" + wishCount + ", wishno="
-				+ wishno + "]";
+				+ wishno + ", wishDate=" + wishDate + ", totalPrice=" + totalPrice + "]";
 	}
 	public int getClassno() {
 		return classno;
@@ -35,6 +39,20 @@ public class Classwish {
 	public void setWishno(int wishno) {
 		this.wishno = wishno;
 	}
+	public Date getWishDate() {
+		return wishDate;
+	}
+	public void setWishDate(Date wishDate) {
+		this.wishDate = wishDate;
+	}
+	public int getTotalPrice() {
+		return totalPrice;
+	}
+	public void setTotalPrice(int totalPrice) {
+		this.totalPrice = totalPrice;
+	}
+	   
+	
 	   
 	   
 }
