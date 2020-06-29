@@ -355,6 +355,10 @@ height:200px;
 
 .row{
 margin-top: 40px;
+    width: 240px;
+    float: left;
+    margin-right: 40px;
+
 }
 .caption{
 text-align: center;
@@ -567,7 +571,7 @@ text-align: center;
 										
 									
 								</c:if>
-								<c:if test="${askboard ne null }">
+								<c:if test="${askboard.size() ne 0 }">
 								<table class="table">
 								<c:forEach var="i" begin="0" end="${askboard.size()-1 }">
 									<tr>
@@ -609,20 +613,21 @@ text-align: center;
 								</div>
 
 							</div>
-								
+							<h4>작가님의 다른 클래스 </h4>
+								<hr>
 								<div  id="classbox-wrapper">
 								<c:forEach var="i" begin="0" end="${clist.size()-1 }">
 								<a href="/userclass/detail?classno=${clist[i].classno }"><div class="row">
-									<div class="col-sm-6 col-md-4">
+									
 										<div class="thumbnail">
-											<img src="/upload/${clist[i].classfilename}" alt="..."  style="width: 150px;">
+											<img src="/upload/${clist[i].classfilename}" alt="..."  style="width: 150px; height:150px">
 											<div class="caption">
 												<h4>${clist[i].classname }</h4>
 												
 												
 											</div>
 										</div>
-									</div>
+									
 								</div></a>
 								</c:forEach>
 
