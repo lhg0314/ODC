@@ -66,6 +66,11 @@ $(function() {
 
 
 $(document).ready(function() {
+	
+	
+	
+	
+	
 	$(".ask").click(function(){//탭의 리뷰를 눌렀을때
 		
 		$.ajax({
@@ -122,6 +127,8 @@ $(document).ready(function() {
 })
 
 </script>
+
+
 
 
 <style>
