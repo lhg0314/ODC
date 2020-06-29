@@ -255,7 +255,7 @@ list-style: none;
    
     <div class="chart"><b>1</b> 인기 클래스 top5</div>
    
-   <div style="position: absolute; width: 350px; right: 2%;">
+   <div style="position: absolute; width: 300px; right: 2%; top: 2%;">
 	   <ul id="minilist">
 	   		<c:if test="${empty userid }">
 			<li><a href="/member/login" class="aNone">&nbsp;로그인&nbsp; |</a></li>
