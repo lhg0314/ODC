@@ -133,7 +133,10 @@ img#emaillogo {
 	padding: 10px;
 }
 
-#email a:hover { text-decoration: none; }
+#email a { 
+	text-decoration: none; 
+	color: black;
+}
 
 #email p {
 
@@ -200,18 +203,18 @@ img#calllogo {
 		<br><br><br>
 	
 		<div id="title">❝  ODC를 이용하시면서 궁금한 점이 있으신가요? ❞</div><br>
-		<div id="title2">고객센터 운영시간&nbsp;|&nbsp;월-금  9:00-17:00</div><br><br><br>
+		<div id="title2">고객센터 운영시간&nbsp;|&nbsp;월-금  9:00-18:00</div><br><br><br>
 	
 	
 	
 		<div id="kakao">
 			<a href="https://open.kakao.com/o/sts6uKic" target="_blank" >
 				<img id="kakaologo" alt="kakao" src="/resources/img/footer/kakaoLogo.png" 
-					title="로고를 누르시면 카카오톡 채팅으로 이동합니다"/>
+					title="클릭하시면 PC 카카오톡 오픈채팅으로 이동합니다"/>
 			</a>
 			<br><br>
 			<a href="https://open.kakao.com/o/sts6uKic" target="_blank" 
-				title="로고를 누르시면 카카오톡 채팅으로 이동합니다">
+				title="클릭하시면 PC 카카오톡 오픈채팅으로 이동합니다">
 				<span>카카오톡 문의</span>
 			</a>
 				<br><br>
@@ -224,9 +227,14 @@ img#calllogo {
 	
 		
 		<div id="email">
-			<img id="emaillogo" alt="email" src="/resources/img/footer/emailLogo.png"/>
+			<a href="mailto:abc12345@gmail.com" title="클릭하시면 메일 서비스로 이동합니다">
+				<img id="emaillogo" alt="email" src="/resources/img/footer/emailLogo.png"/>
+			</a>
 			<br>
-			<span>이메일 문의</span><br><br>
+			<a href="mailto:abc12345@gmail.com" title="클릭하시면 메일 서비스로 이동합니다">
+				<span>이메일 문의</span>
+			</a>
+			<br><br>
 			<hr>
 			<h5>고객센터 이메일</h5>
 			<h5>abc12345@gmail.com</h5>

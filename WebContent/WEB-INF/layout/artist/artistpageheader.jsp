@@ -175,6 +175,12 @@ ul.sub li a {
  	color: #8b6d8b;
 }
 
+#artistpage a {
+
+	text-decoration: none;
+ 	color: #8b6d8b;
+}
+
 #viewmore { 
 
 	float:right; 
@@ -194,16 +200,17 @@ ul.sub li a {
 	text-align: center;
 	border: 1px solid #ccc;
 	border-radius: 20px;
-	padding: 50px 100px;
+	padding: 50px 120px;
 }
-
 
 #ctitle {
 	
-	font-size: 25px;
+	font-size: 26px;
 	font-weight: bold;
- 	font-style: italic; 
-	background: thistle;
+/*  	font-style: italic;  */
+/* 	background: thistle; */
+	padding: 3px;
+	color: #845f84;
 }
 
 #class_upload_notice_content {
@@ -212,6 +219,13 @@ ul.sub li a {
 	font-size: 15px;
 }
 
+#class_upload_notice_content p {
+
+	font-size: 14px;
+    color: #383839d4;
+}
+
+
 </style>
 
 
@@ -219,7 +233,7 @@ ul.sub li a {
 <style type="text/css">
 
 .class_button {
-  background-color: thistle; 
+  background-color: #b798b7; 
   color: white;
   border: none;
   
@@ -236,7 +250,7 @@ ul.sub li a {
 }
 
 .class_button:hover {
-  background-color: #b798b7;
+  background-color: #8c7599;
   color: white;
 }
 
@@ -306,4 +320,4 @@ ul.sub li a {
 	    
 </div>
 
-<div id="artistpage">ARTIST PAGE</div>
+<div id="artistpage"><a href="/artist/artistpage">ARTIST PAGE</a></div>

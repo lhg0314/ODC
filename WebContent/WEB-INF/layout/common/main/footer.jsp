@@ -71,6 +71,11 @@
 	text-align: left;
 }
 
+#info1 a {
+	text-decoration: none;
+	color: black;
+}
+
 </style>
 
 <script type="text/javascript">
