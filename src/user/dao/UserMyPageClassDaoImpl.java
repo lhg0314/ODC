@@ -34,7 +34,7 @@ public class UserMyPageClassDaoImpl implements UserMyPageClassDao{
 		sql += " AND userinfo.user_no = classbooking.user_no";
 		sql += " AND classinfo.class_no = classfile.class_no";
 		sql += " AND user_id = ?";
-		sql += " AND booking_date > ?";
+		sql += " AND booking_date >= ?";
 		sql += " AND classfile.class_rename_filename LIKE 'main%'";
 		sql += " order by booking_no desc";
 		
