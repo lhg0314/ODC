@@ -44,6 +44,7 @@ function ajaxFromServer(){
 			console.log("정상응답")
 			console.log("응답: "+httpRequest.responseText);
 			document.location.reload(); // 상세보기 창 새로고침 댓글 새로고침
+			document.getElementById("ask")[0].click();
 			
 		}else{
 			console.log("AJAX요청/응답 에러")
@@ -75,40 +76,11 @@ $(document).ready(function() {
 	var price = ${classinfo.classPrice}
 	
 	
-	$(".ask").click(function(){//장바구니를 눌렀을때
-		var param="userno="+userno+"&count="+artno+"&totalPrice="+content+"&classno="+classno;
-		
-		console.log(param);
-		sendRequest("POST","/add/ask",param,ajaxFromServer);
-		
-	})
 	
 	
 	
 	
-		$(".ask").click(function(){//탭의 리뷰를 눌렀을때
-		
-		$.ajax({
-			url: "/ask/show",
-            type: "GET",
-            dataType:"json",
-            data: {
-                classno: '${classinfo.classNo}'
-      
-            },
-            success: function (res) {
-            	console.log(res)
-            	console.log(res["asklist"].length)
-            	
-            	for(var i=0;i<res["asklist"].length;i++){
-            		$("<div><p class='show'>"
-            				+res["asklist"][i].userno+"<span class='showRight'>"+res["asklist"][i].askDate+"</span></p>"
-            				+"<p>"+res["asklist"][i].askContent+"</p></div><hr>").appendTo("#ask-wrap")
-            	}
-            },
-		})
-		
-	})
+
 	
 	
 	
@@ -429,7 +401,7 @@ $(document).ready(function() {
 								aria-controls="home" role="tab" data-toggle="tab">상세정보</a></li>
 							<li role="presentation" class="review"><a href="#profile"
 								aria-controls="profile" role="tab" data-toggle="tab">후기</a></li>
-							<li role="presentation" class="ask"><a href="#messages"
+							<li role="presentation" class="ask" id="ask"><a href="#messages"
 								aria-controls="messages" role="tab" data-toggle="tab">Q&A</a></li>
 							<li role="presentation"><a href="#settings"
 								aria-controls="settings" role="tab" data-toggle="tab">작가 정보</a></li>
@@ -562,9 +534,30 @@ $(document).ready(function() {
 													</p>
 												</div>
 										</form>
+										
+										
 									
 								</c:if>
+								<c:if test="${askboard ne null }">
+								<table class="table">
+								<c:forEach var="i" begin="0" end="${askboard.size()-1 }">
+									<tr>
+										<td>${askboard[i].userid }</td>
+										<td>${askboard[i].askContent }</td>
+										<td>${askboard[i].askDate }</td>
+									</tr>
+									<c:if test="${askboard[i].commContent ne null }">
+									<tr>
+										<td>${askboard[i].artid }</td>
+										<td>${askboard[i].commContent }</td>
+										<td>${askboard[i].commDate }</td>
+									</tr>
+									</c:if>
+								</c:forEach>
+								
+								</table>
 
+								</c:if>
 							</div>
 							
 								<div id="ask-wrap"><!-- 리뷰 전체 감싸기 -->

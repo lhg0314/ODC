@@ -25,6 +25,7 @@ public class DetailAddAskServlet extends HttpServlet {
 		req.setCharacterEncoding("UTF-8");
 			AskBoard a=new AskBoard();
 			int userno=Integer.parseInt(req.getParameter("userno"));
+			System.out.println(req.getParameter("artno"));
 			int artno=Integer.parseInt(req.getParameter("artno"));
 			int classno=Integer.parseInt(req.getParameter("classno"));
 			String content=req.getParameter("comment");

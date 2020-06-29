@@ -34,4 +34,6 @@ public interface UserService {
 	public List<AskBoard> selectAskByClassno(int classno);
 
 	public int insertWish(Classwish c);
+
+	public List<Map<String, Object>> getAskAndComm(int classno);
 }

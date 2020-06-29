@@ -49,11 +49,17 @@ public class ClassDetailServlet extends HttpServlet {
 			List<ClassFile> classDetail=ac.selectDetailFileByClassno(classno);
 			ArtistInfo artistinfo=as.getArtInfobyartNo(artno);
 			
+			List<Map<String, Object>> askboard=us.getAskAndComm(classno);
+			System.out.println("askboard"+askboard);
+			
 			System.out.println(classinfo);
 			System.out.println(artistinfo);
 			String addr=artistinfo.getArtAddr().split(";")[1];
 			
+			
 			artistinfo.setArtAddr(artistinfo.getArtAddr().split(";")[0]+" "+artistinfo.getArtAddr().split(";")[1]+" "+artistinfo.getArtAddr().split(";")[2]);
+			
+			req.setAttribute("askboard", askboard);
 			req.setAttribute("classaddr", addr);
 			req.setAttribute("artistinfo", artistinfo);
 			req.setAttribute("classinfo", classinfo);

@@ -89,5 +89,10 @@ public class UserServiceImpl implements UserService {
 		return userDao.insertWish(c);
 		
 	}
+	@Override
+	public List<Map<String, Object>> getAskAndComm(int classno) {
+		// TODO Auto-generated method stub
+		return userDao.getAskAndComm(classno);
+	}
 
 }

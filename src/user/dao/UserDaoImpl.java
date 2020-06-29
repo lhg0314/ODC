@@ -386,4 +386,43 @@ public class UserDaoImpl implements UserDao {
 		
 	}
 
+
+	@Override
+	public List<Map<String, Object>> getAskAndComm(int classno) {
+		conn=JDBCTemplate.getConnection();
+		
+		String sql="";
+		sql+="select user_id,ask_date,ask_content,comm_content,comm_date,art_id from askboard a ";
+		sql+=" left outer join askboardcomm c on a.ask_board_no= c.ask_board_no ";
+		sql+="  join userinfo u on u.user_no=a.user_no ";
+		sql+="  join artistinfo art on a.art_no=art.art_no";
+		sql+="  where class_no=?";
+		
+		List<Map<String, Object>> list = new ArrayList<>();
+		
+		try {
+			ps=conn.prepareStatement(sql);
+			ps.setInt(1, classno);
+			
+			rs=ps.executeQuery();
+			while(rs.next()) {
+				Map<String, Object> map = new HashMap<String, Object>();
+				map.put("userid",rs.getString("user_id"));
+				map.put("askDate",rs.getDate("ask_date"));
+				map.put("askContent",rs.getString("ask_content"));
+				map.put("artid",rs.getString("art_id"));
+				map.put("commDate",rs.getDate("comm_date"));
+				map.put("commContent",rs.getString("comm_content"));
+				
+				list.add(map);
+				
+			}
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return list;
+	}
+
 }
