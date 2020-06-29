@@ -141,6 +141,8 @@ $(document).ready(function() {
 		
 	})
 	
+	
+	
 	function ajaxFromServer1(){
 		if(httpRequest.readyState==4){//DONE,응답완료
 			if(httpRequest.status==200){//OK
@@ -161,7 +163,11 @@ $(document).ready(function() {
 		}
 	}
 	
-	
+	$("#bookinglist").click(function(){//예약하기를 눌렀을때
+		var param="userno="+userno+"&count="+quantity+"&totalPrice="+(price * quantity)+"&classno="+classno+"&wishdate="+$("#testDatepicker").val();
+		location.href="/userclass/payment?"+param;
+		console.log(param);
+	})
 	
 })
 
@@ -608,7 +614,7 @@ $(document).ready(function() {
 						</div>
 						<div class="c03-count">
 		                        <a class="btn"  id="num-sub">-</a>
-		                        <input type="text" id="quantity" value="1" class="only-number"/>
+		                        <input type="text" id="quantity" value="0" class="only-number"/>
 		                        <a class="btn" id="num-add">+</a>
 		                    </div>
 		                    <span><h4>총인원:</h4></span><div class="c03-charge" id="price"></div>
@@ -619,7 +625,7 @@ $(document).ready(function() {
 					</div>
 				
 			 <input class="btn btn-default" type="button" id="wishlist" value="장바구니" style="margin-right:20px;margin-top:20px;">
-			 <input class="btn btn-default" type="button" value="예약하기" style="margin-right:20px;margin-top:20px;">
+			 <input class="btn btn-default" type="button" id="bookinglist" value="예약하기" style="margin-right:20px;margin-top:20px;">
 				</div>
 			</div>
 		</div>

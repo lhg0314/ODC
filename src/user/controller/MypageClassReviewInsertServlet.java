@@ -9,7 +9,10 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import dto.UserInfo;
+import user.service.face.UserInfoUpdateService;
 import user.service.face.UserMyPageClassService;
+import user.service.impl.UserInfoUpdateServiceImpl;
 import user.service.impl.UserMyPageClassServiceImpl;
 
 /**
@@ -20,10 +23,28 @@ import user.service.impl.UserMyPageClassServiceImpl;
 public class MypageClassReviewInsertServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	private UserMyPageClassService usermypageclassService = new UserMyPageClassServiceImpl();
+	private UserInfoUpdateService userUpdateService = new UserInfoUpdateServiceImpl();
 	
 	//후기작성 form
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		
+		//사용자로 로그인한 아이디값 가져오기
+		HttpSession session = req.getSession();
+		
+		// 세션으로 사용자 아이디값 불러서 변수에 저장하기
+		String  userid = (String)session.getAttribute("userid");
+		
+		 //UserInfo 객체 만들어서 id 넣어주기
+	      UserInfo u = new UserInfo();
+	      u.setUserid((String)session.getAttribute("userid"));
+	       
+	      //UserInfo 싹 가져오기
+	      UserInfo uinfo = userUpdateService.userInfoLoad(u);
+	      int grade = uinfo.getUsergrade();
+	      
+	      //결과 전달
+	      req.setAttribute("grade", grade);
 		
 		//쿼리스트링의 bookingno 받아오기
 		int bookingno = usermypageclassService.bookingno(req);
@@ -45,11 +66,7 @@ public class MypageClassReviewInsertServlet extends HttpServlet {
 			
 		}else if (reviewcount <= 0) {
 			
-		//사용자로 로그인한 아이디값 가져오기
-		HttpSession session = req.getSession();
 		
-		// 세션으로 사용자 아이디값 불러서 변수에 저장하기
-		String  userid = (String)session.getAttribute("userid");
 		
 		//userno 구하기
 		int userno = usermypageclassService.userno(userid);
