@@ -19,7 +19,7 @@
 }
 
 .class_button {
-  background-color: thistle; 
+  background-color: #b798b7; 
   color: white;
   border: none;
   
@@ -32,9 +32,16 @@
   margin: 4px 2px;
   padding: 16px 32px;
   cursor: pointer;
+  
 }
 
-#btn {
+.class_button:hover {
+  background-color: #8c7599;
+  color: white;
+}
+
+
+#notice_btn {
 
 	text-align: center;
 }
@@ -77,11 +84,11 @@
 	<span>자세한 사항은 공지사항을 참고해주세요.</span><br>  
 	</div>
 	
-	<br>
+	<br><br>
 	
-	<div id="btn"><a href="#"><button class="class_button">+ 공지사항</button></a></div>
+	<div id="notice_btn"><a href="#"><button class="class_button">+ 공지사항</button></a></div>
 
-
+	<br><br>
 
 </div> <!-- 전체를 감싸는 div -->
 

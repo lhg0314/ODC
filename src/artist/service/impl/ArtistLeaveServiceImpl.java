@@ -37,7 +37,7 @@ public class ArtistLeaveServiceImpl implements ArtistLeaveService {
 		int res = aLeaveDao.classcheck(ainfo);
 		
 		//게시중인 클래스가 없을 때 true 반환해서 탈퇴하도록
-		if(res==0) return true;
+		if(res==0) { return true; }
 		
 		return false;
 	}

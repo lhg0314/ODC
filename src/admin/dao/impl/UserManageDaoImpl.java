@@ -258,7 +258,7 @@ public class UserManageDaoImpl implements UserManageDao{
 				map.put("classno", rs.getInt("class_no"));
 				map.put("classname", rs.getString("class_name"));
 				map.put("reviewContent", rs.getString("review_content"));
-				map.put("sat_level", rs.getInt("sat_level"));
+				map.put("sat_level", rs.getString("sat_level"));
 				map.put("reviewDate", rs.getDate("review_date"));
 				
 				list.add(map);

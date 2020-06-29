@@ -27,7 +27,7 @@ public class NewClassDaoImpl implements NewClassDao {
 		String sql = "";
 		sql += "SELECT c.class_no, c.class_name, c.location, c.category, f.class_rename_filename"; 
 		sql += " FROM classinfo c JOIN classFile f";
-		sql += " ON c.post_status=1 AND c.class_no = f.class_no";
+		sql += " ON c.post_status=1 AND c.class_no = f.class_no AND f.class_rename_filename LIKE 'main%'";
 		sql += " ORDER BY post_date DESC, class_no DESC";
 		
 		conn = JDBCTemplate.getConnection();
@@ -71,7 +71,7 @@ public class NewClassDaoImpl implements NewClassDao {
 		sql += "SELECT c.class_no, c.class_name, c.location, c.category,";
 		sql += " f.class_rename_filename"; 
 		sql += " FROM classinfo c, classFile f, classbooking b";
-		sql += " WHERE c.post_status=1 AND c.class_no = f.class_no AND c.class_no = b.class_no";
+		sql += " WHERE c.post_status=1 AND c.class_no = f.class_no AND c.class_no = b.class_no AND f.class_rename_filename LIKE 'main%'";
 		sql += " GROUP BY c.class_no, f.class_rename_filename, c.class_name, c.location, c.category "; 
 		sql += " ORDER BY sum(b.booking_count) DESC, class_no";
 		

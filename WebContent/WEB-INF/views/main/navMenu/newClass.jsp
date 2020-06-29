@@ -6,6 +6,7 @@
 <c:import url="/WEB-INF/layout/common/main/header.jsp"></c:import>
 
 
+
 <!-- 레이아웃 -->
 <style type="text/css">
 
@@ -25,7 +26,11 @@
 	margin: 10px;
 }
 
+<<<<<<< HEAD
 #main > section { 
+=======
+#cateSel { 
+>>>>>>> sy
 
 	float: left;
 	margin: 0 40px; 
@@ -137,7 +142,7 @@
 	<hr>
 	
 	
-	<select>
+	<select id="cateSel">
 		<option value="0" selected>카테고리</option>
 		<option value="1">플라워</option>
 		<option value="2">음악</option>
@@ -151,13 +156,19 @@
 	
 	<section id="section">
 	
-		<ul id="newClass"><!-- 클래스 목록 한줄 -->
+		<ul id="newClass">
+		
+		
+		<c:if test="${empty cinfo }">
+			<div style="font-size: 20px; color: #999;">개설된 클래스가 없습니다...</div>
+		</c:if>
+	
 	
 		<c:forEach items="${cinfo }" var="c" >
 			<li id="li">
 			<div id="eachClass">
 				<div id="img"><!-- 링크 누르면 클래스 상세 페이지로 이동 -->
-					<a href="#"><img src="/upload/${c.filename }" alt="썸네일" width="200px;" height="200px;"></a>
+					<a href="userclass/detail?classno=${c.classno }"><img src="/upload/${c.filename }" alt="썸네일" width="200px;" height="200px;"></a>
 		<!--테스트용	<a href="#"><img src="/resources/img/Tulips.jpg" alt="썸네일" width="200px;" height="200px;"></a> -->
 				</div>
 				<div id="sort">
@@ -206,10 +217,10 @@
 					</c:if>
 				</div>
 				<div id="classname"><!-- 링크 누르면 클래스 상세 페이지로 이동 -->
-					<a href="#"><span>${c.className }</span></a>
+					<a href="userclass/detail?classno=${c.classno }"><span>${c.className }</span></a>
 				</div>
 				<div id="btns"><!-- 각각 상세 페이지로 이동 / 장바구니 담기 -->
-			        <a style="background: thistle;" href="#"><img src="/resources/img/classbutton/reservation_btnimg.png"></a> 
+			        <a style="background: thistle;" href="userclass/detail?classno=${c.classno }"><img src="/resources/img/classbutton/reservation_btnimg.png"></a> 
 			        <a style="background: #ccc;" href="#"><img src="/resources/img/classbutton/wishlist_btnimg.png"></a>
 		       </div>
 			</div>
