@@ -5,6 +5,7 @@ import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 
+import dto.AskBoardComm;
 import user.dao.face.UserBoardDao;
 import user.dao.impl.UserBoardDaoImpl;
 import user.service.face.UserBoardService;
@@ -88,6 +89,16 @@ public class UserBoardServiceImpl implements UserBoardService {
 	@Override
 	public Map<String, Object> selectAskByAskNo(int askno) {
 		return userBoardDao.selectAskByAskNo(askno);
+	}
+
+	@Override
+	public List<AskBoardComm> selectCommByAskNo(int askno) {
+		return userBoardDao.selectCommByAskNo(askno);
+	}
+
+	@Override
+	public Map<String, Object> selectReviewByReviewNo(int reviewno) {
+		return userBoardDao.selectReviewByReviewNo(reviewno);
 	}
 
 }

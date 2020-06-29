@@ -28,12 +28,16 @@ $(document).ready(function(){
 	text-align: center;
 	background: thistle;
 }
+
+#askTable a {
+	color: black;
+}
 </style>
 
 <div id="main">
-<a href="/artist/reviewlist" class="aTagStyleNone"><span id="boardtitle">게시판</span></a>
+<span id="boardtitle">게시판</span>
 <hr>
-<a href="/artist/reviewlist" class="aTagStyleNone"><span id="boardtitle">고객 문의 내역</span></a>
+<span id="boardtitle">고객 문의 내역</span>
 <br><br>
 
 <div>
@@ -62,7 +66,7 @@ $(document).ready(function(){
 	<tr class="table-hover">
 		<td>${info.askNo }</td>
 		<td>${info.userId }</td>
-		<td style="text-align: left;"><a href="/class/view?classno=${info.classNo }">${info.className}</a></td>
+		<td style="text-align: left;">${info.className}</td>
 		<td style="text-align: left;"><a href="/artist/askdetail?askno=${info.askNo }">${info.askTitle }</a></td>
 		<td>${info.askDate }</td>
 		<c:if test="${info.commCnt eq 0 }"><td style="color: tomato">답변 없음</td></c:if>

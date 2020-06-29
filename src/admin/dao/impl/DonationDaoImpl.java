@@ -30,7 +30,7 @@ public class DonationDaoImpl implements DonationDao {
 
 		sql += "select count(*) from classinfo c";
 		sql += "	inner join artistinfo a on (c.art_no = a.art_no)";
-		sql += "	where talent_donation = 1 and class_name like '%'||?||'%'";
+		sql += "	where talent_donation = 1 and c.post_status = 1 and class_name like '%'||?||'%'";
 		
 		try {
 			ps = conn.prepareStatement(sql);
@@ -131,7 +131,7 @@ public class DonationDaoImpl implements DonationDao {
 		sql += "select * from ( select rownum rnum, b.* from (";
 		sql += "	select c.class_no, c.class_name, c.category, c.post_date, c.class_check, c.location, a.art_id, a.art_name";
 		sql += "	from classinfo c inner join artistinfo a on (c.art_no = a.art_no)";
-		sql += "	where c.talent_donation = 1 and c.class_name like '%'||?||'%'";
+		sql += "	where c.talent_donation = 1 and c.post_status = 1 and c.class_name like '%'||?||'%'";
 		sql += "	order by post_date desc ) b order by rnum ) t where rnum between ? and ?";
 
 		List<Map<String, Object>> list = new ArrayList<>();

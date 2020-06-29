@@ -16,5 +16,6 @@ public interface AdminBoardDao {
 
 	void deleteNoticeList(String names);
 	void deleteReviewList(String names);
+	Map<String, Object> selectReviewByReviewNo(int reviewno);
 
 }

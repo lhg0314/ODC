@@ -18,5 +18,7 @@ public interface AdminBoardService {
 	
 	void noticeListDelete(String names);
 	void reviewListDelete(String names);
+	
+	Map<String, Object> selectReviewByReviewNo(int reviewno);
 
 }

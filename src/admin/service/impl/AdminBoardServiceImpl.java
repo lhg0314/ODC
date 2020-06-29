@@ -80,4 +80,10 @@ public class AdminBoardServiceImpl implements AdminBoardService {
 
 	}
 
+
+	@Override
+	public Map<String, Object> selectReviewByReviewNo(int reviewno) {
+		return adminBoardDao.selectReviewByReviewNo(reviewno);
+	}
+
 }
