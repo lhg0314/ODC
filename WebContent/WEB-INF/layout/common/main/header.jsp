@@ -320,11 +320,7 @@ list-style: none;
 		<a href="#">게시판</a>
 		<ul>
 			<li><a href="/review/board">후기게시판</a></li>
-<<<<<<< HEAD
-			<li><a href="#">고객센터</a></li>
-=======
 			<li><a href="/notice/list">공지사항</a></li>
->>>>>>> 98509b83aff6f42cdb18da9848dd01780c669681
 		</ul>
 	</li>
 	

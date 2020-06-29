@@ -393,16 +393,13 @@ public class UserMyPageClassServiceImpl implements UserMyPageClassService{
 					}
 				}else if ("satlevel".equals(key)) { //전달파라미터 name이 "satlevel"
 					try {
-<<<<<<< HEAD
 						String param = item.getString("UTF-8");
 						
 						if( param != null && !"".equals(param)) {
 							String satlevel = param;
 							reviewboard.setSatlevel(satlevel);
 						}
-=======
 						reviewboard.setSatlevel(item.getString("UTF-8"));
->>>>>>> 98509b83aff6f42cdb18da9848dd01780c669681
 					} catch (UnsupportedEncodingException e) {
 						e.printStackTrace();
 					}
