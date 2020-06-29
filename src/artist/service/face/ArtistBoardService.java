@@ -34,4 +34,6 @@ public interface ArtistBoardService {
 
 	Map<String, Object> selectReviewByReviewNo(int reviewno);
 
+	boolean deleteComm(int commNo);
+
 }

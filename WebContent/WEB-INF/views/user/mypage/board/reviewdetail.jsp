@@ -2,7 +2,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
         
-<!-- mian header -->
+<!-- main header -->
 <c:import url="/WEB-INF/layout/common/main/header.jsp"></c:import> 
 
 <!-- mypage header -->    
@@ -35,6 +35,7 @@
 		<th style="width: 10%;">작가명</th>
 		<td>${reviewdetail.artName }</td>
 	</tr>
+	<tr><th>만족도</th><td>${reviewdetail.satLevel }</td></tr>
 </thead>
 	<c:if test="${not empty reviewdetail.filename }">
 		<tr><td><img src="/upload/${reviewdetail.filename }"></td></tr>
@@ -47,7 +48,7 @@
 
 
 <div class="text-center">
-<button class="btn btn-default" onclick="history.go(-1)">목록</button>
+<button class="btn btn-default" onclick="location.href='/mypage/reviewlist'">목록</button>
 </div>
 
 </div>

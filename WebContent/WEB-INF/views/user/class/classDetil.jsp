@@ -44,6 +44,7 @@ function ajaxFromServer(){
 			console.log("정상응답")
 			console.log("응답: "+httpRequest.responseText);
 			document.location.reload(); // 상세보기 창 새로고침 댓글 새로고침
+			document.getElementById("ask")[0].click();
 			
 		}else{
 			console.log("AJAX요청/응답 에러")
@@ -75,40 +76,11 @@ $(document).ready(function() {
 	var price = ${classinfo.classPrice}
 	
 	
-	$(".ask").click(function(){//장바구니를 눌렀을때
-		var param="userno="+userno+"&count="+artno+"&totalPrice="+content+"&classno="+classno;
-		
-		console.log(param);
-		sendRequest("POST","/add/ask",param,ajaxFromServer);
-		
-	})
 	
 	
 	
 	
-		$(".ask").click(function(){//탭의 리뷰를 눌렀을때
-		
-		$.ajax({
-			url: "/ask/show",
-            type: "GET",
-            dataType:"json",
-            data: {
-                classno: '${classinfo.classNo}'
-      
-            },
-            success: function (res) {
-            	console.log(res)
-            	console.log(res["asklist"].length)
-            	
-            	for(var i=0;i<res["asklist"].length;i++){
-            		$("<div><p class='show'>"
-            				+res["asklist"][i].userno+"<span class='showRight'>"+res["asklist"][i].askDate+"</span></p>"
-            				+"<p>"+res["asklist"][i].askContent+"</p></div><hr>").appendTo("#ask-wrap")
-            	}
-            },
-		})
-		
-	})
+
 	
 	
 	
@@ -141,6 +113,8 @@ $(document).ready(function() {
 		
 	})
 	
+	
+	
 	function ajaxFromServer1(){
 		if(httpRequest.readyState==4){//DONE,응답완료
 			if(httpRequest.status==200){//OK
@@ -161,7 +135,11 @@ $(document).ready(function() {
 		}
 	}
 	
-	
+	$("#bookinglist").click(function(){//예약하기를 눌렀을때
+		var param="userno="+userno+"&count="+quantity+"&totalPrice="+(price * quantity)+"&classno="+classno+"&wishdate="+$("#testDatepicker").val();
+		location.href="/userclass/payment?"+param;
+		console.log(param);
+	})
 	
 })
 
@@ -171,6 +149,17 @@ $(document).ready(function() {
 
 
 <style>
+
+#artInfoBox{
+align-content: center;
+text-align: center;
+width:740px;
+
+background-color: thistle;
+margin-top: 20px;
+height:200px;
+
+}
 .show{
 	position: relative;
 }
@@ -354,13 +343,25 @@ $(document).ready(function() {
 
 }
 
-
+.artComm{
+	background-color: #ccc;
+}
 .calendar{
 	border-bottom: 1px solid #e4e9ef;
     padding: 10px 0 30px;
     align-content: center;
         margin-left: 67px;
 }
+
+.row{
+margin-top: 40px;
+}
+.caption{
+text-align: center;
+}
+
+
+
 </style>
 
 <script type="text/javascript">
@@ -429,7 +430,7 @@ $(document).ready(function() {
 								aria-controls="home" role="tab" data-toggle="tab">상세정보</a></li>
 							<li role="presentation" class="review"><a href="#profile"
 								aria-controls="profile" role="tab" data-toggle="tab">후기</a></li>
-							<li role="presentation" class="ask"><a href="#messages"
+							<li role="presentation" class="ask" id="ask"><a href="#messages"
 								aria-controls="messages" role="tab" data-toggle="tab">Q&A</a></li>
 							<li role="presentation"><a href="#settings"
 								aria-controls="settings" role="tab" data-toggle="tab">작가 정보</a></li>
@@ -558,13 +559,35 @@ $(document).ready(function() {
 											<!-- 댓글 등록 버튼 -->
 												<div id="btn" style="text-align: center;">
 													<p>
-														<a href="#" onclick="writeCmt()">[댓글등록]</a>
+														<a class="btn" onclick="writeCmt()">[댓글등록]</a>
 													</p>
 												</div>
 										</form>
+										
+										
 									
 								</c:if>
+								<c:if test="${askboard ne null }">
+								<table class="table">
+								<c:forEach var="i" begin="0" end="${askboard.size()-1 }">
+									<tr>
+										<td>${askboard[i].userid }</td>
+										<td>${askboard[i].askContent }</td>
+										<td>${askboard[i].askDate }</td>
+									</tr>
+									<c:if test="${askboard[i].commContent ne null }">
+									<tr class="artComm">
+										<td>&nbsp;&nbsp;&nbsp;&nbsp;↳</td>
+										<td>${askboard[i].artid }</td>
+										<td>${askboard[i].commContent }</td>
+										<td>${askboard[i].commDate }</td>
+									</tr>
+									</c:if>
+								</c:forEach>
+								
+								</table>
 
+								</c:if>
 							</div>
 							
 								<div id="ask-wrap"><!-- 리뷰 전체 감싸기 -->
@@ -576,7 +599,35 @@ $(document).ready(function() {
 							</div>
 							<div role="tabpanel" class="tab-pane" id="settings"><!-- 작가정보  -->
 							
+								<div id="artInfoBox" style="text-align: center;"><br><br>
+									<p style="text-align: center;">${artistinfo.artid }</p>
+									<p style="text-align: center;">${artistinfo.artContent }</p>
+								<div  id="btn" style="text-align: center;">
+									<p>
+										<a class="btn" onclick="">[작가에게 후원하기]</a>
+									</p>
+								</div>
 
+							</div>
+								
+								<div  id="classbox-wrapper">
+								<c:forEach var="i" begin="0" end="${clist.size()-1 }">
+								<a href="/userclass/detail?classno=${clist[i].classno }"><div class="row">
+									<div class="col-sm-6 col-md-4">
+										<div class="thumbnail">
+											<img src="/upload/${clist[i].classfilename}" alt="..."  style="width: 150px;">
+											<div class="caption">
+												<h4>${clist[i].classname }</h4>
+												
+												
+											</div>
+										</div>
+									</div>
+								</div></a>
+								</c:forEach>
+
+
+							</div>
 						</div>
 						</div>
 
@@ -608,7 +659,7 @@ $(document).ready(function() {
 						</div>
 						<div class="c03-count">
 		                        <a class="btn"  id="num-sub">-</a>
-		                        <input type="text" id="quantity" value="1" class="only-number"/>
+		                        <input type="text" id="quantity" value="0" class="only-number"/>
 		                        <a class="btn" id="num-add">+</a>
 		                    </div>
 		                    <span><h4>총인원:</h4></span><div class="c03-charge" id="price"></div>
@@ -619,7 +670,7 @@ $(document).ready(function() {
 					</div>
 				
 			 <input class="btn btn-default" type="button" id="wishlist" value="장바구니" style="margin-right:20px;margin-top:20px;">
-			 <input class="btn btn-default" type="button" value="예약하기" style="margin-right:20px;margin-top:20px;">
+			 <input class="btn btn-default" type="button" id="bookinglist" value="예약하기" style="margin-right:20px;margin-top:20px;">
 				</div>
 			</div>
 		</div>

@@ -9,8 +9,11 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import dto.UserInfo;
 import user.service.face.UserBoardService;
+import user.service.face.UserInfoUpdateService;
 import user.service.impl.UserBoardServiceImpl;
+import user.service.impl.UserInfoUpdateServiceImpl;
 /**
  * 사용자 - 문의 내역 선택 삭제 
  * 완성
@@ -24,7 +27,7 @@ public class MypageAskListDeleteServlet extends HttpServlet {
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		System.out.println("/user/alistdelete - [GET]");
-
+		
 		HttpSession session = req.getSession();
 		
 		if(session.getAttribute("userid") == null) {

@@ -239,6 +239,7 @@ public class ArtistDaoImpl implements ArtistDao {
 				ainfo.setArtTel(rs.getLong("art_tel"));
 				ainfo.setArtBirth(rs.getDate("art_birth"));
 				ainfo.setArtAddr(rs.getString("art_addr"));
+				ainfo.setArtContent(rs.getString("art_content"));
 				
 			}
 			

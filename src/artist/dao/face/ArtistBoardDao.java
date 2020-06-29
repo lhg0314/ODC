@@ -29,4 +29,6 @@ public interface ArtistBoardDao {
 
 	Map<String, Object> selectReviewByReviewNo(int reviewno);
 
+	int deleteComm(int commNo);
+
 }

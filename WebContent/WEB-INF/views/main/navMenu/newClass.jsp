@@ -26,7 +26,11 @@
 	margin: 10px;
 }
 
+<<<<<<< HEAD
 #cateSel { 
+=======
+#main > section { 
+>>>>>>> 27d63bb1aacc02990ae815345799ad77b32a3dbe
 
 	float: left;
 	margin: 0 40px; 

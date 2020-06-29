@@ -25,7 +25,11 @@
 	margin: 10px;
 }
 
+<<<<<<< HEAD
 #cateSel { 
+=======
+#main > section { 
+>>>>>>> 27d63bb1aacc02990ae815345799ad77b32a3dbe
 
 	float: left;
 	margin: 0 40px; 
@@ -212,7 +216,11 @@
 					</c:if>
 				</div>
 				<div id="classname"><!-- 링크 누르면 클래스 상세 페이지로 이동 -->
+<<<<<<< HEAD
 					<a href="userclass/detail?classno=${c.classno }"><span>${c.className }</span></a>
+=======
+					<a href="/userclass/detail?classno=${info.classNo }"><span>${c.className }</span></a>
+>>>>>>> 27d63bb1aacc02990ae815345799ad77b32a3dbe
 				</div>
 				<div id="btns"><!-- 각각 상세 페이지로 이동 / 장바구니 담기 -->
 			        <a style="background: thistle;" href="userclass/detail?classno=${c.classno }"><img src="/resources/img/classbutton/reservation_btnimg.png"></a> 

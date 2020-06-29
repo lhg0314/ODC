@@ -1,7 +1,6 @@
 package user.controller;
 
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.Map;
 
 import javax.servlet.ServletException;
@@ -11,8 +10,10 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import dto.ClassBooking;
+import dto.UserInfo;
+import user.service.face.UserInfoUpdateService;
 import user.service.face.UserMyPageClassService;
+import user.service.impl.UserInfoUpdateServiceImpl;
 import user.service.impl.UserMyPageClassServiceImpl;
 
 //20200625 이인주
@@ -21,6 +22,8 @@ import user.service.impl.UserMyPageClassServiceImpl;
 public class MypageClassPayment extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	private UserMyPageClassService usermypageclassService = new UserMyPageClassServiceImpl();
+	private UserInfoUpdateService userUpdateService = new UserInfoUpdateServiceImpl();
+	
 	
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 	
@@ -32,6 +35,18 @@ public class MypageClassPayment extends HttpServlet {
 		
 		//사용자  아이디  jsp로 넘기기
 		req.setAttribute("userid", userid);
+		
+		
+	      //UserInfo 객체 만들어서 id 넣어주기
+	      UserInfo u = new UserInfo();
+	      u.setUserid((String)session.getAttribute("userid"));
+	       
+	      //UserInfo 싹 가져오기
+	      UserInfo uinfo = userUpdateService.userInfoLoad(u);
+	      int grade = uinfo.getUsergrade();
+	      
+	      //결과 전달
+	      req.setAttribute("grade", grade);
 		
 		//쿼리스트링으로 받은 wishno 뽑아오기 
 		int wishno = usermypageclassService.wishnoparam(req);
@@ -73,6 +88,17 @@ public class MypageClassPayment extends HttpServlet {
 		
 		//사용자  아이디  jsp로 넘기기
 		req.setAttribute("userid", userid);
+		
+		  //UserInfo 객체 만들어서 id 넣어주기
+	       UserInfo u = new UserInfo();
+	       u.setUserid((String)session.getAttribute("userid"));
+	       
+	       //UserInfo  가져오기
+	       UserInfo uinfo = userUpdateService.userInfoLoad(u);
+	       int grade = uinfo.getUsergrade();
+	      
+	       //결과 전달
+	       req.setAttribute("grade", grade);
 		
 		//세션에 저장된 wishno 가져오기
 		int wishno = (int)session.getAttribute("wishno");

@@ -17,9 +17,9 @@
 </style>
 
 <div id="main">
-<a href="/artist/reviewlist" class="aTagStyleNone"><span id="boardtitle">후원</span></a>
+<span id="boardtitle">후원</span>
 <hr>
-<a href="/artist/reviewlist" class="aTagStyleNone"><span id="boardtitle">후원 받은 내역</span></a>
+<span id="boardtitle">후원 받은 내역</span>
 <br>
 
 <div id="searchdonation">

@@ -35,6 +35,7 @@
 		<th style="width: 10%;">작성자</th>
 		<td>${reviewdetail.userName }</td>
 	</tr>
+	<tr><th>만족도</th><td>${reviewdetail.satLevel }</td></tr>
 </thead>
 	<c:if test="${not empty reviewdetail.filename }">
 		<tr><td><img src="/upload/${reviewdetail.filename }"></td></tr>
@@ -45,7 +46,7 @@
 </table>
 
 <div class="text-center">
-<button class="btn btn-default" onclick="history.go(-1)">목록</button>
+<button class="btn btn-default" onclick="location.href='/artist/reviewlist'">목록</button>
 </div>
 
 </div>
