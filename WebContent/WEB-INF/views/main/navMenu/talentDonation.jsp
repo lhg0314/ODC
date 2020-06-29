@@ -24,7 +24,7 @@
 	margin: 10px;
 }
 
-select { 
+#main > section { 
 
 	float: left;
 	margin: 0 40px; 
