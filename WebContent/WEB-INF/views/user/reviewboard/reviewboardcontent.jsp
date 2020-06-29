@@ -62,7 +62,7 @@ list-style: none;
 
 #photoreview{
 /* 	border: 1px solid gold;  */
-/* 	height:500px ;  */
+ 	height:300px ;  
 	float: left; 
 	width: 33%; 
 	padding:10px;"

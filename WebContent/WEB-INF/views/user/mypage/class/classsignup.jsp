@@ -77,7 +77,7 @@
 
 <tr style="text-align: center;">
 	<!-- 사진을 누르면  classno 을 쿼리스트링 값으로 전달하여 페이지를 바꾼다 -->
-	<td><a href="#?classno=${signup.classno }"><img src="/upload/${signup.classrenamefilename }" alt="..." class="img-rounded imgsize"></a></td>
+	<td><a href="/userclass/detail?classno=${signup.classno }"><img src="/upload/${signup.classrenamefilename }" alt="..." class="img-rounded imgsize"></a></td>
 	<td>${signup.classname }</td>
 	<td>${signup.artid }</td>
 	<td>${signup.paymentDate }</td>
