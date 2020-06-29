@@ -1,4 +1,4 @@
-package main.dao;
+package main.dao.impl;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -10,6 +10,7 @@ import java.util.List;
 import java.util.Map;
 
 import dbutil.JDBCTemplate;
+import main.dao.face.NewClassDao;
 
 public class NewClassDaoImpl implements NewClassDao {
 

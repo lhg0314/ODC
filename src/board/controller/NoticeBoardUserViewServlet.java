@@ -20,7 +20,6 @@ public class NoticeBoardUserViewServlet extends HttpServlet {
 	
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		System.out.println("/board/noticeview - [GET]");
 		
 		int noticeno = 0;
 		

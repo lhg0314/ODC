@@ -1,4 +1,4 @@
-package main.dao;
+package main.dao.face;
 
 import java.util.List;
 import java.util.Map;

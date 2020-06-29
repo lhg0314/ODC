@@ -1,4 +1,4 @@
-package main.dao;
+package main.dao.impl;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -10,6 +10,7 @@ import java.util.List;
 import java.util.Map;
 
 import dbutil.JDBCTemplate;
+import main.dao.face.MainDao;
 import util.Paging;
 
 public class MainDaoImpl implements MainDao {
@@ -54,11 +55,7 @@ public class MainDaoImpl implements MainDao {
 		sql += "select * from ( select rownum rnum, b.* from (";
 		sql += "	select c.class_no, c.class_name, c.location, c.category, f.class_rename_filename from classinfo c";
 		sql += "	left outer join classfile f on (c.class_no = f.class_no)";
-<<<<<<< HEAD
-		sql += "	where class_name like '%'||?||'%' and c.post_status = 1 and f.class_rename_filename like 'main%' order by post_date desc, class_no desc";
-=======
 		sql += "	where class_name like '%'||?||'%' and c.post_status = 1 AND f.class_rename_filename LIKE 'main%' order by post_date desc, class_no desc";
->>>>>>> inju21
 		sql += "	) b order by rnum ) t where rnum between ? and ?";
 
 		List<Map<String, Object>> list = new ArrayList<>();

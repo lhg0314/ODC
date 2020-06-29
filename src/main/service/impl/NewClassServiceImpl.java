@@ -1,11 +1,12 @@
-package main.service;
+package main.service.impl;
 
 import java.util.List;
 import java.util.Map;
 
 import dto.ClassInfo;
-import main.dao.NewClassDao;
-import main.dao.NewClassDaoImpl;
+import main.dao.face.NewClassDao;
+import main.dao.impl.NewClassDaoImpl;
+import main.service.face.NewClassService;
 
 public class NewClassServiceImpl implements NewClassService{
 

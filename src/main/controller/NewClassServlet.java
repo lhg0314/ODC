@@ -11,8 +11,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import dto.ClassInfo;
-import main.service.NewClassService;
-import main.service.NewClassServiceImpl;
+import main.service.face.NewClassService;
+import main.service.impl.NewClassServiceImpl;
 
 /*
  * 0627 이서연 

@@ -1,12 +1,13 @@
-package main.service;
+package main.service.impl;
 
 import java.util.List;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 
-import main.dao.MainDao;
-import main.dao.MainDaoImpl;
+import main.dao.face.MainDao;
+import main.dao.impl.MainDaoImpl;
+import main.service.face.MainService;
 import util.Paging;
 
 public class MainServiceImpl implements MainService {

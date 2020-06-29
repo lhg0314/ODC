@@ -17,6 +17,33 @@
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 <script type="text/javascript">
 $(document).ready(function(){
+	// 인기클래스 불러오기
+	$.ajax({
+		type:"get"
+		, url:"/header"
+		, dataType:"json"
+		, success:function(res){
+// 			console.log(res);
+			
+			var str="";
+			
+			$.each(res, function(index, item){
+				
+				str += "<li class='topClass' onclick=><a class='aNone' href='/userclass/detail?classno="+ item.classNo + "'><b>" + ++index + ".</b> "+ item.className + "</a></li>";
+			
+			})
+			
+// 			console.log(str);
+			$("#topWrap").html(str);
+			
+			topSlider();
+		}
+		, error:function(){
+			console.log("ajax  실패")
+		}
+	})
+	
+	
 	//검색 버튼 클릭
 	$("#btnmainSearch").click(function() {
 		$("#searchForm").submit();
@@ -28,10 +55,52 @@ $(document).ready(function(){
 		}
 	});
 	
+function topSlider(){
+	// 인기클래스 리스트 
+	var $top_list = $("#topWrap li")
+	console.log($top_list)
+	
+	// 모든 이미지 밑으로
+	$top_list.css("top", $("#topWrap").css("height"));
+	
+	// 새로 고침하면 첫번째 클래스가 보이기
+	$top_list.eq(0).css("top", "0");
+	
+	
+	var curSlide = 0; // 현재 슬라이드 인덱스
+	
+	var sliderUp = function(){
+		
+		var nextSlide = curSlide + 1; //다음 슬라이드 인덱스
+		nextSlide %= $top_list.length;
+		
+		// 순환구조 확인
+// 		console.log(curSlide + ":" + nextSlide)
+		
+		// 현재 슬라이드 숨기기
+		$top_list.eq(curSlide).animate({"top":"-=22px"})
+		
+		// 다음 슬라이드를 아래로
+		$top_list.eq(nextSlide).css("top", $("#topWrap").css("height"));
+		
+		// // 다음 슬라이드 보여주기 : nextSlide
+		$top_list.eq(nextSlide).animate({"top":"-=22px"})
+		
+		// 순환구조
+		curSlide++;
+		// 이미지 개수만큼 보정하기
+		curSlide %= $top_list.length;
+		
+	}
+	
+	// 시간 처리
+	var tid = setInterval(sliderUp, 2000);
+	
+}
 
 });
-
 </script>
+
 <style type="text/css">
 
 #menudiv{
@@ -154,7 +223,6 @@ list-style: none;
 	white-space: nowrap;
 	position: relative;
 	width:1400px;
-	
 }
 
 .chart{
@@ -219,30 +287,27 @@ list-style: none;
 #topWrap{
 	width: 150px;
 	height: 22px;
-	border: 1px solid #ccc;
+/* 	border: 1px solid #ccc; */
 	margin: 0;
 	padding: 0;
 	list-style: none;
+	position: relative;
+	overflow: hidden;
 }
 
-div[id^=topClass]{
-	width: 149px;
+.topClass{
+	width: 150px;
 	height: 22px;
+/* 	border: 1px solid red; */
 	margin: 0;
 	padding: 0;
+	text-overflow:ellipsis;
+	overflow:hidden;
+	white-space: nowrap;
+	position: absolute;
 }
 
 </style>
-
-<script type="text/javascript">
-$(document).ready(function(){
-	
-	
-	
-	
-	
-})
-</script>
 
 </head>
 <body>
@@ -288,11 +353,6 @@ $(document).ready(function(){
     <div class="chart">
     	<span id="topcl">인기 클래스 top5</span>
     	<ul id="topWrap">
-	    	<li class="topClass"><b>1</b><span></span></li>
-	    	<li class="topClass"><b>2</b><span></span></li>
-	    	<li class="topClass"><b>3</b><span></span></li>
-	    	<li class="topClass"><b>4</b><span></span></li>
-	    	<li class="topClass"><b>5</b><span></span></li>
     	</ul>
     </div>
    

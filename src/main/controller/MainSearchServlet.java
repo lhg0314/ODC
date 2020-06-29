@@ -10,8 +10,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import main.service.MainService;
-import main.service.MainServiceImpl;
+import main.service.face.MainService;
+import main.service.impl.MainServiceImpl;
 import util.Paging;
 /**
  * 메인 헤더 검색 기능

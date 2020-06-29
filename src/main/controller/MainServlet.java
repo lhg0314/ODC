@@ -10,8 +10,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import main.service.LocationCategoryTalentService;
-import main.service.LocationCategoryTalentServiceImpl;
+import main.service.face.LocationCategoryTalentService;
+import main.service.impl.LocationCategoryTalentServiceImpl;
 
 
 @WebServlet("/main")

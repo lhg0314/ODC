@@ -1,4 +1,4 @@
-package main.dao;
+package main.dao.impl;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -10,8 +10,7 @@ import java.util.List;
 import java.util.Map;
 
 import dbutil.JDBCTemplate;
-import dto.ClassInfo;
-import user.dao.face.LocationCategoryDao;
+import main.dao.face.LocationCategoryDao;
 
 public class LocationCategoryTalentDaoImpl implements LocationCategoryDao {
 

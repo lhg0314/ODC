@@ -1,12 +1,13 @@
-package main.service;
+package main.service.impl;
 
 import java.util.List;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 
-import main.dao.LocationCategoryTalentDaoImpl;
-import user.dao.face.LocationCategoryDao;
+import main.dao.face.LocationCategoryDao;
+import main.dao.impl.LocationCategoryTalentDaoImpl;
+import main.service.face.LocationCategoryTalentService;
 
 public class LocationCategoryTalentServiceImpl implements LocationCategoryTalentService {
 	
