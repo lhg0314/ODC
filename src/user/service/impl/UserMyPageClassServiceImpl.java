@@ -396,7 +396,7 @@ public class UserMyPageClassServiceImpl implements UserMyPageClassService{
 						String param = item.getString("UTF-8");
 						
 						if( param != null && !"".equals(param)) {
-							int satlevel = Integer.parseInt(param);
+							String satlevel = param;
 							reviewboard.setSatlevel(satlevel);
 						}
 					} catch (UnsupportedEncodingException e) {

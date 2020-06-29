@@ -52,20 +52,28 @@ input {
 
 #btn { text-align: center; }
 
-.btn {
+#btnUpdate {
+  background-color: #b798b7; 
+  color: white;
+  border: none;
+  
+  text-align: center;
+  text-decoration: none;
+  font-size: 17px;
+  font-weight: bold;
   
   display: inline-block;
-  padding: 13px 30px;
-  text-align: center;
+  margin: 4px 2px;
+  padding: 16px 32px;
+  cursor: pointer;
   
+}
+
+#btnUpdate:hover {
   background-color: #8c7599;
   color: white;
-  font-size: 17px;
-  font-weight: bolder;
-  text-decoration: none;
-  
-  cursor: pointer;
 }
+
 
 </style>
 
@@ -132,6 +140,18 @@ $(document).ready(function() {
 		<table class="infotable">
 			
 			<tr>
+				<th>등급</th>
+				<c:if test="${uinfo.usergrade eq 1}">
+					<td>오디씨앗</td>
+				</c:if>		
+				<c:if test="${uinfo.usergrade eq 2}">
+					<td>오디꽃</td>
+				</c:if>		
+				<c:if test="${uinfo.usergrade eq 3}">
+					<td>오디나무</td>
+				</c:if>		
+			</tr>
+			<tr>
 				<th>이름</th>
 				<td><input type="text" id="username" name="username" value="${uinfo.username }" required="required"/></td>
 			</tr>
@@ -148,10 +168,10 @@ $(document).ready(function() {
 				<td><input type="password" id="userpwchk" name="userpwchk"/></td>
 			</tr>
 			<tr>
-			<tr>
 				<th>이메일</th>
 				<td>${uinfo.useremail }</td>
 			</tr>
+			<tr>
 				<th>휴대폰번호</th>
 				<td><input type="tel" id="userphone" name="userphone" value="${uinfo.userphone }" required="required"/></td>
 			</tr>
@@ -169,9 +189,9 @@ $(document).ready(function() {
 	
 	</form>
 		
-	<br><br>
-	<div id="btn"><button class="btn" id="btnUpdate">회원정보 수정</button></div>
-	<br><br>	
+	<br><br><br>
+	<div id="btn"><button id="btnUpdate">회원정보 수정</button></div>
+	<br><br><br><br>
 	
 	
 	

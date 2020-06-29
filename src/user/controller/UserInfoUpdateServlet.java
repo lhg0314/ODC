@@ -38,6 +38,10 @@ public class UserInfoUpdateServlet extends HttpServlet {
 		 //UserInfo 싹 가져오기
 		 UserInfo uinfo = userUpdateService.userInfoLoad(u);
 		 
+		 int grade = uinfo.getUsergrade();
+		
+		 //결과 전달
+		 req.setAttribute("grade", grade);
 		 
 		 
 		 //결과 전달

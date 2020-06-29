@@ -37,19 +37,25 @@ span { margin: 0 12px; }
 
 #btn { text-align: center; }
 
-.btn {
+#btnLeave {
+  background-color: #b798b7; 
+  color: white;
+  border: none;
+  
+  text-align: center;
+  text-decoration: none;
+  font-size: 17px;
+  font-weight: bold;
   
   display: inline-block;
-  padding: 13px 30px;
-  text-align: center;
-  
+  margin: 4px 2px;
+  padding: 16px 32px;
+  cursor: pointer;
+}
+
+#btnLeave:hover {
   background-color: #8c7599;
   color: white;
-  font-size: 17px;
-  font-weight: bolder;
-  text-decoration: none;
-  
-  cursor: pointer;
 }
 
 </style>
@@ -93,8 +99,7 @@ $(document).ready(function() {
 		
 	</div>
 	
-	
-	<div id="btn"><button class="btn" id="btnLeave">회원 탈퇴</button></div>
+	<div id="btn"><button id="btnLeave">회원 탈퇴</button></div>
 	<br><br>	
 	
 	

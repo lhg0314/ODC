@@ -115,7 +115,7 @@ list-style: none;
 <div id="wrapper"> <!-- 가운데 오게 하기  -->
 <a href="/admin/main"><h3>관리자 페이지</h3></a>
 
-   <div style="position: absolute; width: 350px; right: -18%; top:0%;"> 
+   <div style="position: absolute; width: 350px; right: -1%; top:0%;"> 
 	   <ul id="minilist">
 	   		
 			<li><a href="/main" class="aNone" target="_blank">&nbsp; 사업자 페이지&nbsp;|</a></li>

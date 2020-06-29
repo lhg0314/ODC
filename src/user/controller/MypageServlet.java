@@ -1,6 +1,7 @@
 package user.controller;
 
 import java.io.IOException;
+import java.lang.ProcessBuilder.Redirect;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -10,8 +11,8 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import dto.UserInfo;
-import user.service.UserInfoUpdateService;
-import user.service.UserInfoUpdateServiceImpl;
+import user.service.face.UserInfoUpdateService;
+import user.service.impl.UserInfoUpdateServiceImpl;
 
 
 @WebServlet("/user/mypage")
@@ -28,9 +29,19 @@ public class MypageServlet extends HttpServlet {
 		
 		//20200624 이인주
 		
+		
 		//사용자로 로그인한 아이디값 가져오기
 		HttpSession session = req.getSession();
 		
+		
+		if (session.getAttribute("userid") == null) {
+			
+//			System.out.println("로그인 정보 없음");
+			resp.sendRedirect("/member/login");
+			return;
+		}
+		 
+
 		// 세션으로 사용자 아이디값 불러서 변수에 저장하기
 		String userid = (String)session.getAttribute("userid");
 		
@@ -44,6 +55,7 @@ public class MypageServlet extends HttpServlet {
 		UserInfo uinfo = userUpdateService.userInfoLoad(u);
 		int grade = uinfo.getUsergrade();
 		
+		System.out.println(grade);
 		
 		
 		//사용자  아이디  jsp로 넘기기

@@ -149,6 +149,10 @@ ul.sub li:hover a { color: #e7717d; }
 	margin: 20px 0;
  	color: #8b6d8b;
 }
+#mypage a {
+	text-decoration: none;
+	color:#8b6d8b;
+}
 
 #viewmore { 
 	float:right; 
@@ -218,5 +222,5 @@ ul.sub li:hover a { color: #e7717d; }
 </div>
 
 
-<div id="mypage">MY PAGE</div>
+<div id="mypage"><a href="/user/mypage">MY PAGE</a></div>
 	

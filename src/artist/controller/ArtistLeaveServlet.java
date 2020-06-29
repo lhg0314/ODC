@@ -45,59 +45,68 @@ public class ArtistLeaveServlet extends HttpServlet {
 		
 		//ArtistInfo 객체 만들어서 id 넣어주기
 		ArtistInfo ainfo = new ArtistInfo();
+		
 		ainfo.setArtid((String)session.getAttribute("artid"));
 		ainfo.setArtpw(req.getParameter("pwcheck"));
 		
-//		System.out.println((String)session.getAttribute("artid"));
-//		System.out.println(req.getParameter("pwcheck"));
 		
-		ainfo = artUpdateService.artInfoLoad(ainfo);
-		System.out.println(ainfo);
+		System.out.println((String)session.getAttribute("artid"));
+		System.out.println(req.getParameter("pwcheck")); //입력된 비밀번호 잘 들어왔음
+		
 		
 		
 		
 		if(aLeaveService.pwcheck(ainfo)) { //return true;
+			//비번 맞을때 통과
+			
+			ArtistInfo a = artUpdateService.artInfoLoad(ainfo);
 			
 			
-			if(aLeaveService.classcheck(ainfo)) { //return true;
+			if(aLeaveService.classcheck(a)) { //return true;
 				
-				//아이디비번 맞고 게시중인 클래스 없을 때 탈퇴 진행
-				aLeaveService.leave(ainfo);
-				
-				
-				//alert 띄우고 싶다
-				//alert("탈퇴가 완료되었습니다")
+				//비번 맞고 게시중인 클래스 없을 때 탈퇴 진행
+				aLeaveService.leave(a);
 				
 				
-				//로그아웃으로 리다이렉트
-				resp.sendRedirect("/user/logout");
+				String msg = "탈퇴가 완료되었습니다.";
+				String url = "/user/logout";
 				
 				
-			} else if (!aLeaveService.classcheck(ainfo)) { //return true;
+				req.setAttribute("msg", msg);
+				req.setAttribute("url", url);
 				
-				//아이디 비번은 맞는데 게시중인 클래스가 있을 때
-				
-				
-				//alert 띄우고 싶다
-				//alert("게시중인 클래스가 있어 탈퇴가 불가능합니다")
+				req.getRequestDispatcher("/WEB-INF/views/user/mypage/class/alert.jsp").forward(req,resp);
 				
 				
-				//탈퇴페이지로 리다이렉트
-				resp.sendRedirect("/artist/leave");
+			} else if (!aLeaveService.classcheck(a)) { //return false;
+				
+				//비번은 맞는데 게시중인 클래스가 있을 때
+				
+				String msg = "게시중인 클래스가 있어 탈퇴가 불가능합니다.";
+				String url = "/artist/leave";
+				
+				
+				req.setAttribute("msg", msg);
+				req.setAttribute("url", url);
+				
+				req.getRequestDispatcher("/WEB-INF/views/user/mypage/class/alert.jsp").forward(req,resp);
+				
 			}
 			
 			
 		} else { 
 			
-			//아이디 비번 틀렸을 때
+			//비번 틀렸을 때
+			
+			String msg = "입력하신 비밀번호가 틀립니다.";
+			String url = "/artist/leave";
 			
 			
-			//alert 띄우고 싶다
-			//alert("입력하신 비밀번호가 틀립니다")
+			req.setAttribute("msg", msg);
+			req.setAttribute("url", url);
 			
+			req.getRequestDispatcher("/WEB-INF/views/user/mypage/class/alert.jsp").forward(req,resp);
 			
-			//탈퇴페이지로 리다이렉트
-			resp.sendRedirect("/artist/leave");
 		}
 		
 	

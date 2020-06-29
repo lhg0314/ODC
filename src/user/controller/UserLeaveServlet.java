@@ -9,11 +9,10 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import dto.ArtistInfo;
 import dto.UserInfo;
-import user.service.UserInfoUpdateService;
-import user.service.UserInfoUpdateServiceImpl;
+import user.service.face.UserInfoUpdateService;
 import user.service.face.UserLeaveService;
+import user.service.impl.UserInfoUpdateServiceImpl;
 import user.service.impl.UserLeaveServiceImpl;
 
 @WebServlet("/user/leave")
@@ -30,6 +29,21 @@ public class UserLeaveServlet extends HttpServlet {
 		System.out.println("/user/leave [GET]");
 		
 		
+		//세션 객체 생성 - id 가져오기
+		HttpSession session =  req.getSession();
+		 
+		//UserInfo 객체 만들어서 id 넣어주기
+		UserInfo u = new UserInfo();
+		u.setUserid((String)session.getAttribute("userid"));
+		 
+		//UserInfo 싹 가져오기
+		UserInfo uinfo = userUpdateService.userInfoLoad(u);
+		int grade = uinfo.getUsergrade();
+		
+		//결과 전달
+		req.setAttribute("grade", grade);
+
+		 
 		req.getRequestDispatcher("/WEB-INF/views/user/mypage/userLeave.jsp").forward(req, resp);
 		
 	
@@ -48,30 +62,47 @@ public class UserLeaveServlet extends HttpServlet {
 		uinfo.setUserid((String)session.getAttribute("userid"));
 		uinfo.setUserpw(req.getParameter("pwcheck"));
 		
+		
 		System.out.println((String)session.getAttribute("userid"));
 		System.out.println(req.getParameter("pwcheck"));
 		
 		
-		uinfo = userUpdateService.userInfoLoad(uinfo);
-		System.out.println(uinfo);
 		
 		
 		if(uLeaveService.pwcheck(uinfo)) {
 			
-//			System.out.println("입력하신 비번  맞네요");
 			
+			UserInfo u = userUpdateService.userInfoLoad(uinfo);
+			System.out.println(u);
+
 			//탈퇴 진행
-			uLeaveService.leave(uinfo);
+			uLeaveService.leave(u);
 			
-			//로그아웃으로 리다이렉트
-			resp.sendRedirect("/user/logout");
+			
+			String msg = "탈퇴가 완료되었습니다.";
+			String url = "/user/logout";
+			
+			
+			req.setAttribute("msg", msg);
+			req.setAttribute("url", url);
+			
+			req.getRequestDispatcher("/WEB-INF/views/user/mypage/class/alert.jsp").forward(req,resp);
+			
 			
 			
 		} else { 
 			
 			
-			//탈퇴페이지로 리다이렉트
-			resp.sendRedirect("/user/leave");
+			String msg = "입력하신 비밀번호가 틀립니다.";
+			String url = "/user/leave";
+			
+			
+			req.setAttribute("msg", msg);
+			req.setAttribute("url", url);
+			
+			req.getRequestDispatcher("/WEB-INF/views/user/mypage/class/alert.jsp").forward(req,resp);
+			
+			resp.sendRedirect("");
 		}
 		
 	
