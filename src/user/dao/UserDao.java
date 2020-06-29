@@ -36,4 +36,6 @@ public interface UserDao {
 
 	int insertWish(Classwish c);
 
+	List<Map<String, Object>> getAskAndComm(int classno);
+
 }
