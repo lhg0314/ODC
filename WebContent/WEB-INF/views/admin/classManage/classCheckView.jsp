@@ -160,15 +160,17 @@ $(document).ready(function(){
 	<th colspan="4">첨부 파일 - 상세 사진</th>
 </tr>
 
+<c:if test="${detailFile.size()-1 >0 }"><!-- 파일의 수가 1개이상일때  -->
 <c:forEach var="i" begin="0" end="${detailFile.size()-1 }">
-
 <tr>
-	
-	<td colspan="4" style="text-align: center;"><img class="classFile" src="/upload/${detailFile[i].classRenameFilename}"/></td>
+
+   
+   <td colspan="4" style="text-align: center;"><img class="classFile" src="/upload/${detailFile[i].classRenameFilename}"/></td>
 </tr>
 
 </c:forEach>
 
+</c:if>
 
 </table>
 

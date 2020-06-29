@@ -33,8 +33,9 @@ public class UserMyPageClassDaoImpl implements UserMyPageClassDao{
 		sql += " AND classinfo.class_no = classbooking.class_no";
 		sql += " AND userinfo.user_no = classbooking.user_no";
 		sql += " AND classinfo.class_no = classfile.class_no";
-		sql += " AND user_id = ? ";
-		sql += " AND booking_date > ? ";
+		sql += " AND user_id = ?";
+		sql += " AND booking_date > ?";
+		sql += " AND classfile.class_rename_filename LIKE 'main%'";
 		sql += " order by booking_no desc";
 		
 		ArrayList<Map<String, Object>> userbooking = new ArrayList<Map<String,Object>>();
@@ -121,6 +122,7 @@ public class UserMyPageClassDaoImpl implements UserMyPageClassDao{
 		sql += " AND classinfo.class_no = classwish.class_no";
 		sql += " AND userinfo.user_no = classwish.user_no";
 		sql += " AND classinfo.class_no = classfile.class_no";
+		sql += " AND classfile.class_rename_filename LIKE 'main%'";
 		sql += " AND user_id = ? ";
 		sql += " order by wish_no desc";
 		
@@ -196,6 +198,7 @@ public class UserMyPageClassDaoImpl implements UserMyPageClassDao{
 		sql += " and classinfo.class_no = classfile.class_no";
 		sql += " and classwish.user_no = userinfo.user_no";
 		sql += " and classinfo.art_no = artistinfo.art_no";
+		sql += " AND classfile.class_rename_filename LIKE 'main%'";
 		sql += " and wish_no = ?";
 		sql += " and user_id = ?";
 		
@@ -342,6 +345,7 @@ public class UserMyPageClassDaoImpl implements UserMyPageClassDao{
 		sql += " AND classinfo.class_no = classbooking.class_no";
 		sql += " AND userinfo.user_no = classbooking.user_no";
 		sql += " AND classinfo.class_no = classfile.class_no";
+		sql += " AND classfile.class_rename_filename LIKE 'main%'";
 		sql += " AND user_id = ? ";
 		sql += " AND booking_date < ? ";
 		sql += " order by booking_no desc";
