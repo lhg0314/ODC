@@ -374,7 +374,7 @@ $(document).ready(function(){
 <br>
 <div class="slideWrapper">
    <div style="font-size: 15pt;">
-    <a class="mainAc aTagClear" href="#"><span class="glyphicon glyphicon-thumbs-up" aria-hidden="true"></span><strong>&nbsp;인기 클래스</strong></a>
+    <a class="mainAc aTagClear" href="/hotClass"><span class="glyphicon glyphicon-thumbs-up" aria-hidden="true"></span><strong>&nbsp;인기 클래스</strong></a>
    </div>
 <hr>
 <span class="glyphicon glyphicon-chevron-left prev"></span>
@@ -387,7 +387,7 @@ $(document).ready(function(){
 			<li id="li">
 			<div id="eachClass">
 				<div id="img"><!-- 링크 누르면 클래스 상세 페이지로 이동 -->
-					<a href="/talentDonation"><img src="/upload/${tal.filename }" alt="썸네일" width="200px;" height="200px;"></a>
+					<a href="/userclass/detail?classno=${tal.classNo }"><img src="/upload/${tal.filename }" alt="썸네일" width="200px;" height="200px;"></a>
 	<!-- 	테스트용		<a href="#"><img src="/resources/img/Tulips.jpg" alt="썸네일" width="200px;" height="200px;"></a> -->
 				</div>
 				<div id="sort">
@@ -417,7 +417,7 @@ $(document).ready(function(){
 <div class="slideWrapper">
 
    <div style="font-size: 15pt;">
-    <a class="mainAc aTagClear" href="#"><span class="glyphicon glyphicon-search" aria-hidden="true"></span><strong>&nbsp;신규 클래스</strong></a>
+    <a class="mainAc aTagClear" href="/newClass"><span class="glyphicon glyphicon-search" aria-hidden="true"></span><strong>&nbsp;신규 클래스</strong></a>
     </div><hr>
 <span class="glyphicon glyphicon-chevron-left prev"></span>
 <div id="sliderbox2">
@@ -429,7 +429,7 @@ $(document).ready(function(){
 			<li id="li">
 			<div id="eachClass">
 				<div id="img"><!-- 링크 누르면 클래스 상세 페이지로 이동 -->
-					<a href="/talentDonation"><img src="/upload/${tal.filename }" alt="썸네일" width="200px;" height="200px;"></a>
+					<a href="/userclass/detail?classno=${tal.classNo }"><img src="/upload/${tal.filename }" alt="썸네일" width="200px;" height="200px;"></a>
 	<!-- 	테스트용		<a href="#"><img src="/resources/img/Tulips.jpg" alt="썸네일" width="200px;" height="200px;"></a> -->
 				</div>
 				<div id="sort">
@@ -455,7 +455,7 @@ $(document).ready(function(){
 <div class="slideWrapper">
 
    <div style="font-size: 15pt;">
-    <a class="mainAc aTagClear" href="#"><span class="glyphicon glyphicon-heart glyphicon " aria-hidden="true"></span><strong>&nbsp;재능기부 클래스</strong></a>
+    <a class="mainAc aTagClear" href="/talentDonation"><span class="glyphicon glyphicon-heart glyphicon " aria-hidden="true"></span><strong>&nbsp;재능기부 클래스</strong></a>
    </div>
     
 
@@ -472,7 +472,7 @@ $(document).ready(function(){
 			<li id="li">
 			<div id="eachClass">
 				<div id="img"><!-- 링크 누르면 클래스 상세 페이지로 이동 -->
-					<a href="/talentDonation"><img src="/upload/${tal.filename }" alt="썸네일" width="200px;" height="200px;"></a>
+					<a href="/userclass/detail?classno=${tal.classNo }"><img src="/upload/${tal.filename }" alt="썸네일" width="200px;" height="200px;"></a>
 	<!-- 	테스트용		<a href="#"><img src="/resources/img/Tulips.jpg" alt="썸네일" width="200px;" height="200px;"></a> -->
 				</div>
 				<div id="sort">

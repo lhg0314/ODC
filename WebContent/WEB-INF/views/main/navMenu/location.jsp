@@ -174,8 +174,10 @@ a:hover { color: none; text-decoration: none;}
 .CateLoc{
 	font-size: small;
 	font-weight: bold;
-	color: #666;
+	margin: 5px;
+ 	color: #666;
 }
+
 
 .price{
 	padding: 0 14px;

@@ -95,13 +95,13 @@ select {
 	color: black;
 } 
 
-#sort { 
+.CateLoc{
+	font-size: small;
+	font-weight: bold;
 	margin: 5px;
-	
- 	font-size: 15px; 
- 	font-weight: bold;
  	color: #666;
-} 
+}
+
 
 #classname { 
 	width: 200px;
@@ -155,8 +155,8 @@ select {
 					<a href="#"><img src="/upload/${c.filename }" alt="썸네일" width="200px;" height="200px;"></a>
 <!-- 	테스트용		<a href="#"><img src="/resources/img/Tulips.jpg" alt="썸네일" width="200px;" height="200px;"></a> -->
 				</div>
-				<div id="sort">
-					<span>${c.location }</span>|<span>${c.category }</span>
+				<div class="sort CateLoc">
+ 			       <div align="center" class="CateLoc">${c.category }/${c.location }</div>
 				</div>
 				<div id="classname"><!-- 링크 누르면 클래스 상세 페이지로 이동 -->
 					<a href="/userclass/detail?classno=${c.classNo }"><span>${c.className }</span></a>
