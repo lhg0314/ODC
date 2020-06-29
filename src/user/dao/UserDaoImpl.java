@@ -12,6 +12,7 @@ import java.util.Map;
 
 import dbutil.JDBCTemplate;
 import dto.AskBoard;
+import dto.Classwish;
 import dto.ReviewBoard;
 import dto.UserInfo;
 
@@ -351,6 +352,38 @@ public class UserDaoImpl implements UserDao {
 			JDBCTemplate.close(ps);
 		}
 		return list;
+	}
+
+
+	@Override
+	public int insertWish(Classwish c) {
+		// TODO Auto-generated method stub
+		conn=JDBCTemplate.getConnection();
+		
+		String sql="";
+		sql+="insert into classwish(wish_no,class_no,user_no,wish_count,wish_total_price,wish_date)";
+		sql+=" values(ClassWish_SEQ.nextval,?,?,?,?,?)";
+		int res=0;
+		
+		try {
+			ps=conn.prepareStatement(sql);
+			ps.setInt(1, c.getClassno());
+			ps.setInt(2, c.getUser_no());
+			ps.setInt(3, c.getWishCount());
+			ps.setInt(4, c.getTotalPrice());
+			ps.setDate(5, new java.sql.Date( c.getWishDate().getTime() ));
+			
+			res=ps.executeUpdate();
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			JDBCTemplate.close(ps);
+		}
+		
+		return res;
+		
 	}
 
 }

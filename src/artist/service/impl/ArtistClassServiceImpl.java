@@ -323,6 +323,7 @@ public class ArtistClassServiceImpl implements ArtistClassService {
 					
 					ClassFile detailFile = new ClassFile();
 					detailFile.setClassno(classno);
+					System.out.println(detailFile);
 					// 3) 파일 처리
 					String rename = sdfName.format(new Date());
 					

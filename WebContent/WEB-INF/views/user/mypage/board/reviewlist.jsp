@@ -112,8 +112,8 @@ function checkAll() {
 	<tr class="table-hover">
 		<td><input type="checkbox" name="checkRow" value="${info.reviewNo }" /></td>
 		<td>${info.reviewNo }</td>
-		<td style="text-align: left;"><a href="/class/view?classno=${info.classNo }">${info.className}</a></td>
-		<td style="text-align: left;"><a href="/review/view?reviewno=${info.reviewNo }">${info.reviewTitle }</a></td>
+		<td style="text-align: left;">${info.className}</td>
+		<td style="text-align: left;"><a href="/mypage/reviewdetail?reviewno=${info.reviewNo }">${info.reviewTitle }</a></td>
 		<td>${info.reviewDate }</td>
 	</tr>	
 	

@@ -10,6 +10,7 @@ import java.util.List;
 import java.util.Map;
 
 import dbutil.JDBCTemplate;
+import dto.AskBoardComm;
 import user.dao.face.UserBoardDao;
 import util.Paging;
 
@@ -84,7 +85,7 @@ public class UserBoardDaoImpl implements UserBoardDao {
 
 		String sql = "";
 		sql += "select * from ( select rownum rnum, b.* from (";
-		sql += "	select r.review_no, r.review_date, r.class_no, r.sat_level, r.review_title, u.user_id, c.class_name from reviewboard r";
+		sql += "	select r.review_no, r.review_date, r.class_no, r.review_title, u.user_id, c.class_name from reviewboard r";
 		sql += "	inner join userinfo u on (r.user_no = u.user_no)";
 		sql += "	inner join classinfo c on (r.class_no = c.class_no)";
 		sql += "	where u.user_no = ? and c.class_name like '%'||?||'%' order by r.review_no desc";
@@ -108,7 +109,6 @@ public class UserBoardDaoImpl implements UserBoardDao {
 				map.put("reviewNo", rs.getInt("review_no"));
 				map.put("classNo", rs.getInt("class_no"));
 				map.put("reviewDate", rs.getDate("review_date"));
-				map.put("satLevel", rs.getInt("sat_level"));
 				map.put("userId", rs.getString("user_id"));
 				map.put("className", rs.getString("class_name"));
 				map.put("reviewTitle", rs.getString("review_title"));
@@ -251,14 +251,10 @@ public class UserBoardDaoImpl implements UserBoardDao {
 		conn = JDBCTemplate.getConnection();
 
 		String sql = "";
-		sql += "select ask.ask_board_no, art.art_name, u.user_id, c.class_name, ask_title, ask_content, ask_date,";
-		sql += "	comm.comm_content, comm.comm_date, nvl2(cmcnt.cnt, cmcnt.cnt, 0) commcnt from askboard ask";
+		sql += "select ask.ask_board_no, art.art_name, u.user_name, c.class_name, ask_title, ask_content, ask_date from askboard ask";
 		sql += "	inner join artistinfo art on (ask.art_no = art.art_no)";
 		sql += "	inner join classinfo c on (ask.class_no = c.class_no)";
 		sql += "	inner join userinfo u on (ask.user_no = u.user_no)";
-		sql += "	inner join askboardcomm comm on (ask.ask_board_no = comm.ask_board_no)";
-		sql += "	left outer join (select count(*) cnt, ask_board_no from askboardcomm group by ask_board_no) cmcnt";
-		sql += "	on (cmcnt.ask_board_no = ask.ask_board_no)";
 		sql += "	where ask.ask_board_no = ?";
 
 		Map<String, Object> map = null;
@@ -275,16 +271,93 @@ public class UserBoardDaoImpl implements UserBoardDao {
 	
 				map.put("askNo", rs.getInt("ask_board_no"));
 				map.put("artName", rs.getString("art_name"));
-				map.put("userId", rs.getString("user_id"));
+				map.put("userName", rs.getString("user_name"));
 				map.put("className", rs.getString("class_name"));
 				map.put("askTitle", rs.getString("ask_title"));
 				map.put("askContent", rs.getString("ask_content"));
 				map.put("askDate", rs.getDate("ask_date"));
-				map.put("commCnt", rs.getInt("commcnt"));
-				map.put("commDate", rs.getDate("comm_date"));
-				map.put("commContent", rs.getString("comm_content"));
 			}
 			
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			JDBCTemplate.close(rs);
+			JDBCTemplate.close(ps);
+		}
+		return map;
+	}
+
+	@Override
+	public List<AskBoardComm> selectCommByAskNo(int askno) {
+		conn = JDBCTemplate.getConnection();
+
+		String sql = "";
+		sql += "select comm_content, comm_date, ask_comm_no from askboardcomm where ask_board_no= ? order by comm_date desc, ask_comm_no desc";
+
+		List<AskBoardComm> list = new ArrayList<AskBoardComm>();
+		AskBoardComm comm = null;
+
+		try {
+			ps = conn.prepareStatement(sql);
+			ps.setInt(1, askno);
+			
+			rs = ps.executeQuery();
+
+			while(rs.next()) {
+				comm = new AskBoardComm();
+				
+				comm.setAskCommno(rs.getInt("ask_comm_no"));
+				comm.setCommContent(rs.getString("comm_content"));
+				comm.setCommDate(rs.getDate("comm_date"));
+				
+				list.add(comm);
+			}
+			
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			JDBCTemplate.close(rs);
+			JDBCTemplate.close(ps);
+		}
+		return list;
+	}
+
+	@Override
+	public Map<String, Object> selectReviewByReviewNo(int reviewno) {
+		conn = JDBCTemplate.getConnection();
+
+		String sql = "";
+		sql += "select r.review_no, u.user_name, c.class_name, a.art_name, r.review_content, r.review_date, r.sat_level, r.review_title,";
+		sql += "	f.review_rename from reviewboard r";
+		sql += "	inner join userinfo u on (r.user_no = u.user_no)";
+		sql += "	inner join classinfo c on (r.class_no = c.class_no)";
+		sql += "	inner join artistinfo a on (c.art_no = a.art_no)";
+		sql += "	left outer join reviewfile f on (r.review_no = f.review_no)";
+		sql += "	where r.review_no = ?";
+
+		Map<String, Object> map = null;
+
+		try {
+			ps = conn.prepareStatement(sql);
+			ps.setInt(1, reviewno);
+			rs = ps.executeQuery();
+
+			while (rs.next()) {
+			
+				map = new HashMap<String, Object>();
+	
+				map.put("reviewNo", rs.getInt("review_no"));
+				map.put("artName", rs.getString("art_name"));
+				map.put("userName", rs.getString("user_name"));
+				map.put("className", rs.getString("class_name"));
+				map.put("reviewTitle", rs.getString("review_title"));
+				map.put("reviewContent", rs.getString("review_content"));
+				map.put("reviewDate", rs.getDate("review_date"));
+				map.put("satLevel", rs.getString("sat_level"));
+				map.put("filename", rs.getString("review_rename"));
+			}
 
 		} catch (SQLException e) {
 			e.printStackTrace();

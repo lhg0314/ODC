@@ -15,7 +15,23 @@
 
 <!-- w3schools css 라이브러리 -->
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<script type="text/javascript">
+$(document).ready(function(){
+	//검색 버튼 클릭
+	$("#btnmainSearch").click(function() {
+		$("#searchForm").submit();
+	});
+	
+	$("#search").keydown(function(e) {
+		if( e.keyCode == 13 ) {
+			$("#btnmainSearch").click();
+		}
+	});
+	
 
+});
+
+</script>
 <style type="text/css">
 
 #menudiv{
@@ -144,8 +160,8 @@ list-style: none;
 .chart{
 	float:left;
 	position: absolute;
-    left: 55%; 
-    top: 45%;
+    left: 60%; 
+    top: 8%;
 }
 
 #sizeup{
@@ -196,10 +212,6 @@ list-style: none;
 
 </style>
 
-<style type="text/css">
-
-</style>
-
 </head>
 <body>
 
@@ -211,24 +223,37 @@ list-style: none;
    <!-- 검색창 -->
    <div class="container1">
       <div class="row">
-         <div class="col-md-6 col-md-offset-3"></div>
+      <div class="col-md-6 col-md-offset-3"></div>
       </div>
       <div class="row">
-         <div width="10px;">
-            <form action="${servlet}product&command=searchByKeyword&pageNo=1" method='post'
-               class="search-form">
-               <div class="has-feedback">
-                  <label for="search" class="sr-only">Search</label> <input
-                     type="text" class="form-control" name="keyword" id="search"
-                     placeholder="상품명 또는 카테고리 입력"> <span
-                     class="glyphicon glyphicon-search form-control-feedback"></span>
+            <form action="/main/search" method='get' class="search-form" name="searchForm" id="searchForm">
+                  <div style="float: left;">
+                  <select id="cate" name="cate" style="height: 33px; width: 110px;" class="form-control">
+                  	<option value="0">카테고리</option>
+                  	<option value="1">플라워</option>
+                  	<option value="2">음악</option>
+                  	<option value="3">수공예</option>
+                  	<option value="4">요리</option>
+                  	<option value="5">뷰티</option>
+                  	<option value="6">미술</option>
+                  	<option value="7">기타</option>
+                  </select>
+                  </div>
+               <div class="has-feedback input-group" style="margin: 0; display: inline-table; width: 350px;">
+                  <label for="search" class="sr-only">Search</label> 
+                  <input type="text" class="form-control" name="search" id="search" width="250px"
+                  	value="${paging.search }" placeholder="클래스명 입력">
+                  	<span class="input-group-btn">
+	                  	<button type="button" id="btnmainSearch" class="btn btn-default">
+	                  	<span class="glyphicon glyphicon-search"></span></button>
+	              </span>
                </div>
             </form>
          </div>
       </div>
    </div>
    
-   <div class="chart"><b>1</b> 인기 클래스 top5</div>
+    <div class="chart"><b>1</b> 인기 클래스 top5</div>
    
    <div style="position: absolute; width: 350px; right: 2%;">
 	   <ul id="minilist">
@@ -301,4 +326,3 @@ list-style: none;
 	
 </ul>
 </div>
-
