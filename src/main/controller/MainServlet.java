@@ -29,8 +29,7 @@ public class MainServlet extends HttpServlet {
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		
-<<<<<<< HEAD
-=======
+
 		//인기 클래스
 		List<Map<String, Object>> hotList = nClassService.hotclass();
 		
@@ -38,7 +37,7 @@ public class MainServlet extends HttpServlet {
 		List<Map<String, Object>> newList = nClassService.newclass();
 		
 		//재능기부 클래스
->>>>>>> sy
+
 		List<Map<String, Object>> talentList = talentDonationService.selectClassByTalentDonation(0);
 		
 		req.setAttribute("hotList", hotList);
