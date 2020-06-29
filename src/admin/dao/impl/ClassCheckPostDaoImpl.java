@@ -11,6 +11,7 @@ import java.util.Map;
 
 import admin.dao.face.ClassCheckPostDao;
 import dbutil.JDBCTemplate;
+import dto.ClassFile;
 import dto.ClassInfo;
 import util.Paging;
 
@@ -243,6 +244,7 @@ public class ClassCheckPostDaoImpl implements ClassCheckPostDao {
 		sql += " LEFT OUTER JOIN classfile f";
 		sql += " on (c.class_no = f.class_no)";
 		sql += " WHERE c.class_no = ?";
+		sql += " AND class_rename_filename LIKE 'main%'";
 
 		//최종 결과 변수
 		Map<String, Object> map = null;
@@ -279,10 +281,10 @@ public class ClassCheckPostDaoImpl implements ClassCheckPostDao {
 				map.put("classContent",rs.getString("class_content"));
 				map.put("postStatus",rs.getInt("post_Status"));
 				map.put("classCheck",rs.getInt("class_check"));
-
+	
 				map.put("classFileNo", rs.getInt("class_file_no"));
 				map.put("classOriginFilename", rs.getString("class_origin_filename"));
-				map.put("classOriginFilename", rs.getString("class_rename_filename"));
+				map.put("classRenameFilename", rs.getString("class_rename_filename"));
 			}
 			
 		} catch (SQLException e) {

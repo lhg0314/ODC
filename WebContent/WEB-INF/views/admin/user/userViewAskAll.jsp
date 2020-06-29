@@ -63,14 +63,16 @@
 		<tr class="tablehead">
 			<th style="width: 10%; text-align: center;">문의번호</th>
 			<th style="width: 10%; text-align: center;">클래스번호</th>
-			<th style="width: 60%; text-align: center;">본문</th>
-			<th style="width: 20%; text-align: center;">작성일</th>
+			<th style="width: 20%; text-align: center;">클래스이름</th>
+			<th style="width: 50%; text-align: center;">본문</th>
+			<th style="width: 10%; text-align: center;">작성일</th>
 		</tr>	
 		
 		<c:forEach items="${ask }" var="a">
 		<tr>
 			<td>${a.askBoardno }</td>
 			<td>${a.classno }</td>
+			<td>${a.classname }</td>
 			<td>${a.askContent }</td>
 			<td>${a.askDate }</td>
 		</tr>	

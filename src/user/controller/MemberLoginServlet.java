@@ -12,8 +12,8 @@ import javax.servlet.http.HttpSession;
 
 import artist.service.face.ArtistService;
 import artist.service.impl.ArtistServiceImpl;
-import user.service.UserService;
-import user.service.UserServiceImpl;
+import user.service.face.UserService;
+import user.service.impl.UserServiceImpl;
 
 
 @WebServlet("/member/login")
@@ -37,7 +37,7 @@ public class MemberLoginServlet extends HttpServlet {
 		String pw=req.getParameter("pw");
 		String opt=(String)req.getParameter("opt");
 		
-		System.out.println("id: "+id+", pw: "+pw+", loginActor: "+opt);
+		//System.out.println("id: "+id+", pw: "+pw+", loginActor: "+opt);
 		
 		boolean ismember=false;
 		

@@ -12,6 +12,7 @@
 
 #wrap {
 	border:  1px solid #ccc;
+	
 
 	width: 1200px;
  	
@@ -31,6 +32,7 @@
 	border-top:none;
 
 	border-bottom:none;
+	
 }
 
 #wrap > div {
@@ -85,12 +87,56 @@ function openPolicy(){
 <div class="wrappermain">
 <br>
 <hr>
+      
+
+
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="myModalLabel">서비스 이용약관</h4>
+      </div>
+      <div class="modal-body">
+        <c:import url="/WEB-INF/views/main/footer/termsofservice.jsp"></c:import> 
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Save changes</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<div class="modal fade" id="myModal2" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="myModalLabel">개인정보 처리방침</h4>
+      </div>
+      <div class="modal-body">
+        <c:import url="/WEB-INF/views/main/footer/privacypolicy.jsp"></c:import> 
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Save changes</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
 
 <div id="info1" >	
-<a style="cursor:pointer" onclick="openService();" class="aTagNone left">서비스 이용약관</a>&nbsp;&nbsp;
-<a style="cursor:pointer" onclick="openPolicy();" class="aTagNone">개인정보 처리방침</a>&nbsp;&nbsp;
-<a href="/fooer/memberIntroduce" class="aTagNone">제작자 소개</a>&nbsp;&nbsp;
-<a href="/fooer/siteIntroduce" class="aTagNone">사이트 소개</a>&nbsp;&nbsp;
+<a class="btn" data-toggle="modal" data-target="#myModal">서비스 이용약관</a>&nbsp;&nbsp;
+<a class="btn" data-toggle="modal" data-target="#myModal2">개인정보 처리방침</a>&nbsp;&nbsp;
+<a href="/footer/memberIntroduce" class="aTagNone btn" >제작자 소개</a>&nbsp;&nbsp;
+<a href="/footer/siteIntroduce" class="aTagNone btn">사이트 소개</a>&nbsp;&nbsp;
+<a href="/footer/askToAdmin" class="aTagNone btn">문의사항</a>&nbsp;&nbsp;
+
+
 </div>
 
 <br>

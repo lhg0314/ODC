@@ -64,9 +64,14 @@ function checkAll() {
 </script>
 
 <style type="text/css">
+#SnvNotice{
+	background: #ecdfec;
+}
+
+
 #noticeTable th {
 	text-align: center;
-	background: #ecdfec;
+	background: thistle;
 }
 </style>
 <div>
@@ -91,9 +96,9 @@ function checkAll() {
 	<c:forEach var="info" items="${list }" varStatus="status">
 	
 	<tr class="table-hover">
-	<td><input type="checkbox" name="checkRow" value="${info.noticeNo }" /></td>
+		<td><input type="checkbox" name="checkRow" value="${info.noticeNo }" /></td>
 		<td>${info.noticeNo }</td>
-		<td style="text-align: left;"><a href="/notice/view?noticeno=${info.noticeNo }">${info.noticeTitle }</a></td>
+		<td style="text-align: left;"><a href="/admin/notice/view?noticeno=${info.noticeNo }">${info.noticeTitle }</a></td>
 		<td>${info.noticeDate}</td>
 	</tr>	
 	
@@ -101,7 +106,7 @@ function checkAll() {
 </table>
 <div id="btnBox" style="text-align: right;">
 <button id="btnDelete" class="btn btn-warning">삭제</button>
-<button id="btnWrite" class="btn btn-primary">글쓰기</button>
+<button id="btnWrite" class="btn btn-primary" onclick="location.href='/notice/write'">글쓰기</button>
 </div>
 </div>
 <c:import url="/WEB-INF/paging/adminnoticepaging.jsp" />

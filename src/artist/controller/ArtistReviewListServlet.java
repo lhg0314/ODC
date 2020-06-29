@@ -17,7 +17,7 @@ import util.Paging;
 /**
  * 
  * 작가페이지 - 후기게시판 리스트 출력
- * @author 200624 박주이
+ * @author 200625 박주이
  * 완성
  *
  */
@@ -41,7 +41,7 @@ public class ArtistReviewListServlet extends HttpServlet {
 		
 		int artno = artistBoardService.getArtNoById(artid);
 		
-		Paging paging = artistBoardService.getPagingReview(req, artno);
+		Paging paging = artistBoardService.getPagingReviewByArtNo(req, artno);
 		
 		List<Map<String, Object>> list = artistBoardService.selectReviewByArtNo(paging, artno);
 		

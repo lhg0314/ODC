@@ -3,6 +3,7 @@ package admin.dao.face;
 import java.util.List;
 import java.util.Map;
 
+import dto.ClassFile;
 import dto.ClassInfo;
 import util.Paging;
 
@@ -87,7 +88,5 @@ public interface ClassCheckPostDao {
 	 * @return
 	 */
 	public List<Map<String, Object>> selectClassReviewByClassNo(Paging paging, int classno);
-
-
 
 }

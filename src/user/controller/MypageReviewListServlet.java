@@ -18,8 +18,8 @@ import util.Paging;
 /**
  * 
  * 마이페이지 - 후기게시판 리스트 출력
- * @author 200624 박주이
- * 작성중
+ * @author 200625 박주이
+ * 완성
  *
  */
 @WebServlet("/mypage/reviewlist")
@@ -29,7 +29,7 @@ public class MypageReviewListServlet extends HttpServlet {
 
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		System.out.println("/user/reviewlist - [GET]");
+//		System.out.println("/user/reviewlist - [GET]");
 		
 		HttpSession session = req.getSession();
 		
@@ -42,7 +42,7 @@ public class MypageReviewListServlet extends HttpServlet {
 		
 		int userno = userBoardService.getUserNoById(userid);
 		
-		Paging paging = userBoardService.getPagingReview(req, userno);
+		Paging paging = userBoardService.getPagingReviewByUserNo(req, userno);
 		
 		List<Map<String, Object>> list = userBoardService.selectReviewByUserNo(paging, userno);
 		

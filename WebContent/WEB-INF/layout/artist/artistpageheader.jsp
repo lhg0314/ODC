@@ -3,6 +3,10 @@
     
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>    
 
+<!-- 부트스트랩 3.3.2 -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css">
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
 
 <!-- font -->
 <script src="https://kit.fontawesome.com/a076d05399.js"></script>
@@ -12,7 +16,7 @@
 
 #wrapper {
 	width: 1200px;
- 	height: 1000px;
+ 	height: 100%;
  	margin-top: 20px;
 }
 
@@ -30,7 +34,7 @@
 /* 	border: 1px solid #ccc; */
 	
 	width: 25%;
-	height: 700px;
+	height: 100%;
 }
 
 #userbox {
@@ -54,14 +58,15 @@
 	font-weight: bold;
 }
 
-#userbox_cont img:first-child {
-    width: 100px;
-    height: 100px;
-}
+/* #userbox_cont img:first-child { */
+/*     width: 100px; */
+/*     height: 100px; */
+/* } */
 
-#userbox_cont img:nth-child(2) {
+#userbox_cont img{
     width: 170px;
     height: 55px;
+    margin: 20px 0;
 }
 
 </style>
@@ -189,18 +194,23 @@ ul.sub li a {
 	text-align: center;
 	border: 1px solid #ccc;
 	border-radius: 20px;
-	padding: 20px;
-
+	padding: 50px 100px;
 }
 
 
-#class_upload_notice span:first-child {
+#ctitle {
 	
 	font-size: 25px;
 	font-weight: bold;
-
+ 	font-style: italic; 
+	background: thistle;
 }
 
+#class_upload_notice_content {
+
+	text-align: left;
+	font-size: 15px;
+}
 
 </style>
 
@@ -247,29 +257,18 @@ ul.sub li a {
 
 	<div id="userbox">
 		<div id="userbox_cont">
-			<img src="/resources/img/mini.jpg" />		
 			<img src="/resources/img/grade/artistgrade.PNG" />		
-			<span>${artid }님 </span>
+			<span>${artid } 님 </span>
 		</div>
 	</div>
 	
 	<ul class="navi">
 		<li class="group">
-		    <div class="title">작가 프로필</div>
-		    <ul class="sub">
-		        <li><a href="#">작가 프로필 조회 및 수정</a></li>
-		        <li><a href="#">작가 탈퇴</a></li>
-		    </ul>
-		</li>
-	</ul>
-		
-	<ul class="navi">
-		<li class="group">
 		    <div class="title">클래스</div>
 		    <ul class="sub"> 
 		        <li><a href="/artist/class/app" id="SvnclassApp">클래스 등록</a></li>
-		        <li><a href="#">클래스 검수 확인</a></li>
-		        <li><a href="#">클래스 관리</a></li>
+		        <li><a href="/artist/class/check" id="SvnClassCheck">클래스 검수 확인</a></li>
+		        <li><a href="/artist/class/manage" id="SvnClassManage">클래스 관리</a></li>
 		        <li><a href="/artistpage/class/sales">클래스 매출 현황</a></li>
 		    </ul>
 		</li>
@@ -277,9 +276,9 @@ ul.sub li a {
 		
 	<ul class="navi">
 		<li class="group">
-		    <div class="title">기부 및 후원</div>
+		    <div class="title">후원</div>
 		    <ul class="sub">               
-		        <li><a href="#">후원 받은 내역</a></li>                
+		        <li><a href="/artist/donation">후원 받은 내역</a></li>                
 		    </ul>
 		</li>
 	</ul>
@@ -288,11 +287,22 @@ ul.sub li a {
 		<li class="group">
 		    <div class="title">게시판</div>
 		    <ul class="sub">
-		        <li><a href="#">고객 문의 내역</a></li>                
-		        <li><a href="#">후기 게시판</a></li>                
+		        <li><a href="/artist/asklist">고객 문의 내역</a></li>                
+		        <li><a href="/artist/reviewlist">후기 게시판</a></li>                
 		    </ul>
 		</li>
 	</ul>
+	
+	<ul class="navi">
+		<li class="group">
+		    <div class="title">작가 프로필</div>
+		    <ul class="sub">
+		        <li><a href="/artist/info">작가 프로필 조회 및 수정</a></li>
+		        <li><a href="/artist/leave">작가 탈퇴</a></li>
+		    </ul>
+		</li>
+	</ul>
+		
 	    
 </div>
 

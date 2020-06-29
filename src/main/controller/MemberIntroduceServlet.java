@@ -11,7 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 //메인 fooer a (3) 
 //제작자 소개
 //이인주 20200620
-@WebServlet("/fooer/memberIntroduce")
+@WebServlet("/footer/memberIntroduce")
 public class MemberIntroduceServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	@Override

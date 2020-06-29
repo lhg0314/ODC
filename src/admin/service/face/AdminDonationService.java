@@ -9,16 +9,19 @@ import util.Paging;
 
 public interface AdminDonationService {
 
+	//-------- 후원내역 -----------------------------------------------------
 	Paging getPagingDonation(HttpServletRequest req);
 
 	List<Map<String, Object>> selectAllDonation(Paging paging);
 
+	
+	//-------- 기부클래스 ----------------------------------------------------
 	Paging getPagingTalent(HttpServletRequest req);
 
 	List<Map<String, Object>> selectAllTalentDonationClass(Paging paging);
 
-	Paging getPagingDonationByMonth(HttpServletRequest req);
-
-	List<Map<String, Object>> selectAllDonationByMonth(String month, Paging paging);
+	
+	//-------- 검색한 작가 조회 ----------------------------------------------
+	String getSearchedArtist(String search);
 
 }

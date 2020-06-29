@@ -24,7 +24,7 @@
 /* 	border: 1px solid #ccc; */
 	
 	width: 25%;
-	height: 700px;
+	height: 100%;
 }
 
 #userbox {
@@ -171,7 +171,15 @@ ul.sub li:hover a { color: #e7717d; }
 
 	<div id="userbox">
 		<div id="userbox_cont">
-			<img src="/resources/img/grade/grade1.PNG" />		
+			<c:if test="${grade eq 1}">
+				<img alt="grade1" src="/resources/img/grade/grade1.PNG" />
+			</c:if>		
+			<c:if test="${grade eq 2}">
+				<img alt="grade2" src="/resources/img/grade/grade2.PNG" />
+			</c:if>		
+			<c:if test="${grade eq 3}">
+				<img alt="grade3" src="/resources/img/grade/grade3.PNG" />
+			</c:if>		
 			<span>${userid }님 </span>
 		</div>
 	</div>
@@ -182,7 +190,7 @@ ul.sub li:hover a { color: #e7717d; }
 		    <ul class="sub">
 		        <li><a href="/mypage/class/booking">예약 클래스</a></li>
 		        <li><a href="/mypage/class/wish">장바구니</a></li>
-		        <li><a href="#">클래스 수강 조회</a></li>
+		        <li><a href="/mypage/class/signup">수강 클래스</a></li>
 		    </ul>
 		</li>
 	</ul>
@@ -191,8 +199,8 @@ ul.sub li:hover a { color: #e7717d; }
 		<li class="group">
 		    <div class="title">활동 정보</div>
 		    <ul class="sub"> 
-		        <li><a href="#">클래스 수강 후기</a></li>
-		        <li><a href="#">클래스 문의 내용</a></li>
+		        <li><a href="/mypage/reviewlist">클래스 수강 후기</a></li>
+		        <li><a href="/mypage/asklist">클래스 문의 내용</a></li>
 		    </ul>
 		</li>
 	</ul>
@@ -201,8 +209,8 @@ ul.sub li:hover a { color: #e7717d; }
 		<li class="group">
 		    <div class="title">회원 정보</div>
 		    <ul class="sub">
-		        <li><a href="#">회원 정보 조회 및 수정</a></li>                
-		        <li><a href="#">회원 탈퇴</a></li>                
+		        <li><a href="/user/info">회원 정보 조회 및 수정</a></li>                
+		        <li><a href="/user/leave">회원 탈퇴</a></li>                
 		    </ul>
 		</li>
 	</ul>

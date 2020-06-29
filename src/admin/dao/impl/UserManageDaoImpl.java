@@ -157,7 +157,6 @@ public class UserManageDaoImpl implements UserManageDao{
 				uinfo.setUserbirth(rs.getDate("user_birth"));
 				uinfo.setUsernick(rs.getString("user_nick"));
 				uinfo.setUsergrade(rs.getInt("user_grade"));
-				uinfo.setUserEmailAuth(rs.getInt("user_email_auth"));
 			}
 			
 			
@@ -200,15 +199,6 @@ public class UserManageDaoImpl implements UserManageDao{
 			
 			while(rs.next()) {
 				
-//				booking = new ClassBooking();
-//				
-//				booking.setBookingNo(rs.getInt("booking_no"));
-//				booking.setClassno(rs.getInt("class_no"));
-//				booking.setBookingDate(rs.getDate("booking_date"));
-//				booking.setPaymentDate(rs.getDate("payment_date"));
-//				booking.setTotalPrice(rs.getInt("total_price"));
-//				
-//				list.add(booking);
 				
 				Map<String, Object> map = new HashMap<>();
 				
@@ -250,7 +240,6 @@ public class UserManageDaoImpl implements UserManageDao{
 		
 		List<Map<String, Object>> list = new ArrayList<>();
 		
-//		ReviewBoard rb = null;
 		
 		try {
 			
@@ -261,16 +250,6 @@ public class UserManageDaoImpl implements UserManageDao{
 			rs = ps.executeQuery();
 			
 			while(rs.next()) {
-				
-//				rb = new ReviewBoard();
-//				
-//				rb.setReviewno(rs.getInt("review_no"));
-//				rb.setClassno(rs.getInt("class_no"));
-//				rb.setReviewContent(rs.getString("review_content"));
-//				rb.setSat_level(rs.getInt("sat_level"));
-//				rb.setReviewDate(rs.getDate("review_date"));
-//				
-//				list.add(rb);
 				
 				
 				Map<String, Object> map = new HashMap<>();
@@ -300,20 +279,19 @@ public class UserManageDaoImpl implements UserManageDao{
 
 	
 	@Override
-	public List<AskBoard> askList(AskBoard ask) {
+	public List<Map<String, Object>> askList(AskBoard ask) {
 		
 		String sql = "";
 		
-		sql += "SELECT ask_board_no, class_no, ask_content, ask_date";
-		sql += " FROM askboard";
-		sql += " WHERE user_no = ?";
-		sql += " ORDER BY ask_board_no, ask_date";
+		sql += "SELECT a.ask_board_no, a.class_no, c.class_name, a.ask_content, a.ask_date";
+		sql += " FROM askboard a JOIN classinfo c";
+		sql += " ON user_no = ? AND a.class_no = c.class_no";
+		sql += " ORDER BY a.ask_board_no, a.ask_date";
 		
 		conn = JDBCTemplate.getConnection();
 		
-		List<AskBoard> list = new ArrayList<>();
+		List<Map<String, Object>> list = new ArrayList<>();
 		
-		AskBoard ab = null;
 		
 		try {
 			
@@ -325,14 +303,20 @@ public class UserManageDaoImpl implements UserManageDao{
 			
 			while(rs.next()) {
 				
-				ab = new AskBoard();
+				Map<String, Object> map = new HashMap<>();
 				
-				ab.setAskBoardno(rs.getInt("ask_board_no"));
-				ab.setClassno(rs.getInt("class_no"));
-				ab.setAskContent(rs.getString("ask_content"));
-				ab.setAskDate(rs.getDate("ask_date"));
+				map.put("askBoardno", rs.getInt("ask_board_no"));
+				map.put("classno", rs.getInt("class_no"));
+				map.put("classname", rs.getString("class_name"));
+				map.put("askContent", rs.getString("ask_content"));
+				map.put("askDate", rs.getDate("ask_date"));
 				
-				list.add(ab);
+//				ab.setAskBoardno(rs.getInt("ask_board_no"));
+//				ab.setClassno(rs.getInt("class_no"));
+//				ab.setAskContent(rs.getString("ask_content"));
+//				ab.setAskDate(rs.getDate("ask_date"));
+				
+				list.add(map);
 			}
 					
 			

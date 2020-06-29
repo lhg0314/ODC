@@ -8,12 +8,15 @@ public class ReviewBoard {
     private int userno;
     private int classno;
     private Date reviewDate; 
-    private int sat_level; 
+    private String satlevel; 
     private String reviewContent;
+    private String reviewtitle;
+    private int bookingno;
 	@Override
 	public String toString() {
 		return "ReviewBoard [reviewno=" + reviewno + ", userno=" + userno + ", classno=" + classno + ", reviewDate="
-				+ reviewDate + ", sat_level=" + sat_level + ", reviewContent=" + reviewContent + "]";
+				+ reviewDate + ", satlevel=" + satlevel + ", reviewContent=" + reviewContent + ", reviewtitle="
+				+ reviewtitle + ", bookingno=" + bookingno + "]";
 	}
 	public int getReviewno() {
 		return reviewno;
@@ -39,11 +42,11 @@ public class ReviewBoard {
 	public void setReviewDate(Date reviewDate) {
 		this.reviewDate = reviewDate;
 	}
-	public int getSat_level() {
-		return sat_level;
+	public String getSatlevel() {
+		return satlevel;
 	}
-	public void setSat_level(int sat_level) {
-		this.sat_level = sat_level;
+	public void setSatlevel(String satlevel) {
+		this.satlevel = satlevel;
 	}
 	public String getReviewContent() {
 		return reviewContent;
@@ -51,6 +54,22 @@ public class ReviewBoard {
 	public void setReviewContent(String reviewContent) {
 		this.reviewContent = reviewContent;
 	}
- 
+	public String getReviewtitle() {
+		return reviewtitle;
+	}
+	public void setReviewtitle(String reviewtitle) {
+		this.reviewtitle = reviewtitle;
+	}
+	public int getBookingno() {
+		return bookingno;
+	}
+	public void setBookingno(int bookingno) {
+		this.bookingno = bookingno;
+	}
+    
+    
+    
+	
+	
     
 }

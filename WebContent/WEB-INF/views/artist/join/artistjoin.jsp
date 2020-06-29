@@ -250,6 +250,11 @@ position:absolute;
 		
 	</div>
 	
+	<div class="form-group">
+		<label for="artintro" class="control-label">자기소개</label>
+		<textarea id="artintro" name="artintro" class="form-control"></textarea>
+	</div>
+	
 	
 	<div class="form-group">
 		<p>[필수] 이용약관 동의</p>

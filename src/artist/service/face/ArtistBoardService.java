@@ -9,10 +9,19 @@ import util.Paging;
 
 public interface ArtistBoardService {
 
+	//----- 작가번호 조회 -----
 	int getArtNoById(String artid);
 
-	Paging getPagingReview(HttpServletRequest req, int artno);
+	//----- 작가페이지 리뷰리스트 -----
+	Paging getPagingReviewByArtNo(HttpServletRequest req, int artno);
 
 	List<Map<String, Object>> selectReviewByArtNo(Paging paging, int artno);
+
+	//----- 작가페이지 문의리스트 -----
+	Paging getPagingAskByArtNo(HttpServletRequest req, int artno);
+
+	List<Map<String, Object>> selectAskByArtNo(Paging paging, int artno);
+
+	Map<String, Object> selectAskByAskNo(int askno);
 
 }

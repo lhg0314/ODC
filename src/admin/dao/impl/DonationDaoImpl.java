@@ -25,11 +25,13 @@ public class DonationDaoImpl implements DonationDao {
 	public int selectCntAllTalent(String search) {
 		conn = JDBCTemplate.getConnection();
 
+		int cnt = 0;
 		String sql = "";
+
 		sql += "select count(*) from classinfo c";
 		sql += "	inner join artistinfo a on (c.art_no = a.art_no)";
 		sql += "	where talent_donation = 1 and class_name like '%'||?||'%'";
-		int cnt = 0;
+		
 		try {
 			ps = conn.prepareStatement(sql);
 			ps.setString(1, search);
@@ -49,70 +51,64 @@ public class DonationDaoImpl implements DonationDao {
 	}
 
 	@Override
-	public int selectCntAllDonation(String search) {
+	public int selectCntAllDonation(String search, String month) {
 		conn = JDBCTemplate.getConnection();
-
-		String sql = "";
-		sql += "select count(*) from donation d";
-		sql += "	inner join artistinfo a on (d.art_no = a.art_no)";
-		sql += "	inner join userinfo u on (d.user_no = u.user_no)";
-		sql += "	where a.art_name like '%'||?||'%'";
-		int cnt = 0;
-		try {
-			ps = conn.prepareStatement(sql);
-			ps.setString(1, search);
-
-			rs = ps.executeQuery();
-
-			rs.next();
-			cnt = rs.getInt(1);
-
-		} catch (SQLException e) {
-			e.printStackTrace();
-		} finally {
-			JDBCTemplate.close(rs);
-			JDBCTemplate.close(ps);
-		}
-		return cnt;
-	}
-
-	@Override
-	public int selectCntAllDonationByMonth(String month) {
-		conn = JDBCTemplate.getConnection();
-
-		String sql = "";
-		sql += "select count(*) from donation d";
-		sql += "	inner join artistinfo a on (d.art_no = a.art_no)";
-		sql += "	inner join userinfo u on (d.user_no = u.user_no)";
-		sql += "	where donation_date between ? and ?";
-		//현재 날짜 기준 년원일
-		SimpleDateFormat format = new SimpleDateFormat("yy");
-		String thisYear = format.format(new Date());
 		
 		int cnt = 0;
-		
-		String date1 = thisYear+"/"+month+"/01";
+		String date1 = null;
 		String date2 = null;
 		
-		switch(Integer.parseInt(month)) {
-			case 2: 
-				date2 = thisYear+"/"+month+"/29";
-				break;
-			case 4:
-			case 6:
-			case 9:
-			case 11:
-				date2 = thisYear+"/"+month+"/30";
-				break;
-			default:
-				date2 = thisYear+"/"+month+"/31";
-		}
+		String sql = "";
 		
 		try {
-			ps = conn.prepareStatement(sql);
-			ps.setString(1, date1);
-			ps.setString(2, date2);
+			
+			if(month != null && !"00".equals(month)) {
+				
+				// 현재 날짜 기준 년원일
+				SimpleDateFormat format = new SimpleDateFormat("yy");
+				String thisYear = format.format(new Date());
 
+				date1 = thisYear + "/" + month + "/01";
+				date2 = null;
+
+				switch (Integer.parseInt(month)) {
+				case 2:
+					date2 = thisYear + "/" + month + "/29";
+					break;
+				case 4:
+				case 6:
+				case 9:
+				case 11:
+					date2 = thisYear + "/" + month + "/30";
+					break;
+				default:
+					date2 = thisYear + "/" + month + "/31";
+				}
+				
+				sql += "select count(*) from donation d";
+				sql += "	inner join artistinfo a on (d.art_no = a.art_no)";
+				sql += "	inner join userinfo u on (d.user_no = u.user_no)";
+				sql += "	where art_name like '%'||?||'%' and donation_date between ? and ?";
+				
+				ps = conn.prepareStatement(sql);
+
+				ps.setString(1, search);
+				ps.setString(2, date1);
+				ps.setString(3, date2);
+				
+			} else if(month == null || "00".equals(month)) {
+				
+				sql += "select count(*) from donation d";
+				sql += "	inner join artistinfo a on (d.art_no = a.art_no)";
+				sql += "	inner join userinfo u on (d.user_no = u.user_no)";
+				sql += "	where art_name like '%'||?||'%'";
+				
+				ps = conn.prepareStatement(sql);
+
+				ps.setString(1, search);
+				
+			}
+			
 			rs = ps.executeQuery();
 
 			rs.next();
@@ -176,22 +172,73 @@ public class DonationDaoImpl implements DonationDao {
 	public List<Map<String, Object>> selectAllDonation(Paging paging) {
 		conn = JDBCTemplate.getConnection();
 
+		String date1 = null;
+		String date2 = null;
+		
+		String month = paging.getMonth();
+		
 		String sql = "";
-		sql += "select * from ( select rownum rnum, b.* from (";
-		sql += "	select art_name, user_name, donation_date, donation_price from donation d";
-		sql += "	inner join artistinfo a on (d.art_no = a.art_no)";
-		sql += "	inner join userinfo u on (d.user_no = u.user_no)";
-		sql += "	where art_name like '%'||?||'%' order by donation_date";
-		sql += "	) b order by rnum ) t where rnum between ? and ?";
 
 		List<Map<String, Object>> list = new ArrayList<>();
 		Map<String, Object> map = null;
 
 		try {
-			ps = conn.prepareStatement(sql);
-			ps.setString(1, paging.getSearch());
-			ps.setInt(2, paging.getStartNO());
-			ps.setInt(3, paging.getEndNo());
+			
+			if(month != null && !"00".equals(month)) {
+				
+				// 현재 날짜 기준 년원일
+				SimpleDateFormat format = new SimpleDateFormat("yy");
+				String thisYear = format.format(new Date());
+
+				date1 = thisYear + "/" + month + "/01";
+				date2 = null;
+
+				switch (Integer.parseInt(month)) {
+				case 2:
+					date2 = thisYear + "/" + month + "/29";
+					break;
+				case 4:
+				case 6:
+				case 9:
+				case 11:
+					date2 = thisYear + "/" + month + "/30";
+					break;
+				default:
+					date2 = thisYear + "/" + month + "/31";
+				}
+				
+				sql += "select * from ( select rownum rnum, b.* from (";
+				sql += "	select art_name, user_name, donation_date, donation_price from donation d";
+				sql += "	inner join artistinfo a on (d.art_no = a.art_no)";
+				sql += "	inner join userinfo u on (d.user_no = u.user_no)";
+				sql += "	where art_name like '%'||?||'%' and donation_date between ? and ?";
+				sql += "	order by donation_date) b order by rnum ) t where rnum between ? and ?";
+				
+				ps = conn.prepareStatement(sql);
+				
+				ps.setString(1, paging.getSearch());
+				ps.setString(2, date1);
+				ps.setString(3, date2);
+				ps.setInt(4, paging.getStartNO());
+				ps.setInt(5, paging.getEndNo());
+				
+			} else if(month == null || "00".equals(month)) {
+				
+				sql += "select * from ( select rownum rnum, b.* from (";
+				sql += "	select art_name, user_name, donation_date, donation_price from donation d";
+				sql += "	inner join artistinfo a on (d.art_no = a.art_no)";
+				sql += "	inner join userinfo u on (d.user_no = u.user_no)";
+				sql += "	where art_name like '%'||?||'%'";
+				sql += "	order by donation_date) b order by rnum ) t where rnum between ? and ?";
+				
+				ps = conn.prepareStatement(sql);
+				
+				ps.setString(1, paging.getSearch());
+				ps.setInt(2, paging.getStartNO());
+				ps.setInt(3, paging.getEndNo());
+			}
+			
+			
 			rs = ps.executeQuery();
 
 			while (rs.next()) {
@@ -201,6 +248,7 @@ public class DonationDaoImpl implements DonationDao {
 				map.put("userName", rs.getString("user_name"));
 				map.put("donationDate", rs.getDate("donation_date"));
 				map.put("donationPrice", rs.getInt("donation_price"));
+				map.put("rnum", rs.getInt("rnum"));
 
 				list.add(map);
 			}
@@ -215,67 +263,33 @@ public class DonationDaoImpl implements DonationDao {
 	}
 
 	@Override
-	public List<Map<String, Object>> selectAllDonationByMonth(String month, Paging paging) {
+	public String selectArtist(String search) {
 		conn = JDBCTemplate.getConnection();
 
 		String sql = "";
-		sql += "select * from ( select rownum rnum, b.* from (";
-		sql += "	select art_name, user_name, donation_date, donation_price from donation d";
+		sql += "select a.art_name from donation d";
 		sql += "	inner join artistinfo a on (d.art_no = a.art_no)";
 		sql += "	inner join userinfo u on (d.user_no = u.user_no)";
-		sql += "	where donation_date between ? and ? order by donation_date";
-		sql += "	) b order by rnum ) t where rnum between ? and ?";
-
-		List<Map<String, Object>> list = new ArrayList<>();
-		Map<String, Object> map = null;
+		sql += "	where a.art_name like '%'||?||'%'";
 		
-		//현재 날짜 기준 년
-		SimpleDateFormat format = new SimpleDateFormat("yy");
-		String thisYear = format.format(new Date());
+		String artname = null;
 		
-		String date1 = thisYear+"/"+month+"/01";
-		String date2 = null;
-		
-		switch(Integer.parseInt(month)) {
-			case 2: 
-				date2 = thisYear+"/"+month+"/29";
-				break;
-			case 4:
-			case 6:
-			case 9:
-			case 11:
-				date2 = thisYear+"/"+month+"/30";
-				break;
-			default:
-				date2 = thisYear+"/"+month+"/31";
-		}
-
 		try {
 			ps = conn.prepareStatement(sql);
-			ps.setString(1, date1);
-			ps.setString(2, date2);
-			ps.setInt(3, paging.getStartNO());
-			ps.setInt(4, paging.getEndNo());
+			ps.setString(1, search);
+
 			rs = ps.executeQuery();
 
-			while (rs.next()) {
-				map = new HashMap<String, Object>();
-				
-				map.put("artName", rs.getString("art_name"));
-				map.put("userName", rs.getString("user_name"));
-				map.put("donationDate", rs.getDate("donation_date"));
-				map.put("donationPrice", rs.getInt("donation_price"));
-
-				list.add(map);
-			}
-
+			rs.next();
+			artname = rs.getString("art_name");			
+			
 		} catch (SQLException e) {
 			e.printStackTrace();
 		} finally {
 			JDBCTemplate.close(rs);
 			JDBCTemplate.close(ps);
 		}
-		return list;
+		return artname;
 	}
 
 }

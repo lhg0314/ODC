@@ -9,6 +9,7 @@ import java.sql.SQLException;
 import artist.dao.face.ArtistDao;
 import dbutil.JDBCTemplate;
 import dto.ArtistInfo;
+import dto.ClassInfo;
 
 public class ArtistDaoImpl implements ArtistDao {
 
@@ -68,8 +69,10 @@ public class ArtistDaoImpl implements ArtistDao {
 		conn=JDBCTemplate.getConnection();
 		String sql="";
 		sql+="insert into artistinfo(art_no,art_id,art_pw,art_name,art_nick,art_code,";
-		sql+="art_phone,art_tel,art_addr,art_email,art_birth,art_email_auth)";
-		sql+="  values(ArtistInfo_SEQ.nextval,?,?,?,?,?,?,?,?,?,?,1)";
+		sql+="art_phone,art_tel,art_addr,art_email,art_birth,art_content)";
+		sql+="  values(ArtistInfo_SEQ.nextval,?,?,?,?,?,?,?,?,?,?,?)";
+		sql+="art_phone,art_tel,art_addr,art_email,art_birth)";
+		sql+="  values(ArtistInfo_SEQ.nextval,?,?,?,?,?,?,?,?,?,?)";
 		
 		try {
 			ps=conn.prepareStatement(sql);
@@ -83,6 +86,7 @@ public class ArtistDaoImpl implements ArtistDao {
 			ps.setString(8, artist.getArtAddr());
 			ps.setString(9, artist.getArtEmail());
 			ps.setDate(10, (Date) artist.getArtBirth());
+			ps.setString(11, artist.getArtContent());
 			
 			ps.executeUpdate();
 		} catch (SQLException e) {
@@ -194,6 +198,70 @@ public class ArtistDaoImpl implements ArtistDao {
 			JDBCTemplate.close(ps);
 		}
 		return res;
+	}
+	@Override
+	public void deleteClassFile(int classno, String filename) {
+		conn=JDBCTemplate.getConnection();
+		String sql="delete from classfile where class_no=? and class_origin_filename=?";
+		
+		try {
+			ps=conn.prepareStatement(sql);
+			ps.setInt(1, classno);
+			ps.setString(2, filename);
+			ps.executeUpdate();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		
+	}
+	@Override
+	public ArtistInfo getArtistInfo(int artno) {
+		conn=JDBCTemplate.getConnection();
+		
+		String sql="select * from artistinfo where art_no=?";
+		ArtistInfo ainfo=new ArtistInfo();
+		try {
+			ps=conn.prepareStatement(sql);
+			ps.setInt(1, artno);
+			rs=ps.executeQuery();
+			while(rs.next()) {
+
+				ainfo.setArtno(rs.getInt("art_no"));
+				ainfo.setArtid(rs.getString("art_id"));
+				ainfo.setArtpw(rs.getString("art_pw"));
+				ainfo.setArtName(rs.getString("art_name"));
+				ainfo.setArtNick(rs.getString("art_nick"));
+				ainfo.setArtCode(rs.getInt("art_code"));
+				ainfo.setArtPhone(rs.getLong("art_phone"));
+				ainfo.setArtEmail(rs.getString("art_email"));
+				ainfo.setArtTel(rs.getLong("art_tel"));
+				ainfo.setArtBirth(rs.getDate("art_birth"));
+				ainfo.setArtAddr(rs.getString("art_addr"));
+				
+			}
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return ainfo;
+	}
+	@Override
+	public ClassInfo getClassInfo(int classno) {
+		conn=JDBCTemplate.getConnection();
+		String sql="select * from classinfo where class_no=?";
+		ClassInfo c=new ClassInfo();
+		try {
+			ps=conn.prepareStatement(sql);
+			ps.setInt(1, classno);
+			rs=ps.executeQuery();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return c;
 	}
 
 }

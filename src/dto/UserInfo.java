@@ -13,14 +13,13 @@ public class UserInfo {
 	private Date userbirth;
 	private String usernick;
 	private int usergrade;
-	private int userEmailAuth;
 	
 	
 	@Override
 	public String toString() {
 		return "UserInfo [userno=" + userno + ", userid=" + userid + ", userpw=" + userpw + ", username=" + username
 				+ ", userphone=" + userphone + ", useremail=" + useremail + ", userbirth=" + userbirth + ", usernick="
-				+ usernick + ", usergrade=" + usergrade + ", userEmailAuth=" + userEmailAuth + "]";
+				+ usernick + ", usergrade=" + usergrade + "]";
 	}
 	
 	
@@ -78,13 +77,5 @@ public class UserInfo {
 	public void setUsergrade(int usergrade) {
 		this.usergrade = usergrade;
 	}
-	public int getUserEmailAuth() {
-		return userEmailAuth;
-	}
-	public void setUserEmailAuth(int userEmailAuth) {
-		this.userEmailAuth = userEmailAuth;
-	}
-	
-	
 	
 }
