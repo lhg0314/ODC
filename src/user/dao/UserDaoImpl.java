@@ -12,6 +12,7 @@ import java.util.Map;
 
 import dbutil.JDBCTemplate;
 import dto.AskBoard;
+import dto.ClassInfo;
 import dto.Classwish;
 import dto.ReviewBoard;
 import dto.UserInfo;
@@ -421,7 +422,48 @@ public class UserDaoImpl implements UserDao {
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
+		}finally {
+			JDBCTemplate.close(rs);
+			JDBCTemplate.close(ps);
 		}
+		return list;
+	}
+
+
+	@Override
+	public List<Map<String, Object>> getClassList(int artno) {
+		conn=JDBCTemplate.getConnection();
+		String sql="select * from classinfo i";
+		sql+=" left outer join classfile f on i.class_no=f.class_no";
+		sql+=" where f.class_rename_filename like '%main%' and i.art_no=?";
+		List<Map<String, Object>> list = new ArrayList<>();
+		
+		try {
+			ps=conn.prepareStatement(sql);
+			ps.setInt(1, artno);
+			rs=ps.executeQuery();
+			
+			while(rs.next()) {
+				Map<String, Object> map = new HashMap<String, Object>();
+				map.put("classname",rs.getString("class_name"));
+				map.put("classfilename",rs.getString("class_rename_filename"));
+				map.put("cate",rs.getInt("category"));
+				map.put("loc",rs.getInt("location"));
+				map.put("classno",rs.getInt("class_no"));
+				
+				
+				list.add(map);
+				
+			}
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			JDBCTemplate.close(rs);
+			JDBCTemplate.close(ps);
+		}
+		// TODO Auto-generated method stub
 		return list;
 	}
 

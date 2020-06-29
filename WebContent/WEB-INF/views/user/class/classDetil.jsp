@@ -143,6 +143,17 @@ $(document).ready(function() {
 
 
 <style>
+
+#artInfoBox{
+align-content: center;
+text-align: center;
+width:740px;
+
+background-color: thistle;
+margin-top: 20px;
+height:200px;
+
+}
 .show{
 	position: relative;
 }
@@ -326,13 +337,25 @@ $(document).ready(function() {
 
 }
 
-
+.artComm{
+	background-color: #ccc;
+}
 .calendar{
 	border-bottom: 1px solid #e4e9ef;
     padding: 10px 0 30px;
     align-content: center;
         margin-left: 67px;
 }
+
+.row{
+margin-top: 40px;
+}
+.caption{
+text-align: center;
+}
+
+
+
 </style>
 
 <script type="text/javascript">
@@ -530,7 +553,7 @@ $(document).ready(function() {
 											<!-- 댓글 등록 버튼 -->
 												<div id="btn" style="text-align: center;">
 													<p>
-														<a href="#" onclick="writeCmt()">[댓글등록]</a>
+														<a class="btn" onclick="writeCmt()">[댓글등록]</a>
 													</p>
 												</div>
 										</form>
@@ -547,7 +570,8 @@ $(document).ready(function() {
 										<td>${askboard[i].askDate }</td>
 									</tr>
 									<c:if test="${askboard[i].commContent ne null }">
-									<tr>
+									<tr class="artComm">
+										<td>&nbsp;&nbsp;&nbsp;&nbsp;↳</td>
 										<td>${askboard[i].artid }</td>
 										<td>${askboard[i].commContent }</td>
 										<td>${askboard[i].commDate }</td>
@@ -569,7 +593,35 @@ $(document).ready(function() {
 							</div>
 							<div role="tabpanel" class="tab-pane" id="settings"><!-- 작가정보  -->
 							
+								<div id="artInfoBox" style="text-align: center;"><br><br>
+									<p style="text-align: center;">${artistinfo.artid }</p>
+									<p style="text-align: center;">${artistinfo.artContent }</p>
+								<div  id="btn" style="text-align: center;">
+									<p>
+										<a class="btn" onclick="">[작가에게 후원하기]</a>
+									</p>
+								</div>
 
+							</div>
+								
+								<div  id="classbox-wrapper">
+								<c:forEach var="i" begin="0" end="${clist.size()-1 }">
+								<a href="/userclass/detail?classno=${clist[i].classno }"><div class="row">
+									<div class="col-sm-6 col-md-4">
+										<div class="thumbnail">
+											<img src="/upload/${clist[i].classfilename}" alt="..."  style="width: 150px;">
+											<div class="caption">
+												<h4>${clist[i].classname }</h4>
+												
+												
+											</div>
+										</div>
+									</div>
+								</div></a>
+								</c:forEach>
+
+
+							</div>
 						</div>
 						</div>
 

@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Map;
 
 import dto.AskBoard;
+import dto.ClassInfo;
 import dto.Classwish;
 import dto.ReviewBoard;
 import dto.UserInfo;
@@ -93,6 +94,11 @@ public class UserServiceImpl implements UserService {
 	public List<Map<String, Object>> getAskAndComm(int classno) {
 		// TODO Auto-generated method stub
 		return userDao.getAskAndComm(classno);
+	}
+	@Override
+	public List<Map<String, Object>> getClassList(int artno) {
+		// TODO Auto-generated method stub
+		return userDao.getClassList(artno);
 	}
 
 }
