@@ -3,6 +3,8 @@ package user.service.face;
 import java.util.List;
 import java.util.Map;
 
+import dto.AskBoard;
+import dto.Classwish;
 import dto.ReviewBoard;
 import dto.UserInfo;
 
@@ -24,4 +26,12 @@ public interface UserService {
 	public List<Map<String, Object>> getDetailReview(int classno);
 
 	public void insertReview(ReviewBoard board);
+
+	public int getUsernoBy(String id);
+
+	public void insertAskBoard(AskBoard a);
+
+	public List<AskBoard> selectAskByClassno(int classno);
+
+	public int insertWish(Classwish c);
 }

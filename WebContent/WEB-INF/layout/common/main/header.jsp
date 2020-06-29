@@ -15,7 +15,23 @@
 
 <!-- w3schools css 라이브러리 -->
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<script type="text/javascript">
+$(document).ready(function(){
+	//검색 버튼 클릭
+	$("#btnmainSearch").click(function() {
+		$("#searchForm").submit();
+	});
+	
+	$("#search").keydown(function(e) {
+		if( e.keyCode == 13 ) {
+			$("#btnmainSearch").click();
+		}
+	});
+	
 
+});
+
+</script>
 <style type="text/css">
 
 #menudiv{
@@ -144,8 +160,8 @@ list-style: none;
 .chart{
 	float:left;
 	position: absolute;
-    left: 55%; 
-    top: 45%;
+    left: 60%; 
+    top: 8%;
 }
 
 #sizeup{
@@ -196,10 +212,6 @@ list-style: none;
 
 </style>
 
-<style type="text/css">
-
-</style>
-
 </head>
 <body>
 
@@ -211,24 +223,37 @@ list-style: none;
    <!-- 검색창 -->
    <div class="container1">
       <div class="row">
-         <div class="col-md-6 col-md-offset-3"></div>
+      <div class="col-md-6 col-md-offset-3"></div>
       </div>
       <div class="row">
-         <div width="10px;">
-            <form action="${servlet}product&command=searchByKeyword&pageNo=1" method='post'
-               class="search-form">
-               <div class="has-feedback">
-                  <label for="search" class="sr-only">Search</label> <input
-                     type="text" class="form-control" name="keyword" id="search"
-                     placeholder="상품명 또는 카테고리 입력"> <span
-                     class="glyphicon glyphicon-search form-control-feedback"></span>
+            <form action="/main/search" method='get' class="search-form" name="searchForm" id="searchForm">
+                  <div style="float: left;">
+                  <select id="cate" name="cate" style="height: 33px; width: 110px;" class="form-control">
+                  	<option value="0">카테고리</option>
+                  	<option value="1">플라워</option>
+                  	<option value="2">음악</option>
+                  	<option value="3">수공예</option>
+                  	<option value="4">요리</option>
+                  	<option value="5">뷰티</option>
+                  	<option value="6">미술</option>
+                  	<option value="7">기타</option>
+                  </select>
+                  </div>
+               <div class="has-feedback input-group" style="margin: 0; display: inline-table; width: 350px;">
+                  <label for="search" class="sr-only">Search</label> 
+                  <input type="text" class="form-control" name="search" id="search" width="250px"
+                  	value="${paging.search }" placeholder="클래스명 입력">
+                  	<span class="input-group-btn">
+	                  	<button type="button" id="btnmainSearch" class="btn btn-default">
+	                  	<span class="glyphicon glyphicon-search"></span></button>
+	              </span>
                </div>
             </form>
          </div>
       </div>
    </div>
    
-   <div class="chart"><b>1</b> 인기 클래스 top5</div>
+    <div class="chart"><b>1</b> 인기 클래스 top5</div>
    
    <div style="position: absolute; width: 350px; right: 2%;">
 	   <ul id="minilist">
@@ -252,7 +277,7 @@ list-style: none;
    </div>
    
    <a href="/mypage/class/wish">
-   <div class="cart" onclick="location.href='#';">
+   <div class="cart" onclick="location.href='#'">
    <div id="sizeup" class="glyphicon glyphicon-shopping-cart" ></div>
    <br><small>장바구니</small>
    </a>
@@ -264,41 +289,44 @@ list-style: none;
 
 <div id="menudiv" >
 <ul class="nav nav nav-pills navst">
-	<li><a href="#"> </a></li>
-	<li>
-		<a href="#">카테고리</a>
+	<li style="border-left: 1px solid white;">
+		<a href="/category">카테고리</a>
 		<ul>
-			<li><a href="#">플라워</a></li>
-			<li><a href="#">음악</a></li>
-			<li><a href="#">수공예</a></li>
-			<li><a href="#">요리</a></li>
-			<li><a href="#">뷰티</a></li>
-			<li><a href="#">미술</a></li>
-			<li><a href="#">기타</a></li>
+			<li><a href="/category?category=1">플라워</a></li>
+			<li><a href="/category?category=2">음악</a></li>
+			<li><a href="/category?category=3">수공예</a></li>
+			<li><a href="/category?category=4">요리</a></li>
+			<li><a href="/category?category=5">뷰티</a></li>
+			<li><a href="/category?category=6">미술</a></li>
+			<li><a href="/category?category=7">기타</a></li>
 		</ul>
 	</li>
 	<li><a href="/hotclass">인기클래스</a></li>
 	<li><a href="/newclass">신규 클래스</a></li>
 	<li>
-		<a href="#">지역별 클래스</a>
+		<a href="/location">지역별 클래스</a>
 		<ul>
-			<li><a href="#">서울</a></li>
-			<li><a href="#">경기</a></li>
-			<li><a href="#">강원</a></li>
-			<li><a href="#">충청</a></li>
-			<li><a href="#">경상</a></li>
-			<li><a href="#">전라</a></li>
-			<li><a href="#">제주</a></li>
+			<li><a href="/location?location=1">서울</a></li>
+			<li><a href="/location?location=2">경기</a></li>
+			<li><a href="/location?location=3">강원</a></li>
+			<li><a href="/location?location=4">충청</a></li>
+			<li><a href="/location?location=5">경상</a></li>
+			<li><a href="/location?location=6">전라</a></li>
+			<li><a href="/location?location=7">제주</a></li>
 		</ul>
 	</li>
+	<li><a href="/talentDonation">재능기부 클래스</a></li>
 	<li>
 		<a href="#">게시판</a>
 		<ul>
 			<li><a href="/review/board">후기게시판</a></li>
+<<<<<<< HEAD
 			<li><a href="#">고객센터</a></li>
+=======
+			<li><a href="/notice/list">공지사항</a></li>
+>>>>>>> 98509b83aff6f42cdb18da9848dd01780c669681
 		</ul>
 	</li>
 	
 </ul>
 </div>
-

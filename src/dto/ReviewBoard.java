@@ -55,11 +55,17 @@ public class ReviewBoard {
 	public void setReviewDate(Date reviewDate) {
 		this.reviewDate = reviewDate;
 	}
+<<<<<<< HEAD
 
 	public String getSatlevel() {
 		return satlevel;
 	}
 
+=======
+	public String getSatlevel() {
+		return satlevel;
+	}
+>>>>>>> 98509b83aff6f42cdb18da9848dd01780c669681
 	public void setSatlevel(String satlevel) {
 		this.satlevel = satlevel;
 	}

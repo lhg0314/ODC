@@ -1,5 +1,6 @@
 package artist.service.impl;
 
+import java.io.UnsupportedEncodingException;
 import java.util.List;
 import java.util.Map;
 
@@ -8,6 +9,7 @@ import javax.servlet.http.HttpServletRequest;
 import artist.dao.impl.ArtistBoardDaoImpl;
 import artist.dao.face.ArtistBoardDao;
 import artist.service.face.ArtistBoardService;
+import dto.AskBoardComm;
 import util.Paging;
 
 public class ArtistBoardServiceImpl implements ArtistBoardService {
@@ -77,6 +79,39 @@ public class ArtistBoardServiceImpl implements ArtistBoardService {
 	@Override
 	public Map<String, Object> selectAskByAskNo(int askno) {
 		return artistBoardDao.selectAskByAskNo(askno);
+	}
+
+	@Override
+	public List<AskBoardComm> selectCommByAskNo(int askno) {
+		return artistBoardDao.selectCommByAskNo(askno);
+	}
+
+	@Override
+	public AskBoardComm getComment(HttpServletRequest req) {
+		try {
+			req.setCharacterEncoding("UTF-8");
+		} catch (UnsupportedEncodingException e) {
+			e.printStackTrace();
+		}
+		
+		String askNo = (String) req.getParameter("askno");
+		String content = (String) req.getParameter("content");
+		
+		AskBoardComm comm = new AskBoardComm();
+		comm.setAskBoardno(Integer.parseInt(askNo));
+		comm.setCommContent(content);
+		
+		return comm;
+	}
+
+	@Override
+	public void insertComment(AskBoardComm comm) {
+		artistBoardDao.insertComment(comm);
+	}
+
+	@Override
+	public Map<String, Object> selectReviewByReviewNo(int reviewno) {
+		return artistBoardDao.selectReviewByReviewNo(reviewno);
 	}
 
 }

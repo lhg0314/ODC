@@ -1,9 +1,6 @@
 package user.controller;
 
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.Map;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -46,8 +43,8 @@ public class MypageClassReviewInsertServlet extends HttpServlet {
 			
 			req.getRequestDispatcher("/WEB-INF/views/user/mypage/class/alert.jsp").forward(req,resp);
 			
-		}
-		
+		}else if (reviewcount <= 0) {
+			
 		//사용자로 로그인한 아이디값 가져오기
 		HttpSession session = req.getSession();
 		
@@ -73,7 +70,7 @@ public class MypageClassReviewInsertServlet extends HttpServlet {
 		session.setAttribute("bookingno", bookingno);
 		
 		req.getRequestDispatcher("/WEB-INF/views/user/mypage/class/classreview.jsp").forward(req,resp);
-				
+		}		
 				
 	}
 	

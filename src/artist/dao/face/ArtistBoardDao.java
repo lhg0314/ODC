@@ -3,6 +3,7 @@ package artist.dao.face;
 import java.util.List;
 import java.util.Map;
 
+import dto.AskBoardComm;
 import util.Paging;
 
 public interface ArtistBoardDao {
@@ -21,5 +22,11 @@ public interface ArtistBoardDao {
 	List<Map<String, Object>> selectAskByArtNo(Paging paging, int artno);
 
 	Map<String, Object> selectAskByAskNo(int askno);
+
+	List<AskBoardComm> selectCommByAskNo(int askno);
+
+	void insertComment(AskBoardComm comm);
+
+	Map<String, Object> selectReviewByReviewNo(int reviewno);
 
 }

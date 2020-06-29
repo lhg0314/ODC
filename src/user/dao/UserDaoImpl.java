@@ -11,6 +11,8 @@ import java.util.List;
 import java.util.Map;
 
 import dbutil.JDBCTemplate;
+import dto.AskBoard;
+import dto.Classwish;
 import dto.ReviewBoard;
 import dto.UserInfo;
 
@@ -275,6 +277,112 @@ public class UserDaoImpl implements UserDao {
 			JDBCTemplate.close(ps);
 		}
 		// TODO Auto-generated method stub
+		
+	}
+
+
+	@Override
+	public int getUserIdById(String id) {
+		conn=JDBCTemplate.getConnection();
+		String sql="";
+		sql+="select user_no from userInfo where user_id=? ";
+		int userno=0;
+		try {
+			ps=conn.prepareStatement(sql);
+			ps.setString(1, id);
+			rs=ps.executeQuery();
+			while(rs.next()) {
+				userno=rs.getInt("user_no");
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return userno;
+	}
+
+
+	@Override
+	public void insertAskBoard(AskBoard a) {
+		// TODO Auto-generated method stub
+		conn=JDBCTemplate.getConnection();
+		String sql="insert into askboard(ask_board_no,user_no,art_no,class_no,ask_title,ask_content)";
+		sql+=" values(AskBoard_SEQ.nextval,?,?,?,?,?)";
+		try {
+			ps=conn.prepareStatement(sql);
+			ps.setInt(1, a.getUserno());
+			ps.setInt(2, a.getArtno());
+			ps.setInt(3, a.getClassno());
+			ps.setString(4, "title");
+			ps.setString(5, a.getAskContent());
+			
+			ps.executeUpdate();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			JDBCTemplate.close(ps);
+		}
+	}
+
+
+	@Override
+	public List<AskBoard> selectAskByClassno(int classno) {
+		conn=JDBCTemplate.getConnection();
+		String sql="select * from Askboard join  where class_no=?";
+		List<AskBoard> list=new ArrayList<AskBoard>();
+		try {
+			ps=conn.prepareStatement(sql);
+			ps.setInt(1, classno);
+			rs=ps.executeQuery();
+			
+			while(rs.next()) {
+				AskBoard a= new AskBoard();
+				a.setAskContent(rs.getString("ask_content"));
+				a.setUserno(rs.getInt("user_no"));
+				a.setAskDate(rs.getDate("ask_date"));
+				
+				list.add(a);
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			JDBCTemplate.close(rs);
+			JDBCTemplate.close(ps);
+		}
+		return list;
+	}
+
+
+	@Override
+	public int insertWish(Classwish c) {
+		// TODO Auto-generated method stub
+		conn=JDBCTemplate.getConnection();
+		
+		String sql="";
+		sql+="insert into classwish(wish_no,class_no,user_no,wish_count,wish_total_price,wish_date)";
+		sql+=" values(ClassWish_SEQ.nextval,?,?,?,?,?)";
+		int res=0;
+		
+		try {
+			ps=conn.prepareStatement(sql);
+			ps.setInt(1, c.getClassno());
+			ps.setInt(2, c.getUser_no());
+			ps.setInt(3, c.getWishCount());
+			ps.setInt(4, c.getTotalPrice());
+			ps.setDate(5, new java.sql.Date( c.getWishDate().getTime() ));
+			
+			res=ps.executeUpdate();
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			JDBCTemplate.close(ps);
+		}
+		
+		return res;
 		
 	}
 

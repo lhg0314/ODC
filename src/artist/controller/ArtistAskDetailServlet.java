@@ -1,6 +1,7 @@
 package artist.controller;
 
 import java.io.IOException;
+import java.util.List;
 import java.util.Map;
 
 import javax.servlet.ServletException;
@@ -11,6 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import artist.service.face.ArtistBoardService;
 import artist.service.impl.ArtistBoardServiceImpl;
+import dto.AskBoardComm;
 
 @WebServlet("/artist/askdetail")
 public class ArtistAskDetailServlet extends HttpServlet {
@@ -24,10 +26,10 @@ public class ArtistAskDetailServlet extends HttpServlet {
 		int askno = Integer.parseInt(req.getParameter("askno"));
 		
 		Map<String, Object> askdetail = artistBoardService.selectAskByAskNo(askno);
+		List<AskBoardComm> commlist = artistBoardService.selectCommByAskNo(askno);
 		
 		req.setAttribute("askdetail", askdetail);
-		
-		System.out.println(askdetail);
+		req.setAttribute("commlist", commlist);
 		
 		req.getRequestDispatcher("/WEB-INF/views/artist/board/askdetail.jsp").forward(req, resp);
 		

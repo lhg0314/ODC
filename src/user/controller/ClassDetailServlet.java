@@ -9,6 +9,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import artist.service.face.ArtistClassService;
 import artist.service.face.ArtistService;
@@ -33,7 +34,15 @@ public class ClassDetailServlet extends HttpServlet {
 	@Override
 		protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 			//클래스 상세내용 페이지
-		
+			HttpSession session=req.getSession();
+			String id=(String) session.getAttribute("userid");
+			System.out.println(id);
+			
+			if(id !=null) {
+				int userno=us.getUsernoBy(id);
+				System.out.println(userno);
+				req.setAttribute("userno", userno);
+			}
 			int classno=Integer.parseInt(req.getParameter("classno"));
 			Map<String, Object> classinfo= ac.selectClassByClassNo(classno);
 			int artno=(int) classinfo.get("artno");
@@ -41,8 +50,9 @@ public class ClassDetailServlet extends HttpServlet {
 			ArtistInfo artistinfo=as.getArtInfobyartNo(artno);
 			
 			System.out.println(classinfo);
+			System.out.println(artistinfo);
 			String addr=artistinfo.getArtAddr().split(";")[1];
-			System.out.println(addr);
+			
 			artistinfo.setArtAddr(artistinfo.getArtAddr().split(";")[0]+" "+artistinfo.getArtAddr().split(";")[1]+" "+artistinfo.getArtAddr().split(";")[2]);
 			req.setAttribute("classaddr", addr);
 			req.setAttribute("artistinfo", artistinfo);
