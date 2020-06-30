@@ -11,6 +11,12 @@ $(document).ready(function(){
 	$("#btnSearch").click(function() {
 		location.href="/admin/class/check?search="+$("#search").val();
 	});
+	
+	$("#search").keydown(function(e) {
+		if( e.keyCode == 13 ) {
+			$("#btnSearch").click();
+		}
+	});
 });
 
 

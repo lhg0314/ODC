@@ -75,9 +75,21 @@ function checkAll() {
 </script>
 
 <style type="text/css">
+#reviewTable {
+	table-layout: fixed;
+} 
+
 #reviewTable th {
 	text-align: center;
 	background: thistle;
+}
+
+#reviewTable td {
+	height: 20px;
+	overflow: hidden;
+    text-overflow: ellipsis;
+	word-break: break-all;
+    white-space: nowrap; 
 }
 </style>
 
@@ -94,11 +106,11 @@ function checkAll() {
 
 <table id="reviewTable" class="table table-condensed text-center table-hover">
 	<tr>
-		<th><input type="checkbox" id="checkAll" onclick="checkAll();" /></th>
-		<th>번호</th>
-		<th style="width: 30%;">클래스명</th>
-		<th style="width: 40%;">제목</th>
-		<th>게시 날짜</th>
+		<th style="width: 5%;"><input type="checkbox" id="checkAll" onclick="checkAll();" /></th>
+		<th style="width: 10%;">번호</th>
+		<th style="width: 25%;">클래스명</th>
+		<th>제목</th>
+		<th style="width: 15%;">게시 날짜</th>
 	</tr>
 
 	<c:if test="${empty list }">

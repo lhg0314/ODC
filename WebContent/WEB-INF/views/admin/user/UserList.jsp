@@ -49,6 +49,11 @@ $(document).ready(function() {
 		location.href="/admin/userlist?search="+$("#search").val();
 	})
 	
+	$("#search").keydown(function(e) {
+		if( e.keyCode == 13 ) {
+			$("#btnSearch").click();
+		}
+	});
 })
 </script>
 
