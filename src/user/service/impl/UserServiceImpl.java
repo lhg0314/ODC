@@ -6,6 +6,7 @@ import java.util.Map;
 import dto.AskBoard;
 import dto.ClassInfo;
 import dto.Classwish;
+import dto.Donation;
 import dto.ReviewBoard;
 import dto.UserInfo;
 import user.dao.UserDao;
@@ -99,6 +100,11 @@ public class UserServiceImpl implements UserService {
 	public List<Map<String, Object>> getClassList(int artno) {
 		// TODO Auto-generated method stub
 		return userDao.getClassList(artno);
+	}
+	@Override
+	public int insertDonation(Donation d) {
+		// TODO Auto-generated method stub
+		return userDao.insertDonation(d);
 	}
 
 }

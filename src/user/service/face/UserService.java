@@ -6,6 +6,7 @@ import java.util.Map;
 import dto.AskBoard;
 import dto.ClassInfo;
 import dto.Classwish;
+import dto.Donation;
 import dto.ReviewBoard;
 import dto.UserInfo;
 
@@ -39,4 +40,6 @@ public interface UserService {
 	public List<Map<String, Object>> getAskAndComm(int classno);
 
 	public List<Map<String, Object>> getClassList(int artno);
+
+	public int insertDonation(Donation d);
 }

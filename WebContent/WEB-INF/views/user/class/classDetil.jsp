@@ -13,7 +13,74 @@
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>  
 
 <script src="http://code.jquery.com/ui/1.8.18/jquery-ui.min.js"></script>  
+
 <script type="text/javascript">
+$(document).ready(function(){
+	$("#supportbtn").click(function(){
+
+
+		$.ajax({
+			type: "POST"//요청메소드
+			,url:"/user/support"
+			,data:{
+				userno: ${userno}
+				,artno:${artistinfo.artno}
+				,price:donationForm.price.value
+			}
+			
+			,success:function(res){
+				alert("후원완료")
+				console.log("성공")
+				//$('#myModal3').modal('hide');
+			}
+			,error:function(){
+				console.log("실패")
+			}
+		})
+	
+	});
+	
+})
+</script>
+
+<script type="text/javascript">
+
+function donation(){
+	
+	var userno = ${userno};
+	var artno = ${artistinfo.artno};
+	var donPrice=donationForm.price.value;
+	console.log(donPrice)
+	if(!donPrice)
+	{
+		alert("가격을 입력하세요.");
+		return false;
+	}else{	
+		var param="userno="+userno+"&artno="+artno+"&price="+donPrice;
+			
+		console.log(param);
+		sendRequest("POST","/user/support",param,ajaxFromServer2);
+	}
+	
+}
+
+function ajaxFromServer2(){
+	if(httpRequest.readyState==4){//DONE,응답완료
+		if(httpRequest.status==200){//OK
+			alert("후원 완료")
+			
+
+	
+		self
+			
+		}else{
+			console.log("AJAX요청/응답 에러")
+		}
+	}
+}
+
+
+
 function writeCmt()
 {
 	var form = document.getElementById("writeCommentForm");
@@ -52,6 +119,10 @@ function ajaxFromServer(){
 	}
 }
 
+
+
+
+
 var date='${classinfo.recruitEnddate }';
 console.log(date)
 $(function() {
@@ -74,8 +145,6 @@ $(document).ready(function() {
 	
 	var quantity = parseInt($('#quantity').val(), 10) + 1;
 	var price = ${classinfo.classPrice}
-	
-	
 	
 	
 	
@@ -602,15 +671,64 @@ text-align: center;
 							
 							</div>
 							<div role="tabpanel" class="tab-pane" id="settings"><!-- 작가정보  -->
-							
-								<div id="artInfoBox" style="text-align: center;"><br><br>
-									<p style="text-align: center;">${artistinfo.artid }</p>
-									<p style="text-align: center;">${artistinfo.artContent }</p>
-								<div  id="btn" style="text-align: center;">
-									<p>
-										<a class="btn" onclick="">[작가에게 후원하기]</a>
-									</p>
+
+
+							<div class="modal fade" id="myModal3" tabindex="-1" role="dialog"
+								aria-labelledby="myModalLabel" aria-hidden="true"><!--  작가후원 모달창 -->
+								<div class="modal-dialog">
+									<div class="modal-content">
+										<div class="modal-header">
+											<button type="button" class="close" data-dismiss="modal"
+												aria-label="Close">
+												<span aria-hidden="true">&times;</span>
+											</button>
+											<h4 class="modal-title" id="myModalLabel">후원하기</h4>
+										</div>
+										<div class="modal-body">
+											<form class="form-inline" id="donationForm">
+											
+												<div class="form-group">
+													<label for="userid">후원하는 사람 : ${userid }</label> <input
+														type="hidden" class="form-control" id="userid" name="userno" value="${userno }"
+														placeholder="Jane Doe">
+												</div>
+												<br><br>
+												
+												<div class="form-group">
+													<label for="artid">후원받는 작가님 : ${artistinfo.artid }</label> <input
+														type="hidden" class="form-control" id="artid"
+														placeholder="jane.doe@example.com">
+												</div>
+													<br><br>
+													
+												<div class="form-group">
+													<label for="price">후원 금액</label> <input
+														type="number" class="form-control" id="price" name="price"
+														placeholder="후원할 금액을 입력해 주세요"><span>원</span>
+												</div>
+												
+												<br><br>
+												<a  class="btn btn-default" id="supportbtn">후원하기</a>
+												<button type="button" class="btn btn-default" data-dismiss="modal">취소</button>
+											</form>
+										</div>
+
+									</div>
 								</div>
+							</div>
+
+							<div id="artInfoBox" style="text-align: center;">
+								<br>
+								<br>
+								<p style="text-align: center;">${artistinfo.artid }</p>
+								<p style="text-align: center;">${artistinfo.artContent }</p>
+								<c:if test="${userid ne null }"><!-- 로그인 했을때만 후원창 보임  -->
+									<div id="btn" style="text-align: center;">
+										<p>
+											<a class="btn" data-toggle="modal" data-target="#myModal3">[후원하기]</a>&nbsp;&nbsp;
+										</p>
+									</div>
+								</c:if>
 
 							</div>
 							<h4>작가님의 다른 클래스 </h4>
