@@ -15,7 +15,11 @@ import user.service.face.UserBoardService;
 import user.service.face.UserInfoUpdateService;
 import user.service.impl.UserBoardServiceImpl;
 import user.service.impl.UserInfoUpdateServiceImpl;
-
+/**
+ * 마이페이지 - 후기 상세
+ * @author Administrator
+ *
+ */
 @WebServlet("/mypage/reviewdetail")
 public class MypageReviewDetailServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;

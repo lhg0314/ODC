@@ -26,7 +26,7 @@ public class UserDonationServlet extends HttpServlet {
 
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		System.out.println("/admin/donation - [GET]");
+//		System.out.println("/admin/donation - [GET]");
 	
 		String searchedartist = null;
 		

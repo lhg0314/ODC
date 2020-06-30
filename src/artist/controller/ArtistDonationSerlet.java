@@ -1,5 +1,6 @@
 package artist.controller;
 /**
+ * 
  * 작가페이지 - 작가 후원내역 관리 서블릿
  * 완성
  * 200625
@@ -35,7 +36,7 @@ public class ArtistDonationSerlet extends HttpServlet {
 	
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		System.out.println("/artist/donation - [GET]");
+//		System.out.println("/artist/donation - [GET]");
 	
 		HttpSession session = req.getSession();
 		
