@@ -11,6 +11,7 @@ import java.util.Map;
 
 import dbutil.JDBCTemplate;
 import main.dao.face.LocationCategoryDao;
+import util.Paging;
 
 public class LocationCategoryTalentDaoImpl implements LocationCategoryDao {
 
@@ -19,22 +20,29 @@ public class LocationCategoryTalentDaoImpl implements LocationCategoryDao {
 	private ResultSet rs = null;
 	
 	@Override
-	public List<Map<String, Object>> selectClassByLocation(int location) {
+	public List<Map<String, Object>> selectClassByLocation(Paging paging, int location) {
 		
 		// DB 연결
 		conn = JDBCTemplate.getConnection();
 		
+		// sql
 		String sql = "";
-		sql += "SELECT * FROM classinfo i";
-		sql += " LEFT OUTER JOIN classfile f";
-		sql += " ON( i.class_no = f.class_no )";
-		sql += " WHERE i.post_status = 1";
-		sql += " AND i.recruit_enddate >= sysdate";
-		sql += " AND f.class_rename_filename LIKE 'main%'";
-		if( location > 0) {
-			sql += " AND i.location = ?";
-		}
-		sql += " ORDER BY i.class_no DESC";
+		sql += "SELECT * FROM (";
+		sql += "    SELECT rownum rnum, B.* FROM (";
+		sql += "        SELECT * FROM classinfo i";
+		sql += "		LEFT OUTER JOIN classfile f";
+		sql += " 		ON( i.class_no = f.class_no )";
+		sql += " 		WHERE i.post_status = 1";
+		sql += "		AND i.recruit_enddate >= sysdate";
+		sql += "		AND f.class_rename_filename LIKE 'main%'"; 
+			if( location > 0) {
+				sql += " AND i.location = ?";
+			}
+		sql += " 		ORDER BY i.class_no DESC";
+		sql += "    ) B";
+		sql += "    ORDER BY rnum";
+		sql += " ) t";
+		sql += " WHERE rnum BETWEEN ? AND ?";
 		
 		
 		// 결과 객체
@@ -45,8 +53,13 @@ public class LocationCategoryTalentDaoImpl implements LocationCategoryDao {
 			
 			if( location > 0) {
 				ps.setInt(1, location);
+				ps.setInt(2, paging.getStartNO());
+				ps.setInt(3, paging.getEndNo());
+			}else {
+				ps.setInt(1, paging.getStartNO());
+				ps.setInt(2, paging.getEndNo());
 			}
-			
+
 			rs = ps.executeQuery();
 			
 			while( rs.next()) {
@@ -74,23 +87,29 @@ public class LocationCategoryTalentDaoImpl implements LocationCategoryDao {
 	}
 
 	@Override
-	public List<Map<String, Object>> selectClassByCategory(int category) {
+	public List<Map<String, Object>> selectClassByCategory(Paging paging, int category) {
 		
 		// DB 연결
 		conn = JDBCTemplate.getConnection();
 		
+		// sql
 		String sql = "";
-		sql += "SELECT * FROM classinfo i";
-		sql += " LEFT OUTER JOIN classfile f";
-		sql += " ON( i.class_no = f.class_no )";
-		sql += " WHERE i.post_status = 1";
-		sql += " AND i.recruit_enddate >= sysdate";
-		sql += " AND f.class_rename_filename LIKE 'main%'";
-		if( category > 0) {
-			sql += " AND i.category = ?";
-		}
-		sql += " ORDER BY i.class_no DESC";
-		
+		sql += "SELECT * FROM (";
+		sql += "    SELECT rownum rnum, B.* FROM (";
+		sql += "        SELECT * FROM classinfo i";
+		sql += "		LEFT OUTER JOIN classfile f";
+		sql += " 		ON( i.class_no = f.class_no )";
+		sql += " 		WHERE i.post_status = 1";
+		sql += "		AND i.recruit_enddate >= sysdate";
+		sql += "		AND f.class_rename_filename LIKE 'main%'"; 
+			if( category > 0) {
+				sql += " AND i.category = ?";
+			}
+		sql += " 		ORDER BY i.class_no DESC";
+		sql += "    ) B";
+		sql += "    ORDER BY rnum";
+		sql += " ) t";
+		sql += " WHERE rnum BETWEEN ? AND ?";
 		
 		// 결과 객체
 		List<Map<String, Object>> list = new ArrayList<>();
@@ -100,6 +119,11 @@ public class LocationCategoryTalentDaoImpl implements LocationCategoryDao {
 			
 			if( category > 0) {
 				ps.setInt(1, category);
+				ps.setInt(2, paging.getStartNO());
+				ps.setInt(3, paging.getEndNo());
+			}else {
+				ps.setInt(1, paging.getStartNO());
+				ps.setInt(2, paging.getEndNo());
 			}
 			
 			rs = ps.executeQuery();
@@ -180,6 +204,155 @@ public class LocationCategoryTalentDaoImpl implements LocationCategoryDao {
 			if( ps != null ) JDBCTemplate.close(ps);
 		}
 		return list;
+	}
+
+	@Override
+	public int selectCntAllLocation(int location) {
+		conn = JDBCTemplate.getConnection(); //DB 연결
+		
+		//수행할 SQL
+		String sql = "";
+		sql += "SELECT ";
+		sql += "	count(*)";
+		sql += " FROM classinfo";
+		sql += " WHERE class_check = 1";
+		if( location > 0) {
+			sql += " AND location = ?";
+		}
+		
+
+		//최종 결과 변수
+		int cnt = 0;
+		
+		try {
+			//SQL 수행 객체
+			ps = conn.prepareStatement(sql);
+			
+			if(location>0) {
+				ps.setInt(1, location);
+			}
+			
+			//SQL 수행 및 결과 저장
+			rs = ps.executeQuery();
+			
+			//SQL 수행 결과 처리
+			while( rs.next() ) {
+				cnt = rs.getInt(1);
+			}
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				if(rs!=null)	rs.close();
+				if(ps!=null)	ps.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+		
+		//최종 결과 반환
+		return cnt;
+	}
+
+	@Override
+	public int selectCntAllCategory(int category) {
+		
+		conn = JDBCTemplate.getConnection(); //DB 연결
+		
+		//수행할 SQL
+		String sql = "";
+		sql += "SELECT ";
+		sql += "	count(*)";
+		sql += " FROM classinfo";
+		sql += " WHERE class_check = 1";
+		if( category > 0) {
+			sql += " AND category = ?";
+		}
+		
+
+		//최종 결과 변수
+		int cnt = 0;
+		
+		try {
+			//SQL 수행 객체
+			ps = conn.prepareStatement(sql);
+			
+			if(category>0) {
+				ps.setInt(1, category);
+			}
+			
+			//SQL 수행 및 결과 저장
+			rs = ps.executeQuery();
+			
+			//SQL 수행 결과 처리
+			while( rs.next() ) {
+				cnt = rs.getInt(1);
+			}
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				if(rs!=null)	rs.close();
+				if(ps!=null)	ps.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+		
+		//최종 결과 반환
+		return cnt;
+	}
+
+	@Override
+	public int selectCntAllTalent(int category) {
+		
+		conn = JDBCTemplate.getConnection(); //DB 연결
+		
+		//수행할 SQL
+		String sql = "";
+		sql += "SELECT ";
+		sql += "	count(*)";
+		sql += " FROM classinfo";
+		sql += " WHERE class_check = 1";
+		if( category > 0) {
+			sql += " AND category = ?";
+		}
+		
+
+		//최종 결과 변수
+		int cnt = 0;
+		
+		try {
+			//SQL 수행 객체
+			ps = conn.prepareStatement(sql);
+			
+			if(category > 0) {
+				ps.setInt(1, category);
+			}
+			
+			//SQL 수행 및 결과 저장
+			rs = ps.executeQuery();
+			
+			//SQL 수행 결과 처리
+			while( rs.next() ) {
+				cnt = rs.getInt(1);
+			}
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				if(rs!=null)	rs.close();
+				if(ps!=null)	ps.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+		
+		//최종 결과 반환
+		return cnt;
 	}
 
 }

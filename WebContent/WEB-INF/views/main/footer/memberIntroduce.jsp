@@ -98,7 +98,6 @@
 	right: 70%;
 	
 	width: 600px;
-	height: 250px;
 	padding: 30px 0;
 	margin: 20px 0;
 	
@@ -128,9 +127,7 @@
 h4 { font-weight: bold; }
 
 span#ment {
-
 	font-size: 17px;
-
 }
 
 </style>
@@ -154,7 +151,7 @@ span#ment {
 	
 <div class="member">
     <div class="photo">
-      		<img src="/resources/img/mini.jpg" alt="미니언즈">
+      		<img src="/resources/img/footer/introduce/inju.png" alt="inju">
         <div class="caption">
 	        <span>조장</span>
 	        <span>이인주</span>
@@ -163,9 +160,9 @@ span#ment {
  		
  		<div class="content">
  			<h4>개발 담당 파트</h4>
- 			<span id="ment">동해물과 백두산이 마르고 닳도록</span><br><br><br>
- 			<h4>소감 한마디</h4>
- 			<span id="ment">하느님이 보우하사 우리나라 만세</span><br>
+ 			<span id="ment">관리자(사업자/관리자 수익관리)<br>사업자(클래스 매출 현황)<br>사용자(예약 클래스, 장바구니, 수강 클래스, 후기 게시판, 서비스 이용약관, 개인정보 처리 방침)<br>API - 아임포트 결제</span><br><br><br>
+ 			<h4>다섯 글자 소감</h4>
+ 			<span id="ment">다하셨네요</span><br>
  		</div>
  	</div>
  	
@@ -173,7 +170,7 @@ span#ment {
  	
 <div class="member">
     <div class="photo">
-      		<img src="/resources/img/mini.jpg" alt="미니언즈">
+      		<img src="/resources/img/footer/introduce/dy.png" alt="dy">
         <div class="caption">
 	        <span>조원</span>
 	        <span>구동영</span>
@@ -182,15 +179,15 @@ span#ment {
  		
  		<div class="content">
  			<h4>개발 담당 파트</h4>
- 			<span id="ment">무궁화 삼천리 화려 강산</span><br><br><br>
- 			<h4>소감 한마디</h4>
- 			<span id="ment">대한 사람 대한으로 길이 보전하세</span><br>
+ 			<span id="ment">관리자(클래스 검토, 클래스 정보, 공지사항 관리)<br>사업자(클래스 등록, 클래스 검수 확인, 클래스 관리)<br>사용자(지역/카테고리/기부 클래스, 인기순위 랭크, 공지사항)</span><br><br><br>
+ 			<h4>다섯 글자 소감</h4>
+ 			<span id="ment">저다했어요</span><br>
  		</div>
  	</div>
  	
 <div class="member">
     <div class="photo">
-      		<img src="/resources/img/mini.jpg" alt="미니언즈">
+      		<img src="/resources/img/footer/introduce/ji.png" alt="ji">
         <div class="caption">
 	        <span>조원</span>
 	        <span>박주이</span>
@@ -199,15 +196,15 @@ span#ment {
  		
  		<div class="content">
  			<h4>개발 담당 파트</h4>
- 			<span id="ment">남산 위에 저 소나무 철갑을 두른 듯</span><br><br><br>
- 			<h4>소감 한마디</h4>
- 			<span id="ment">바람 서리 불변함은 우리 기상일세</span><br>
+ 			<span id="ment">관리자(재능기부 클래스, 작가 후원 내역, 공지사항 관리, 후기 게시판 관리)<br>사업자(후원받은 내역, 고객 문의 내역, 후기 게시판)<br>사용자(클래스 수강후기, 클래스 문의내역, 검색)</span><br><br><br>
+ 			<h4>다섯 글자 소감</h4>
+ 			<span id="ment">많이 배웠다</span><br>
  		</div>
  	</div>
  	
 <div class="member">
     <div class="photo">
-      		<img src="/resources/img/mini.jpg" alt="미니언즈">
+      		<img src="/resources/img/footer/introduce/sy.jpg" alt="sy">
         <div class="caption">
 	        <span>조원</span>
 	        <span>이서연</span>
@@ -216,15 +213,15 @@ span#ment {
  		
  		<div class="content">
  			<h4>개발 담당 파트</h4>
- 			<span id="ment">무궁화 삼천리 화려 강산</span><br><br><br>
- 			<h4>소감 한마디</h4>
- 			<span id="ment">대한 사람 대한으로 길이 보전하세</span><br>
+ 			<span id="ment">관리자(회원 정보, 사업자 정보)<br>사업자(작가 프로필 조회/수정/탈퇴)<br>사용자(회원정보 조회/수정/탈퇴, 인기/최신 클래스)<br>footer - 문의사항/제작자/사이트 소개</span><br><br><br>
+ 			<h4>다섯 글자 소감</h4>
+ 			<span id="ment">아직 세미다</span><br>
  		</div>
  	</div>
  	
 <div class="member">
     <div class="photo">
-      		<img src="/resources/img/mini.jpg" alt="미니언즈">
+      		<img src="/resources/img/footer/introduce/hj.png" alt="hj">
         <div class="caption">
 	        <span>조원</span>
 	        <span>이효진</span>
@@ -233,8 +230,8 @@ span#ment {
  		
  		<div class="content">
  			<h4>개발 담당 파트</h4>
- 			<span id="ment">(~간주중~)</span><br><br><br>
- 			<h4>소감 한마디</h4>
+ 			<span id="ment">관리자(로그인/회원가입)<br>사업자(로그인/회원가입, 아이디/비밀번호 찾기)<br>사용자(로그인/회원가입, 아이디/비밀번호 찾기 베너, 클래스 상세 페이지, 장바구니 추가, 메인 헤더)<br>API - 이메인 인증/카카오 지도/카카오 주소/네이버 소셜 로그인</span><br><br><br>
+ 			<h4>다섯 글자 소감</h4>
  			<span id="ment">너무 힘들다</span><br>
  		</div>
 </div>

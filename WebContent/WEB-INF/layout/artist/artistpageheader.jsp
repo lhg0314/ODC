@@ -283,7 +283,7 @@ ul.sub li a {
 		        <li><a href="/artist/class/app" id="SvnclassApp">클래스 등록</a></li>
 		        <li><a href="/artist/class/check" id="SvnClassCheck">클래스 검수 확인</a></li>
 		        <li><a href="/artist/class/manage" id="SvnClassManage">클래스 관리</a></li>
-		        <li><a href="/artistpage/class/sales">클래스 매출 현황</a></li>
+		        <li><a href="/artistpage/class/sales" id='SvnClassSales'>클래스 매출 현황</a></li>
 		    </ul>
 		</li>
 	</ul>
@@ -292,7 +292,7 @@ ul.sub li a {
 		<li class="group">
 		    <div class="title">후원</div>
 		    <ul class="sub">               
-		        <li><a href="/artist/donation">후원 받은 내역</a></li>                
+		        <li><a href="/artist/donation" id="SvnArtDona">후원 받은 내역</a></li>                
 		    </ul>
 		</li>
 	</ul>
@@ -301,8 +301,8 @@ ul.sub li a {
 		<li class="group">
 		    <div class="title">게시판</div>
 		    <ul class="sub">
-		        <li><a href="/artist/asklist">고객 문의 내역</a></li>                
-		        <li><a href="/artist/reviewlist">후기 게시판</a></li>                
+		        <li><a href="/artist/asklist" id="SvnArtAsk">고객 문의 내역</a></li>                
+		        <li><a href="/artist/reviewlist" id="SvnArtReview">후기 게시판</a></li>                
 		    </ul>
 		</li>
 	</ul>
@@ -311,8 +311,8 @@ ul.sub li a {
 		<li class="group">
 		    <div class="title">작가 프로필</div>
 		    <ul class="sub">
-		        <li><a href="/artist/info">작가 프로필 조회 및 수정</a></li>
-		        <li><a href="/artist/leave">작가 탈퇴</a></li>
+		        <li><a href="/artist/info" id="SvnArtInfo">작가 프로필 조회 및 수정</a></li>
+		        <li><a href="/artist/leave" id="SvnArtDelete">작가 탈퇴</a></li>
 		    </ul>
 		</li>
 	</ul>

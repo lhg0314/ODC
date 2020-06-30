@@ -19,16 +19,12 @@ import main.service.impl.NewClassServiceImpl;
 public class MainServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	
-	
 	private NewClassService nClassService = new NewClassServiceImpl();
 	private LocationCategoryTalentService talentDonationService = new LocationCategoryTalentServiceImpl();
-       
-	
 	
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		
-
 		//인기 클래스
 		List<Map<String, Object>> hotList = nClassService.hotclass();
 		List<Map<String, Object>> h = nClassService.changeString(hotList); //지역,카테고리 형변환

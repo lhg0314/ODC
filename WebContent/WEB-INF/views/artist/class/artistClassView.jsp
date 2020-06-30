@@ -9,6 +9,29 @@
 <!-- artistpage header -->    
 <c:import url="/WEB-INF/layout/artist/artistpageheader.jsp"></c:import> 
 <script type="text/javascript" src="/resources/js/httpRequest.js" ></script>
+<script type="text/javascript" src="/resources/se2/js/service/HuskyEZCreator.js" charset="utf-8"></script>
+<script type="text/javascript">
+
+function submitContents(elClickedObj){
+	
+	oEditors.getById["classContent"].exec("UPDATE_CONTENTS_FIELD",[]);
+	try{
+		elClickedObj.form.submit();
+	}catch(e){}
+}
+
+</script>
+
+<script type="text/javascript">
+$(document).ready(function(){
+	$("#btnUpdate").click(function(){
+		submitContents($("#btnUpdate"));
+	})
+})
+
+
+</script>
+
 <script type="text/javascript">
 $(document).ready(function(){
 	
@@ -441,7 +464,7 @@ $("#classFile6").change(function(){
 	    </div> 
  	    </c:if>
 		
-		<div class="text-center"><button class="class_button">클래스 수정</button></div>
+		<div class="text-center"><button class="class_button" id="btnUpdate">클래스 수정</button></div>
 		</form>
 	
 	
@@ -453,5 +476,17 @@ $("#classFile6").change(function(){
 <div class="clearfix"></div>
 
 </section>
+
+<script type="text/javascript">
+
+var oEditors=[];
+nhn.husky.EZCreator.createInIFrame({
+	oAppRef: oEditors
+	,elPlaceHolder: "classContent"//에디터가 적용될 <textarea>의 id
+	,sSkinURI: "/resources/se2/SmartEditor2Skin.html"////에디터 스킨
+	,fCreator:"createSEditor2"
+})
+
+</script>
 
 <c:import url="/WEB-INF/layout/common/main/footer.jsp"></c:import>

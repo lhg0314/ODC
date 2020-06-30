@@ -17,6 +17,11 @@
 
 <style type="text/css">
 
+#SvnArtDelete{
+	color: #e7717d;
+}
+
+
 #pwdiv {
 	
 	margin: 50px auto;
@@ -53,6 +58,8 @@ span { margin: 0 12px; }
   background-color: #8c7599;
   color: white;
 }
+
+
 
 </style>
 

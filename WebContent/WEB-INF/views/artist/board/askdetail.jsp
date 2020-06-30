@@ -65,6 +65,10 @@ function deleteComment(commentNo) {
 	text-align: center;
 	background: thistle;
 }
+
+#SvnArtAsk{
+	color: #e7717d;
+}
 </style>
 
 <div id="main">
