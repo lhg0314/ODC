@@ -72,9 +72,9 @@ $(document).ready(function(){
 	
 	</c:forEach>
 </table>
+<c:import url="/WEB-INF/paging/artpagereviewpaging.jsp" />
 </div>
 
-<c:import url="/WEB-INF/paging/artpagereviewpaging.jsp" />
 
 <!-- float 막기 -->
 <div class="clearfix"></div>

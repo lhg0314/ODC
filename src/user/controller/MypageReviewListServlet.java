@@ -64,8 +64,6 @@ public class MypageReviewListServlet extends HttpServlet {
 		req.setAttribute("paging", paging);
 		req.setAttribute("list", list);
 		
-		System.out.println(list);
-		
 		req.getRequestDispatcher("/WEB-INF/views/user/mypage/board/reviewlist.jsp").forward(req, resp);
 		
 	}

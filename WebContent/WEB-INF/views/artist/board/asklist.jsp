@@ -75,8 +75,8 @@ $(document).ready(function(){
 	
 	</c:forEach>
 </table>
-</div>
 <c:import url="/WEB-INF/paging/artpageaskpaging.jsp" />
+</div>
 
 <!-- float 막기 -->
 <div class="clearfix"></div>

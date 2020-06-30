@@ -27,10 +27,13 @@
 
 <<<<<<< HEAD
 #main > section { 
+<<<<<<< HEAD
 =======
 #cateSel { 
 >>>>>>> sy
 
+=======
+>>>>>>> joo2
 	float: left;
 	margin: 0 40px; 
 }

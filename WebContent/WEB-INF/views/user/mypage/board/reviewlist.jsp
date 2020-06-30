@@ -124,9 +124,9 @@ function checkAll() {
 <button id="btnDelete" class="btn btn-warning">후기 삭제</button>
 </div>
 
+<c:import url="/WEB-INF/paging/mypagereviewpaging.jsp" />
 </div>
 
-<c:import url="/WEB-INF/paging/mypagereviewpaging.jsp" />
 
 <!-- float 막기 -->
 <div class="clearfix"></div>
