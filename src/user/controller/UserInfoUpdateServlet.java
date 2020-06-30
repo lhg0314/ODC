@@ -23,7 +23,7 @@ public class UserInfoUpdateServlet extends HttpServlet {
 	
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		System.out.println("/user/info [GET]");
+		//System.out.println("/user/info [GET]");
 	 
 		 
 		 //세션 객체 생성 - id 가져오기
@@ -56,7 +56,7 @@ public class UserInfoUpdateServlet extends HttpServlet {
 	
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		System.out.println("/user/info [POST]");
+		//System.out.println("/user/info [POST]");
 		
 		
 		 req.setCharacterEncoding("UTF-8");

@@ -8,6 +8,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import dto.ClassBooking;
+import util.Paging;
 
 public interface UserMyPageClassService {
 
@@ -19,11 +20,12 @@ public interface UserMyPageClassService {
 
 	/**
 	 * 사용자 예약 리스트  전체 조회
+	 * @param paging 
 	 * @param userid
 	 * @param nowday
 	 * @return
 	 */
-	public ArrayList<Map<String, Object>> userbooking(String userid, Date nowday);
+	public ArrayList<Map<String, Object>> userbooking(Paging paging, String userid, Date nowday);
 
 	/**
 	 * 삭제할  bookingno 파람에서 뽑기
@@ -42,10 +44,11 @@ public interface UserMyPageClassService {
 
 	/**
 	 * 사용자 아이디별 장바구니 전체 조회
+	 * @param paging 
 	 * @param userid
 	 * @return
 	 */
-	public ArrayList<Map<String, Object>> userwish(String userid);
+	public ArrayList<Map<String, Object>> userwish(Paging paging, String userid);
 
 	/**
 	 * wishno param 빼오기
@@ -99,11 +102,12 @@ public interface UserMyPageClassService {
 
 	/**
 	 * 사용자 예약 리스트  전체 조회
+	 * @param paging 
 	 * @param userid
 	 * @param nowday
 	 * @return
 	 */
-	public ArrayList<Map<String, Object>> usersignup(String userid, Date nowday);
+	public ArrayList<Map<String, Object>> usersignup(Paging paging, String userid, Date nowday);
 
 	/**
 	 * 쿼리스트링의 classno 값 빼오기
@@ -144,6 +148,34 @@ public interface UserMyPageClassService {
 	 * @param reviewboardno 
 	 */
 	public void insertreview(HttpServletRequest req, HttpServletResponse resp, int userno, int classno, int bookingno, int reviewboardno);
+
+	/**
+	 * 마이페이지 - booking  페이징
+	 * @param req
+	 * @param userid
+	 * @param nowday
+	 * @return
+	 */
+	public Paging bookingPaging(HttpServletRequest req, String userid, Date nowday);
+
+	/**
+	 * 마이페이지 위시리스트 페이징
+	 * @param req
+	 * @param userid
+	 * @return
+	 */
+	public Paging wishPaging(HttpServletRequest req, String userid);
+
+	/**
+	 * 마이페이지 수강 클래스 페이징
+	 * @param req
+	 * @param userid
+	 * @param nowday
+	 * @return
+	 */
+	public Paging signupPaging(HttpServletRequest req, String userid, Date nowday);
+
+
 
 	
 

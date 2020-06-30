@@ -27,7 +27,7 @@ public class AdminReviewListServlet extends HttpServlet {
 
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		System.out.println("/admin/reviewlist - [GET]");
+//		System.out.println("/admin/reviewlist - [GET]");
 		
 		Paging paging = adminBoardService.getPagingReview(req);
 		

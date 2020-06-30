@@ -22,9 +22,9 @@ public class NaverLoginServlet extends HttpServlet {
 		String id=req.getParameter("id");
 		
 		session.setAttribute("userid", id);
-		System.out.println(email);
-		System.out.println(name);
-		System.out.println(id);
+		//System.out.println(email);
+		//System.out.println(name);
+		//System.out.println(id);
 		
 		resp.sendRedirect("/main");
 		

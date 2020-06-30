@@ -491,4 +491,46 @@ public class UserDaoImpl implements UserDao {
 		return res;
 	}
 
+
+	@Override
+	public ArrayList<Map<String, Object>> getReviewbyClassno(int classno) {
+		
+		conn=JDBCTemplate.getConnection();
+		String sql="select * from reviewboard b";
+		sql+=" left outer join reviewfile f ";
+		sql+=" on b.review_no=f.review_no";
+		sql+=" left outer join userinfo u";
+		sql+=" on b.user_no=u.user_no";
+		sql+=" where b.class_no=? order by b.review_date desc";
+		
+		ArrayList<Map<String, Object>> list = new ArrayList<>();
+		
+		try {
+			ps=conn.prepareStatement(sql);
+			ps.setInt(1, classno);
+			rs=ps.executeQuery();
+			
+			while(rs.next()) {
+				Map<String, Object> map = new HashMap<String, Object>();
+				
+				map.put("userid",rs.getString("user_id"));
+				map.put("reviewDate",rs.getDate("review_date"));
+				map.put("title",rs.getString("review_title"));
+				map.put("sta",rs.getString("sat_level"));
+				map.put("content",rs.getString("review_content"));
+				map.put("filename",rs.getString("review_rename"));
+				list.add(map);
+				
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			JDBCTemplate.close(rs);
+			JDBCTemplate.close(ps);
+		}
+		
+		return list;
+	}
+
 }

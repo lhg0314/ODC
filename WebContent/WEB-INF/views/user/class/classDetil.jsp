@@ -30,11 +30,11 @@ $(document).ready(function(){
 			
 			,success:function(res){
 				alert("후원완료")
-				console.log("성공")
+				
 				//$('#myModal3').modal('hide');
 			}
 			,error:function(){
-				console.log("실패")
+				
 			}
 		})
 	
@@ -43,13 +43,24 @@ $(document).ready(function(){
 })
 </script>
 
+<script> /*  예약페이지 스크롤 따라다니는 기능 */
+$(function(){  
+var currentPosition = parseInt($("#content-right").css("top")); 
+    $(window).scroll(function() { 
+            var position = $(window).scrollTop(); // 현재 스크롤바의 위치값을 반환합니다. 
+            $("#content-right").stop().animate({"top":position+currentPosition+"px"},300); 
+    });
+});
+</script>
+
+
 <script type="text/javascript">
 
 function donation(){
 	
 	var userno = ${userno};
 	var artno = ${artistinfo.artno};
-	var donPrice=donationForm.price.value;
+	var donPrice=donationForm.support-price.value;
 	console.log(donPrice)
 	if(!donPrice)
 	{
@@ -69,9 +80,6 @@ function ajaxFromServer2(){
 		if(httpRequest.status==200){//OK
 			alert("후원 완료")
 			
-
-	
-		self
 			
 		}else{
 			console.log("AJAX요청/응답 에러")
@@ -100,7 +108,7 @@ function writeCmt()
 	{	
 		var param="userno="+userno+"&artno="+artno+"&comment="+content+"&classno="+classno;
 			
-		console.log(param);
+		
 		sendRequest("POST","/add/ask",param,ajaxFromServer);
 	}
 }
@@ -108,8 +116,7 @@ function writeCmt()
 function ajaxFromServer(){
 	if(httpRequest.readyState==4){//DONE,응답완료
 		if(httpRequest.status==200){//OK
-			console.log("정상응답")
-			console.log("응답: "+httpRequest.responseText);
+			
 			document.location.reload(); // 상세보기 창 새로고침 댓글 새로고침
 			document.getElementById("ask")[0].click();
 			
@@ -124,11 +131,11 @@ function ajaxFromServer(){
 
 
 var date='${classinfo.recruitEnddate }';
-console.log(date)
+
 $(function() {
     $( "#testDatepicker" ).datepicker({
     	//dateFormat: 'yyyy-mm-dd',
-    	minDate: new Date(),
+    	 minDate: new Date('${classinfo.recruitStartdate }'),
     	 maxDate:new Date('${classinfo.recruitEnddate }')
     
     });
@@ -146,7 +153,7 @@ $(document).ready(function() {
 	var quantity = parseInt($('#quantity').val(), 10) + 1;
 	var price = ${classinfo.classPrice}
 	
-	
+	console.log(quantity)
 	
 	
 
@@ -156,7 +163,7 @@ $(document).ready(function() {
 	$("#num-add").off('click').on('click', function(){				
 		quantity = parseInt($('#quantity').val(), 10) + 1;
 		price = ${classinfo.classPrice}
-		
+		console.log(quantity)
 		$('#quantity').val( quantity );				
 		$('#price').empty().append( (price * quantity) + ' <span> 원</span>' );				
 	});
@@ -175,9 +182,25 @@ $(document).ready(function() {
 	});
 	
 	$("#wishlist").click(function(){//장바구니를 눌렀을때
+		console.log(userno)
+		if(!$("#testDatepicker").val()){
+			alert("날짜를 정하세요");
+			return false;
+		}
+	
+		if(quantity==0){
+			alert("인원을 정하세요");
+			return false;
+		}
+		if(quantity>5){
+			alert("최대 예약인원은 5명입니다");
+			return false;
+		}
+	
+		
 		var param="userno="+userno+"&count="+quantity+"&totalPrice="+(price * quantity)+"&classno="+classno+"&wishdate="+$("#testDatepicker").val();
 		
-		console.log(param);
+		
 		sendRequest("POST","/insert/wishlist",param,ajaxFromServer1);
 		
 	})
@@ -199,7 +222,7 @@ $(document).ready(function() {
 				document.location.reload(); // 상세보기 창 새로고침 댓글 새로고침
 				
 			}else{
-				console.log("AJAX요청/응답 에러")
+				
 			}
 		}
 	}
@@ -207,7 +230,7 @@ $(document).ready(function() {
 	$("#bookinglist").click(function(){//예약하기를 눌렀을때
 		var param="userno="+userno+"&count="+quantity+"&totalPrice="+(price * quantity)+"&classno="+classno+"&wishdate="+$("#testDatepicker").val();
 		location.href="/userclass/payment?"+param;
-		console.log(param);
+		
 	})
 	
 })
@@ -223,8 +246,8 @@ $(document).ready(function() {
 align-content: center;
 text-align: center;
 width:740px;
-
-background-color: thistle;
+border:2px solid thistle;
+/* background-color: thistle; */
 margin-top: 20px;
 height:200px;
 
@@ -296,6 +319,7 @@ height:200px;
     top: 30px;
     right: 0;
     border: 1px solid #d5dadf;
+    margin-bottom: 20px;
 }
 
 #class-confirm{
@@ -433,7 +457,72 @@ margin-top: 40px;
 text-align: center;
 }
 
+.table{
+width:740px;
+margin-top: 20px;
+}
 
+
+.reviewImg{
+width: 100px;
+height:100px;
+}
+
+.review-wrapper{
+position: relative;
+width:740px;
+
+}
+.review-id{
+width:100px;
+position:absolute;
+left:10px;
+top:0;
+font-size: 18px;
+
+}
+.review-date{
+width:100px;
+right:10px;
+top:20px;
+position:absolute;
+font-size: 15px;
+color: #ccc;
+}
+.review-sat{
+
+margin-top:30px;
+font-size: 15px;
+color: #8878CD;
+}
+.review-content{
+margin-top: 10px;
+
+}
+.review-img{
+
+height:100px;
+margin-top: 10px;
+
+}
+
+.review-wrapper > div{
+
+}
+
+.thumbnail {
+    display: block;
+    padding: 4px;
+    margin-bottom: 20px;
+    line-height: 1.42857143;
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    -webkit-transition: border .2s ease-in-out;
+    -o-transition: border .2s ease-in-out;
+    transition: border .2s ease-in-out;
+    height: 230px;
+}
 
 </style>
 
@@ -501,10 +590,13 @@ text-align: center;
 						<ul class="nav nav-tabs" role="tablist">
 							<li role="presentation" class="active"><a href="#home"
 								aria-controls="home" role="tab" data-toggle="tab">상세정보</a></li>
+								
 							<li role="presentation" class="review"><a href="#profile"
 								aria-controls="profile" role="tab" data-toggle="tab">후기</a></li>
+								
 							<li role="presentation" class="ask" id="ask"><a href="#messages"
 								aria-controls="messages" role="tab" data-toggle="tab">Q&A</a></li>
+								
 							<li role="presentation"><a href="#settings"
 								aria-controls="settings" role="tab" data-toggle="tab">작가 정보</a></li>
 						</ul>
@@ -512,7 +604,8 @@ text-align: center;
 						<!-- Tab panes -->
 						<div class="tab-content">
 							<div role="tabpanel" class="tab-pane active class-info" id="home"><!-- 상세정보  -->
-								<h3>
+							
+								<br><br><h3>
 									<b>&nbsp;&nbsp;상세설명</b>
 								</h3>
 								<br>
@@ -520,7 +613,8 @@ text-align: center;
 								<p id="cassinfotext">${classinfo.classContent }</p>
 							</div>
 							<div id="detailImg-wrapper">
-							<h3><b>&nbsp;&nbsp;클래스 사진</b></h3><br>
+							<h3><b>&nbsp;&nbsp;클래스 사진</b></h3>
+							<hr>
 							
 							<c:forEach var="i" begin="0" end="${classDetail.size()-1 }">
 								<div class="swiper-slide">
@@ -531,7 +625,7 @@ text-align: center;
 							</div>
 							<br><br><br>
 							<h3><b>&nbsp;&nbsp;클래스 장소</b></h3><br>
-							
+							<hr>
 							
 							<div id="map" style="width: 100%; height: 350px;"></div>
 
@@ -613,26 +707,44 @@ text-align: center;
 							
 								<div id="review-wrap"><!-- 리뷰 전체 감싸기 -->
 									<div>     </div><!-- 리뷰 타이틀  -->
-									
+									<c:if test="${reviewList.size() ne 0 }">
+									<table class="table table-striped">
+										<c:forEach var="i" begin="0" end="${reviewList.size()-1 }">
+										<tr>
+											<td  class="review-wrapper"><div>
+													<div class="review-id">${reviewList[i].userid }</div>
+													<div class="review-date">${reviewList[i].reviewDate }</div> 
+													<div class="review-sat">만족도 [ ${reviewList[i].sta } ]</div>
+													<div class="review-content">${reviewList[i].content }</div> 
+													<c:if test="${reviewList[i].filename ne null }">
+													<div class="review-img"><img src="/upload/${reviewList[i].filename}" class="reviewImg"></div>
+													</c:if>
+												</div></td>
+										</tr>
+										</c:forEach>
+									</table>
+								</c:if>
 								
 								</div>
 							
 							</div>
+							
+							
 							<div role="tabpanel" class="tab-pane" id="messages"><!-- 문의  -->
 								<div>
-								문의 댓글창
+								
 								<c:if test="${userid !=null}">
 									
 										<form id="writeCommentForm">
-												<div>${sessionScope.userid}</div>
+												<br>
 											<!-- 본문 작성-->
 												<div>
-													<textarea name="comment" rows="4" cols="70"></textarea>
+													<textarea name="comment" rows="4" cols="80" style="resize: none;"></textarea>
 												</div>
 											<!-- 댓글 등록 버튼 -->
 												<div id="btn" style="text-align: center;">
 													<p>
-														<a class="btn" onclick="writeCmt()">[댓글등록]</a>
+														<a class="btn btn-info" onclick="writeCmt()">댓글등록</a>
 													</p>
 												</div>
 										</form>
@@ -663,13 +775,11 @@ text-align: center;
 								</c:if>
 							</div>
 							
-								<div id="ask-wrap"><!-- 리뷰 전체 감싸기 -->
-									<div>     </div><!-- 리뷰 타이틀  -->
-									
 								
-								</div>
 							
 							</div>
+							
+							
 							<div role="tabpanel" class="tab-pane" id="settings"><!-- 작가정보  -->
 
 
@@ -702,8 +812,8 @@ text-align: center;
 													<br><br>
 													
 												<div class="form-group">
-													<label for="price">후원 금액</label> <input
-														type="number" class="form-control" id="price" name="price"
+													<label for="support-price">후원 금액</label> <input
+														type="number" class="form-control" id="support-price" name="support-price"
 														placeholder="후원할 금액을 입력해 주세요"><span>원</span>
 												</div>
 												
@@ -735,18 +845,21 @@ text-align: center;
 								<hr>
 								<div  id="classbox-wrapper">
 								<c:forEach var="i" begin="0" end="${clist.size()-1 }">
-								<a href="/userclass/detail?classno=${clist[i].classno }"><div class="row">
-									
-										<div class="thumbnail">
-											<img src="/upload/${clist[i].classfilename}" alt="..."  style="width: 150px; height:150px">
-											<div class="caption">
-												<h4>${clist[i].classname }</h4>
-												
-												
+									<a href="/userclass/detail?classno=${clist[i].classno }">
+										<div class="row">
+
+											<div class="thumbnail"><br>
+												<img src="/upload/${clist[i].classfilename}" alt="..."
+													style="width: 150px; height: 150px">
+												<div class="caption">
+													<span>${clist[i].classname }</span>
+
+
+												</div>
 											</div>
+
 										</div>
-									
-								</div></a>
+									</a>
 								</c:forEach>
 
 
@@ -767,8 +880,8 @@ text-align: center;
 
 					</div>
 					<div id="class-bookin2">
-					<div class="text01">
-							날짜 선택
+					<div class="text01"><br>
+							&nbsp;&nbsp;&nbsp;&nbsp;날짜 선택
 						</div>
 						<div class="calendar" id="scheduleCalendar">
 						
@@ -791,9 +904,15 @@ text-align: center;
 					
 						
 					</div>
-				
-			 <input class="btn btn-default" type="button" id="wishlist" value="장바구니" style="margin-right:20px;margin-top:20px;">
-			 <input class="btn btn-default" type="button" id="bookinglist" value="예약하기" style="margin-right:20px;margin-top:20px;">
+				<div id="right-btn">
+			 <a class="btn btn-default"  id="wishlist"  style="margin-right:20px;margin-top:20px;margin-left:30%;background: #ccc;">
+			 	<img src="/resources/img/classbutton/wishlist_btnimg.png">
+			 </a>
+			 <a class="btn btn-default" id="bookinglist"  style="margin-right:20px;margin-top:20px;background: thistle;">
+			 	<img src="/resources/img/classbutton/reservation_btnimg.png">
+			 </a>
+			 <br><br>
+			 </div>
 				</div>
 			</div>
 		</div>
@@ -802,7 +921,7 @@ text-align: center;
 	</div>
 </div>
 
-</div>
+
 <script>
 
 new Swiper('.swiper-container', {

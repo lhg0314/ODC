@@ -475,21 +475,20 @@ $(document).ready(function(){
     <br><hr>
 
    <div id="sliderbox2">
-
       <ul id="slider2">
       
          <c:forEach items="${newList }" var="n" begin="0" end="9" >
          <li id="li">
          <div id="eachClass">
             <div id="img"><!-- 링크 누르면 클래스 상세 페이지로 이동 -->
-               <a href="userclass/detail?classno=${n.classno }"><img src="/upload/${n.filename }" alt="썸네일" width="200px;" height="200px;"></a>
+               <a href="/userclass/detail?classno=${n.classno }"><img src="/upload/${n.filename }" alt="썸네일" width="200px;" height="200px;"></a>
       <!--테스트용   <a href="#"><img src="/resources/img/Tulips.jpg" alt="썸네일" width="200px;" height="200px;"></a> -->
             </div>
             <div id="sort">
                <span>${n.location }</span> | <span>${n.category }</span>
             </div>
             <div id="classname"><!-- 링크 누르면 클래스 상세 페이지로 이동 -->
-               <a href="userclass/detail?classno=${n.classno }"><span>${n.className }</span></a>
+               <a href="/userclass/detail?classno=${n.classno }"><span>${n.className }</span></a>
             </div>
          </div>
          </li>

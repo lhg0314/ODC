@@ -1,5 +1,6 @@
 package user.service.impl;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
@@ -105,6 +106,11 @@ public class UserServiceImpl implements UserService {
 	public int insertDonation(Donation d) {
 		// TODO Auto-generated method stub
 		return userDao.insertDonation(d);
+	}
+	@Override
+	public ArrayList<Map<String, Object>> getReviewbyClassno(int classno) {
+		// TODO Auto-generated method stub
+		return userDao.getReviewbyClassno(classno);
 	}
 
 }

@@ -63,8 +63,8 @@ public class UserLeaveServlet extends HttpServlet {
 		uinfo.setUserpw(req.getParameter("pwcheck"));
 		
 		
-		System.out.println((String)session.getAttribute("userid"));
-		System.out.println(req.getParameter("pwcheck"));
+		//System.out.println((String)session.getAttribute("userid"));
+		//System.out.println(req.getParameter("pwcheck"));
 		
 		
 		

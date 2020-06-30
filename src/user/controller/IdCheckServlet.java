@@ -20,13 +20,13 @@ public class IdCheckServlet extends HttpServlet {
  
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		System.out.println("dopost[id/check]");
+		//System.out.println("dopost[id/check]");
 		String checkId=req.getParameter("userid");
-		System.out.println(checkId);
+		//System.out.println(checkId);
 		
 		int result=userService.idCheck(checkId);
 		
-		System.out.println(result);
+		//System.out.println(result);
 		resp.setContentType("text/html;charset=utf-8");
 		PrintWriter out=resp.getWriter();
 		

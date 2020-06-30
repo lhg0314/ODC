@@ -34,7 +34,7 @@ public class UserClassPayment extends HttpServlet {
 	
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		System.out.println("test inju");
+		//System.out.println("test inju");
 		
 		//사용자로 로그인한 아이디값 가져오기
 		HttpSession session = req.getSession();

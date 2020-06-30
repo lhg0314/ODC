@@ -31,7 +31,7 @@ public class DetailAskShowServlet extends HttpServlet {
 	        PrintWriter out=resp.getWriter();//ajax로 응답을 하기위한 printwriter
 			int classno=Integer.parseInt(req.getParameter("classno"));
 			List<AskBoard> list=us.selectAskByClassno(classno);
-			System.out.println(list);
+			//System.out.println(list);
 			 HashMap<String,Object> map=new HashMap<String,Object>();
 			 map.put("asklist",list);
 			 Gson gson=new Gson();

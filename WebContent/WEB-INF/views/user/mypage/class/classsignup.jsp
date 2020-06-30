@@ -98,5 +98,8 @@
 <!-- float 막는 clear -->
 <div class="clearfix"></div>
 
+<!-- 페이징 -->
+<c:import url="/WEB-INF/paging/usersignuplistpaging.jsp"></c:import>
+
 <!-- 메인 footer -->
 <c:import url="/WEB-INF/layout/common/main/footer.jsp"></c:import>

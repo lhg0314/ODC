@@ -53,7 +53,7 @@ public class MypageServlet extends HttpServlet {
 		UserInfo uinfo = userUpdateService.userInfoLoad(u);
 		int grade = uinfo.getUsergrade();
 		
-		System.out.println(grade);
+		//System.out.println(grade);
 		
 		
 		//사용자  아이디  jsp로 넘기기

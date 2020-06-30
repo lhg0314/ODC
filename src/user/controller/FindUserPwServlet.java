@@ -35,13 +35,13 @@ public class FindUserPwServlet extends HttpServlet {
 		String name=req.getParameter("name");
 		String id=req.getParameter("id");
 		
-		System.out.println(email+","+name+","+id);
+		//System.out.println(email+","+name+","+id);
 		
 		int res=userService.selectUserPwByEN(email,name,id);//일치하는 회원정보가 있는지 조회
 		
 		if(res==1) {//일치하는 회원정보가 있으면
 			String pw=userService.getPwByEN(email,name,id);
-			System.out.println(pw);
+			//System.out.println(pw);
 			out.println(pw);
 		}else {//일치하는 회원정보가 없을떄
 			out.println(0);

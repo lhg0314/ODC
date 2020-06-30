@@ -1,5 +1,6 @@
 package user.dao;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
@@ -43,5 +44,7 @@ public interface UserDao {
 	List<Map<String, Object>> getClassList(int artno);
 
 	int insertDonation(Donation d);
+
+	ArrayList<Map<String, Object>> getReviewbyClassno(int classno);
 
 }

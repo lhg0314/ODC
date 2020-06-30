@@ -18,6 +18,10 @@
 
 
 <style type="text/css">
+#SvnArtInfo{
+	color: #e7717d;
+}
+
 
 .infotable {
 	

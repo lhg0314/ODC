@@ -118,9 +118,9 @@ list-style: none;
    <div style="position: absolute; width: 350px; right: -1%; top:0%;"> 
 	   <ul id="minilist">
 	   		
-			<li><a href="/main" class="aNone" target="_blank">&nbsp; 사업자 페이지&nbsp;|</a></li>
-			<li><a href="/artist/main" class="aNone" target="_blank">&nbsp; 사용자 페이지&nbsp;|</a></li>
-			<li><a href="/user/logout" class="aNone">&nbsp; 로그아웃</a></li>
+			<li>&nbsp; <a href="/artist/artistpage" class="aNone" target="_blank">사업자 페이지</a>&nbsp;|</li>
+			<li>&nbsp; <a href="/main" class="aNone" target="_blank">사용자 페이지</a>&nbsp;|</li>
+			<li>&nbsp; <a href="/user/logout" class="aNone">로그아웃</a></li>
 
 	   </ul>
    </div>

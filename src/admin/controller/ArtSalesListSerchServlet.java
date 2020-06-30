@@ -27,6 +27,12 @@ public class ArtSalesListSerchServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 //		System.out.println("/admin/artsales/search [get]");
 		
+		//요청
+		req.setCharacterEncoding("utf-8");
+		
+		//응답
+		resp.setContentType("text/html;charset=utf-8");
+		
 		//검색한 사용자 아이디 파라미터값 꺼내기
 		String artid =  adminSalesService.searchidparam(req);
 		
@@ -62,6 +68,12 @@ public class ArtSalesListSerchServlet extends HttpServlet {
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 //		System.out.println("/admin/artsales/search [post]");
+		
+		//요청
+		req.setCharacterEncoding("utf-8");
+		
+		//응답
+		resp.setContentType("text/html;charset=utf-8");
 		
 		//검색한 사용자 아이디 파라미터값 꺼내기
 		String artid =  adminSalesService.searchidparam(req);

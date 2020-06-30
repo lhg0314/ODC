@@ -13,6 +13,10 @@
 	text-align: center;
 	background: thistle;
 }
+#SvnArtReview{
+	color: #e7717d;
+}
+
 </style>
 
 <div id="main">
@@ -38,7 +42,7 @@
 	<tr><th colspan="1">만족도</th><td colspan="3">${reviewdetail.satLevel }</td></tr>
 </thead>
 	<c:if test="${not empty reviewdetail.filename }">
-		<tr><td colspan="4"><img src="/upload/${reviewdetail.filename }"></td></tr>
+		<tr><td colspan="4"><img src="/upload/${reviewdetail.filename }" width="850px"></td></tr>
 	</c:if>
 	<tr>
 		<td colspan="4">${reviewdetail.reviewContent }</td>

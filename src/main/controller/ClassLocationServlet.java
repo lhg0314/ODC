@@ -12,6 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import main.service.face.LocationCategoryTalentService;
 import main.service.impl.LocationCategoryTalentServiceImpl;
+import util.Paging;
 
 @WebServlet("/location")
 public class ClassLocationServlet extends HttpServlet {
@@ -29,17 +30,19 @@ public class ClassLocationServlet extends HttpServlet {
 		if( param != null && !"".equals(param)) {
 			location = Integer.parseInt(param);
 		}
+		
+		Paging paging = locationService.getPagingLocation(req, location);
 
-		List<Map<String, Object>> list = locationService.selectClassByLocation(location);
+		List<Map<String, Object>> list = locationService.selectClassByLocation(paging, location);
 		
 		// 지역별 처리
 		String msg = locationService.getLocation(req, location);
 		
 		req.setAttribute("list", list);
+		req.setAttribute("paging", paging);
 		req.setAttribute("message", msg);
 		
 		req.getRequestDispatcher("/WEB-INF/views/main/navMenu/location.jsp").forward(req, resp);
-	
 	
 	}
 	

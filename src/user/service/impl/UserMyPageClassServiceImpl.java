@@ -29,6 +29,7 @@ import dto.ReviewFile;
 import user.dao.UserMyPageClassDaoImpl;
 import user.dao.face.UserMyPageClassDao;
 import user.service.face.UserMyPageClassService;
+import util.Paging;
 
 public class UserMyPageClassServiceImpl implements UserMyPageClassService{
 	private UserMyPageClassDao usermypageclassDao = new UserMyPageClassDaoImpl();
@@ -53,8 +54,8 @@ public class UserMyPageClassServiceImpl implements UserMyPageClassService{
 	}
 	
 	@Override
-	public ArrayList<Map<String, Object>> userbooking(String userid, Date nowday) {
-		ArrayList<Map<String, Object>> userbooking = usermypageclassDao.userbooking(userid,nowday);
+	public ArrayList<Map<String, Object>> userbooking(Paging paging,String userid, Date nowday) {
+		ArrayList<Map<String, Object>> userbooking = usermypageclassDao.userbooking(paging,userid,nowday);
 		return userbooking;
 	}
 	
@@ -78,8 +79,8 @@ public class UserMyPageClassServiceImpl implements UserMyPageClassService{
 	}
 	
 	@Override
-	public ArrayList<Map<String, Object>> userwish(String userid) {
-		ArrayList<Map<String, Object>> userwish = usermypageclassDao.userwish(userid);
+	public ArrayList<Map<String, Object>> userwish(Paging paging,String userid) {
+		ArrayList<Map<String, Object>> userwish = usermypageclassDao.userwish(paging,userid);
 		return userwish;
 	}
 	
@@ -181,8 +182,8 @@ public class UserMyPageClassServiceImpl implements UserMyPageClassService{
 	}
 	
 	@Override
-	public ArrayList<Map<String, Object>> usersignup(String userid, Date nowday) {
-		ArrayList<Map<String, Object>> usersignup = usermypageclassDao.usersignup(userid,nowday);
+	public ArrayList<Map<String, Object>> usersignup(Paging paging,String userid, Date nowday) {
+		ArrayList<Map<String, Object>> usersignup = usermypageclassDao.usersignup(paging,userid,nowday);
 		return usersignup;
 	}
 	
@@ -491,6 +492,63 @@ public class UserMyPageClassServiceImpl implements UserMyPageClassService{
 		//전달파라미터 저장한 DTO확인
 //		System.out.println("[TEST] fileupload boardParam :" +boardParam); //content 값 출력 됨
 		
+	}
+	
+	@Override
+	public Paging bookingPaging(HttpServletRequest req, String userid, Date nowday) {
+		//전달 파라미터  curPage를 파싱한다
+		String param = req.getParameter("curPage");
+		int curPage = 0 ;
+		if(param != null && !"".equals(param)) {
+			curPage = Integer.parseInt(param);
+		}
+		
+		//classbooking 테이블의 총 게시글 수를 조회한다
+		int totalCount = usermypageclassDao.bookingselectCntAll(userid,nowday);
+		
+		//paging객체 생성
+		Paging paging = new Paging(totalCount, curPage);
+		
+		//계산된 Paging 객체 반환
+		return paging;
+	}
+	
+	@Override
+	public Paging wishPaging(HttpServletRequest req, String userid) {
+		//전달 파라미터  curPage를 파싱한다
+		String param = req.getParameter("curPage");
+		int curPage = 0 ;
+		if(param != null && !"".equals(param)) {
+			curPage = Integer.parseInt(param);
+		}
+		
+		//classbooking 테이블의 총 게시글 수를 조회한다
+		int totalCount = usermypageclassDao.wishselectCntAll(userid);
+		
+		//paging객체 생성
+		Paging paging = new Paging(totalCount, curPage);
+		
+		//계산된 Paging 객체 반환
+		return paging;
+	}
+	
+	@Override
+	public Paging signupPaging(HttpServletRequest req, String userid, Date nowday) {
+		//전달 파라미터  curPage를 파싱한다
+		String param = req.getParameter("curPage");
+		int curPage = 0 ;
+		if(param != null && !"".equals(param)) {
+			curPage = Integer.parseInt(param);
+		}
+		
+		//classbooking 테이블의 총 게시글 수를 조회한다
+		int totalCount = usermypageclassDao.signupselectCntAll(userid,nowday);
+		
+		//paging객체 생성
+		Paging paging = new Paging(totalCount, curPage);
+		
+		//계산된 Paging 객체 반환
+		return paging;
 	}
 
 }

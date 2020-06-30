@@ -32,7 +32,7 @@ public class ArtistDonationDaoImpl implements ArtistDonationDao {
 		String sql = "";
 
 		try {
-			if (month != null && !"00".equals(month)) {
+			if (month != null && !"00".equals(month) && !"".equals(month)) {
 
 				// 현재 날짜 기준 년원일
 				SimpleDateFormat format = new SimpleDateFormat("yy");
@@ -137,7 +137,7 @@ public class ArtistDonationDaoImpl implements ArtistDonationDao {
 				sql += "	inner join artistinfo a on (d.art_no = a.art_no)";
 				sql += "	inner join userinfo u on (d.user_no = u.user_no)";
 				sql += "	where d.art_no = ? and donation_date between ? and ?";
-				sql += "	order by donation_date) b order by rnum ) t where rnum between ? and ?";
+				sql += "	order by donation_date desc) b order by rnum ) t where rnum between ? and ?";
 
 				ps = conn.prepareStatement(sql);
 
@@ -154,7 +154,7 @@ public class ArtistDonationDaoImpl implements ArtistDonationDao {
 				sql += "	inner join artistinfo a on (d.art_no = a.art_no)";
 				sql += "	inner join userinfo u on (d.user_no = u.user_no)";
 				sql += "	where d.art_no = ?";
-				sql += "	order by donation_date) b order by rnum ) t where rnum between ? and ?";
+				sql += "	order by donation_date desc) b order by rnum ) t where rnum between ? and ?";
 
 				ps = conn.prepareStatement(sql);
 

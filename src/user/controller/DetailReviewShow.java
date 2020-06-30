@@ -26,11 +26,11 @@ public class DetailReviewShow extends HttpServlet {
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         resp.setCharacterEncoding("UTF-8");//printwriter를 위한 인코딩
         PrintWriter out=resp.getWriter();//ajax로 응답을 하기위한 printwriter
-		System.out.println("완료");
+		//System.out.println("완료");
 		int classno=Integer.parseInt(req.getParameter("classno"));
-		System.out.println(classno);
+		//System.out.println(classno);
 		List<Map<String, Object>> review=us.getDetailReview(classno);
-		System.out.println(review);
+		//System.out.println(review);
 		out.println(review);
 	}
 	

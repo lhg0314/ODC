@@ -14,6 +14,11 @@
 	text-align: center;
 	background: thistle;
 }
+#SvnArtDona{
+	color: #e7717d;
+}
+
+
 </style>
 
 <div id="main">
