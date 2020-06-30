@@ -24,7 +24,11 @@ public class MypageReviewListDeleteServlet extends HttpServlet {
 
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+<<<<<<< HEAD
 		//System.out.println("/user/rlistdelete - [GET]");
+=======
+//		System.out.println("/user/rlistdelete - [GET]");
+>>>>>>> joo2
 
 		HttpSession session = req.getSession();
 		

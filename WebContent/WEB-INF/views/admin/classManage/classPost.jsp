@@ -7,9 +7,15 @@
 <script type="text/javascript">
 $(document).ready(function(){
 	
-	//검색 버틀 클릭
+	//검색 버튼 클릭
 	$("#btnSearch").click(function() {
 		location.href="/admin/class/post?search="+$("#search").val();
+	});
+	
+	$("#search").keydown(function(e) {
+		if( e.keyCode == 13 ) {
+			$("#btnSearch").click();
+		}
 	});
 });
 

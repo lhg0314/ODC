@@ -71,9 +71,21 @@ function checkAll() {
 </script>
 
 <style type="text/css">
+#reviewTable {
+	table-layout: fixed;
+} 
+
 #reviewTable th {
 	text-align: center;
 	background: thistle;
+}
+
+#reviewTable td {
+	height: 20px;
+	overflow: hidden;
+    text-overflow: ellipsis;
+	word-break: break-all;
+    white-space: nowrap; 
 }
 </style>
 <div>
@@ -88,12 +100,12 @@ function checkAll() {
 
 <table id="reviewTable" class="table table-condensed text-center table-hover">
 	<tr>
-		<th><input type="checkbox" id="checkAll" onclick="checkAll();" /></th>
-		<th>번호</th>
-		<th>작성자 아이디</th>
-		<th style="width: 20%;">클래스명</th>
-		<th style="width: 40%;">제목</th>
-		<th>게시 날짜</th>
+		<th style="width: 5%;"><input type="checkbox" id="checkAll" onclick="checkAll();" /></th>
+		<th style="width: 5%;">번호</th>
+		<th style="width: 15%;">작성자 아이디</th>
+		<th style="width: 25%;">클래스명</th>
+		<th>제목</th>
+		<th style="width: 15%;">게시 날짜</th>
 	</tr>
 
 	<c:if test="${empty list }">
@@ -108,7 +120,7 @@ function checkAll() {
 		<td><input type="checkbox" name="checkRow" value="${info.reviewNo }" /></td>
 		<td>${info.reviewNo }</td>
 		<td>${info.userId }</td>
-		<td style="text-align: left;">${info.className}</td>
+		<td style="text-align: left; width: 20%;">${info.className}</td>
 		<td style="text-align: left;"><a href="/admin/reviewdetail?reviewno=${info.reviewNo }">${info.reviewTitle }</a></td>
 		<td>${info.reviewDate }</td>
 	</tr>	

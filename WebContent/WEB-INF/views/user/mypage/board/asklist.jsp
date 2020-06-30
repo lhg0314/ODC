@@ -75,9 +75,21 @@ function checkAll() {
 </script>
 
 <style type="text/css">
+#askTable {
+	table-layout: fixed;
+} 
+
 #askTable th {
 	text-align: center;
 	background: thistle;
+}
+
+#askTable td {
+	height: 20px;
+	overflow: hidden;
+    text-overflow: ellipsis;
+	word-break: break-all;
+    white-space: nowrap; 
 }
 </style>
 
@@ -94,13 +106,13 @@ function checkAll() {
 
 <table id="askTable" class="table table-condensed text-center table-hover">
 	<tr>
-		<th><input type="checkbox" id="checkAll" onclick="checkAll();" /></th>
-		<th style="width: 8%;">번호</th>
-		<th style="width: 17%;">작가 이름</th>
-		<th style="width: 23%;">클래스명</th>
-		<th style="width: 23%;">제목</th>
-		<th>문의 날짜</th>
-		<th>답변 여부</th>
+		<th style="width: 5%;"><input type="checkbox" id="checkAll" onclick="checkAll();" /></th>
+		<th style="width: 10%;">번호</th>
+		<th style="width: 15%;">작가 이름</th>
+		<th style="width: 25%;">클래스명</th>
+		<th>제목</th>
+		<th style="width: 15%;">문의 날짜</th>
+		<th style="width: 15%;">답변 여부</th>
 	</tr>
 
 	<c:if test="${empty list }">

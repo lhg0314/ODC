@@ -11,7 +11,12 @@ import javax.servlet.http.HttpServletResponse;
 import artist.service.face.ArtistBoardService;
 import artist.service.impl.ArtistBoardServiceImpl;
 import dto.AskBoardComm;
-
+/**
+ * 
+ * 작가페이지 - 문의게시판 댓글 작성
+ * @author 박주이
+ *
+ */
 @WebServlet("/askcomm/insert")
 public class AskCommInsertServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
@@ -27,7 +32,7 @@ public class AskCommInsertServlet extends HttpServlet {
 		
 		artistBoardService.insertComment(comm);
 		
-		System.out.println(comm);
+//		System.out.println(comm);
 		
 		resp.sendRedirect("/artist/askdetail?askno="+comm.getAskBoardno());
 	}

@@ -51,6 +51,12 @@ $(document).ready(function() {
 		location.href="/admin/artlist?search="+$("#search").val();
 	})
 	
+	$("#search").keydown(function(e) {
+		if( e.keyCode == 13 ) {
+			$("#btnSearch").click();
+		}
+	});
+	
 })
 </script>
 

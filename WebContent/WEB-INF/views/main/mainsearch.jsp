@@ -154,7 +154,7 @@
 			<li id="li">
 			<div id="eachClass">
 				<div id="img"><!-- 링크 누르면 클래스 상세 페이지로 이동 -->
-					<a href="#"><img src="/upload/${info.filename }" alt="썸네일" width="200px;" height="200px;"></a>
+					<a href="/userclass/detail?classno=${info.classNo }"><img src="/upload/${info.filename }" alt="썸네일" width="200px;" height="200px;"></a>
 				</div>
 				<div id="sort">
 					<c:if test="${info.location eq 1 }">
@@ -204,10 +204,6 @@
 				<div id="classname"><!-- 링크 누르면 클래스 상세 페이지로 이동 -->
 					<a href="/userclass/detail?classno=${info.classNo }"><span>${info.className }</span></a>
 				</div>
-				<div id="btns"><!-- 각각 상세 페이지로 이동 / 장바구니 담기 -->
-			        <a style="background: thistle;" href="#"><img src="/resources/img/classbutton/reservation_btnimg.png"></a> 
-			        <a style="background: #ccc;" href="#"><img src="/resources/img/classbutton/wishlist_btnimg.png"></a>
-		       </div>
 			</div>
 			</li>
 		</c:forEach>

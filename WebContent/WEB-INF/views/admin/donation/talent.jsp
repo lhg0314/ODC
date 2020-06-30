@@ -18,9 +18,21 @@ $(document).ready(function(){
 });
 </script>
 <style type="text/css">
+#talentTable{
+	table-layout: fixed;
+} 
+
 #talentTable th {
 	text-align: center;
 	background: thistle;
+}
+
+#talentTable td {
+	height: 20px;
+	overflow: hidden;
+    text-overflow: ellipsis;
+	word-break: break-all;
+    white-space: nowrap; 
 }
 </style>
 <div>
@@ -35,7 +47,7 @@ $(document).ready(function(){
 	<tr>
 		<th>번호</th>
 		<th style="width: 23%;">클래스명</th>
-		<th>사업자 아이디</th>
+		<th style="width: 15%">사업자 아이디</th>
 		<th>카테고리</th>
 		<th>지역</th>
 		<th>신청 날짜</th>

@@ -212,7 +212,7 @@ public class DonationDaoImpl implements DonationDao {
 				sql += "	inner join artistinfo a on (d.art_no = a.art_no)";
 				sql += "	inner join userinfo u on (d.user_no = u.user_no)";
 				sql += "	where art_name like '%'||?||'%' and donation_date between ? and ?";
-				sql += "	order by donation_date) b order by rnum ) t where rnum between ? and ?";
+				sql += "	order by donation_date desc) b order by rnum ) t where rnum between ? and ?";
 				
 				ps = conn.prepareStatement(sql);
 				
@@ -229,7 +229,7 @@ public class DonationDaoImpl implements DonationDao {
 				sql += "	inner join artistinfo a on (d.art_no = a.art_no)";
 				sql += "	inner join userinfo u on (d.user_no = u.user_no)";
 				sql += "	where art_name like '%'||?||'%'";
-				sql += "	order by donation_date) b order by rnum ) t where rnum between ? and ?";
+				sql += "	order by donation_date desc) b order by rnum ) t where rnum between ? and ?";
 				
 				ps = conn.prepareStatement(sql);
 				

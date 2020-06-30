@@ -13,7 +13,12 @@ import javax.servlet.http.HttpServletResponse;
 import admin.service.face.AdminBoardService;
 import admin.service.impl.AdminBoardServiceImpl;
 import dto.AskBoardComm;
-
+/**
+ * 
+ * 관리자 페이지 - 리뷰 상세보기
+ * @author 박주이
+ *
+ */
 @WebServlet("/admin/reviewdetail")
 public class AdminReviewDetailServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
@@ -22,7 +27,7 @@ public class AdminReviewDetailServlet extends HttpServlet {
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		
-int reviewno = Integer.parseInt(req.getParameter("reviewno"));
+		int reviewno = Integer.parseInt(req.getParameter("reviewno"));
 		
 		Map<String, Object> reviewdetail = adminBoardService.selectReviewByReviewNo(reviewno);
 		

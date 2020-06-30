@@ -13,7 +13,12 @@ import javax.servlet.http.HttpServletResponse;
 import artist.service.face.ArtistBoardService;
 import artist.service.impl.ArtistBoardServiceImpl;
 import dto.AskBoardComm;
-
+/**
+ * 
+ * 작가페이지 - 후기게시판 상세
+ * @author 박주이
+ *
+ */
 @WebServlet("/artist/reviewdetail")
 public class ArtistReviewDetailServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;

@@ -22,14 +22,21 @@ public class AdminmainServlet extends HttpServlet {
 		//이인주 20200623 
 		
 		//사업자로 로그인한 아이디값 가져오기
-		HttpSession session = req.getSession();
+
+		HttpSession session=req.getSession();
 		
-		// 세션으로 사업자 아이디값 불러서 변수에 저장하기
-		String  adminid = (String)session.getAttribute("adminid");
+		System.out.println(session.getAttribute("artid"));
+		if(session.getAttribute("adminid")==null) {//작가가 로그인을 안했을때
+			req.getRequestDispatcher("/member/login").forward(req, resp);
+		}else {
+			// 세션으로 사업자 아이디값 불러서 변수에 저장하기
+			String  adminid = (String)session.getAttribute("adminid");
+			
+			//사업자  아이디  jsp로 넘기기
+			req.setAttribute("adminid", adminid);
+			
+			req.getRequestDispatcher("/WEB-INF/layout/admin/adminmain.jsp").forward(req,resp);		}
 		
-		//사업자  아이디  jsp로 넘기기
-		req.setAttribute("adminid", adminid);
 		
-		req.getRequestDispatcher("/WEB-INF/layout/admin/adminmain.jsp").forward(req,resp);
 	}
 }

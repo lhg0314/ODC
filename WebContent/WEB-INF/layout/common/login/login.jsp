@@ -83,7 +83,16 @@ function ajaxFromServer(){
 }
 
 </script>
+<script type="text/javascript">
+$(document).ready(function(){
+	$("#pw").keydown(function(e) {
+		if( e.keyCode == 13 ) {
+			$("#btnLogin").click();
+		}
+	});
+})
 
+</script>
 <style type="text/css">
 #wrapper{
 	width: 1200px;

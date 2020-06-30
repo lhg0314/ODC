@@ -17,7 +17,12 @@ import user.service.face.UserBoardService;
 import user.service.face.UserInfoUpdateService;
 import user.service.impl.UserBoardServiceImpl;
 import user.service.impl.UserInfoUpdateServiceImpl;
-
+/**
+ * 
+ * 마이페이지 - 문의 내역 상세
+ * @author 박주이
+ *
+ */
 @WebServlet("/mypage/askdetail")
 public class MypageAskDetailServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
@@ -26,7 +31,11 @@ public class MypageAskDetailServlet extends HttpServlet {
 	
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+<<<<<<< HEAD
 		//System.out.println("/mypage/askdetail - [GET]");
+=======
+//		System.out.println("/mypage/askdetail - [GET]");
+>>>>>>> joo2
 		
 		HttpSession session = req.getSession();
 
@@ -49,7 +58,11 @@ public class MypageAskDetailServlet extends HttpServlet {
 		req.setAttribute("askdetail", askdetail);
 		req.setAttribute("commlist", commlist);
 		
+<<<<<<< HEAD
 		//System.out.println(commlist);
+=======
+//		System.out.println(commlist);
+>>>>>>> joo2
 		
 		req.getRequestDispatcher("/WEB-INF/views/user/mypage/board/askdetail.jsp").forward(req, resp);
 		
