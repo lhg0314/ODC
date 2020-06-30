@@ -47,7 +47,7 @@ public class ArtistDonationSerlet extends HttpServlet {
 		
 		int selectedmonth = 0;
 		
-		if(req.getParameter("month") != null)
+		if(req.getParameter("month") != null && !"".equals(req.getParameter("month")))
 			selectedmonth = Integer.parseInt(req.getParameter("month"));
 		
 		String artid = (String) session.getAttribute("artid");

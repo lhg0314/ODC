@@ -32,7 +32,7 @@ public class ArtistDonationDaoImpl implements ArtistDonationDao {
 		String sql = "";
 
 		try {
-			if (month != null && !"00".equals(month)) {
+			if (month != null && !"00".equals(month) && !"".equals(month)) {
 
 				// 현재 날짜 기준 년원일
 				SimpleDateFormat format = new SimpleDateFormat("yy");
