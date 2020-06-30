@@ -626,7 +626,7 @@ public class AdminSalesDaoImpl implements AdminSalesDao{
 		String sql = "";
 		sql += "select sum(total_price)";
 		sql += " from classbooking";
-		sql += " WHERE booking_date BETWEEN ? and ?";
+		sql += " WHERE payment_date BETWEEN ? and ?";
 		
 		int nowtotalsales = 0;
 		try {
@@ -664,7 +664,7 @@ public class AdminSalesDaoImpl implements AdminSalesDao{
 		String sql = "";
 		sql += "select sum(total_price)";
 		sql += " from classbooking";
-		sql += " WHERE booking_date BETWEEN ? and ?";
+		sql += " WHERE payment_date BETWEEN ? and ?";
 		
 		int chototalsales = 0;
 		try {
