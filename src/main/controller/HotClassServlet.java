@@ -40,4 +40,29 @@ public class HotClassServlet extends HttpServlet {
 	
 	}
 	
+	
+	@Override
+	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+	
+		int category = 0;
+		String param = req.getParameter("cateSel");
+		
+		System.out.println(param);
+		
+		if( param != null && !"".equals(param)) {
+			category = Integer.parseInt(param);
+		}
+	
+		
+		List<Map<String, Object>> list = nClassService.hotClassBySelectedCate(category);
+		
+		List<Map<String, Object>> l = nClassService.changeString(list);
+	
+		
+		req.setAttribute("cinfo", l);
+		
+		req.getRequestDispatcher("/WEB-INF/views/main/navMenu/hotClass.jsp").forward(req, resp);
+		
+	}
+	
 }

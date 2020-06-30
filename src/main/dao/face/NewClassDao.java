@@ -18,4 +18,20 @@ public interface NewClassDao {
 	 */
 	List<Map<String, Object>> hotclass();
 
+	
+	/**
+	 * 인기클래스 - 선택한 카테고리만 보여주기
+	 * @param category
+	 * @return
+	 */
+	List<Map<String, Object>> hotClassBySelectedCate(int category);
+
+	
+	/**
+	 * 신규클래스 - 선택한 카테고리만 보여주기
+	 * @param category
+	 * @return
+	 */
+	List<Map<String, Object>> newClassBySelectedCate(int category);
+
 }

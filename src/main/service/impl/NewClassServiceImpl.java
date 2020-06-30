@@ -65,7 +65,6 @@ public class NewClassServiceImpl implements NewClassService{
 	@Override
 	public List<Map<String, Object>> newclass() {
 		
-		
 		return nClassDao.newclass();
 	}
 
@@ -74,6 +73,19 @@ public class NewClassServiceImpl implements NewClassService{
 	public List<Map<String, Object>> hotclass() {
 		
 		return nClassDao.hotclass();
+	}
+
+	
+	@Override
+	public List<Map<String, Object>> hotClassBySelectedCate(int category) {
+		
+		return nClassDao.hotClassBySelectedCate(category);
+	}
+
+	@Override
+	public List<Map<String, Object>> newClassBySelectedCate(int category) {
+		
+		return nClassDao.newClassBySelectedCate(category);
 	}
 
 }
