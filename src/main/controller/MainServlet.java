@@ -31,16 +31,19 @@ public class MainServlet extends HttpServlet {
 
 		//인기 클래스
 		List<Map<String, Object>> hotList = nClassService.hotclass();
+		List<Map<String, Object>> h = nClassService.changeString(hotList); //지역,카테고리 형변환
 		
 		//신규 클래스
 		List<Map<String, Object>> newList = nClassService.newclass();
+		List<Map<String, Object>> n = nClassService.changeString(newList); //지역,카테고리 형변환
 		
 		//재능기부 클래스
 
 		List<Map<String, Object>> talentList = talentDonationService.selectClassByTalentDonation(0);
 		
-		req.setAttribute("hotList", hotList);
-		req.setAttribute("newList", newList);
+		
+		req.setAttribute("hotList", h);
+		req.setAttribute("newList", n);
 		req.setAttribute("talentList", talentList);
 		
 		

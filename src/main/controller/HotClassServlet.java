@@ -28,10 +28,13 @@ public class HotClassServlet extends HttpServlet {
 		//인기클래스 불러오기
 		List<Map<String, Object>> cinfo = nClassService.hotclass();
 		
-//		System.out.println(cinfo);
+		
+		//지역, 카테고리 형변환
+		List<Map<String, Object>> c = nClassService.changeString(cinfo);
 		
 		
-		req.setAttribute("cinfo", cinfo);
+		
+		req.setAttribute("cinfo", c);
 		
 		req.getRequestDispatcher("/WEB-INF/views/main/navMenu/hotClass.jsp").forward(req, resp);
 	

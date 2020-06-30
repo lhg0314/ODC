@@ -6,6 +6,9 @@ import java.util.Map;
 
 public interface NewClassService {
 
+	
+	
+	
 	/**
 	 * 신규클래스 불러오기
 	 * @return
@@ -17,6 +20,14 @@ public interface NewClassService {
 	 * @return
 	 */
 	List<Map<String, Object>> hotclass();
+
+	
+	/**
+	 * 지역, 카테고리 변환
+	 * @param cinfo
+	 * @return
+	 */
+	List<Map<String, Object>> changeString(List<Map<String, Object>> cinfo);
 	
 	
 

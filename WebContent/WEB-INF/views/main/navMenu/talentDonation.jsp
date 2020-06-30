@@ -24,7 +24,12 @@
 	margin: 10px;
 }
 
+<<<<<<< HEAD
 #main > section { 
+=======
+#main > form > select { 
+
+>>>>>>> sy
 	float: left;
 	margin: 0 40px; 
 }
@@ -95,18 +100,18 @@
 } 
 
 .CateLoc{
-	font-size: small;
-	font-weight: bold;
-	margin: 5px;
- 	color: #666;
+
+    margin: 5px;
+    font-size: 15px;
+    color: #999;
 }
 
 
 #classname { 
-	width: 200px;
+/* 	width: 200px; */
 	height: 40px;
  	
- 	font-size: 17px; 
+ 	font-size: 18px; 
  	color: black; 
  	
  	/* 제목 길때 ...으로 생략하기 */
@@ -155,7 +160,7 @@
 <!-- 	테스트용		<a href="#"><img src="/resources/img/Tulips.jpg" alt="썸네일" width="200px;" height="200px;"></a> -->
 				</div>
 				<div class="sort CateLoc">
- 			       <div align="center" class="CateLoc">${c.category }/${c.location }</div>
+ 			       <div align="center" class="CateLoc">${c.location } | ${c.category }</div>
 				</div>
 				<div id="classname"><!-- 링크 누르면 클래스 상세 페이지로 이동 -->
 					<a href="/userclass/detail?classno=${c.classNo }"><span>${c.className }</span></a>

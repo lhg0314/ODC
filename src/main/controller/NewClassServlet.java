@@ -34,11 +34,13 @@ public class NewClassServlet extends HttpServlet {
 		//최신클래스 불러오기
 		List<Map<String, Object>> cinfo = nClassService.newclass();
 		
-//		System.out.println(cinfo);
+		
+		//지역, 카테고리 형변환
+		List<Map<String, Object>> c = nClassService.changeString(cinfo);
 		
 		
 		
-		req.setAttribute("cinfo", cinfo);
+		req.setAttribute("cinfo", c);
 		
 		req.getRequestDispatcher("/WEB-INF/views/main/navMenu/newClass.jsp").forward(req, resp);
 	}

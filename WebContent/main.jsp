@@ -1,15 +1,16 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
     
-        <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
         
 <c:import url="/WEB-INF/layout/common/main/header.jsp"></c:import>
 
+
+
+<!-- 레이아웃 -->
 <style type="text/css">
 
-.slideWrapper{
-
-
+<<<<<<< HEAD
 
 	position: relative;
 	margin:0 auto;
@@ -22,17 +23,60 @@
    width:210px;
    height:150px;
    
+=======
+#banner { 
+	
+	width: 100%;
+	margin: 0 auto; 
+	text-align: center;
 }
 
-.carousel-inner>.item>a>img, .carousel-inner>.item>img, .img-responsive, .thumbnail a>img, .thumbnail>img {
-    display: block;
-    /* max-width: 100%; */
-    height: 411px;
-    width: 1200px;
-    margin: 0 auto;
+section {
+
+	width: 1200px;
+	height: 100%;
+	margin: 50px auto;
 }
 
+.slideWrapper { margin: 60px 0 100px; }
 
+</style>
+
+
+<!-- 메인배너 -->
+<style type="text/css">
+
+#myCarousel {
+
+    width: 100%;
+	height: 410px;
+>>>>>>> sy
+}
+
+#myCarousel img {
+
+	width: 100%;
+	height: 410px;
+} 
+
+</style>
+
+
+<!-- 클래스 슬라이드 레이아웃 -->
+<style type="text/css">
+
+#classLink {
+
+	width: 80%;
+	float: left;
+	font-size: 18px;
+	color: #333;
+	
+}
+
+#classLink a {
+
+<<<<<<< HEAD
 .bannerborder{
    width:215px;
    border:1px solid black;
@@ -46,9 +90,22 @@
     border: 1px solid #888;
     padding: 3px;
     right: 49px;
+=======
+	text-decoration: none;
+	color: #333;
 }
 
+#arrow {
 
+	text-align: right;
+	width: 10%;
+	float: right;
+>>>>>>> sy
+}
+
+#arrow span {
+
+<<<<<<< HEAD
 .next{
 
 	color:#888;
@@ -59,41 +116,63 @@
 	border: 1px solid #888;
 	padding: 3px;
 
+=======
+	border: 1px solid #ddd;
+	border-radius: 5px;
+	padding: 4px;
+	color: #aaa;
+    box-shadow: 1px 1px 1px 1px #eee;
+>>>>>>> sy
 }
 
+#sliderbox1 {
 
+<<<<<<< HEAD
 #sliderbox1{
 
 	width:1000px;
 	height:275px;
+=======
+	width: 1100px;
+	height: 320px;
+>>>>>>> sy
 	
-	/* 외부정렬 가운데  */
-	margin:0 auto;
-	position: relative;
-	/* div영역을 벗어난 부분 안부이게 처리하기  */
-	overflow:hidden; 
+	margin: 0 auto;
+	overflow: hidden; 
 }
-/* 이미지 목록 */
+
 #slider1 {
-	padding:0;
-	top:0;
-	left:0;	
-	list-style:none;
-	position:absolute;
-	/* 자식요소 absolute박스의 기준점이 되는 설정 */
+
+	padding: 0; 
+	margin: 5px 0;
+	list-style: none; 
+
+	position: relative;
+}
+
+#sliderbox2 {
+
+	width: 1100px;
+	height: 320px;
 	
-	
-	}
-	
+<<<<<<< HEAD
 #slider1 li{
 	margin-right: 35px;
 	float:left;	
 
+=======
+	margin: 0 auto;
+	overflow: hidden; 
+>>>>>>> sy
 }
 
-/*  */
+#slider2 {
 
+	padding: 0; 
+	margin: 5px 0;
+	list-style: none; 
 
+<<<<<<< HEAD
 #sliderbox2{
 
 	width:1000px;
@@ -120,15 +199,28 @@
 
 	margin-right: 35px;
 	float:left;	
+=======
+	position: relative;
 }
 
-#sliderbox3{
-	width:1000px;
-	height:275px;
+#sliderbox3 {
+
+	width: 1100px;
+	height: 320px;
 	
-	/* 외부정렬 가운데  */
-	margin:0 auto;
+	margin: 0 auto;
+	overflow: hidden; 
+>>>>>>> sy
+}
+
+#slider3 {
+
+	padding: 0; 
+	margin: 5px 0;
+	list-style: none; 
+
 	position: relative;
+<<<<<<< HEAD
 	/* div영역을 벗어난 부분 안부이게 처리하기  */
 	overflow:hidden; 
 
@@ -147,16 +239,87 @@
 
 	margin-right: 35px;
 	float:left;	
+=======
 }
 
 </style>
 
+
+<!-- 클래스 슬라이드 내부 스타일 -->
+<style type="text/css">
+
+#li { 
+
+	list-style: none; 
+	width: 200px;
+ 	height: 320px;
+	margin: 0 40px;
+ 	float: none; 
+ 	display: inline-block; 
+}
+
+#eachClass {
+
+	color: black;
+	border: 1px solid #eee;
+	text-align: center;
+}
+
+#eachClass #img {
+	
+	width: 100%;
+	height: 200px;
+	overflow: hidden;
+}
+
+#eachClass #img:hover img {
+
+	/* 커서 올렸을때 살짝 확대되게 하기 */
+	width: 205px;
+	height: 205px;
+>>>>>>> sy
+}
+
+#eachClass a:hover { 
+
+	text-decoration: none; 
+	color: black;
+} 
+
+#sort { 
+	
+    margin: 5px;
+    font-size: 15px;
+    color: #999;
+} 
+
+#classname { 
+	
+/* 	width: 200px; */
+	height: 40px;
+ 	
+ 	font-size: 18px; 
+ 	color: black; 
+ 	
+ 	/* 제목 길때 ...으로 생략하기 */
+	overflow: hidden;
+ 	white-space: nowrap; 
+    text-overflow: ellipsis; 
+} 
+
+#btns { margin: 0 0 5px; }
+
+</style>
+
+
+
+<!-- 클래스 슬라이드 돌아가게 하기 -->
 <script type="text/javascript">
 $(document).ready(function(){
+	
 	 var $slider1=$("#slider1");
 	 var $slider2=$("#slider2");
 	 var $slider3=$("#slider3");
-	
 	 
 	 var $slider_list1=$("#slider1 li");
 	 var $slider_list2=$("#slider2 li");
@@ -170,15 +333,14 @@ $(document).ready(function(){
 	 var slideCount2=$slider_list2.length;
 	 var slideCount3=$slider_list3.length;
 	 
-	 console.log(slideCount1)
-	 console.log(slideCount2)
-	
 	 
-	 var slideWidth=300;
+	 var slideWidth=2400;
 	 var slideMargin=50;
 	 
 	 var ulwidth=(slideWidth+slideMargin)*slideCount1-50+'px';
 
+	 
+	 
 	 $slider1.css("width",ulwidth);
 	 $slider2.css("width",ulwidth);
 	 $slider3.css("width",ulwidth);
@@ -187,197 +349,182 @@ $(document).ready(function(){
 	 
 	 
 	 
+	 
 	 $(".prev").eq(0).on("click",function (){
-		 //console.log("clicked")
+		
 		 curSlide1--;
-		 console.log(curSlide1)
+		 
 		 if(curSlide1>=0){
-		 	$slider1.animate({"left": "+=250px"})
-		 //보여줄 다음 슬라이드를 오른쪽으로 보내기
+			 
+		 	$slider1.animate({"left": "+=290px"})
 		 }
+		 
 		 if(curSlide1<0){
+			 
 			 curSlide1=0;
 		 }
-			 
+		
 	 })
 	 
 	 	 $(".next").eq(0).on("click",function (){
-		 //console.log("clicked")
-
-		 curSlide1++;
-		 console.log(curSlide1)
-		 if(curSlide1<=slideCount1-4){
-		
-		 $slider1.animate({"left": "-=250px"})
-		 }
 		 
-		 if(curSlide1>slideCount1-4){
-			curSlide1=slideCount1-4;
-		 }
+	 		curSlide1++;
+	 		 
+ 			if(curSlide1 <= slideCount1-4){
+	 			
+			 	$slider1.animate({"left": "-=290px"})
+ 			}
+ 			
+	 		if(curSlide1 > slideCount1-4){
+	 			
+ 				curSlide1 = slideCount1-4;
+	 		}
+	 		
 	 })
 	 
-	 //////////////////////////////////////////
+	
+	 /************************************************/
 	 
 	 
-		 $(".prev").eq(1).on("click",function (){
-		 //console.log("clicked")
+		 
+	 $(".prev").eq(1).on("click",function (){
+		
 		 curSlide2--;
-		 console.log(curSlide2)
+		 
 		 if(curSlide2>=0){
-		 	$slider2.animate({"left": "+=250px"})
-		 //보여줄 다음 슬라이드를 오른쪽으로 보내기
+			 
+		 	$slider2.animate({"left": "+=290px"})
 		 }
+		 
 		 if(curSlide2<0){
+			 
 			 curSlide2=0;
 		 }
-			 
+		
 	 })
 	 
 	 	 $(".next").eq(1).on("click",function (){
-		 //console.log("clicked")
-
-		 curSlide2++;
-		 console.log("curSlide2: "+curSlide2)
-		 if(curSlide2<=slideCount2-4){
-		
-		 $slider2.animate({"left": "-=250px"})
-		 }
 		 
-		 if(curSlide2>slideCount2-4){
-			curSlide2=(slideCount2)-4;
-		 }
+	 		curSlide2++;
+	 		 
+ 			if(curSlide2 <= slideCount2-4){
+	 			
+			 	$slider2.animate({"left": "-=290px"})
+ 			}
+ 			
+	 		if(curSlide2 > slideCount2-4){
+	 			
+ 				curSlide2 = slideCount2-4;
+	 		}
+	 		
 	 })
 	 
 	 
-	 ////////////////////////////////////////////////
 	 
-	 		 $(".prev").eq(2).on("click",function (){
-		 //console.log("clicked")
+	 /************************************************/
+	 
+	 
+	 
+	 $(".prev").eq(2).on("click",function (){
+		
 		 curSlide3--;
-		 console.log(curSlide3)
+		 
 		 if(curSlide3>=0){
-		 	$slider3.animate({"left": "+=250px"})
-		 //보여줄 다음 슬라이드를 오른쪽으로 보내기
+			 
+		 	$slider3.animate({"left": "+=290px"})
 		 }
+		 
 		 if(curSlide3<0){
+			 
 			 curSlide3=0;
 		 }
-			 
+		
 	 })
 	 
 	 	 $(".next").eq(2).on("click",function (){
-		 //console.log("clicked")
-
-		 curSlide3++;
-		 console.log("curSlide3: "+curSlide3)
-		 if(curSlide3<=slideCount3-4){
-		
-		 $slider3.animate({"left": "-=250px"})
-		 }
 		 
-		 if(curSlide3>slideCount3-4){
-			curSlide3=slideCount3-4;
-		 }
+	 		curSlide3++;
+	 		 
+ 			if(curSlide3 <= slideCount3-4){
+	 			
+			 	$slider3.animate({"left": "-=290px"})
+ 			}
+ 			
+	 		if(curSlide3 > slideCount3-4){
+	 			
+ 				curSlide3 = slideCount3-4;
+	 		}
+	 		
 	 })
-	 
-	 
+	
 })
  </script>
 
-<style type="text/css">
-#sliderbox{
-	width:1100px;
-	height:600px;
-	
-	/* 외부정렬 가운데  */
-	margin:0 auto;
-	/* div영역을 벗어난 부분 안부이게 처리하기  */
-	/* overflow:hidden; */
-}
-/* 이미지 목록 */
-#slider {
-	padding:0;
-	margin:0;
-	list-style:none;
-	/* 자식요소 absolute박스의 기준점이 되는 설정 */
-	position:relative;
-	}
-#slider li{
 
-	position:absolute;
+
+<div id="banner">
+
+	<div id="myCarousel" class="carousel slide" data-ride="carousel">
 	
-}
-#slider li img{
-	width:1100px;
-	height:600px;
-}
-</style>
+		<!-- Indicators -->
+		<ol class="carousel-indicators">
+		  <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+		  <li data-target="#myCarousel" data-slide-to="1"></li>
+		  <li data-target="#myCarousel" data-slide-to="2"></li>
+		  <li data-target="#myCarousel" data-slide-to="3"></li>
+		</ol>
+	
+	
+	 	<!-- Wrapper for slides -->
+		<div class="carousel-inner" role="listbox">
+		    <div class="item active">
+		      <img src="/resources/img/banner/banner11.jpg" alt="banner1" />
+		    </div>
+		
+		    <div class="item">
+		      <img src="/resources/img/banner/banner22.jpg" alt="banner2" />
+		    </div>
+		
+		    <div class="item">
+		      <img src="/resources/img/banner/banner33.jpg" alt="banner3" />
+		    </div>
+		
+		    <div class="item">
+		      <img src="/resources/img/banner/banner44.jpg" alt="banner4" />
+		    </div>
+		</div>
+	
+	
+		<!-- Left and right controls -->
+		<a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev">
+		  <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+		  <span class="sr-only">Previous</span>
+		</a>
+		
+		<a class="right carousel-control" href="#myCarousel" role="button" data-slide="next">
+		  <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+		  <span class="sr-only">Next</span>
+		</a>
+	  
+	</div><!-- end #myCarousel -->
+
+<<<<<<< HEAD
+
+<br>
+=======
+</div><!-- end banner -->
+>>>>>>> sy
 
 
 <br>
 
-<div id="myCarousel" class="carousel slide" data-ride="carousel">
-  <!-- Indicators -->
-  <ol class="carousel-indicators">
-    <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
-    <li data-target="#myCarousel" data-slide-to="1"></li>
-    <li data-target="#myCarousel" data-slide-to="2"></li>
-    <li data-target="#myCarousel" data-slide-to="3"></li>
-  </ol>
 
-  <!-- Wrapper for slides -->
-  <div class="carousel-inner" role="listbox">
-    <div class="item active">
-      <img src="/resources/img/banner/banner1.jpg" alt="Chania">
-      <div class="carousel-caption">
-        <h3></h3>
-        <p></p>
-      </div>
-    </div>
-
-    <div class="item">
-      <img src="/resources/img/banner/banner2.jpg" alt="Chania">
-      <div class="carousel-caption">
-        <h3></h3>
-        <p></p>
-      </div>
-    </div>
-
-    <div class="item">
-      <img src="/resources/img/banner/banner3.jpg" alt="Flower">
-      <div class="carousel-caption">
-        <h3></h3>
-        <p></p>
-      </div>
-    </div>
-
-    <div class="item">
-      <img src="/resources/img/banner/banner4.jpg" alt="Flower">
-      <div class="carousel-caption">
-        <h3></h3>
-        <p></p>
-      </div>
-    </div>
-  </div>
-
-  <!-- Left and right controls -->
-  <a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev">
-    <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
-    <span class="sr-only">Previous</span>
-  </a>
-  <a class="right carousel-control" href="#myCarousel" role="button" data-slide="next">
-    <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
-    <span class="sr-only">Next</span>
-  </a>
-</div>
-
-
-
-<br>
+<section>
 
 
 <div class="slideWrapper">
 
+<<<<<<< HEAD
    <div style="font-size: 15pt;">
 
     	<a class="mainAc" href="#">
@@ -386,39 +533,146 @@ $(document).ready(function(){
     	</a>
     </div>
     <hr>
+=======
+	<div id="title">
+	
+	   <div id="classLink">
+	    	<a href="/hotclass">
+		    	<span class="glyphicon glyphicon-fire" aria-hidden="true" style="color: #e84e4e;"></span>
+		    	<strong> 인기 클래스</strong>
+	    	</a>
+	    </div>
+	    <div id="arrow">
+			<span class="glyphicon glyphicon-chevron-left prev"></span>
+			<span class="glyphicon glyphicon-chevron-right next"></span>
+		</div>
+		
+    </div><!-- end title -->
+>>>>>>> sy
     
-	<span class="glyphicon glyphicon-chevron-left prev"></span>
+    <br><hr>
 
-	<div id="sliderbox3">
+	<div id="sliderbox1">
 
-		<ul id="slider3">
-    
-			<li>
-			<div class="bannerborder">
-				<img class="imgsize" src="/resources/img/mini.jpg" alt="...">
-				<div class="caption">
-					<h3 align="center">클래스이름</h3>
-					<p align="center">클래스 소개 </p>
-					<p align="center"><a style="background: thistle;"  href="#"><img src="/resources/img/classbutton/reservation_btnimg.png"></a> <a style="background: #ccc;" href="#"><img src="/resources/img/classbutton/wishlist_btnimg.png"></a></p>
+		<ul id="slider1">
+		
+    		<li id="li">
+				<div id="eachClass">
+					<div id="img"><!-- 링크 누르면 클래스 상세 페이지로 이동 -->
+						<a href="#"><img src="/resources/img/Tulips.jpg" alt="썸네일" width="200px;" height="200px;"></a>
+					</div>
+					<div id="sort">
+						<span>서울</span>
+						|
+						<span>플라워</span>
+					</div>
+					<div id="classname"><!-- 링크 누르면 클래스 상세 페이지로 이동 -->
+						<a href="#"><span>클래스이름</span></a>
+					</div>
+					<div id="btns"><!-- 각각 상세 페이지로 이동 / 장바구니 담기 -->
+				        <a style="background: thistle;" href="#"><img src="/resources/img/classbutton/reservation_btnimg.png"></a> 
+				        <a style="background: #ccc;" href="#"><img src="/resources/img/classbutton/wishlist_btnimg.png"></a>
+			       </div>
 				</div>
-			</div>
-			</li> 
-	   	 
+			</li>
+    		<li id="li">
+				<div id="eachClass">
+					<div id="img"><!-- 링크 누르면 클래스 상세 페이지로 이동 -->
+						<a href="#"><img src="/resources/img/mini.jpg" alt="썸네일" width="200px;" height="200px;"></a>
+					</div>
+					<div id="sort">
+						<span>서울</span>
+						|
+						<span>플라워</span>
+					</div>
+					<div id="classname"><!-- 링크 누르면 클래스 상세 페이지로 이동 -->
+						<a href="#"><span>클래스이름</span></a>
+					</div>
+					<div id="btns"><!-- 각각 상세 페이지로 이동 / 장바구니 담기 -->
+				        <a style="background: thistle;" href="#"><img src="/resources/img/classbutton/reservation_btnimg.png"></a> 
+				        <a style="background: #ccc;" href="#"><img src="/resources/img/classbutton/wishlist_btnimg.png"></a>
+			       </div>
+				</div>
+			</li>
+    		<li id="li">
+				<div id="eachClass">
+					<div id="img"><!-- 링크 누르면 클래스 상세 페이지로 이동 -->
+						<a href="#"><img src="/resources/img/logo2.png" alt="썸네일" width="200px;" height="200px;"></a>
+					</div>
+					<div id="sort">
+						<span>서울</span>
+						|
+						<span>플라워</span>
+					</div>
+					<div id="classname"><!-- 링크 누르면 클래스 상세 페이지로 이동 -->
+						<a href="#"><span>클래스이름</span></a>
+					</div>
+					<div id="btns"><!-- 각각 상세 페이지로 이동 / 장바구니 담기 -->
+				        <a style="background: thistle;" href="#"><img src="/resources/img/classbutton/reservation_btnimg.png"></a> 
+				        <a style="background: #ccc;" href="#"><img src="/resources/img/classbutton/wishlist_btnimg.png"></a>
+			       </div>
+				</div>
+			</li>
+    		<li id="li">
+				<div id="eachClass">
+					<div id="img"><!-- 링크 누르면 클래스 상세 페이지로 이동 -->
+						<a href="#"><img src="/resources/img/Tulips.jpg" alt="썸네일" width="200px;" height="200px;"></a>
+					</div>
+					<div id="sort">
+						<span>서울</span>
+						|
+						<span>플라워</span>
+					</div>
+					<div id="classname"><!-- 링크 누르면 클래스 상세 페이지로 이동 -->
+						<a href="#"><span>클래스이름</span></a>
+					</div>
+					<div id="btns"><!-- 각각 상세 페이지로 이동 / 장바구니 담기 -->
+				        <a style="background: thistle;" href="#"><img src="/resources/img/classbutton/reservation_btnimg.png"></a> 
+				        <a style="background: #ccc;" href="#"><img src="/resources/img/classbutton/wishlist_btnimg.png"></a>
+			       </div>
+				</div>
+			</li>
+			
+    		<li id="li">
+				<div id="eachClass">
+					<div id="img"><!-- 링크 누르면 클래스 상세 페이지로 이동 -->
+						<a href="#"><img src="/resources/img/Tulips.jpg" alt="썸네일" width="200px;" height="200px;"></a>
+					</div>
+					<div id="sort">
+						<span>서울</span>
+						|
+						<span>플라워</span>
+					</div>
+					<div id="classname"><!-- 링크 누르면 클래스 상세 페이지로 이동 -->
+						<a href="#"><span>클래스이름</span></a>
+					</div>
+					<div id="btns"><!-- 각각 상세 페이지로 이동 / 장바구니 담기 -->
+				        <a style="background: thistle;" href="#"><img src="/resources/img/classbutton/reservation_btnimg.png"></a> 
+				        <a style="background: #ccc;" href="#"><img src="/resources/img/classbutton/wishlist_btnimg.png"></a>
+			       </div>
+				</div>
+			</li>
+			
 		</ul>
      
+<<<<<<< HEAD
 	</div><!-- end sliderbox3 -->
 
 
      <span class="glyphicon glyphicon-chevron-right next" ></span>
      
 </div><!-- end slideWrapper -->
+=======
+	</div><!-- end sliderbox1 -->
+	
+</div><!-- end slideWrapper --><!-- hotclass -->
+>>>>>>> sy
 
-
-<br>
 
 
 <div class="slideWrapper">
 
+<<<<<<< HEAD
    <div style="font-size: 15pt;">
 
     	<a class="mainAc" href="#">
@@ -427,39 +681,71 @@ $(document).ready(function(){
     	</a>
     </div>
     <hr>
+=======
+	<div id="title">
+	
+	   <div id="classLink">
+	    	<a href="/newclass">
+		    	<span class="glyphicon glyphicon-flash" aria-hidden="true" style="color: #ffc107;"></span>
+		    	<strong> 신규 클래스</strong>
+	    	</a>
+	    </div>
+	    <div id="arrow">
+			<span class="glyphicon glyphicon-chevron-left prev"></span>
+			<span class="glyphicon glyphicon-chevron-right next"></span>
+		</div>
+		
+    </div><!-- end title -->
+>>>>>>> sy
     
-	<span class="glyphicon glyphicon-chevron-left prev"></span>
+    <br><hr>
 
-	<div id="sliderbox3">
+	<div id="sliderbox2">
 
-		<ul id="slider3">
-    
-			<li>
-			<div class="bannerborder">
-				<img class="imgsize" src="/resources/img/mini.jpg" alt="...">
-				<div class="caption">
-					<h3 align="center">클래스이름</h3>
-					<p align="center">클래스 소개 </p>
-					<p align="center"><a style="background: thistle;"  href="#"><img src="/resources/img/classbutton/reservation_btnimg.png"></a> <a style="background: #ccc;" href="#"><img src="/resources/img/classbutton/wishlist_btnimg.png"></a></p>
+		<ul id="slider2">
+		
+    		<c:forEach items="${newList }" var="n" begin="0" end="9" >
+			<li id="li">
+			<div id="eachClass">
+				<div id="img"><!-- 링크 누르면 클래스 상세 페이지로 이동 -->
+					<a href="userclass/detail?classno=${n.classno }"><img src="/upload/${n.filename }" alt="썸네일" width="200px;" height="200px;"></a>
+		<!--테스트용	<a href="#"><img src="/resources/img/Tulips.jpg" alt="썸네일" width="200px;" height="200px;"></a> -->
 				</div>
+				<div id="sort">
+					<span>${n.location }</span> | <span>${n.category }</span>
+				</div>
+				<div id="classname"><!-- 링크 누르면 클래스 상세 페이지로 이동 -->
+					<a href="userclass/detail?classno=${n.classno }"><span>${n.className }</span></a>
+				</div>
+				<div id="btns"><!-- 각각 상세 페이지로 이동 / 장바구니 담기 -->
+			        <a style="background: thistle;" href="userclass/detail?classno=${n.classno }"><img src="/resources/img/classbutton/reservation_btnimg.png"></a> 
+			        <a style="background: #ccc;" href="#"><img src="/resources/img/classbutton/wishlist_btnimg.png"></a>
+		       </div>
 			</div>
-			</li> 
+			</li>
+		</c:forEach>
 	   	 
 		</ul>
      
+<<<<<<< HEAD
 	</div><!-- end sliderbox3 -->
 
 
      <span class="glyphicon glyphicon-chevron-right next" ></span>
      
 </div><!-- end slideWrapper -->
+=======
+	</div><!-- end sliderbox2 -->
+	
+	    
+</div><!-- end slideWrapper --><!-- newclass -->
+>>>>>>> sy
 
-
-<br>
 
 
 <div class="slideWrapper">
 
+<<<<<<< HEAD
    <div style="font-size: 15pt;">
 
     	<a class="mainAc" href="#">
@@ -468,36 +754,68 @@ $(document).ready(function(){
     	</a>
     </div>
     <hr>
+=======
+	<div id="title">
+	
+	   <div id="classLink">
+	    	<a href="/talentDonation">
+		    	<span class="glyphicon glyphicon-thumbs-up" aria-hidden="true" style="color: #599a5c;"></span>
+		    	<strong> 재능기부 클래스</strong>
+	    	</a>
+	    </div>
+	    <div id="arrow">
+			<span class="glyphicon glyphicon-chevron-left prev"></span>
+			<span class="glyphicon glyphicon-chevron-right next"></span>
+		</div>
+		
+    </div><!-- end title -->
+>>>>>>> sy
     
-	<span class="glyphicon glyphicon-chevron-left prev"></span>
+    <br><hr>
 
 	<div id="sliderbox3">
 
 		<ul id="slider3">
-    
-			<li>
-			<div class="bannerborder">
-				<img class="imgsize" src="/resources/img/mini.jpg" alt="...">
-				<div class="caption">
-					<h3 align="center">클래스이름</h3>
-					<p align="center">클래스 소개 </p>
-					<p align="center"><a style="background: thistle;"  href="#"><img src="/resources/img/classbutton/reservation_btnimg.png"></a> <a style="background: #ccc;" href="#"><img src="/resources/img/classbutton/wishlist_btnimg.png"></a></p>
-				</div>
-			</div>
-			</li> 
+		
+	  	 <c:forEach var="tal" items="${talentList }" begin="0" end="9">
+	         <li id="li">
+	         <div id="eachClass">
+	            <div id="img"><!-- 링크 누르면 클래스 상세 페이지로 이동 -->
+	               <a href="/userclass/detail?classno=${tal.classNo }"><img src="/upload/${tal.filename }" alt="썸네일" width="200px;" height="200px;"></a>
+	            </div>
+	            <div id="sort">
+	               <span>${tal.location }</span> | <span>${tal.category }</span>
+	            </div>
+	            <div id="classname"><!-- 링크 누르면 클래스 상세 페이지로 이동 -->
+	               <a href="/userclass/detail?classno=${tal.classNo }"><span>${tal.className }</span></a>
+	            </div>
+	            <div id="btns"><!-- 각각 상세 페이지로 이동 / 장바구니 담기 -->
+	                 <a style="background: thistle;" href="/userclass/detail?classno=${tal.classNo }"><img src="/resources/img/classbutton/reservation_btnimg.png"></a> 
+	                 <a style="background: #ccc;" href="#"><img src="/resources/img/classbutton/wishlist_btnimg.png"></a>
+	             </div>
+	         </div>
+	         </li>
+   		 </c:forEach>
+
 	   	 
 		</ul>
      
 	</div><!-- end sliderbox3 -->
+	
+	    
+</div><!-- end slideWrapper --><!-- talentDonation -->
 
-     <span class="glyphicon glyphicon-chevron-right next" ></span>
-     
-</div><!-- end slideWrapper -->
+
+</section>
 
 
+<<<<<<< HEAD
 
 <br>
 <br>
+=======
+>>>>>>> sy
 
+<div class="clearfix"></div>
 
 <c:import url="/WEB-INF/layout/common/main/footer.jsp"></c:import>
