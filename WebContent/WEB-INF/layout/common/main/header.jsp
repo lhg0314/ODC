@@ -384,8 +384,8 @@ list-style: none;
          <li style="font-weight: 500"><a href="/artist/main" class="aNone" >&nbsp; 작가 페이지</a></li>
             </c:if>
             <c:if test="${!empty userid }">
-         <li><a href="/user/logout" class="aNone">&nbsp; 로그아웃</a></li>
-         <li><a href="/artist/main" class="aNone" >&nbsp; 작가 페이지</a></li>
+         <li style="font-weight: 500"><a href="/user/logout" class="aNone">&nbsp; 로그아웃&nbsp; |</a></li>
+         <li style="font-weight: 500"><a href="/artist/main" class="aNone" >&nbsp; 작가 페이지</a></li>
             </c:if>
       </ul>
    </div>
