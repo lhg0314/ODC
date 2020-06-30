@@ -41,6 +41,7 @@ public class ClassCategoryServlet extends HttpServlet {
 		req.setAttribute("list", list);
 		req.setAttribute("paging", paging);
 		req.setAttribute("message", msg);
+		req.setAttribute("category", category);
 		
 		req.getRequestDispatcher("/WEB-INF/views/main/navMenu/category.jsp").forward(req, resp);
 	

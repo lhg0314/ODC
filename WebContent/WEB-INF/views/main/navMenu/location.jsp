@@ -121,31 +121,30 @@ ul#classIntro {
 
 #locationList li{
 	float: left;
-	margin: 25px;
+	margin: 40px;
 }
 
 .bannerborder{
-	border-radius: 10px;
-	width:249px;
-	border:1px solid #ccc;
+	width:219px;
+	border:1px solid #eee;
 	overflow: hidden;
 }
 
 .imgBox{
-	width: 250px;
-	height: 250px;
+	width: 220px;
+	height: 220px;
 	overflow: hidden;
 }
 
 .imgsize{
-	width:250px;
-	height:250px;
+	width:220px;
+	height:220px;
 	
 }
 
 .imgsize:hover{
-	width: 253px;
-	height: 253px;
+	width: 223px;
+	height: 223px;
 }
 
 #section{
@@ -168,7 +167,7 @@ a:hover { color: none; text-decoration: none;}
  	white-space: nowrap; 
     text-overflow: ellipsis; 
     padding: 3px 7px;
-    margin-bottom: 5px;
+    margin-bottom: 10px;
     color: black;
 } 
 
@@ -211,6 +210,12 @@ a:hover { color: none; text-decoration: none;}
 	text-decoration: none;
 	color: black;
 }
+#sort { 
+    margin: 5px;
+    font-size: 15px;
+    color: #999;
+    text-align: center;
+} 
 
 </style>
 
@@ -261,7 +266,7 @@ a:hover { color: none; text-decoration: none;}
 	      <img class="imgsize" src="/upload/${info.filename }" alt="...">
 	     </div>
 	      <div class="caption">
-	        <div align="center" class="CateLoc">${info.category }/${info.location }</div>
+	        <div id="sort"><span>${info.location }</span> | <span>${info.category }</span></div>
 	        <div class="className" align="center">${info.className }</div>
 	      </div>
 	     </div>

@@ -169,9 +169,9 @@ $(document).ready(function(){
       <option value="7">기타</option>
    </select>
    </form>
-   
+   <br>
    <c:if test="${empty list }">
-        <div style="font-size: 20px; color: #999;  text-align: center;">개설된 클래스가 없습니다...</div>
+        <div style="font-size: 20px; color: #999;  text-align: center; width: 1060px; height: 300px; margin: 0 auto;">개설된 클래스가 없습니다...</div>
     </c:if>
 
 	<c:if test="${not empty list }">

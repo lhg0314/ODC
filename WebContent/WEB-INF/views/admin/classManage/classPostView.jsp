@@ -136,6 +136,9 @@ $(document).ready(function(){
 	</td>
 </tr>
 <tr>
+	<th colspan="4"><a href="/admin/class/review?classno=${info.classNo }">&raquo; 클래스 후기보기</a></th>
+</tr>
+<tr>
 	<th colspan="4">클래스 상세 설명</th>
 </tr>
 <tr>
@@ -158,9 +161,6 @@ $(document).ready(function(){
 </tr>
 
 </c:forEach>
-<tr>
-	<th colspan="4"><a href="/admin/class/review?classno=${info.classNo }">&raquo; 클래스 후기보기</a></th>
-</tr>
 </table>
 <div class="text-center">
 <button type="button" class="btn btn-default" id="btnList">목록</button>

@@ -41,6 +41,7 @@ public class ClassLocationServlet extends HttpServlet {
 		req.setAttribute("list", list);
 		req.setAttribute("paging", paging);
 		req.setAttribute("message", msg);
+		req.setAttribute("location", location);
 		
 		req.getRequestDispatcher("/WEB-INF/views/main/navMenu/location.jsp").forward(req, resp);
 	
