@@ -227,8 +227,4 @@ ul.sub li:hover a { color: #e7717d; }
 
 
 <div id="mypage"><a href="/user/mypage">MY PAGE</a></div>
-<<<<<<< HEAD
-   
-=======
-	
->>>>>>> sy
+
