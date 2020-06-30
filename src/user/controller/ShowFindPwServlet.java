@@ -19,7 +19,7 @@ public class ShowFindPwServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		String pw=(String) req.getParameter("pw");
 		req.setAttribute("pw", pw);
-		System.out.println("userpw="+pw);
+		//System.out.println("userpw="+pw);
 		
 		req.getRequestDispatcher("/WEB-INF/views/user/join/showPw.jsp").forward(req, resp);
 	}

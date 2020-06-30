@@ -26,9 +26,9 @@ public class DetailReviewWrite extends HttpServlet {
 		req.setCharacterEncoding("UTF-8");
 		ReviewBoard board=new ReviewBoard();
 		String r=req.getParameter("review");
-		System.out.println(r);
+		//System.out.println(r);
 		board.setReviewContent(r);
-		System.out.println(board);
+		//System.out.println(board);
 		u.insertReview(board);
 		//System.out.println("넣음");
 		

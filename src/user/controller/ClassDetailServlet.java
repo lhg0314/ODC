@@ -1,6 +1,7 @@
 package user.controller;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
@@ -36,15 +37,20 @@ public class ClassDetailServlet extends HttpServlet {
 			//클래스 상세내용 페이지
 			HttpSession session=req.getSession();
 			String id=(String) session.getAttribute("userid");
-			System.out.println(id);
+			//System.out.println(id);
 			
 			if(id !=null) {//userno불러오기
 				int userno=us.getUsernoBy(id);
-				System.out.println(userno);
+				//System.out.println(userno);
 				req.setAttribute("userno", userno);
 			}
 			
+			
 			int classno=Integer.parseInt(req.getParameter("classno"));//classno불러오기
+			
+			ArrayList<Map<String, Object>> reviewList=us.getReviewbyClassno(classno);//클래스에 대한 리뷰 불러오기
+			
+			//System.out.println("reviewList"+reviewList);
 			
 			Map<String, Object> classinfo= ac.selectClassByClassNo(classno);//classinfo객체 불러오기
 			
@@ -55,18 +61,19 @@ public class ClassDetailServlet extends HttpServlet {
 			ArtistInfo artistinfo=as.getArtInfobyartNo(artno);//클래스의 작가정보 호출
 			
 			List<Map<String, Object>> askboard=us.getAskAndComm(classno);//문의 사항 호출
-			System.out.println("askboard"+askboard);
+			//System.out.println("askboard"+askboard);
 			
-			System.out.println(classinfo);
-			System.out.println(artistinfo);
+			//System.out.println(classinfo);
+			//System.out.println(artistinfo);
 			String addr=artistinfo.getArtAddr().split(";")[1];//지도에 사용할 주소 세팅
 			
 			//작가가 만든 다른 클래스 불러오기
 			List<Map<String, Object>> cinfoList=us.getClassList(artno);
-			System.out.println("cinfoList  "+cinfoList);
+			//System.out.println("cinfoList  "+cinfoList);
 			
 			
 			artistinfo.setArtAddr(artistinfo.getArtAddr().split(";")[0]+" "+artistinfo.getArtAddr().split(";")[1]+" "+artistinfo.getArtAddr().split(";")[2]);
+			req.setAttribute("reviewList", reviewList);
 			req.setAttribute("clist", cinfoList);
 			req.setAttribute("askboard", askboard);
 			req.setAttribute("classaddr", addr);

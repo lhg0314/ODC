@@ -41,7 +41,7 @@ public class InsertWishlistServlet extends HttpServlet {
 			String date3=param.split("/")[2];
 			
 			String newdate=date3+"-"+date1+"-"+date2;
-			System.out.println(newdate);
+			//System.out.println(newdate);
 			
 			
 			

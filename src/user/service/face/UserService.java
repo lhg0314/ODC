@@ -1,5 +1,6 @@
 package user.service.face;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
@@ -42,4 +43,6 @@ public interface UserService {
 	public List<Map<String, Object>> getClassList(int artno);
 
 	public int insertDonation(Donation d);
+
+	public ArrayList<Map<String, Object>> getReviewbyClassno(int classno);
 }

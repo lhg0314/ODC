@@ -35,15 +35,15 @@ public class FindUserIdServlet extends HttpServlet {
 			String email=req.getParameter("email");
 			String name=req.getParameter("name");
 			
-			System.out.println(email+","+name);
+			//System.out.println(email+","+name);
 			
 			int res=userService.selectUserIdByEN(email,name);//일치하는 회원정보가 있는지 조회
 			
-			System.out.println(res);
+			//System.out.println(res);
 			
 			if(res==1) {//일치하는 회원정보가 있으면
 				String id=userService.getIdByEN(email,name);
-				System.out.println(id);
+				//System.out.println(id);
 				out.println(id);
 			}else {//일치하는 회원정보가 없을떄
 				out.println(0);

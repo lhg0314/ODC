@@ -18,8 +18,8 @@ public class UserClassViewServlet extends HttpServlet {
 
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		System.out.println("/class/view - [GET]");
+		//System.out.println("/class/view - [GET]");
 		
-		System.out.println(req.getParameter("classno"));
+		//System.out.println(req.getParameter("classno"));
 	}
 }

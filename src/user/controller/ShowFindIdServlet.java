@@ -19,7 +19,7 @@ public class ShowFindIdServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		String id=(String) req.getParameter("id");
 		req.setAttribute("id", id);
-		System.out.println("userid="+id);
+		//System.out.println("userid="+id);
 		
 		req.getRequestDispatcher("/WEB-INF/views/user/join/showId.jsp").forward(req, resp);
 	}
