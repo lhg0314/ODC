@@ -17,6 +17,7 @@ import user.service.face.UserInfoUpdateService;
 import user.service.face.UserMyPageClassService;
 import user.service.impl.UserInfoUpdateServiceImpl;
 import user.service.impl.UserMyPageClassServiceImpl;
+import util.Paging;
 
 /**
  * 20200627 이인주
@@ -54,8 +55,14 @@ public class MypageClassSignupServlet extends HttpServlet {
 		//현재 날짜 받아오기
 		Date nowday = usermypageclassService.nowday();
 		
+	    //요청 파라미터를 전달하여 paging 객체 생성하기
+		Paging paging = usermypageclassService.signupPaging(req,userid,nowday);
+		
 		//사용자 예약 리스트  전체 조회
-		ArrayList<Map<String, Object>> usersignup  = usermypageclassService.usersignup(userid,nowday);
+		ArrayList<Map<String, Object>> usersignup  = usermypageclassService.usersignup(paging,userid,nowday);
+		
+		//페이징 결과 전달
+		req.setAttribute("paging",paging); 
 		
 		//사용자 예약 리스트  전체 조회 jsp로 넘기기
 		req.setAttribute("usersignup", usersignup);

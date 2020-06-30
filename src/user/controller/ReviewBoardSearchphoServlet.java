@@ -26,6 +26,12 @@ public class ReviewBoardSearchphoServlet extends HttpServlet {
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		
+		//요청
+		req.setCharacterEncoding("utf-8");
+		
+		//응답
+		resp.setContentType("text/html;charset=utf-8");
+		
 		//검색 단어 가져오기 param 
 		String classname = reviewboardService.getclassnameparam(req);
 //		System.out.println("classname"+classname);
@@ -53,6 +59,12 @@ public class ReviewBoardSearchphoServlet extends HttpServlet {
 		@Override
 		protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
+			//요청
+			req.setCharacterEncoding("utf-8");
+			
+			//응답
+			resp.setContentType("text/html;charset=utf-8");
+			
 			//검색 단어 가져오기 param 
 			String classname = reviewboardService.getclassnameparam(req);
 //			System.out.println("classname"+classname);

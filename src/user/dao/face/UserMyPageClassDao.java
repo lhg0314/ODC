@@ -6,16 +6,18 @@ import java.util.Map;
 
 import dto.ReviewBoard;
 import dto.ReviewFile;
+import util.Paging;
 
 public interface UserMyPageClassDao {
 
 	/**
 	 * 사용자 예약 리스트  전체 조회
+	 * @param paging 
 	 * @param userid
 	 * @param nowday
 	 * @return
 	 */
-	public ArrayList<Map<String, Object>> userbooking(String userid, Date nowday);
+	public ArrayList<Map<String, Object>> userbooking(Paging paging, String userid, Date nowday);
 
 	/**
 	 * 사용자 예약 리스트  선택 삭제
@@ -27,10 +29,11 @@ public interface UserMyPageClassDao {
 
 	/**
 	 * 사용자 아이디별 장바구니 전체 조회
+	 * @param paging 
 	 * @param userid
 	 * @return
 	 */
-	public ArrayList<Map<String, Object>> userwish(String userid);
+	public ArrayList<Map<String, Object>> userwish(Paging paging, String userid);
 
 	/**
 	 * wishno 삭제
@@ -70,11 +73,12 @@ public interface UserMyPageClassDao {
 
 	/**
 	 * 사용자 예약 리스트  전체 조회
+	 * @param paging 
 	 * @param userid
 	 * @param nowday
 	 * @return
 	 */
-	public ArrayList<Map<String, Object>> usersignup(String userid, Date nowday);
+	public ArrayList<Map<String, Object>> usersignup(Paging paging, String userid, Date nowday);
 
 	/**
 	 * reviewboardno 
@@ -100,6 +104,29 @@ public interface UserMyPageClassDao {
 	 * @param reviewfile
 	 */
 	public void insertreviewfile(ReviewFile reviewfile);
+
+	/**
+	 * 마이페이지 - 클래스 예약 페이징
+	 * @param userid
+	 * @param nowday
+	 * @return
+	 */
+	public int bookingselectCntAll(String userid, Date nowday);
+
+	/**
+	 * 마이페이지 위시리스트 페이징
+	 * @param userid
+	 * @return
+	 */
+	public int wishselectCntAll(String userid);
+
+	/**
+	 * 마이페이지 수강한 클래스 페이징
+	 * @param userid
+	 * @param nowday
+	 * @return
+	 */
+	public int signupselectCntAll(String userid, Date nowday);
 
 	
 

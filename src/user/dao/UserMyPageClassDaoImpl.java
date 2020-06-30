@@ -13,6 +13,7 @@ import dbutil.JDBCTemplate;
 import dto.ReviewBoard;
 import dto.ReviewFile;
 import user.dao.face.UserMyPageClassDao;
+import util.Paging;
 
 public class UserMyPageClassDaoImpl implements UserMyPageClassDao{
 	
@@ -22,21 +23,27 @@ public class UserMyPageClassDaoImpl implements UserMyPageClassDao{
 	private ResultSet rs =null;
 	
 	@Override
-	public ArrayList<Map<String, Object>> userbooking(String userid, Date nowday) {
+	public ArrayList<Map<String, Object>> userbooking(Paging paging, String userid, Date nowday) {
 		conn = JDBCTemplate.getConnection();//디비 연결
 		
 		String sql = "";
-		sql += "select ";
-		sql += " merchant_uid,classinfo.class_no,class_rename_filename,class_name, art_id, payment_date, booking_date, booking_count, total_price,classbooking.booking_no";
-		sql += " from classinfo,artistinfo, userinfo, classbooking,classfile ";
-		sql += " WHERE classinfo.art_no = artistinfo.art_no";
-		sql += " AND classinfo.class_no = classbooking.class_no";
-		sql += " AND userinfo.user_no = classbooking.user_no";
-		sql += " AND classinfo.class_no = classfile.class_no";
-		sql += " AND user_id = ?";
-		sql += " AND booking_date >= ?";
-		sql += " AND classfile.class_rename_filename LIKE 'main%'";
-		sql += " order by booking_no desc";
+		sql += "select * from (";
+		sql += "	    select rownum rnum, c.* from(";
+		sql += "		select ";
+		sql += " 		merchant_uid,classinfo.class_no,class_rename_filename,class_name, art_id, payment_date, booking_date, booking_count, total_price,classbooking.booking_no";
+		sql += " 		from classinfo,artistinfo, userinfo, classbooking,classfile ";
+		sql += " 		WHERE classinfo.art_no = artistinfo.art_no";
+		sql += " 		AND classinfo.class_no = classbooking.class_no";
+		sql += " 		AND userinfo.user_no = classbooking.user_no";
+		sql += " 		AND classinfo.class_no = classfile.class_no";
+		sql += " 		AND user_id = ?";
+		sql += " 		AND booking_date >= ?";
+		sql += " 		AND classfile.class_rename_filename LIKE 'main%'";
+		sql += " 		order by booking_no desc";
+		sql += "	     ) c";
+		sql += " ) classbooking ";
+		sql += " where rnum BETWEEN ? AND ?";
+
 		
 		ArrayList<Map<String, Object>> userbooking = new ArrayList<Map<String,Object>>();
 		
@@ -49,6 +56,8 @@ public class UserMyPageClassDaoImpl implements UserMyPageClassDao{
 			// -> java.sql.Date(long millis)생성자를 이용한다
 			java.sql.Date d = new java.sql.Date(nowday.getTime());
 			ps.setDate(2, d );
+			ps.setInt(3, paging.getStartNO());
+			ps.setInt(4, paging.getEndNo());
 			
 			rs = ps.executeQuery();
 			
@@ -111,26 +120,34 @@ public class UserMyPageClassDaoImpl implements UserMyPageClassDao{
 	}
 	
 	@Override
-	public ArrayList<Map<String, Object>> userwish(String userid) {
+	public ArrayList<Map<String, Object>> userwish(Paging paging,String userid) {
 		conn = JDBCTemplate.getConnection();//디비 연결
 		
 		String sql = "";
-		sql += "select ";
-		sql += " wish_no,classinfo.class_no,class_rename_filename,class_name,art_id,wish_date, wish_count,wish_total_price";
-		sql += " from classinfo,artistinfo, userinfo,classwish,classfile";
-		sql += " WHERE classinfo.art_no = artistinfo.art_no";
-		sql += " AND classinfo.class_no = classwish.class_no";
-		sql += " AND userinfo.user_no = classwish.user_no";
-		sql += " AND classinfo.class_no = classfile.class_no";
-		sql += " AND classfile.class_rename_filename LIKE 'main%'";
-		sql += " AND user_id = ? ";
-		sql += " order by wish_no desc";
-		
+		sql += "select * from (";
+		sql += "	    select rownum rnum, c.* from(";
+		sql += "		select ";
+		sql += "		 wish_no,classinfo.class_no,class_rename_filename,class_name,art_id,wish_date, wish_count,wish_total_price";
+		sql += " 		from classinfo,artistinfo, userinfo,classwish,classfile";
+		sql += "		 WHERE classinfo.art_no = artistinfo.art_no";
+		sql += " 		AND classinfo.class_no = classwish.class_no";
+		sql += " 		AND userinfo.user_no = classwish.user_no";
+		sql += " 		AND classinfo.class_no = classfile.class_no";
+		sql += " 		AND classfile.class_rename_filename LIKE 'main%'";
+		sql += " 		AND user_id = ? ";
+		sql += " 		order by wish_no desc";
+		sql += "	     ) c";
+		sql += " ) classbooking ";
+		sql += " where rnum BETWEEN ? AND ?";
+
 		ArrayList<Map<String, Object>> userwish = new ArrayList<Map<String,Object>>();
 		
 		try {
 			ps = conn.prepareStatement(sql);
 			ps.setString(1, userid);
+			ps.setInt(2, paging.getStartNO());
+			ps.setInt(3, paging.getEndNo());
+			
 			rs = ps.executeQuery();
 			
 			while(rs.next()) {
@@ -334,21 +351,27 @@ public class UserMyPageClassDaoImpl implements UserMyPageClassDao{
 	}
 	
 	@Override
-	public ArrayList<Map<String, Object>> usersignup(String userid, Date nowday) {
+	public ArrayList<Map<String, Object>> usersignup(Paging paging,String userid, Date nowday) {
 		conn = JDBCTemplate.getConnection();//디비 연결
 		
 		String sql = "";
-		sql += "select ";
-		sql += " classinfo.class_no,class_rename_filename,class_name, art_id, payment_date, booking_date, booking_count, total_price,classbooking.booking_no";
-		sql += " from classinfo,artistinfo, userinfo, classbooking,classfile ";
-		sql += " WHERE classinfo.art_no = artistinfo.art_no";
-		sql += " AND classinfo.class_no = classbooking.class_no";
-		sql += " AND userinfo.user_no = classbooking.user_no";
-		sql += " AND classinfo.class_no = classfile.class_no";
-		sql += " AND classfile.class_rename_filename LIKE 'main%'";
-		sql += " AND user_id = ? ";
-		sql += " AND booking_date < ? ";
-		sql += " order by booking_no desc";
+		sql += "select * from (";
+		sql += "	    select rownum rnum, c.* from(";
+		sql += "		select ";
+		sql += " 		classinfo.class_no,class_rename_filename,class_name, art_id, payment_date, booking_date, booking_count, total_price,classbooking.booking_no";
+		sql += " 		from classinfo,artistinfo, userinfo, classbooking,classfile ";
+		sql += " 		WHERE classinfo.art_no = artistinfo.art_no";
+		sql += " 		AND classinfo.class_no = classbooking.class_no";
+		sql += " 		AND userinfo.user_no = classbooking.user_no";
+		sql += " 		AND classinfo.class_no = classfile.class_no";
+		sql += " 		AND classfile.class_rename_filename LIKE 'main%' ";
+		sql += " 		AND user_id = ? ";
+		sql += " 		AND booking_date < ? ";
+		sql += " 		order by booking_no desc";
+		sql += "	     ) c";
+		sql += " ) classbooking ";
+		sql += " where rnum BETWEEN ? AND ?";
+		
 		
 		ArrayList<Map<String, Object>> usersignup = new ArrayList<Map<String,Object>>();
 		
@@ -361,6 +384,8 @@ public class UserMyPageClassDaoImpl implements UserMyPageClassDao{
 			// -> java.sql.Date(long millis)생성자를 이용한다
 			java.sql.Date d = new java.sql.Date(nowday.getTime());
 			ps.setDate(2, d );
+			ps.setInt(3, paging.getStartNO());
+			ps.setInt(4, paging.getEndNo());
 			
 			rs = ps.executeQuery();
 			
@@ -512,6 +537,130 @@ public class UserMyPageClassDaoImpl implements UserMyPageClassDao{
 			JDBCTemplate.close(ps);
 			
 		}
+	}
+	
+	@Override
+	public int bookingselectCntAll(String userid, Date nowday) {
+		conn = JDBCTemplate.getConnection();//디비 연결
+		
+		String sql = "";
+		sql += "select count(*)";
+		sql += " from classinfo,artistinfo, userinfo, classbooking,classfile ";
+		sql += " WHERE classinfo.art_no = artistinfo.art_no";
+		sql += " AND classinfo.class_no = classbooking.class_no";
+		sql += " AND userinfo.user_no = classbooking.user_no";
+		sql += " AND classinfo.class_no = classfile.class_no";
+		sql += " AND user_id = ? ";
+		sql += " AND booking_date >= ? ";
+		sql += " AND classfile.class_rename_filename LIKE 'main%'";
+		
+		//결과 저장할 변수
+		int totalCount = 0 ;
+		
+		try {
+			ps = conn.prepareStatement(sql);
+			
+			ps.setString(1, userid);
+			//java.util.Date타입의 정보를 java.sql.Date로 변경해야함
+			// -> java.sql.Date(long millis)생성자를 이용한다
+			java.sql.Date d = new java.sql.Date(nowday.getTime());
+			ps.setDate(2, d );
+			
+			rs = ps.executeQuery();
+			
+			while(rs.next()) {
+				totalCount = rs.getInt(1);
+			}
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}finally {
+			JDBCTemplate.close(rs);
+			JDBCTemplate.close(ps);
+		}
+		
+		return totalCount;
+	}
+	
+	@Override
+	public int wishselectCntAll(String userid) {
+		conn = JDBCTemplate.getConnection();//디비 연결
+		
+		String sql = "";
+		sql += "select count(*)";
+		sql += " from classinfo,artistinfo, userinfo,classwish,classfile";
+		sql += " WHERE classinfo.art_no = artistinfo.art_no";
+		sql += " AND classinfo.class_no = classwish.class_no";
+		sql += " AND userinfo.user_no = classwish.user_no";
+		sql += " AND classinfo.class_no = classfile.class_no";
+		sql += " AND classfile.class_rename_filename LIKE 'main%'";
+		sql += " AND user_id = ? ";
+		
+		//결과 저장할 변수
+		int totalCount = 0 ;
+		
+		try {
+			ps = conn.prepareStatement(sql);
+			
+			ps.setString(1, userid);
+			
+			rs = ps.executeQuery();
+			
+			while(rs.next()) {
+				totalCount = rs.getInt(1);
+			}
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}finally {
+			JDBCTemplate.close(rs);
+			JDBCTemplate.close(ps);
+		}
+		
+		return totalCount;
+	}
+	
+	@Override
+	public int signupselectCntAll(String userid, Date nowday) {
+		conn = JDBCTemplate.getConnection();//디비 연결
+		
+		String sql = "";
+		sql += "select  count(*)";
+		sql += " from classinfo,artistinfo, userinfo, classbooking,classfile ";
+		sql += " WHERE classinfo.art_no = artistinfo.art_no";
+		sql += " AND classinfo.class_no = classbooking.class_no";
+		sql += " AND userinfo.user_no = classbooking.user_no";
+		sql += " AND classinfo.class_no = classfile.class_no";
+		sql += " AND classfile.class_rename_filename LIKE 'main%' ";
+		sql += " and user_id = ?";
+		sql += " and booking_date > ? ";
+		
+		//결과 저장할 변수
+		int totalCount = 0 ;
+		
+		try {
+			ps = conn.prepareStatement(sql);
+			
+			ps.setString(1, userid);
+			//java.util.Date타입의 정보를 java.sql.Date로 변경해야함
+			// -> java.sql.Date(long millis)생성자를 이용한다
+			java.sql.Date d = new java.sql.Date(nowday.getTime());
+			ps.setDate(2, d );
+			
+			rs = ps.executeQuery();
+			
+			while(rs.next()) {
+				totalCount = rs.getInt(1);
+			}
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}finally {
+			JDBCTemplate.close(rs);
+			JDBCTemplate.close(ps);
+		}
+		
+		return totalCount;
 	}
 	
 }
