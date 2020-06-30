@@ -14,6 +14,7 @@ import dbutil.JDBCTemplate;
 import dto.AskBoard;
 import dto.ClassInfo;
 import dto.Classwish;
+import dto.Donation;
 import dto.ReviewBoard;
 import dto.UserInfo;
 
@@ -465,6 +466,29 @@ public class UserDaoImpl implements UserDao {
 		}
 		// TODO Auto-generated method stub
 		return list;
+	}
+
+
+	@Override
+	public int insertDonation(Donation d) {
+		conn=JDBCTemplate.getConnection();
+		String sql="insert into donation(user_no,art_no,donation_price)";
+		sql+="  values(?,?,?)";
+		int res=0;
+		
+		try {
+			ps=conn.prepareStatement(sql);
+			ps.setInt(1, d.getUserno());
+			ps.setInt(2, d.getArtno());
+			ps.setInt(3, d.getDonationPrice());
+			res=ps.executeUpdate();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			JDBCTemplate.close(ps);
+		}
+		return res;
 	}
 
 }

@@ -6,6 +6,7 @@ import java.util.Map;
 import dto.AskBoard;
 import dto.ClassInfo;
 import dto.Classwish;
+import dto.Donation;
 import dto.ReviewBoard;
 import dto.UserInfo;
 
@@ -40,5 +41,7 @@ public interface UserDao {
 	List<Map<String, Object>> getAskAndComm(int classno);
 
 	List<Map<String, Object>> getClassList(int artno);
+
+	int insertDonation(Donation d);
 
 }
