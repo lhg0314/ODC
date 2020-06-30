@@ -41,9 +41,9 @@ text-decoration: none;
 color: black;
 }
 
-.imgst{
-width: 300px;
-height: 400px;
+#imgst{
+width: 400px;
+height: 300px;
 }
 
 .boxstyle{width: 300px;}
@@ -62,10 +62,11 @@ list-style: none;
 
 #photoreview{
 /* 	border: 1px solid gold;  */
- 	height:400px ; 
+/*  	height:400px ;   */
 	float: left; 
 	width: 30%; 
-	padding:10px;"
+	padding:10px;
+	margin: 20px;
 }
 
 .contentwrap {
@@ -131,7 +132,7 @@ word-wrap: break-word;
 <div id="photoreview">
   <div class="col-sm-6 col-md-4">
     <div class="thumbnail boxstyle"> 
-     <img src="/upload/${searchpho.reviewrename }" alt="포토후기 사진" class="imgst">
+     <img src="/upload/${searchpho.reviewrename }" alt="포토후기 사진" id="imgst">
       <div class="caption">
         <h4 class="contentwrap">${searchpho.reviewtitle }</h4>
         <h5 >${searchpho.satlevel }</h5>
@@ -158,6 +159,7 @@ word-wrap: break-word;
 
 <!-- float 막는 clear -->
 <div class="clearfix"></div>
+
 <!-- 페이징 -->
 <c:import url="/WEB-INF/paging/reviewboardsearchphoto.jsp"></c:import>
 <br>

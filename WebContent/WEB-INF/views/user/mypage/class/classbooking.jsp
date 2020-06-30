@@ -101,18 +101,18 @@ function bookingcancel(bookingno) {
 </tr>	
 </c:forEach>
 </c:if>
-
-
-
-
 </table>	
 <br>
+	
 	
 
 </div> <!-- 전체를 감싸는 div -->
 
 <!-- float 막는 clear -->
 <div class="clearfix"></div>
+
+<!-- 페이징 -->
+<c:import url="/WEB-INF/paging/userbookinglistpaging.jsp"></c:import>
 
 <!-- 메인 footer -->
 <c:import url="/WEB-INF/layout/common/main/footer.jsp"></c:import>

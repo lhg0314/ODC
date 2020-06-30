@@ -17,6 +17,7 @@ import user.service.face.UserInfoUpdateService;
 import user.service.face.UserMyPageClassService;
 import user.service.impl.UserInfoUpdateServiceImpl;
 import user.service.impl.UserMyPageClassServiceImpl;
+import util.Paging;
 
 /**
  * 20200625 이인주
@@ -58,9 +59,15 @@ public class MyPageClassWishServlet extends HttpServlet {
 	      
 	      //결과 전달
 	      req.setAttribute("grade", grade);
+	      
+	    //요청 파라미터를 전달하여 paging 객체 생성하기
+		Paging paging = usermypageclassService.wishPaging(req,userid);
 		
 		//장바구니 리스트 전체 조회
-		ArrayList<Map<String, Object>> userwish  = usermypageclassService.userwish(userid);
+		ArrayList<Map<String, Object>> userwish  = usermypageclassService.userwish(paging,userid);
+		
+		//페이징 결과 전달
+		req.setAttribute("paging",paging); 
 		
 		//장바구니 리스트 전체 조회 jsp로 넘기기
 		req.setAttribute("userwish", userwish);
