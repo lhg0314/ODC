@@ -199,8 +199,6 @@ section {
     text-overflow: ellipsis; 
 } 
 
-#btns { margin: 0 0 5px; }
-
 </style>
 
 
@@ -432,102 +430,22 @@ $(document).ready(function(){
 
       <ul id="slider1">
       
-          <li id="li">
-            <div id="eachClass">
-               <div id="img"><!-- 링크 누르면 클래스 상세 페이지로 이동 -->
-                  <a href="#"><img src="/resources/img/Tulips.jpg" alt="썸네일" width="200px;" height="200px;"></a>
-               </div>
-               <div id="sort">
-                  <span>서울</span>
-                  |
-                  <span>플라워</span>
-               </div>
-               <div id="classname"><!-- 링크 누르면 클래스 상세 페이지로 이동 -->
-                  <a href="#"><span>클래스이름</span></a>
-               </div>
-               <div id="btns"><!-- 각각 상세 페이지로 이동 / 장바구니 담기 -->
-                    <a style="background: thistle;" href="#"><img src="/resources/img/classbutton/reservation_btnimg.png"></a> 
-                    <a style="background: #ccc;" href="#"><img src="/resources/img/classbutton/wishlist_btnimg.png"></a>
-                </div>
+           <c:forEach items="${hotList }" var="h" begin="0" end="9" >
+         <li id="li">
+         <div id="eachClass">
+            <div id="img"><!-- 링크 누르면 클래스 상세 페이지로 이동 -->
+               <a href="userclass/detail?classno=${h.classno }"><img src="/upload/${h.filename }" alt="썸네일" width="200px;" height="200px;"></a>
+      <!--테스트용   <a href="#"><img src="/resources/img/Tulips.jpg" alt="썸네일" width="200px;" height="200px;"></a> -->
             </div>
-         </li>
-          <li id="li">
-            <div id="eachClass">
-               <div id="img"><!-- 링크 누르면 클래스 상세 페이지로 이동 -->
-                  <a href="#"><img src="/resources/img/mini.jpg" alt="썸네일" width="200px;" height="200px;"></a>
-               </div>
-               <div id="sort">
-                  <span>서울</span>
-                  |
-                  <span>플라워</span>
-               </div>
-               <div id="classname"><!-- 링크 누르면 클래스 상세 페이지로 이동 -->
-                  <a href="#"><span>클래스이름</span></a>
-               </div>
-               <div id="btns"><!-- 각각 상세 페이지로 이동 / 장바구니 담기 -->
-                    <a style="background: thistle;" href="#"><img src="/resources/img/classbutton/reservation_btnimg.png"></a> 
-                    <a style="background: #ccc;" href="#"><img src="/resources/img/classbutton/wishlist_btnimg.png"></a>
-                </div>
+            <div id="sort">
+               <span>${h.location }</span> | <span>${h.category }</span>
             </div>
-         </li>
-          <li id="li">
-            <div id="eachClass">
-               <div id="img"><!-- 링크 누르면 클래스 상세 페이지로 이동 -->
-                  <a href="#"><img src="/resources/img/logo2.png" alt="썸네일" width="200px;" height="200px;"></a>
-               </div>
-               <div id="sort">
-                  <span>서울</span>
-                  |
-                  <span>플라워</span>
-               </div>
-               <div id="classname"><!-- 링크 누르면 클래스 상세 페이지로 이동 -->
-                  <a href="#"><span>클래스이름</span></a>
-               </div>
-               <div id="btns"><!-- 각각 상세 페이지로 이동 / 장바구니 담기 -->
-                    <a style="background: thistle;" href="#"><img src="/resources/img/classbutton/reservation_btnimg.png"></a> 
-                    <a style="background: #ccc;" href="#"><img src="/resources/img/classbutton/wishlist_btnimg.png"></a>
-                </div>
+            <div id="classname"><!-- 링크 누르면 클래스 상세 페이지로 이동 -->
+               <a href="userclass/detail?classno=${h.classno }"><span>${h.className }</span></a>
             </div>
+         </div>
          </li>
-          <li id="li">
-            <div id="eachClass">
-               <div id="img"><!-- 링크 누르면 클래스 상세 페이지로 이동 -->
-                  <a href="#"><img src="/resources/img/Tulips.jpg" alt="썸네일" width="200px;" height="200px;"></a>
-               </div>
-               <div id="sort">
-                  <span>서울</span>
-                  |
-                  <span>플라워</span>
-               </div>
-               <div id="classname"><!-- 링크 누르면 클래스 상세 페이지로 이동 -->
-                  <a href="#"><span>클래스이름</span></a>
-               </div>
-               <div id="btns"><!-- 각각 상세 페이지로 이동 / 장바구니 담기 -->
-                    <a style="background: thistle;" href="#"><img src="/resources/img/classbutton/reservation_btnimg.png"></a> 
-                    <a style="background: #ccc;" href="#"><img src="/resources/img/classbutton/wishlist_btnimg.png"></a>
-                </div>
-            </div>
-         </li>
-         
-          <li id="li">
-            <div id="eachClass">
-               <div id="img"><!-- 링크 누르면 클래스 상세 페이지로 이동 -->
-                  <a href="#"><img src="/resources/img/Tulips.jpg" alt="썸네일" width="200px;" height="200px;"></a>
-               </div>
-               <div id="sort">
-                  <span>서울</span>
-                  |
-                  <span>플라워</span>
-               </div>
-               <div id="classname"><!-- 링크 누르면 클래스 상세 페이지로 이동 -->
-                  <a href="#"><span>클래스이름</span></a>
-               </div>
-               <div id="btns"><!-- 각각 상세 페이지로 이동 / 장바구니 담기 -->
-                    <a style="background: thistle;" href="#"><img src="/resources/img/classbutton/reservation_btnimg.png"></a> 
-                    <a style="background: #ccc;" href="#"><img src="/resources/img/classbutton/wishlist_btnimg.png"></a>
-                </div>
-            </div>
-         </li>
+      </c:forEach>
          
       </ul>
      
@@ -560,7 +478,7 @@ $(document).ready(function(){
 
       <ul id="slider2">
       
-          <c:forEach items="${newList }" var="n" begin="0" end="9" >
+         <c:forEach items="${newList }" var="n" begin="0" end="9" >
          <li id="li">
          <div id="eachClass">
             <div id="img"><!-- 링크 누르면 클래스 상세 페이지로 이동 -->
@@ -573,10 +491,6 @@ $(document).ready(function(){
             <div id="classname"><!-- 링크 누르면 클래스 상세 페이지로 이동 -->
                <a href="userclass/detail?classno=${n.classno }"><span>${n.className }</span></a>
             </div>
-            <div id="btns"><!-- 각각 상세 페이지로 이동 / 장바구니 담기 -->
-                 <a style="background: thistle;" href="userclass/detail?classno=${n.classno }"><img src="/resources/img/classbutton/reservation_btnimg.png"></a> 
-                 <a style="background: #ccc;" href="#"><img src="/resources/img/classbutton/wishlist_btnimg.png"></a>
-             </div>
          </div>
          </li>
       </c:forEach>
@@ -625,10 +539,6 @@ $(document).ready(function(){
                <div id="classname"><!-- 링크 누르면 클래스 상세 페이지로 이동 -->
                   <a href="/userclass/detail?classno=${tal.classNo }"><span>${tal.className }</span></a>
                </div>
-               <div id="btns"><!-- 각각 상세 페이지로 이동 / 장바구니 담기 -->
-                    <a style="background: thistle;" href="/userclass/detail?classno=${tal.classNo }"><img src="/resources/img/classbutton/reservation_btnimg.png"></a> 
-                    <a style="background: #ccc;" href="#"><img src="/resources/img/classbutton/wishlist_btnimg.png"></a>
-                </div>
             </div>
             </li>
           </c:forEach>

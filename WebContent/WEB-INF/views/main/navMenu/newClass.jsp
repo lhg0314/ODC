@@ -135,7 +135,8 @@
    <hr>
    
    
-   <select id="cateSel">
+   <form action="/newclass" method="post" id="cateForm">
+   <select name="cateSel" id="cateSel" onchange="this.form.submit();">
       <option value="0" selected>카테고리</option>
       <option value="1">플라워</option>
       <option value="2">음악</option>
@@ -145,6 +146,7 @@
       <option value="6">미술</option>
       <option value="7">기타</option>
    </select>
+   </form>
    
    
    <section id="section">

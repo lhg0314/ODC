@@ -219,7 +219,7 @@ $(document).ready(function() {
 		var uphoneReg= /^[0-9]{10,11}$/;//전화번호는 숫자만 가능
 
 		
-        if( $("#artpw").val() != "" && !uidReg.test( $("#artpw").val() ) ) {//비밀번호 체크
+        if( $("#artpw").val() != "" && !upwReg.test( $("#artpw").val() ) ) {//비밀번호 체크
         	alert($pw)
         	$("#artpw").focus()
             return false

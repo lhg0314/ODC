@@ -132,8 +132,8 @@
    <div style="color: #666;">많은 분들이 사랑해주신 클래스입니다</div><br>
    <hr>
    
-   
-   <select id="cateSel">
+   <form action="/hotclass" method="post" id="cateForm">
+   <select name="cateSel" id="cateSel" onchange="this.form.submit();">
       <option value="0" selected>카테고리</option>
       <option value="1">플라워</option>
       <option value="2">음악</option>
@@ -143,6 +143,7 @@
       <option value="6">미술</option>
       <option value="7">기타</option>
    </select>
+   </form>
    
    
    <section id="section">
