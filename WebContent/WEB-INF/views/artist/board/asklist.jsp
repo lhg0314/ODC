@@ -24,15 +24,15 @@ $(document).ready(function(){
 </script>
 
 <style type="text/css">
-<<<<<<< HEAD
+
 #askTable {
 	table-layout: fixed;
 } 
-=======
+
 #SvnArtAsk{
 	color: #e7717d;
 }
->>>>>>> dydydy
+
 
 #askTable th {
 	text-align: center;

@@ -24,16 +24,14 @@ $(document).ready(function(){
 </script>
 
 <style type="text/css">
-<<<<<<< HEAD
 #reviewTable {
 	table-layout: fixed;
 } 
-=======
+
 
 #SvnArtReview{
 	color: #e7717d;
 }
->>>>>>> dydydy
 
 #reviewTable th {
 	text-align: center;

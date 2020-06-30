@@ -31,11 +31,7 @@ public class MypageAskDetailServlet extends HttpServlet {
 	
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-<<<<<<< HEAD
-		//System.out.println("/mypage/askdetail - [GET]");
-=======
-//		System.out.println("/mypage/askdetail - [GET]");
->>>>>>> joo2
+
 		
 		HttpSession session = req.getSession();
 
@@ -58,11 +54,7 @@ public class MypageAskDetailServlet extends HttpServlet {
 		req.setAttribute("askdetail", askdetail);
 		req.setAttribute("commlist", commlist);
 		
-<<<<<<< HEAD
-		//System.out.println(commlist);
-=======
-//		System.out.println(commlist);
->>>>>>> joo2
+
 		
 		req.getRequestDispatcher("/WEB-INF/views/user/mypage/board/askdetail.jsp").forward(req, resp);
 		

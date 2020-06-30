@@ -17,88 +17,7 @@
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 <script type="text/javascript">
 $(document).ready(function(){
-<<<<<<< HEAD
-   // 인기클래스 불러오기
-   $.ajax({
-      type:"get"
-      , url:"/header"
-      , dataType:"json"
-      , success:function(res){
-//          console.log(res);
-         
-         var str="";
-         
-         $.each(res, function(index, item){
-            str += "<li class='topClass' onclick=><a class='aNone' href='/userclass/detail?classno="+ item.classNo + "'><b>" + ++index + ".</b> "+ item.className + "</a></li>";
-         })
-         
-//          console.log(str);
-         $("#topWrap").html(str);
-         
-         topSlider();
-      }
-      , error:function(){
-         console.log("ajax  실패")
-      }
-   })
-   
-   
-   //검색 버튼 클릭
-   $("#btnmainSearch").click(function() {
-      $("#searchForm").submit();
-   });
-   
-   $("#search").keydown(function(e) {
-      if( e.keyCode == 13 ) {
-         $("#btnmainSearch").click();
-      }
-   });
-   
-function topSlider(){
-   // 인기클래스 리스트 
-   var $top_list = $("#topWrap li")
-//    console.log($top_list)
-   
-   // 모든 이미지 밑으로
-   $top_list.css("top", $("#topWrap").css("height"));
-   
-   // 새로 고침하면 첫번째 클래스가 보이기
-   $top_list.eq(0).css("top", "0");
-   
-   
-   var curSlide = 0; // 현재 슬라이드 인덱스
-   
-   var sliderUp = function(){
-      
-      if( $top_list.length >1){
-         var nextSlide = curSlide + 1; //다음 슬라이드 인덱스
-         nextSlide %= $top_list.length;
-         
-         // 순환구조 확인
-//          console.log(curSlide + ":" + nextSlide)
-         
-         // 현재 슬라이드 숨기기
-         $top_list.eq(curSlide).animate({"top":"-=22px"})
-         
-         // 다음 슬라이드를 아래로
-         $top_list.eq(nextSlide).css("top", $("#topWrap").css("height"));
-         
-         // // 다음 슬라이드 보여주기 : nextSlide
-         $top_list.eq(nextSlide).animate({"top":"-=22px"})
-         
-         // 순환구조
-         curSlide++;
-         // 이미지 개수만큼 보정하기
-         curSlide %= $top_list.length;
-      }
-      
-      
-   }
-   
-   // 시간 처리
-   var tid = setInterval(sliderUp, 2000);
-   
-=======
+
 	// 인기클래스 불러오기
 	$.ajax({
 		type:"get"
@@ -179,7 +98,7 @@ function topSlider(){
 	// 시간 처리
 	var tid = setInterval(sliderUp, 2000);
 	
->>>>>>> dydydy
+
 }
 
 });
@@ -187,15 +106,11 @@ function topSlider(){
 
 <style type="text/css">
 #topHead{
-<<<<<<< HEAD
-   width: 1200px;
-   margin: 0 auto;
-   position: relative;
-=======
+
 	width: 1200px;
 	margin: 0 auto;
 	position: relative;
->>>>>>> dydydy
+
 
 }
 #menudiv{
@@ -327,13 +242,9 @@ list-style: none;
 }
 
 .chart{
-<<<<<<< HEAD
-   float:left;
-   position: absolute;
-=======
+
 	float:left;
 	position: absolute;
->>>>>>> dydydy
     left: 61%; 
     top: 55%;
 /*     border: 1px solid #ccc; */
@@ -355,35 +266,7 @@ list-style: none;
 }
 
 .wish{
-<<<<<<< HEAD
-   position:absolute;
-   right: 14%;
-   top : 53px;
-   width:100px;
-   text-align: center;
-}
 
-.wish a:hover {
-
-   text-decoration: none;
-   color: black;
-   cursor: pointer;
-}
-
-.cart{
-   position:absolute;
-   right:8%;
-   top : 53px;
-   width:100px;
-   text-align: center;
-}
-
-.cart a:hover {
-
-   text-decoration: none;
-   color: black;
-   cursor: pointer;
-=======
 	position:absolute;
 	right: 14%;
 	top : 53px;
@@ -397,7 +280,7 @@ list-style: none;
 	top : 53px;
 	width:100px;
 	text-align: center;
->>>>>>> dydydy
+
 }
 
 .aNone {
@@ -482,24 +365,7 @@ list-style: none;
    </div>
    
     <div class="chart">
-<<<<<<< HEAD
-       <ul id="topWrap">
-       </ul>
-    </div>
-   
-   <div style="position: absolute; width: 300px; right: -0.5%; top: 2%; ">
-      <ul id="minilist">
-            <c:if test="${empty userid }">
-         <li style="font-weight: 500"><a href="/member/login" class="aNone">&nbsp;로그인&nbsp; |</a></li>
-         <li style="font-weight: 500"><a href="/user/join" class="aNone" >&nbsp; 회원가입&nbsp; |</a></li>
-         <li style="font-weight: 500"><a href="/artist/main" class="aNone" >&nbsp; 작가 페이지</a></li>
-            </c:if>
-            <c:if test="${!empty userid }">
-         <li><a href="/user/logout" class="aNone">&nbsp; 로그아웃</a></li>
-         <li><a href="/artist/main" class="aNone" >&nbsp; 작가 페이지</a></li>
-            </c:if>
-      </ul>
-=======
+
     	<ul id="topWrap">
     	</ul>
     </div>
@@ -516,7 +382,7 @@ list-style: none;
 			<li><a href="/artist/main" class="aNone" >&nbsp; 작가 페이지</a></li>
 	   		</c:if>
 	   </ul>
->>>>>>> dydydy
+
    </div>
    
    <div class="wish" onclick="location.href='/user/mypage';">

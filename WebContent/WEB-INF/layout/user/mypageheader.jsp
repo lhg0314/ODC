@@ -71,11 +71,7 @@
 /*    margin: 20px 0; */
 }
 
-<<<<<<< HEAD
 
-
-=======
->>>>>>> dydydy
 #table  {
    width: 100%;
    text-align: center;
