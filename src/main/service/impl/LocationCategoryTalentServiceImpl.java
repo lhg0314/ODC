@@ -8,6 +8,7 @@ import javax.servlet.http.HttpServletRequest;
 import main.dao.face.LocationCategoryDao;
 import main.dao.impl.LocationCategoryTalentDaoImpl;
 import main.service.face.LocationCategoryTalentService;
+import util.Paging;
 
 public class LocationCategoryTalentServiceImpl implements LocationCategoryTalentService {
 	
@@ -61,9 +62,9 @@ public class LocationCategoryTalentServiceImpl implements LocationCategoryTalent
 	}
 
 	@Override
-	public List<Map<String, Object>> selectClassByLocation(int location) {
+	public List<Map<String, Object>> selectClassByLocation(Paging paging, int location) {
 		
-		List<Map<String, Object>> list = locCateDao.selectClassByLocation(location);
+		List<Map<String, Object>> list = locCateDao.selectClassByLocation(paging, location);
 		
 		list = changeString(list);
 		
@@ -125,8 +126,8 @@ public class LocationCategoryTalentServiceImpl implements LocationCategoryTalent
 	}
 
 	@Override
-	public List<Map<String, Object>> selectClassByCategory(int category) {
-		List<Map<String, Object>> list = locCateDao.selectClassByCategory(category);
+	public List<Map<String, Object>> selectClassByCategory(Paging paging, int category) {
+		List<Map<String, Object>> list = locCateDao.selectClassByCategory(paging, category);
 		
 		list = changeString(list);
 		
@@ -140,6 +141,63 @@ public class LocationCategoryTalentServiceImpl implements LocationCategoryTalent
 		list = changeString(list);
 		
 		return list;
+	}
+
+	@Override
+	public Paging getPagingLocation(HttpServletRequest req, int location) {
+		
+		// 요청파라미터 curPage를 파싱한다
+		String param = req.getParameter("curPage");
+		int curPage = 0;
+		if (param != null && !"".equals(param)) {
+			curPage = Integer.parseInt(param);
+		}
+
+		// 클래스 전체 Paging 객체를 생성하고 반환
+		int totalCount = locCateDao.selectCntAllLocation(location);
+
+		// Paging 객체 생성
+		Paging paging = new Paging(totalCount, curPage);
+
+		return paging;
+	}
+
+	@Override
+	public Paging getPagingCategory(HttpServletRequest req, int category) {
+		
+		// 요청파라미터 curPage를 파싱한다
+		String param = req.getParameter("curPage");
+		int curPage = 0;
+		if (param != null && !"".equals(param)) {
+			curPage = Integer.parseInt(param);
+		}
+
+		// 클래스 전체 Paging 객체를 생성하고 반환
+		int totalCount = locCateDao.selectCntAllCategory(category);
+
+		// Paging 객체 생성
+		Paging paging = new Paging(totalCount, curPage);
+
+		return paging;
+	}
+
+	@Override
+	public Paging getPagingTalent(HttpServletRequest req, int i) {
+		
+		// 요청파라미터 curPage를 파싱한다
+		String param = req.getParameter("curPage");
+		int curPage = 0;
+		if (param != null && !"".equals(param)) {
+			curPage = Integer.parseInt(param);
+		}
+
+		// 클래스 전체 Paging 객체를 생성하고 반환
+		int totalCount = locCateDao.selectCntAllTalent(i);
+
+		// Paging 객체 생성
+		Paging paging = new Paging(totalCount, curPage);
+
+		return paging;
 	}
 
 }

@@ -28,9 +28,7 @@ $(document).ready(function(){
 			var str="";
 			
 			$.each(res, function(index, item){
-				
 				str += "<li class='topClass' onclick=><a class='aNone' href='/userclass/detail?classno="+ item.classNo + "'><b>" + ++index + ".</b> "+ item.className + "</a></li>";
-			
 			})
 			
 // 			console.log(str);
@@ -58,7 +56,7 @@ $(document).ready(function(){
 function topSlider(){
 	// 인기클래스 리스트 
 	var $top_list = $("#topWrap li")
-	console.log($top_list)
+// 	console.log($top_list)
 	
 	// 모든 이미지 밑으로
 	$top_list.css("top", $("#topWrap").css("height"));
@@ -71,25 +69,28 @@ function topSlider(){
 	
 	var sliderUp = function(){
 		
-		var nextSlide = curSlide + 1; //다음 슬라이드 인덱스
-		nextSlide %= $top_list.length;
+		if( $top_list.length >1){
+			var nextSlide = curSlide + 1; //다음 슬라이드 인덱스
+			nextSlide %= $top_list.length;
+			
+			// 순환구조 확인
+// 			console.log(curSlide + ":" + nextSlide)
+			
+			// 현재 슬라이드 숨기기
+			$top_list.eq(curSlide).animate({"top":"-=22px"})
+			
+			// 다음 슬라이드를 아래로
+			$top_list.eq(nextSlide).css("top", $("#topWrap").css("height"));
+			
+			// // 다음 슬라이드 보여주기 : nextSlide
+			$top_list.eq(nextSlide).animate({"top":"-=22px"})
+			
+			// 순환구조
+			curSlide++;
+			// 이미지 개수만큼 보정하기
+			curSlide %= $top_list.length;
+		}
 		
-		// 순환구조 확인
-// 		console.log(curSlide + ":" + nextSlide)
-		
-		// 현재 슬라이드 숨기기
-		$top_list.eq(curSlide).animate({"top":"-=22px"})
-		
-		// 다음 슬라이드를 아래로
-		$top_list.eq(nextSlide).css("top", $("#topWrap").css("height"));
-		
-		// // 다음 슬라이드 보여주기 : nextSlide
-		$top_list.eq(nextSlide).animate({"top":"-=22px"})
-		
-		// 순환구조
-		curSlide++;
-		// 이미지 개수만큼 보정하기
-		curSlide %= $top_list.length;
 		
 	}
 	
@@ -102,7 +103,12 @@ function topSlider(){
 </script>
 
 <style type="text/css">
+#topHead{
+	width: 1200px;
+	margin: 0 auto;
+	position: relative;
 
+}
 #menudiv{
  	align-content: center; 
 	background: thistle;
@@ -201,7 +207,7 @@ list-style: none;
 	transition:color 1s,background-color 1s;
 }
 
-.container1 {
+.containerHead {
     width: 440px;
     float: left; 
     position: absolute;
@@ -228,8 +234,9 @@ list-style: none;
 .chart{
 	float:left;
 	position: absolute;
-    left: 60%; 
-    top: 6%;
+    left: 61%; 
+    top: 55%;
+/*     border: 1px solid #ccc; */
 }
 
 #sizeup{
@@ -249,7 +256,7 @@ list-style: none;
 
 .wish{
 	position:absolute;
-	right: 26%;
+	right: 14%;
 	top : 53px;
 	width:100px;
 	text-align: center;
@@ -257,7 +264,7 @@ list-style: none;
 
 .cart{
 	position:absolute;
-	right:21%;
+	right:8%;
 	top : 53px;
 	width:100px;
 	text-align: center;
@@ -276,12 +283,6 @@ list-style: none;
 .aNone:hover{
    text-decoration: none;
    color: black;
-}
-
-#topcl{
-	font-size: small;
-	font-weight: bold;
-	color: #666;
 }
 
 #topWrap{
@@ -312,13 +313,13 @@ list-style: none;
 </head>
 <body>
 
-<div class="container"> <!-- 가운데 오게 하기  -->
+<div id="topHead"> <!-- 가운데 오게 하기  -->
 <br>
 <div class="logo">
 <a href="/main"><img id="headerlogo" src="/resources/img/logo2.png" width="200" height="200"></a>
 
    <!-- 검색창 -->
-   <div class="container1">
+   <div class="containerHead">
       <div class="row">
       <div class="col-md-6 col-md-offset-3"></div>
       </div>
@@ -351,12 +352,11 @@ list-style: none;
    </div>
    
     <div class="chart">
-    	<span id="topcl">인기 클래스 top5</span>
     	<ul id="topWrap">
     	</ul>
     </div>
    
-   <div style="position: absolute; width: 300px; right: 2%; top: 2%;">
+   <div style="position: absolute; width: 300px; right: -12%; top: 2%;">
 	   <ul id="minilist">
 	   		<c:if test="${empty userid }">
 			<li><a href="/member/login" class="aNone">&nbsp;로그인&nbsp; |</a></li>

@@ -12,6 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import main.service.face.LocationCategoryTalentService;
 import main.service.impl.LocationCategoryTalentServiceImpl;
+import util.Paging;
 
 @WebServlet("/talentDonation")
 public class TalentDonationServlet extends HttpServlet {
@@ -22,8 +23,11 @@ public class TalentDonationServlet extends HttpServlet {
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		
+		Paging paging = talentDonationService.getPagingTalent(req, 0);
+		
 		List<Map<String, Object>> list = talentDonationService.selectClassByTalentDonation(0);
 	
+		req.setAttribute("paging", paging);
 		req.setAttribute("list", list);
 		
 		req.getRequestDispatcher("/WEB-INF/views/main/navMenu/talentDonation.jsp").forward(req, resp);
@@ -39,11 +43,13 @@ public class TalentDonationServlet extends HttpServlet {
 			category = Integer.parseInt(param);
 		}
 		
-		System.out.println(category);
+		Paging paging = talentDonationService.getPagingTalent(req, category);
 		
 		List<Map<String, Object>> list = talentDonationService.selectClassByTalentDonation(category);
 		
+		req.setAttribute("paging", paging);
 		req.setAttribute("list", list);
+		req.setAttribute("category", category);
 		
 		req.getRequestDispatcher("/WEB-INF/views/main/navMenu/talentDonation.jsp").forward(req, resp);
 		

@@ -24,6 +24,10 @@ $(document).ready(function(){
 </script>
 
 <style type="text/css">
+#SvnArtAsk{
+	color: #e7717d;
+}
+
 #askTable th {
 	text-align: center;
 	background: thistle;

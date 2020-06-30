@@ -9,7 +9,6 @@ $(document).ready(function(){
 	
 	var location = '<c:out value="${message }"/>'
 	
-	console.log(location);
 	if( location == '전체'){
 		$("#navi li:nth-child(1)").css("border-bottom","2px solid thistle").children("a").css("color","thistle");
 	}else if( location == '플라워'){
@@ -146,6 +145,16 @@ ul#classIntro {
 	margin: 0 auto;
 	width: 900px;
 }
+#totop {
+
+	width: 50px;
+	height: 50px;
+	padding: 4px 0;
+	
+	position: fixed;
+	bottom: 30px;
+	right: 30px;
+}
 
 .aTagStyleNone {
     text-decoration : none;
@@ -157,12 +166,13 @@ a:visited { color: none; text-decoration: none;}
 a:hover { color: none; text-decoration: none;}
 
 .className{
-	font-weight: bold;
 	font-size: 17px;
 	overflow: hidden;
  	white-space: nowrap; 
     text-overflow: ellipsis; 
     padding: 3px 7px;
+    margin-bottom: 5px;
+    color: black;
 } 
 
 .CateLoc{
@@ -177,8 +187,17 @@ a:hover { color: none; text-decoration: none;}
 	padding: 0 14px;
 }
 
-.btnBox{
-	margin: 7px 0;
+.aNone:link{
+	text-decoration: none;
+	color: black;
+}
+.aNone:visited{
+	text-decoration: none;
+	color: black;
+}
+.aNone:hover{
+	text-decoration: none;
+	color: black;
 }
 
 </style>
@@ -210,6 +229,11 @@ a:hover { color: none; text-decoration: none;}
 	<!-- 서브 네비게이션바에서 선택할 때마다 바뀜 -->
 	<h4>${message }</h4>
 	<hr>
+	<c:if test="${empty list }">
+        <div style="font-size: 20px; color: #999;  text-align: center;">개설된 클래스가 없습니다...</div>
+    </c:if>
+
+	<c:if test="${not empty list }">
 	<div id="section">
 	
 	<ul id="categoryList">
@@ -218,17 +242,17 @@ a:hover { color: none; text-decoration: none;}
 	<c:forEach var="info" items="${list }" >
 	
 	 <li>
+	 <a href="/userclass/detail?classno=${info.classNo }">
 	 <div class="bannerborder">
 	 <div class="imgBox">
-      <a href="/userclass/detail?classno=${info.classNo }"><img class="imgsize" src="/upload/${info.filename }" alt="..."></a>
+      <img class="imgsize" src="/upload/${info.filename }" alt="...">
      </div>
       <div class="caption">
         <div align="center" class="CateLoc">${info.category }/${info.location }</div>
         <div class="className" align="center">${info.className }</div>
-<%--         <div class="price"><fmt:formatNumber value="${info.classPrice }" type="currency" currencyCode="KRW"/></div> --%>
-        <div align="center" class="btnBox"><a style="background: thistle;" href="/userclass/detail?classno=${info.classNo }"><img src="/resources/img/classbutton/reservation_btnimg.png"></a> <a style="background: #ccc;" href="#"><img src="/resources/img/classbutton/wishlist_btnimg.png"></a></div>
       </div>
      </div>
+     </a>
 	 </li>
 	 
 	 </c:forEach>
@@ -237,6 +261,7 @@ a:hover { color: none; text-decoration: none;}
 	 
 	 <div class="clearfix"></div>
 	 </div>
+	 </c:if>
 </div>
 
 </div>
@@ -244,6 +269,15 @@ a:hover { color: none; text-decoration: none;}
 <div class="clearfix"></div>
 
 </div>
+
+<c:if test="${not empty list }">
+<c:import url="/WEB-INF/paging/pagingCategory.jsp" />
+ </c:if>
+ 
+ <div id="totop">
+   <a href="#"><img alt="up" src="/resources/img/totop.png" width="40px" height="35px"/></a>
+</div>
+ 
 
 <br>
 <c:import url="/WEB-INF/layout/common/main/footer.jsp"></c:import>

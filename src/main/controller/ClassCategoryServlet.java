@@ -12,6 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import main.service.face.LocationCategoryTalentService;
 import main.service.impl.LocationCategoryTalentServiceImpl;
+import util.Paging;
 
 @WebServlet("/category")
 public class ClassCategoryServlet extends HttpServlet {
@@ -30,12 +31,15 @@ public class ClassCategoryServlet extends HttpServlet {
 			category = Integer.parseInt(param);
 		}
 
-		List<Map<String, Object>> list = categoryService.selectClassByCategory(category);
+		Paging paging = categoryService.getPagingCategory(req, category);
+		
+		List<Map<String, Object>> list = categoryService.selectClassByCategory(paging, category);
 		
 		// 카테고리별 처리
 		String msg = categoryService.getCategory(req, category);
 		
 		req.setAttribute("list", list);
+		req.setAttribute("paging", paging);
 		req.setAttribute("message", msg);
 		
 		req.getRequestDispatcher("/WEB-INF/views/main/navMenu/category.jsp").forward(req, resp);

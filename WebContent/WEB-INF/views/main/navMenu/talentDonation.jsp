@@ -5,6 +5,31 @@
         
 <c:import url="/WEB-INF/layout/common/main/header.jsp"></c:import>
 
+<script type="text/javascript">
+$(document).ready(function(){
+	var category = '<c:out value="${category }"/>'
+	
+	if( category == 0){
+		$("#select option").eq(0).attr("selected","selected");
+	}else if( category == 1){
+		$("#select option").eq(1).attr("selected","selected");
+	}else if( category == 2){
+		$("#select option").eq(2).attr("selected","selected");
+	}else if( category == 3){
+		$("#select option").eq(3).attr("selected","selected");
+	}else if( category == 4){
+		$("#select option").eq(4).attr("selected","selected");
+	}else if( category == 5){
+		$("#select option").eq(5).attr("selected","selected");
+	}else if( category == 6){
+		$("#select option").eq(6).attr("selected","selected");
+	}else if( category == 7){
+		$("#select option").eq(7).attr("selected","selected");
+	}
+	
+	
+})
+</script>
 <!-- 레이아웃 -->
 <style type="text/css">
 
@@ -116,7 +141,9 @@
     text-overflow: ellipsis; 
 } 
 
-#btns { margin: 0 0 5px; }
+.aNone{
+	text-decoration: none;
+}
 
 </style>
 
@@ -131,8 +158,8 @@
    <hr>
    
    <form action="/talentDonation" method="post" id="cateForm">
-   <select name="category" onchange="this.form.submit();">
-      <option value="0" selected="selected">카테고리</option>
+   <select name="category" onchange="this.form.submit();" id="select">
+      <option value="0">카테고리</option>
       <option value="1">플라워</option>
       <option value="2">음악</option>
       <option value="3">수공예</option>
@@ -143,6 +170,12 @@
    </select>
    </form>
    
+   <c:if test="${empty list }">
+        <div style="font-size: 20px; color: #999;  text-align: center;">개설된 클래스가 없습니다...</div>
+    </c:if>
+
+	<c:if test="${not empty list }">
+   
    <section id="section">
    
       <ul id="talentDonation"><!-- 클래스 목록 한줄 -->
@@ -150,22 +183,19 @@
       <c:forEach items="${list }" var="c" >
       
          <li id="li">
-         <div id="eachClass">
-            <div id="img"><!-- 링크 누르면 클래스 상세 페이지로 이동 -->
-               <a href="#"><img src="/upload/${c.filename }" alt="썸네일" width="200px;" height="200px;"></a>
-<!--    테스트용      <a href="#"><img src="/resources/img/Tulips.jpg" alt="썸네일" width="200px;" height="200px;"></a> -->
-            </div>
-            <div class="sort CateLoc">
-                 <div align="center" class="CateLoc">${c.location } | ${c.category }</div>
-            </div>
-            <div id="classname"><!-- 링크 누르면 클래스 상세 페이지로 이동 -->
-               <a href="/userclass/detail?classno=${c.classNo }"><span>${c.className }</span></a>
-            </div>
-            <div id="btns"><!-- 각각 상세 페이지로 이동 / 장바구니 담기 -->
-                 <a style="background: thistle;" href="/userclass/detail?classno=${c.classNo }"><img src="/resources/img/classbutton/reservation_btnimg.png"></a> 
-                 <a style="background: #ccc;" href="#"><img src="/resources/img/classbutton/wishlist_btnimg.png"></a>
-             </div>
-         </div>
+         <a href="/userclass/detail?classno=${c.classNo }" class="aNone">
+        	<div id="eachClass">
+	            <div id="img"><!-- 링크 누르면 클래스 상세 페이지로 이동 -->
+	               <img src="/upload/${c.filename }" alt="썸네일" width="200px;" height="200px;">
+	            </div>
+	            <div class="sort CateLoc">
+	                 <div align="center" class="CateLoc">${c.location } | ${c.category }</div>
+	            </div>
+	            <div id="classname"><!-- 링크 누르면 클래스 상세 페이지로 이동 -->
+	               <span>${c.className }</span>
+	            </div>
+	        </div>
+	        </a>
          </li>
       
       </c:forEach>
@@ -173,19 +203,21 @@
       </ul>
    
    </section>
-
+	</c:if>
 
 </div><!-- end main -->
 
 </body><!-- end body (header에서 옴) -->
+<div class="clearfix"></div>
 
-
+<c:if test="${not empty list }">
+<c:import url="/WEB-INF/paging/pagingTalent.jsp" />
+ </c:if>
 
 <div id="totop">
-   <a href="/talentDonation"><img alt="up" src="/resources/img/totop.png" width="40px" height="35px"/></a>
+   <a href="#"><img alt="up" src="/resources/img/totop.png" width="40px" height="35px"/></a>
 </div>
 
 
-<div class="clearfix"></div>
 <br>
 <c:import url="/WEB-INF/layout/common/main/footer.jsp"></c:import>

@@ -24,8 +24,6 @@ public class HeaderServlet extends HttpServlet {
        
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		
-		System.out.println("/header get");
-
 		// json의 형식
 		resp.setContentType("application/json; charset=utf-8");
 

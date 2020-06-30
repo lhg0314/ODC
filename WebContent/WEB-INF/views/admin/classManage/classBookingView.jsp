@@ -4,15 +4,6 @@
         <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
         
 <c:import url="/WEB-INF/layout/admin/header.jsp"></c:import>
-<script type="text/javascript">
-$(document).ready(function(){
-	
-	$("#btnList").click(function(){
-		history.go(-1);
-		
-	});
-});
-</script>
 
 <style type="text/css">
 #classBookTable{
@@ -38,11 +29,11 @@ $(document).ready(function(){
 <h5 style="font-weight: bold;">&nbsp;클래스 정보 > 클래스 예약 현황</h5>
 <br>
 
-<c:if test="${paging.totalCount eq 0 }">
+<c:if test="${empty list }">
 <br>
 <h3>예약 현황 없음</h3>
 </c:if>
-<c:if test="${paging.totalCount ne 0 }">
+<c:if test="${not empty list }">
 <table id="classBookTable" class="table table-striped table-condensed text-center">
 	<tr>
 		<th>예약 번호</th>
@@ -72,6 +63,6 @@ $(document).ready(function(){
 
 
 <div class="text-center">
-<button type="button" class="btn btn-default" id="btnList">목록</button>
+<button type="button" class="btn btn-default" id="btnList" onclick="location.href='/admin/class/post'">목록</button>
 </div> 
 <c:import url="/WEB-INF/layout/admin/footer.jsp"></c:import>

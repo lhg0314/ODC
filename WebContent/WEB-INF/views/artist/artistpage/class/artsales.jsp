@@ -16,6 +16,10 @@
 <c:import url="/WEB-INF/layout/artist/artistpageheader.jsp"></c:import> 
 
 <style type="text/css">
+#SvnClassSales{
+	color: #e7717d;
+}
+
 .textcenter{text-align: center;}
 
 .totalsalesbox{

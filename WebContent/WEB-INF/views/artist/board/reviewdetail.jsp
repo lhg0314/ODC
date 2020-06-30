@@ -13,6 +13,10 @@
 	text-align: center;
 	background: thistle;
 }
+#SvnArtReview{
+	color: #e7717d;
+}
+
 </style>
 
 <div id="main">

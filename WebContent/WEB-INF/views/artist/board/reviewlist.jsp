@@ -24,6 +24,11 @@ $(document).ready(function(){
 </script>
 
 <style type="text/css">
+
+#SvnArtReview{
+	color: #e7717d;
+}
+
 #reviewTable th {
 	text-align: center;
 	background: thistle;

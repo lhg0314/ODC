@@ -71,9 +71,6 @@
 /*    margin: 20px 0; */
 }
 
-.row { margin: 10px 0; }
-
-
 #table  {
    width: 100%;
    text-align: center;
