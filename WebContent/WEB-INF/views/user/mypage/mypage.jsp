@@ -86,7 +86,7 @@
 	
 	<br><br>
 	
-	<div id="notice_btn"><a href="#"><button class="class_button">+ 공지사항</button></a></div>
+	<div id="notice_btn"><a href="/notice/list"><button class="class_button">+ 공지사항</button></a></div>
 
 	<br><br>
 

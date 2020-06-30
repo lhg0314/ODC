@@ -74,7 +74,7 @@
 
 <tr style="text-align: center;">
 	<!-- 사진을 누르면  classno 을 쿼리스트링 값으로 전달하여 페이지를 바꾼다-->
-	<td><a href="#?classno=${wish.classno }"><img src="/upload/${wish.classrenamefilename }" alt="..." class="img-rounded imgsize"></a></td>
+	<td><a href="/userclass/detail?classno=${wish.classno }"><img src="/upload/${wish.classrenamefilename }" alt="..." class="img-rounded imgsize"></a></td>
 	<td>${wish.classname }</td>
 	<td>${wish.artid }</td>
 	<td>${wish.wishdate }</td>

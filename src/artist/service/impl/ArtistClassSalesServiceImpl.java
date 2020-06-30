@@ -57,51 +57,51 @@ public class ArtistClassSalesServiceImpl implements ArtistClassSalesService{
 		switch(resday) {
 	    case "202001": 
 	    	nowyearday01 = resday+"01";
-			nowyearday31 = resday+"31";
+			nowyearday31 = resday+"32" ;
 	         break;
 	    case "202002":
 	    	nowyearday01 = resday+"01";
-			nowyearday31 = resday+"29";
+			nowyearday31 = resday+"30";
 	    	break;
 	    case "202003": 
 	    	nowyearday01 = resday+"01";
-			nowyearday31 = resday+"31";
+			nowyearday31 = resday+"32";
 	    	break;
 	    case "202004": 
 	    	nowyearday01 = resday+"01";
-			nowyearday31 = resday+"30";
+			nowyearday31 = resday+"31";
 	    	break;
 	    case "202005": 
 	    	nowyearday01 = resday+"01";
-			nowyearday31 = resday+"31";
+			nowyearday31 = resday+"32";
 	    	break;
 	    case "202006": 
 	    	nowyearday01 = resday+"01";
-			nowyearday31 = resday+"30";
+			nowyearday31 = resday+"31";
 	    	break;
 	    case "202007": 
 	    	nowyearday01 = resday+"01";
-			nowyearday31 = resday+"31";
+			nowyearday31 = resday+"32";
 	    	break;
 	    case "202008":
 	    	nowyearday01 = resday+"01";
-			nowyearday31 = resday+"31";
+			nowyearday31 = resday+"32";
 	    	break;
 	    case "202009": 
 	    	nowyearday01 = resday+"01";
-			nowyearday31 = resday+"30";
+			nowyearday31 = resday+"31";
 	    	break;
 	    case "202010": 
 	    	nowyearday01 = resday+"01";
-			nowyearday31 = resday+"31";
+			nowyearday31 = resday+"32";
 	    	break;
 	    case "202011": 
 	    	nowyearday01 = resday+"01";
-			nowyearday31 = resday+"30";
+			nowyearday31 = resday+"31";
 	    	break;
 	    case "202012":
 	    	nowyearday01 = resday+"01";
-			nowyearday31 = resday+"31";
+			nowyearday31 = resday+"32";
 	    	break;
 	   
 		}
@@ -156,51 +156,51 @@ public class ArtistClassSalesServiceImpl implements ArtistClassSalesService{
 		switch(month) {
 	    case 1: 
 	    	chooseyearday01 = resday+"0101";
-	    	chooseyearday31 = resday+"0131";
+	    	chooseyearday31 = resday+"0132";
 	         break;
 	    case 2:
 	    	chooseyearday01 = resday+"0201";
-	    	chooseyearday31 = resday+"0229";
+	    	chooseyearday31 = resday+"0230";
 	    	break;
 	    case 3: 
 	    	chooseyearday01 = resday+"0301";
-	    	chooseyearday31 = resday+"0331";
+	    	chooseyearday31 = resday+"0332";
 	    	break;
 	    case 4:
 	    	chooseyearday01 = resday+"0401";
-	    	chooseyearday31 = resday+"0430";
+	    	chooseyearday31 = resday+"0431";
 	    	break;
 	    case 5: 
 	    	chooseyearday01 = resday+"0501";
-	    	chooseyearday31 = resday+"0531";
+	    	chooseyearday31 = resday+"0532";
 	    	break;
 	    case 6: 
 	    	chooseyearday01 = resday+"0601";
-	    	chooseyearday31 = resday+"0630";
+	    	chooseyearday31 = resday+"0631";
 	    	break;
 	    case 7: 
 	    	chooseyearday01 = resday+"0701";
-	    	chooseyearday31 = resday+"0731";
+	    	chooseyearday31 = resday+"0732";
 	    	break;
 	    case 8:
 	    	chooseyearday01 = resday+"0801";
-	    	chooseyearday31 = resday+"0831";
+	    	chooseyearday31 = resday+"0832";
 	    	break;
 	    case 9: 
 	    	chooseyearday01 = resday+"0901";
-	    	chooseyearday31 = resday+"0930";
+	    	chooseyearday31 = resday+"0931";
 	    	break;
 	    case 10: 
 	    	chooseyearday01 = resday+"1001";
-	    	chooseyearday31 = resday+"1031";
+	    	chooseyearday31 = resday+"1032";
 	    	break;
 	    case 11: 
 	    	chooseyearday01 = resday+"1101";
-	    	chooseyearday31 = resday+"1130";
+	    	chooseyearday31 = resday+"1131";
 	    	break;
 	    case 12:
 	    	chooseyearday01 = resday+"1201";
-	    	chooseyearday31 = resday+"1231";
+	    	chooseyearday31 = resday+"1232";
 	    	break;
 	   
 		}

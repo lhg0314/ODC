@@ -82,7 +82,7 @@ $(document).ready(function(){
 		<div class="form-group line">
 	    	<label for="satlevel">만족도</label>
 			<select class="form-control" id="satlevel" name="satlevel" required="required" >
-				<option value="0" selected="selected">--선택--</option>
+				<option value="오디씨 마음을 알 수 없습니다" selected="selected">--선택--</option>
 				<option value="매우불만족">매우불만족</option>
 				<option value="불만족">불만족</option>
 				<option value="보통">보통</option>
