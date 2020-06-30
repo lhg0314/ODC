@@ -25,11 +25,7 @@
 	margin: 10px;
 }
 
-<<<<<<< HEAD
 #cateSel { 
-=======
-#main > section { 
->>>>>>> 27d63bb1aacc02990ae815345799ad77b32a3dbe
 
 	float: left;
 	margin: 0 40px; 
@@ -73,7 +69,6 @@
 	margin: 0 30px 50px;
 	float: left;
 	display: inline-block;
-
 }
 
 #eachClass {
@@ -104,20 +99,17 @@
 
 #sort { 
 	
-	width: 200px;
-	margin: 5px;
-	
- 	font-size: 15px; 
- 	font-weight: bold;
- 	color: #666;
+    margin: 5px;
+    font-size: 15px;
+    color: #999;
 } 
 
 #classname { 
 	
-	width: 200px;
+/* 	width: 200px; */
 	height: 40px;
  	
- 	font-size: 17px; 
+ 	font-size: 18px; 
  	color: black; 
  	
  	/* 제목 길때 ...으로 생략하기 */
@@ -171,56 +163,10 @@
 <!-- 	테스트용		<a href="#"><img src="/resources/img/Tulips.jpg" alt="썸네일" width="200px;" height="200px;"></a> -->
 				</div>
 				<div id="sort">
-					<c:if test="${c.location eq 1 }">
-						<span>서울</span>
-					</c:if>
-					<c:if test="${c.location eq 2 }">
-						<span>경기</span>
-					</c:if>
-					<c:if test="${c.location eq 3 }">
-						<span>강원</span>
-					</c:if>
-					<c:if test="${c.location eq 4 }">
-						<span>충청</span>
-					</c:if>
-					<c:if test="${c.location eq 5 }">
-						<span>경상</span>
-					</c:if>
-					<c:if test="${c.location eq 6 }">
-						<span>전라</span>
-					</c:if>
-					<c:if test="${c.location eq 7 }">
-						<span>제주</span>
-					</c:if>
-					|
-					<c:if test="${c.category eq 1 }">
-						<span>플라워</span>
-					</c:if>
-					<c:if test="${c.category eq 2 }">
-						<span>음악</span>
-					</c:if>
-					<c:if test="${c.category eq 3 }">
-						<span>수공예</span>
-					</c:if>
-					<c:if test="${c.category eq 4 }">
-						<span>요리</span>
-					</c:if>
-					<c:if test="${c.category eq 5 }">
-						<span>뷰티</span>
-					</c:if>
-					<c:if test="${c.category eq 6 }">
-						<span>미술</span>
-					</c:if>
-					<c:if test="${c.category eq 7 }">
-						<span>기타</span>
-					</c:if>
+					<span>${c.location }</span> | <span>${c.category }</span>
 				</div>
 				<div id="classname"><!-- 링크 누르면 클래스 상세 페이지로 이동 -->
-<<<<<<< HEAD
-					<a href="userclass/detail?classno=${c.classno }"><span>${c.className }</span></a>
-=======
 					<a href="/userclass/detail?classno=${info.classNo }"><span>${c.className }</span></a>
->>>>>>> 27d63bb1aacc02990ae815345799ad77b32a3dbe
 				</div>
 				<div id="btns"><!-- 각각 상세 페이지로 이동 / 장바구니 담기 -->
 			        <a style="background: thistle;" href="userclass/detail?classno=${c.classno }"><img src="/resources/img/classbutton/reservation_btnimg.png"></a> 
