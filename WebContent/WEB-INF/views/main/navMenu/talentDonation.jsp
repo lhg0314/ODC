@@ -25,7 +25,6 @@
 }
 
 #main > section { 
-
 	float: left;
 	margin: 0 40px; 
 }

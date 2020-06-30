@@ -127,8 +127,8 @@ function checkAll() {
 <div id="btnBox" style="text-align: right;">
 <button id="btnDelete" class="btn btn-warning">문의글 삭제</button>
 </div>
-</div>
 <c:import url="/WEB-INF/paging/mypageaskpaging.jsp" />
+</div>
 
 <!-- float 막기 -->
 <div class="clearfix"></div>

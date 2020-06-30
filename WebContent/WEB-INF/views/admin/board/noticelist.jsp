@@ -108,6 +108,6 @@ function checkAll() {
 <button id="btnDelete" class="btn btn-warning">삭제</button>
 <button id="btnWrite" class="btn btn-primary" onclick="location.href='/notice/write'">글쓰기</button>
 </div>
-</div>
 <c:import url="/WEB-INF/paging/adminnoticepaging.jsp" />
+</div>
 <c:import url="/WEB-INF/layout/admin/footer.jsp" />
