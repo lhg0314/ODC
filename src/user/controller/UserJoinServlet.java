@@ -56,6 +56,7 @@ public class UserJoinServlet extends HttpServlet {
 		user.setUserphone(userphone);
 		
 		user.setUserpw(req.getParameter("userpw"));
+		user.setUsernick(req.getParameter("usernick"));
 		
 		//System.out.println(user);
 		
