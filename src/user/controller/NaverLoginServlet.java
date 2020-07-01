@@ -31,6 +31,9 @@ public class NaverLoginServlet extends HttpServlet {
 		System.out.println(name);
 		System.out.println(id);
 	
+		req.setAttribute("id", id);
+		req.setAttribute("email", email);
+		req.setAttribute("name", name);
 		
 		int result=userService.idCheck(id);
 		System.out.println(result);
