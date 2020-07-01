@@ -14,6 +14,7 @@
 
 <script src="http://code.jquery.com/ui/1.8.18/jquery-ui.min.js"></script>  
 
+
 <script type="text/javascript">
 $(document).ready(function(){
 /* 	$("#supportbtn").click(function(){
@@ -454,13 +455,13 @@ height:200px;
         margin-left: 67px;
 }
 
-.row{
+ .row1{
 margin-top: 40px;
     width: 240px;
     float: left;
     margin-right: 40px;
 
-}
+} 
 .caption{
 text-align: center;
 }
@@ -854,7 +855,7 @@ margin-top: 10px;
 								<div  id="classbox-wrapper">
 								<c:forEach var="i" begin="0" end="${clist.size()-1 }">
 									<a href="/userclass/detail?classno=${clist[i].classno }">
-										<div class="row">
+										<div class="row1">
 
 											<div class="thumbnail"><br>
 												<img src="/upload/${clist[i].classfilename}" alt="..."
