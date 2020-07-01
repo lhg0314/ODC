@@ -68,12 +68,16 @@
 
 	float: left;
 	left: 30%;
+	margin: 60px 0;
+	margin-right: 30px;
+	
 }
 
 .photo img {
 
-	width: 250px;
-	height: 250px;
+	width: 200px;
+	height: 200px;
+	
 }
 
 .caption {
@@ -160,7 +164,7 @@ span#ment {
  		
  		<div class="content">
  			<h4>개발 담당 파트</h4>
- 			<span id="ment">관리자(사업자/관리자 수익관리)<br>사업자(클래스 매출 현황)<br>사용자(예약 클래스, 장바구니, 수강 클래스, 후기 게시판, 서비스 이용약관, 개인정보 처리 방침)<br>API - 아임포트 결제</span><br><br><br>
+ 			<span id="ment">관리자(사업자/관리자 수익관리)<br>사업자(클래스 매출 현황)<br>사용자(예약 클래스, 장바구니, 수강 클래스, 후기 게시판,<br> 서비스 이용약관, 개인정보 처리 방침)<br>API - 아임포트 결제</span><br><br><br>
  			<h4>다섯 글자 소감</h4>
  			<span id="ment">다하셨네요</span><br>
  		</div>
@@ -181,7 +185,7 @@ span#ment {
  			<h4>개발 담당 파트</h4>
  			<span id="ment">관리자(클래스 검토, 클래스 정보, 공지사항 관리)<br>사업자(클래스 등록, 클래스 검수 확인, 클래스 관리)<br>사용자(지역/카테고리/기부 클래스, 인기순위 랭크, 공지사항)</span><br><br><br>
  			<h4>다섯 글자 소감</h4>
- 			<span id="ment">저다했어요</span><br>
+ 			<span id="ment">저 다했어요</span><br>
  		</div>
  	</div>
  	
@@ -215,7 +219,7 @@ span#ment {
  			<h4>개발 담당 파트</h4>
  			<span id="ment">관리자(회원 정보, 사업자 정보)<br>사업자(작가 프로필 조회/수정/탈퇴)<br>사용자(회원정보 조회/수정/탈퇴, 인기/최신 클래스)<br>footer - 문의사항/제작자/사이트 소개</span><br><br><br>
  			<h4>다섯 글자 소감</h4>
- 			<span id="ment">아직 세미다</span><br>
+ 			<span id="ment">아직 세미야?</span><br>
  		</div>
  	</div>
  	
@@ -230,7 +234,7 @@ span#ment {
  		
  		<div class="content">
  			<h4>개발 담당 파트</h4>
- 			<span id="ment">관리자(로그인/회원가입)<br>사업자(로그인/회원가입, 아이디/비밀번호 찾기)<br>사용자(로그인/회원가입, 아이디/비밀번호 찾기 베너, 클래스 상세 페이지, 장바구니 추가, 메인 헤더)<br>API - 이메인 인증/카카오 지도/카카오 주소/네이버 소셜 로그인</span><br><br><br>
+ 			<span id="ment">관리자(로그인/회원가입)<br>사업자(로그인/회원가입, 아이디/비밀번호 찾기)<br>사용자(로그인/회원가입, 아이디/비밀번호 찾기 배너,<br>  클래스 상세 페이지,장바구니 추가, 메인 헤더)<br>API - 이메인 인증/카카오 지도/카카오 주소/네이버 소셜 로그인</span><br><br><br>
  			<h4>다섯 글자 소감</h4>
  			<span id="ment">너무 힘들다</span><br>
  		</div>
