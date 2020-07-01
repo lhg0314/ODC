@@ -63,6 +63,12 @@ $(document).ready(function(){
 		<th>상세 정보</th>
 		<th>예약 현황</th>
 	</tr>
+	
+	<c:if test="${empty list }">
+		<td colspan="8">검토 신청한 클래스가 없습니다</td>
+	</c:if>
+	
+	<c:if test="${not empty list }">
 	<c:forEach var="info" items="${list }">
 	<tr class="table-hover">
 		<td>${info.classNo }</td>
@@ -94,9 +100,11 @@ $(document).ready(function(){
 		<td><button type="button" onclick="location.href='/admin/class/view?classno=${info.classNo }&view=post'">상세 정보</button></td>
 		<td><button type="button" onclick="location.href='/admin/class/book?classno=${info.classNo }'">예약 현황</button></td>
 	</tr>
+	
 	</c:forEach>
-
+	</c:if>
 </table>
+<c:if test="${not empty list }">
 <c:import url="/WEB-INF/paging/pagingClassPost.jsp" />
- 
+</c:if> 
 <c:import url="/WEB-INF/layout/admin/footer.jsp"></c:import>

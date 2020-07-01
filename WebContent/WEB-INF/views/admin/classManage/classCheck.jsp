@@ -58,6 +58,12 @@ $(document).ready(function(){
 		<th>클래스 계획서</th>
 		<th>진행 상황</th>
 	</tr>
+	
+	<c:if test="${empty list }">
+		<td colspan="8">검토 신청한 클래스가 없습니다</td>
+	</c:if>
+	
+	<c:if test="${not empty list }">
 	<c:forEach var="info" items="${list }" varStatus="status">
 	<tr class="table-hover">
 		<td>${info.classNo }</td>
@@ -90,8 +96,9 @@ $(document).ready(function(){
 		</td>
 	</tr>
 	</c:forEach>
-
+	</c:if>
 </table>
+<c:if test="${not empty list }">
 <c:import url="/WEB-INF/paging/pagingClassCheck.jsp" />
- 
+</c:if>
 <c:import url="/WEB-INF/layout/admin/footer.jsp"></c:import>
