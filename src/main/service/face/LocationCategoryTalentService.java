@@ -5,8 +5,7 @@ import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 
-import dto.ClassInfo;
-import util.Paging;
+import util.Pagingphoto;
 
 public interface LocationCategoryTalentService {
 
@@ -16,7 +15,7 @@ public interface LocationCategoryTalentService {
 	 * @param location
 	 * @return
 	 */
-	public List<Map<String, Object>> selectClassByLocation(Paging paging, int location);
+	public List<Map<String, Object>> selectClassByLocation(Pagingphoto paging, int location);
 
 	/**
 	 * 지역별 처리
@@ -38,7 +37,7 @@ public interface LocationCategoryTalentService {
 	 * @param category
 	 * @return
 	 */
-	public List<Map<String, Object>> selectClassByCategory(Paging paging, int category);
+	public List<Map<String, Object>> selectClassByCategory(Pagingphoto paging, int category);
 
 	/**
 	 * 재능기부 클래스 페이지
@@ -53,7 +52,7 @@ public interface LocationCategoryTalentService {
 	 * @param location 
 	 * @return
 	 */
-	public Paging getPagingLocation(HttpServletRequest req, int location);
+	public Pagingphoto getPagingLocation(HttpServletRequest req, int location);
 
 	/**
 	 * 카테고리 페이지 페이징
@@ -61,7 +60,7 @@ public interface LocationCategoryTalentService {
 	 * @param category
 	 * @return
 	 */
-	public Paging getPagingCategory(HttpServletRequest req, int category);
+	public Pagingphoto getPagingCategory(HttpServletRequest req, int category);
 
 	/**
 	 * 재능기부 페이지 페이징
@@ -69,6 +68,6 @@ public interface LocationCategoryTalentService {
 	 * @param i 
 	 * @return
 	 */
-	public Paging getPagingTalent(HttpServletRequest req, int i);
+	public Pagingphoto getPagingTalent(HttpServletRequest req, int i);
 
 }

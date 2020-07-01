@@ -8,7 +8,7 @@ import javax.servlet.http.HttpServletRequest;
 import main.dao.face.LocationCategoryDao;
 import main.dao.impl.LocationCategoryTalentDaoImpl;
 import main.service.face.LocationCategoryTalentService;
-import util.Paging;
+import util.Pagingphoto;
 
 public class LocationCategoryTalentServiceImpl implements LocationCategoryTalentService {
 	
@@ -62,7 +62,7 @@ public class LocationCategoryTalentServiceImpl implements LocationCategoryTalent
 	}
 
 	@Override
-	public List<Map<String, Object>> selectClassByLocation(Paging paging, int location) {
+	public List<Map<String, Object>> selectClassByLocation(Pagingphoto paging, int location) {
 		
 		List<Map<String, Object>> list = locCateDao.selectClassByLocation(paging, location);
 		
@@ -126,7 +126,7 @@ public class LocationCategoryTalentServiceImpl implements LocationCategoryTalent
 	}
 
 	@Override
-	public List<Map<String, Object>> selectClassByCategory(Paging paging, int category) {
+	public List<Map<String, Object>> selectClassByCategory(Pagingphoto paging, int category) {
 		List<Map<String, Object>> list = locCateDao.selectClassByCategory(paging, category);
 		
 		list = changeString(list);
@@ -144,7 +144,7 @@ public class LocationCategoryTalentServiceImpl implements LocationCategoryTalent
 	}
 
 	@Override
-	public Paging getPagingLocation(HttpServletRequest req, int location) {
+	public Pagingphoto getPagingLocation(HttpServletRequest req, int location) {
 		
 		// 요청파라미터 curPage를 파싱한다
 		String param = req.getParameter("curPage");
@@ -157,13 +157,13 @@ public class LocationCategoryTalentServiceImpl implements LocationCategoryTalent
 		int totalCount = locCateDao.selectCntAllLocation(location);
 
 		// Paging 객체 생성
-		Paging paging = new Paging(totalCount, curPage);
+		Pagingphoto paging = new Pagingphoto(totalCount, curPage);
 
 		return paging;
 	}
 
 	@Override
-	public Paging getPagingCategory(HttpServletRequest req, int category) {
+	public Pagingphoto getPagingCategory(HttpServletRequest req, int category) {
 		
 		// 요청파라미터 curPage를 파싱한다
 		String param = req.getParameter("curPage");
@@ -176,13 +176,13 @@ public class LocationCategoryTalentServiceImpl implements LocationCategoryTalent
 		int totalCount = locCateDao.selectCntAllCategory(category);
 
 		// Paging 객체 생성
-		Paging paging = new Paging(totalCount, curPage);
+		Pagingphoto paging = new Pagingphoto(totalCount, curPage);
 
 		return paging;
 	}
 
 	@Override
-	public Paging getPagingTalent(HttpServletRequest req, int i) {
+	public Pagingphoto getPagingTalent(HttpServletRequest req, int i) {
 		
 		// 요청파라미터 curPage를 파싱한다
 		String param = req.getParameter("curPage");
@@ -194,8 +194,10 @@ public class LocationCategoryTalentServiceImpl implements LocationCategoryTalent
 		// 클래스 전체 Paging 객체를 생성하고 반환
 		int totalCount = locCateDao.selectCntAllTalent(i);
 
+		System.out.println(totalCount);
+		
 		// Paging 객체 생성
-		Paging paging = new Paging(totalCount, curPage);
+		Pagingphoto paging = new Pagingphoto(totalCount, curPage);
 
 		return paging;
 	}

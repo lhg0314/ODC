@@ -11,7 +11,7 @@ import java.util.Map;
 
 import dbutil.JDBCTemplate;
 import main.dao.face.LocationCategoryDao;
-import util.Paging;
+import util.Pagingphoto;
 
 public class LocationCategoryTalentDaoImpl implements LocationCategoryDao {
 
@@ -20,7 +20,7 @@ public class LocationCategoryTalentDaoImpl implements LocationCategoryDao {
 	private ResultSet rs = null;
 	
 	@Override
-	public List<Map<String, Object>> selectClassByLocation(Paging paging, int location) {
+	public List<Map<String, Object>> selectClassByLocation(Pagingphoto paging, int location) {
 		
 		// DB 연결
 		conn = JDBCTemplate.getConnection();
@@ -87,7 +87,7 @@ public class LocationCategoryTalentDaoImpl implements LocationCategoryDao {
 	}
 
 	@Override
-	public List<Map<String, Object>> selectClassByCategory(Paging paging, int category) {
+	public List<Map<String, Object>> selectClassByCategory(Pagingphoto paging, int category) {
 		
 		// DB 연결
 		conn = JDBCTemplate.getConnection();
@@ -212,12 +212,14 @@ public class LocationCategoryTalentDaoImpl implements LocationCategoryDao {
 		
 		//수행할 SQL
 		String sql = "";
-		sql += "SELECT ";
-		sql += "	count(*)";
-		sql += " FROM classinfo";
-		sql += " WHERE class_check = 1";
+		sql += "SELECT count(*) FROM classinfo i";
+		sql += " LEFT OUTER JOIN classfile f";
+		sql += " ON( i.class_no = f.class_no )";
+		sql += " WHERE i.post_status = 1";
+		sql += " AND i.recruit_enddate >= sysdate";
+		sql += " AND f.class_rename_filename LIKE 'main%'";
 		if( location > 0) {
-			sql += " AND location = ?";
+			sql += " AND i.location = ?";
 		}
 		
 
@@ -262,13 +264,16 @@ public class LocationCategoryTalentDaoImpl implements LocationCategoryDao {
 		
 		//수행할 SQL
 		String sql = "";
-		sql += "SELECT ";
-		sql += "	count(*)";
-		sql += " FROM classinfo";
-		sql += " WHERE class_check = 1";
+		sql += "SELECT count(*) FROM classinfo i";
+		sql += " LEFT OUTER JOIN classfile f";
+		sql += " ON( i.class_no = f.class_no )";
+		sql += " WHERE i.post_status = 1";
+		sql += " AND i.recruit_enddate >= sysdate";
+		sql += " AND f.class_rename_filename LIKE 'main%'";
 		if( category > 0) {
-			sql += " AND category = ?";
+			sql += " AND i.category = ?";
 		}
+		
 		
 
 		//최종 결과 변수
@@ -312,12 +317,15 @@ public class LocationCategoryTalentDaoImpl implements LocationCategoryDao {
 		
 		//수행할 SQL
 		String sql = "";
-		sql += "SELECT ";
-		sql += "	count(*)";
-		sql += " FROM classinfo";
-		sql += " WHERE class_check = 1";
+		sql += "SELECT count(*) FROM classinfo i";
+		sql += " LEFT OUTER JOIN classfile f";
+		sql += " ON( i.class_no = f.class_no )";
+		sql += " WHERE i.post_status = 1";
+		sql += " AND i.talent_donation = 1";
+		sql += " AND i.recruit_enddate >= sysdate";
+		sql += " AND f.class_rename_filename LIKE 'main%'";
 		if( category > 0) {
-			sql += " AND category = ?";
+			sql += " AND i.category = ?";
 		}
 		
 

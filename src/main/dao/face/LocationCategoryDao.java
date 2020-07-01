@@ -3,8 +3,7 @@ package main.dao.face;
 import java.util.List;
 import java.util.Map;
 
-import dto.ClassInfo;
-import util.Paging;
+import util.Pagingphoto;
 
 public interface LocationCategoryDao {
 
@@ -14,7 +13,7 @@ public interface LocationCategoryDao {
 	 * @param location
 	 * @return
 	 */
-	public List<Map<String, Object>> selectClassByLocation(Paging paging, int location);
+	public List<Map<String, Object>> selectClassByLocation(Pagingphoto paging, int location);
 
 	/**
 	 * 카테고리별 클래스 모아보기
@@ -22,7 +21,7 @@ public interface LocationCategoryDao {
 	 * @param category
 	 * @return
 	 */
-	public List<Map<String, Object>> selectClassByCategory(Paging paging, int category);
+	public List<Map<String, Object>> selectClassByCategory(Pagingphoto paging, int category);
 
 	/**
 	 * 재능기부 클래스 모아보기

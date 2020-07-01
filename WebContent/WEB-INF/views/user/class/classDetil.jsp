@@ -327,7 +327,7 @@ height:200px;
     position: absolute;
     top: 30px;
     right: 0;
-    border: 1px solid #d5dadf;
+/*     border: 1px solid #d5dadf; */
     margin-bottom: 20px;
 }
 
@@ -410,7 +410,7 @@ height:200px;
     margin-bottom: 50px;
 }
 #cassinfotext{
-	position:absolute;
+/* 	position:absolute; */
 	left:100px;
 }
 

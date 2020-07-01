@@ -12,7 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import main.service.face.LocationCategoryTalentService;
 import main.service.impl.LocationCategoryTalentServiceImpl;
-import util.Paging;
+import util.Pagingphoto;
 
 @WebServlet("/talentDonation")
 public class TalentDonationServlet extends HttpServlet {
@@ -30,7 +30,7 @@ public class TalentDonationServlet extends HttpServlet {
 			category = Integer.parseInt(param);
 		}
 		
-		Paging paging = talentDonationService.getPagingTalent(req, category);
+		Pagingphoto paging = talentDonationService.getPagingTalent(req, category);
 		
 		List<Map<String, Object>> list = talentDonationService.selectClassByTalentDonation(category);
 	
@@ -51,7 +51,7 @@ public class TalentDonationServlet extends HttpServlet {
 			category = Integer.parseInt(param);
 		}
 		
-		Paging paging = talentDonationService.getPagingTalent(req, category);
+		Pagingphoto paging = talentDonationService.getPagingTalent(req, category);
 		
 		List<Map<String, Object>> list = talentDonationService.selectClassByTalentDonation(category);
 		

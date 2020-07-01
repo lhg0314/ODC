@@ -236,13 +236,18 @@ public class NewClassDaoImpl implements NewClassDao {
 		
 		//수행할 SQL
 		String sql = "";
-		
-		sql += "SELECT ";
-		sql += "	count(*)";
-		sql += " FROM classinfo";
+		sql += "SELECT count(*) FROM classinfo i";
+		sql += " LEFT OUTER JOIN classfile f";
+		sql += " ON( i.class_no = f.class_no )";
+		sql += " WHERE i.post_status = 1";
+		sql += " AND i.recruit_enddate >= sysdate";
+		sql += " AND f.class_rename_filename LIKE 'main%'";
 		if( category > 0) {
-			sql += " WHERE category = ?";
+			sql += " AND i.category = ?";
 		}
+		
+		
+	
 
 		//최종 결과 변수
 		int cnt = 0;
