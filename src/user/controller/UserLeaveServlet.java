@@ -102,7 +102,6 @@ public class UserLeaveServlet extends HttpServlet {
 			
 			req.getRequestDispatcher("/WEB-INF/views/user/mypage/class/alert.jsp").forward(req,resp);
 			
-			resp.sendRedirect("");
 		}
 		
 	
