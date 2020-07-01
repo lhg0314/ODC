@@ -15,6 +15,12 @@
 #noticeTable th {
 	text-align: center;
 	background: #ecdfec;
+    vertical-align: middle;
+}
+
+#noticeTable td {
+    vertical-align: middle;
+    padding: 0 30px;
 }
 
 #noticeBoard{
@@ -40,11 +46,11 @@
 <table id="noticeTable" class="table table-condensed">
 	<tr>
 		<th style="width: 10%;">제목</th>
-		<td>${noticeBoard.noticeTitle }</td>
+		<td style="height: 40px;">${noticeBoard.noticeTitle }</td>
 	</tr>
 	<tr>
 		<th>작성일</th>
-		<td>${noticeBoard.noticeDate }</td>
+		<td style="height: 40px;">${noticeBoard.noticeDate }</td>
 	</tr>
 	<tr>
 		<th>본문</th>
