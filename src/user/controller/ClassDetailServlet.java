@@ -47,13 +47,13 @@ public class ClassDetailServlet extends HttpServlet {
 			
 			
 			int classno=Integer.parseInt(req.getParameter("classno"));//classno불러오기
-			
+			System.out.println(classno);
 			ArrayList<Map<String, Object>> reviewList=us.getReviewbyClassno(classno);//클래스에 대한 리뷰 불러오기
 			
 			//System.out.println("reviewList"+reviewList);
 			
 			Map<String, Object> classinfo= ac.selectClassByClassNo(classno);//classinfo객체 불러오기
-			
+			System.out.println(classinfo);
 			int artno=(int) classinfo.get("artno");
 			
 			List<ClassFile> classDetail=us.selectDetailFileByClassno(classno);//클래스파일 불러오기
