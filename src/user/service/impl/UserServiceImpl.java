@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.Map;
 
 import dto.AskBoard;
+import dto.ClassFile;
 import dto.ClassInfo;
 import dto.Classwish;
 import dto.Donation;
@@ -111,6 +112,11 @@ public class UserServiceImpl implements UserService {
 	public ArrayList<Map<String, Object>> getReviewbyClassno(int classno) {
 		// TODO Auto-generated method stub
 		return userDao.getReviewbyClassno(classno);
+	}
+	@Override
+	public List<ClassFile> selectDetailFileByClassno(int classno) {
+		// TODO Auto-generated method stub
+		return userDao.selectDetailFileByClssno(classno);
 	}
 
 }

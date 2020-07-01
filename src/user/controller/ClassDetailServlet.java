@@ -56,8 +56,8 @@ public class ClassDetailServlet extends HttpServlet {
 			
 			int artno=(int) classinfo.get("artno");
 			
-			List<ClassFile> classDetail=ac.selectDetailFileByClassno(classno);//클래스파일 불러오기
-			
+			List<ClassFile> classDetail=us.selectDetailFileByClassno(classno);//클래스파일 불러오기
+			//System.out.println(classDetail);
 			ArtistInfo artistinfo=as.getArtInfobyartNo(artno);//클래스의 작가정보 호출
 			
 			List<Map<String, Object>> askboard=us.getAskAndComm(classno);//문의 사항 호출

@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.Map;
 
 import dto.AskBoard;
+import dto.ClassFile;
 import dto.ClassInfo;
 import dto.Classwish;
 import dto.Donation;
@@ -46,5 +47,7 @@ public interface UserDao {
 	int insertDonation(Donation d);
 
 	ArrayList<Map<String, Object>> getReviewbyClassno(int classno);
+
+	List<ClassFile> selectDetailFileByClssno(int classno);
 
 }

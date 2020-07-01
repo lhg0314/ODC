@@ -12,6 +12,7 @@ import java.util.Map;
 
 import dbutil.JDBCTemplate;
 import dto.AskBoard;
+import dto.ClassFile;
 import dto.ClassInfo;
 import dto.Classwish;
 import dto.Donation;
@@ -530,6 +531,36 @@ public class UserDaoImpl implements UserDao {
 			JDBCTemplate.close(ps);
 		}
 		
+		return list;
+	}
+
+
+	@Override
+	public List<ClassFile> selectDetailFileByClssno(int classno) {
+		conn=JDBCTemplate.getConnection();
+		
+		String sql = "";
+		sql += "SELECT * ";
+		sql += " FROM classfile";
+		sql += " WHERE class_no = ?";
+		
+		List<ClassFile> list=new ArrayList<ClassFile>();
+		
+		try {
+			ps=conn.prepareStatement(sql);
+			ps.setInt(1, classno);
+			
+			rs=ps.executeQuery();
+			
+			while(rs.next()) {
+				ClassFile f=new ClassFile();
+				f.setClassRenameFilename(rs.getString("class_rename_filename"));
+				list.add(f);
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		return list;
 	}
 
