@@ -18,6 +18,16 @@
 	background: #ecdfec;
 }
 
+#noticeTable td {
+	text-align: center;
+}
+
+#noticeTable td a:hover {
+
+	text-decoration: none;
+	color: black;
+}
+
 #noticeBoard{
 	width: 1100px;
 	margin: 0 auto;
@@ -27,6 +37,9 @@
 	width: 1000px;
 	margin: 0 auto;
 }
+
+
+
 </style>
 
 
@@ -39,11 +52,11 @@
 
 <hr>
 
-<table id="noticeTable" class="table table-condensed text-center table-hover">
-	<tr>
-		<th style="width: 7%;">No.</th>
-		<th style="width: 80%;">제목</th>
-		<th style="width: 13%;">작성일</th>
+<table id="noticeTable" class="table text-center table-hover">
+	<tr >
+		<th style="width: 20%;">No.</th>
+		<th style="width: 60%;">제목</th>
+		<th style="width: 20%;">작성일</th>
 	</tr>
 
 	<c:if test="${empty list }">
@@ -54,9 +67,9 @@
 	
 	<c:forEach var="info" items="${list }" varStatus="status">
 	
-	<tr class="table-hover">
+	<tr class="table-hover" >
 		<td>${info.noticeNo }</td>
-		<td style="text-align: left;"><a href="/notice/view?noticeno=${info.noticeNo }">${info.noticeTitle }</a></td>
+		<td style="text-align: left; "><a href="/notice/view?noticeno=${info.noticeNo }">${info.noticeTitle }</a></td>
 		<td>${info.noticeDate}</td>
 	</tr>	
 	
