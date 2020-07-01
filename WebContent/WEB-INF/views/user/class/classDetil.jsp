@@ -18,6 +18,11 @@
 $(document).ready(function(){
 	$("#supportbtn").click(function(){
 
+		var userno = '${userno}';
+		if(userno==''){
+			alert("로그인후 이용가능합니다")
+			return false;
+		}
 
 		$.ajax({
 			type: "POST"//요청메소드
@@ -56,7 +61,7 @@ var currentPosition = parseInt($("#content-right").css("top"));
 
 <script type="text/javascript">
 
-function donation(){
+/* function donation(){
 	
 	var userno = ${userno};
 	var artno = ${artistinfo.artno};
@@ -73,7 +78,7 @@ function donation(){
 		sendRequest("POST","/user/support",param,ajaxFromServer2);
 	}
 	
-}
+} */
 
 function ajaxFromServer2(){
 	if(httpRequest.readyState==4){//DONE,응답완료
