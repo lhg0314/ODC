@@ -12,6 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import main.service.face.NewClassService;
 import main.service.impl.NewClassServiceImpl;
+import util.Paging;
 
 @WebServlet("/hotclass")
 public class HotClassServlet extends HttpServlet {
@@ -24,6 +25,9 @@ public class HotClassServlet extends HttpServlet {
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
+	
+		Paging paging = nClassService.getPagingHot(req, 0);
+		
 		
 		//인기클래스 불러오기
 		List<Map<String, Object>> cinfo = nClassService.hotclass();
@@ -33,6 +37,7 @@ public class HotClassServlet extends HttpServlet {
 		List<Map<String, Object>> c = nClassService.changeString(cinfo);
 		
 		
+		req.setAttribute("paging", paging);
 		
 		req.setAttribute("cinfo", c);
 		
@@ -54,12 +59,18 @@ public class HotClassServlet extends HttpServlet {
 		}
 	
 		
+		Paging paging = nClassService.getPagingHot(req, category);
+		
 		List<Map<String, Object>> list = nClassService.hotClassBySelectedCate(category);
 		
 		List<Map<String, Object>> l = nClassService.changeString(list);
 	
 		
+		req.setAttribute("paging", paging);
+		
 		req.setAttribute("cinfo", l);
+		
+		req.setAttribute("category", category);
 		
 		req.getRequestDispatcher("/WEB-INF/views/main/navMenu/hotClass.jsp").forward(req, resp);
 		

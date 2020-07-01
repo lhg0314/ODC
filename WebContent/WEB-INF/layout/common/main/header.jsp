@@ -197,7 +197,7 @@ list-style: none;
    line-height:40px;
    height: 40px;
    font-size: 15px;
-    transition:height 1s; 
+   transition:height 1s; 
    
 }
 .navst>li:hover>ul>li:hover { background: thistle; }
@@ -214,7 +214,7 @@ list-style: none;
 .navst>li>ul>li>a:hover {
    color:#5b4c60;
    font-weight: bolder; 
-   transition:background-color 1s;
+/*    transition:background-color 0.5s; */
 }
 
 .containerHead {
@@ -274,28 +274,54 @@ list-style: none;
 	text-align: center;
 }
 
+.wish:hover a {
+
+	text-decoration: none;
+	color: black;
+}
+
 .cart{
 	position:absolute;
 	right:8%;
 	top : 53px;
 	width:100px;
 	text-align: center;
+}
 
+.cart:hover a {
+
+	text-decoration: none;
+	color: black;
 }
 
 .aNone {
    text-decoration: none;
-   color: #333333;
+   color: #666;
 }
 
 .aNone:visit{
    text-decoration: none;
-   color: black;
+   color: #666;
 }
 
 .aNone:hover{
    text-decoration: none;
-   color: black;
+   color: #666;
+}
+
+.aNone1 {
+   text-decoration: none;
+   color: #666;
+}
+
+.aNone1:visit{
+   text-decoration: none;
+   color: #e7717d;
+}
+
+.aNone1:hover{
+   text-decoration: none;
+   color: #e7717d;
 }
 
 #topWrap{
@@ -370,34 +396,18 @@ list-style: none;
     	</ul>
     </div>
    
-<<<<<<< HEAD
    <div style="position: absolute; width: 300px; right: -0.5%; top: 2%; ">
       <ul id="minilist">
             <c:if test="${empty userid }">
-         <li style="font-weight: 500"><a href="/member/login" class="aNone">&nbsp;로그인&nbsp; |</a></li>
-         <li style="font-weight: 500"><a href="/user/join" class="aNone" >&nbsp; 회원가입&nbsp; |</a></li>
-         <li style="font-weight: 500"><a href="/artist/main" class="aNone" >&nbsp; 작가 페이지</a></li>
+         <li style="font-weight: 500"><a href="/member/login" class="aNone1">&nbsp;로그인&nbsp; </a>|</li>
+         <li style="font-weight: 500"><a href="/user/join" class="aNone1" >&nbsp; 회원가입&nbsp; </a>|</li>
+         <li style="font-weight: 500"><a href="/artist/main" class="aNone1" >&nbsp; 작가 페이지</a></li>
             </c:if>
             <c:if test="${!empty userid }">
-         <li style="font-weight: 500"><a href="/user/logout" class="aNone">&nbsp; 로그아웃&nbsp; |</a></li>
-         <li style="font-weight: 500"><a href="/artist/main" class="aNone" >&nbsp; 작가 페이지</a></li>
+         <li style="font-weight: 500"><a href="/user/logout" class="aNone1">&nbsp; 로그아웃&nbsp; </a>|</li>
+         <li style="font-weight: 500"><a href="/artist/main" class="aNone1" >&nbsp; 작가 페이지</a></li>
             </c:if>
       </ul>
-=======
-   <div style="position: absolute; width: 300px; right: -12%; top: 2%;">
-	   <ul id="minilist">
-	   		<c:if test="${empty userid }">
-			<li><a href="/member/login" class="aNone">&nbsp;로그인&nbsp; |</a></li>
-			<li><a href="/user/join" class="aNone" >&nbsp; 회원가입&nbsp; |</a></li>
-			<li><a href="/artist/main" class="aNone" >&nbsp; 작가 페이지</a></li>
-	   		</c:if>
-	   		<c:if test="${!empty userid }">
-			<li><a href="/user/logout" class="aNone">&nbsp; 로그아웃</a></li>
-			<li><a href="/artist/main" class="aNone" >&nbsp; 작가 페이지</a></li>
-	   		</c:if>
-	   </ul>
-
->>>>>>> 9df43ad5dafac5e0c47e4bd32df007f3eb7623bb
    </div>
    
    <div class="wish" onclick="location.href='/user/mypage';">

@@ -137,7 +137,7 @@ list-style: none;
 	overflow: hidden;
 	white-space: nowrap;
 	position: relative;
-	width:1400px;
+ 	width:1200px; 
 	
 }
 
@@ -171,12 +171,24 @@ list-style: none;
 	text-align: center;
 }
 
+.wish:hover a {
+
+	text-decoration: none;
+	color: black;
+}
+
 .cart{
 	position:absolute;
 	right:21%;
 	top : 53px;
 	width:100px;
 	text-align: center;
+}
+
+.cart:hover a {
+
+	text-decoration: none;
+	color: black;
 }
 
 .aNone {
@@ -194,6 +206,21 @@ list-style: none;
    color: black;
 }
 
+.aNone1 {
+   text-decoration: none;
+   color: #666;
+}
+
+.aNone1:visit{
+   text-decoration: none;
+   color: #e7717d;
+}
+
+.aNone1:hover{
+   text-decoration: none;
+   color: #e7717d;
+}
+
 </style>
 
 <style type="text/css">
@@ -205,29 +232,28 @@ list-style: none;
 
 <div class="container"> <!-- 가운데 오게 하기  -->
 <br>
-<div class="logo">
+<div class="logo" >
 <a href="/main"><img id="headerlogo" src="/resources/img/logo2.png" width="200" height="200"></a>
 
   
  
+   <br><br><br>
    
    
-   
-   <div style="position: absolute; width: 350px; right: -2%;">
+   <div style="position: absolute; width: 350px; right: -3%; top: 0; text-align: right;">
 	   <ul id="minilist">
 	   		<c:if test="${empty artid }">
-			<li><a href="/member/login" class="aNone">&nbsp;로그인&nbsp; |</a></li>
-			<li><a href="/artist/join" class="aNone" >&nbsp; 회원가입&nbsp; |</a></li>
-			<li><a href="/main" class="aNone" >&nbsp; 사용자 페이지</a></li>
+			<li style="font-weight: 500"><a href="/member/login" class="aNone1">&nbsp;로그인&nbsp; </a>|</li>
+	        <li style="font-weight: 500"><a href="/artist/join" class="aNone1" >&nbsp; 회원가입&nbsp; </a>|</li>
+	        <li style="font-weight: 500"><a href="/main" class="aNone1" >&nbsp; 사용자 페이지</a></li>
 	   		</c:if>
 	   		<c:if test="${!empty artid }">
-			<li><a href="/user/logout" class="aNone">&nbsp; 로그아웃</a></li>
-			<li><a href="/main" class="aNone" >&nbsp; 사용자 페이지</a></li>
+			<li style="font-weight: 500"><a href="/user/logout" class="aNone1">&nbsp; 로그아웃&nbsp; </a>|</li>
+			<li style="font-weight: 500"><a href="/main" class="aNone1" >&nbsp; 사용자 페이지</a></li>
 	   		</c:if>
 	   </ul>
    </div>
-   
-
+  
    
 </div>
 </div>
