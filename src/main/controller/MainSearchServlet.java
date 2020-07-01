@@ -26,7 +26,9 @@ public class MainSearchServlet extends HttpServlet {
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		
-		int cate = Integer.parseInt(req.getParameter("cate"));
+		int cate = 0;
+		if(req.getParameter("cate")!=null && !"".equals(req.getParameter("cate")))
+			 cate = Integer.parseInt(req.getParameter("cate"));
 		Paging paging = null;
 		List<Map<String, Object>> list = null;
 		
@@ -40,6 +42,7 @@ public class MainSearchServlet extends HttpServlet {
 		
 		req.setAttribute("paging", paging);
 		req.setAttribute("list", list);
+		req.setAttribute("category", cate);
 		
 //		System.out.println(list);
 		
