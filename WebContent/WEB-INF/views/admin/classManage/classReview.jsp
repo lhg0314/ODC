@@ -4,14 +4,6 @@
         <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
         
 <c:import url="/WEB-INF/layout/admin/header.jsp"></c:import>
-<script type="text/javascript">
-$(document).ready(function(){
-	$("#btnBack").click(function(){
-		history.go(-1);
-	})
-
-});
-</script>
 
 <style type="text/css">
 
@@ -44,7 +36,7 @@ $(document).ready(function(){
 	<tr>
 		<th>번호</th>
 		<th style="width: 60%;">내용</th>
-		<th style="width: 8%;">만족도</th>
+		<th style="width: 10%;">만족도</th>
 		<th>작성자</th>
 		<th>작성날짜</th>
 	</tr>
@@ -62,6 +54,6 @@ $(document).ready(function(){
 <c:import url="/WEB-INF/paging/pagingClassReview.jsp" />
  </c:if>
 <div class="text-center">
-<button type="button" class="btn btn-default" id="btnBack">뒤로</button>
+<button type="button" class="btn btn-default" id="btnBack" onclick="location.href='/admin/class/view?classno=${classno }&view=post'">클래스 상세보기로</button>
 </div>
 <c:import url="/WEB-INF/layout/admin/footer.jsp"></c:import>

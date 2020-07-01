@@ -22,7 +22,7 @@ public class ClassBookingConditionServlet extends HttpServlet {
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
-		System.out.println("doget /book");
+//		System.out.println("doget /book");
 		
 		String param = req.getParameter("classno");
 
@@ -40,7 +40,7 @@ public class ClassBookingConditionServlet extends HttpServlet {
 //		map = adminService.selectAllClass();
 		List<Map<String, Object>> list = adminClassService.selectClassBookingByClassNo(paging, classno);
 		
-		System.out.println(list);
+//		System.out.println(list);
 
 //		System.out.println(map);
 		// list data VIEW 로 넘겨주기

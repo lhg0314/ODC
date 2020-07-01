@@ -48,6 +48,7 @@ public class ClassReviewInfoServlet extends HttpServlet {
 		req.setAttribute("list", list);
 		// Paging 처리 결과 Model 값 전달
 		req.setAttribute("paging", paging);
+		req.setAttribute("classno", classno);
 		
 		req.getRequestDispatcher("/WEB-INF/views/admin/classManage/classReview.jsp").forward(req, resp);
 	

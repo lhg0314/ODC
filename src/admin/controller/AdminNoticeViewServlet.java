@@ -18,7 +18,7 @@ public class AdminNoticeViewServlet extends HttpServlet {
     
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
-	System.out.println("/board/noticeview - [GET]");
+//	System.out.println("/board/noticeview - [GET]");
 		
 		int noticeno = 0;
 		

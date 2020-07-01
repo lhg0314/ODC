@@ -563,7 +563,7 @@ public class ClassCheckPostDaoImpl implements ClassCheckPostDao {
 				map.put("reviewNo", rs.getInt("review_no"));
 				map.put("reviewContent", rs.getString("review_content"));
 				map.put("reviewDate", rs.getDate("review_date"));
-				map.put("satLevel",rs.getInt("sat_level"));
+				map.put("satLevel",rs.getString("sat_level"));
 				map.put("userId",rs.getString("user_id"));
 				
 				list.add(map);
