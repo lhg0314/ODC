@@ -12,7 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import main.service.face.LocationCategoryTalentService;
 import main.service.impl.LocationCategoryTalentServiceImpl;
-import util.Paging;
+import util.Pagingphoto;
 
 @WebServlet("/category")
 public class ClassCategoryServlet extends HttpServlet {
@@ -31,7 +31,7 @@ public class ClassCategoryServlet extends HttpServlet {
 			category = Integer.parseInt(param);
 		}
 
-		Paging paging = categoryService.getPagingCategory(req, category);
+		Pagingphoto paging = categoryService.getPagingCategory(req, category);
 		
 		List<Map<String, Object>> list = categoryService.selectClassByCategory(paging, category);
 		
