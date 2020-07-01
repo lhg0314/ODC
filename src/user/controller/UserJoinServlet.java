@@ -58,7 +58,7 @@ public class UserJoinServlet extends HttpServlet {
 		user.setUserpw(req.getParameter("userpw"));
 		user.setUsernick(req.getParameter("usernick"));
 		
-		//System.out.println(user);
+		System.out.println(user);
 		
 		userService.insertUser(user);//회원정보를 디비에 저장함
 		
