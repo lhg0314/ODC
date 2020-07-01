@@ -41,6 +41,7 @@
 					var email = naverLogin.user.getEmail();
 					var name = naverLogin.user.getName();
 					var uniqId = naverLogin.user.getId();
+					//var birthday = naverLogin.user.getBirthday();
 					if( email == undefined || email == null) {
 						alert("이메일은 필수정보입니다. 정보제공을 동의해주세요.");
 						/* (5-1) 사용자 정보 재동의를 위하여 다시 네아로 동의페이지로 이동함 */
