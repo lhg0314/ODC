@@ -81,8 +81,6 @@ public class NewClassDaoImpl implements NewClassDao {
 		sql += " 		FROM classbooking CB";
 		sql += " 		WHERE CF.class_no = CB.class_no";
 		sql += " 	) DESC NULLS LAST";
-
-
 		
 		conn = JDBCTemplate.getConnection();
 		

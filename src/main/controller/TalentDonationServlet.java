@@ -23,12 +23,20 @@ public class TalentDonationServlet extends HttpServlet {
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		
-		Paging paging = talentDonationService.getPagingTalent(req, 0);
+		int category = 0;
+		String param = req.getParameter("category");
 		
-		List<Map<String, Object>> list = talentDonationService.selectClassByTalentDonation(0);
+		if( param != null && !"".equals(param)) {
+			category = Integer.parseInt(param);
+		}
+		
+		Paging paging = talentDonationService.getPagingTalent(req, category);
+		
+		List<Map<String, Object>> list = talentDonationService.selectClassByTalentDonation(category);
 	
 		req.setAttribute("paging", paging);
 		req.setAttribute("list", list);
+		req.setAttribute("category", category);
 		
 		req.getRequestDispatcher("/WEB-INF/views/main/navMenu/talentDonation.jsp").forward(req, resp);
 	}

@@ -30,12 +30,21 @@ public class NewClassServlet extends HttpServlet {
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		
+		int category = 0;
+		String param = req.getParameter("category");
+		
+//		System.out.println(param);
+		
+		if( param != null && !"".equals(param)) {
+			category = Integer.parseInt(param);
+		}
+		
 		
 		Paging paging = nClassService.getPagingHot(req, 0);
 		
 		
 		//최신클래스 불러오기
-		List<Map<String, Object>> cinfo = nClassService.newclass();
+		List<Map<String, Object>> cinfo = nClassService.newClassBySelectedCate(category);
 		
 		
 		//지역, 카테고리 형변환
@@ -45,6 +54,7 @@ public class NewClassServlet extends HttpServlet {
 		req.setAttribute("paging", paging);
 		
 		req.setAttribute("cinfo", c);
+		req.setAttribute("category", category);
 		
 		req.getRequestDispatcher("/WEB-INF/views/main/navMenu/newClass.jsp").forward(req, resp);
 	}

@@ -25,21 +25,27 @@ public class HotClassServlet extends HttpServlet {
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
-	
-		Paging paging = nClassService.getPagingHot(req, 0);
+		int category = 0;
+		String param = req.getParameter("category");
 		
+//		System.out.println(param);
+		
+		if( param != null && !"".equals(param)) {
+			category = Integer.parseInt(param);
+		}
+		
+		Paging paging = nClassService.getPagingHot(req, category);
 		
 		//인기클래스 불러오기
-		List<Map<String, Object>> cinfo = nClassService.hotclass();
-		
+		List<Map<String, Object>> cinfo = nClassService.hotClassBySelectedCate(category);
 		
 		//지역, 카테고리 형변환
 		List<Map<String, Object>> c = nClassService.changeString(cinfo);
 		
 		
 		req.setAttribute("paging", paging);
-		
 		req.setAttribute("cinfo", c);
+		req.setAttribute("category", category);
 		
 		req.getRequestDispatcher("/WEB-INF/views/main/navMenu/hotClass.jsp").forward(req, resp);
 	
@@ -50,9 +56,9 @@ public class HotClassServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 	
 		int category = 0;
-		String param = req.getParameter("cateSel");
+		String param = req.getParameter("category");
 		
-		System.out.println(param);
+//		System.out.println(param);
 		
 		if( param != null && !"".equals(param)) {
 			category = Integer.parseInt(param);
@@ -67,9 +73,7 @@ public class HotClassServlet extends HttpServlet {
 	
 		
 		req.setAttribute("paging", paging);
-		
 		req.setAttribute("cinfo", l);
-		
 		req.setAttribute("category", category);
 		
 		req.getRequestDispatcher("/WEB-INF/views/main/navMenu/hotClass.jsp").forward(req, resp);
