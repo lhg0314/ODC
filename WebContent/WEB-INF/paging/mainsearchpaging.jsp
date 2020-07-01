@@ -4,71 +4,71 @@
 <div class="text-center">
 <ul class="pagination">
 	
-	<c:if test="${not empty param.month }">
+	<c:if test="${not empty category }">
 		<!-- 첫 페이지로 가기 -->
 		<c:if test="${paging.curPage ne 1 }">
-		<li><a href="/artist/donation?curPage=1&search=${param.search }&month=${param.month }">&laquo;</a></li>
+		<li><a href="/main/search?curPage=1&search=${param.search }&cate=${category }">&laquo;</a></li>
 		</c:if>
 		
 		<!-- 이전 페이지로 가기 -->
 		<c:if test="${paging.curPage ne 1 }">
-		<li><a href="/artist/donation?curPage=${paging.curPage - 1 }&search=${param.search }&month=${param.month }">&lt;</a>
+		<li><a href="/main/search?curPage=${paging.curPage - 1 }&search=${param.search }&cate=${category }">&lt;</a>
 		</c:if>
 		
 		<c:forEach begin="${paging.startPage }" end="${paging.endPage }" var="i">
 		<!-- 현재 페이지라면 강조(.active) -->
 		<c:if test="${paging.curPage eq i }">
-		<li class="active"><a href="/artist/donation?curPage=${i }&search=${param.search }&month=${param.month }">${i }</a></li>
+		<li class="active"><a href="/main/search?curPage=${i }&search=${param.search }&cate=${category }">${i }</a></li>
 		</c:if>
 		
 		<!-- 현재 페이지가 아니라면 평소 모습-->
 		<c:if test="${paging.curPage ne i }">
-		<li><a href="/artist/donation?curPage=${i }&search=${param.search }&month=${param.month }">${i }</a></li>
+		<li><a href="/main/search?curPage=${i }&search=${param.search }&cate=${category }">${i }</a></li>
 		</c:if>
 		</c:forEach>
 	
 		<!-- 다음 페이지로 가기 -->
 		<c:if test="${paging.curPage ne paging.totalPage}">
-		<li><a href="/artist/donation?curPage=${paging.curPage + 1 }&search=${param.search }&month=${param.month }">&gt;</a>
+		<li><a href="/main/search?curPage=${paging.curPage + 1 }&search=${param.search }&cate=${category }">&gt;</a>
 		</c:if>
 	
 	 	<!-- 마지막 페이지로 가기 -->
 		<c:if test="${paging.curPage ne paging.totalPage }">
-		<li><a href="/artist/donation?curPage=${paging.totalPage }&search=${param.search }&month=${param.month }">&raquo;</a></li>
+		<li><a href="/main/search?curPage=${paging.totalPage }&search=${param.search }&cate=${category }">&raquo;</a></li>
 		</c:if>
 	</c:if>
 	
-	<c:if test="${empty param.month }">
+	<c:if test="${empty category }">
 		<!-- 첫 페이지로 가기 -->
 		<c:if test="${paging.curPage ne 1 }">
-		<li><a href="/artist/donation?curPage=1&search=${param.search }">&laquo;</a></li>
+		<li><a href="/main/search?curPage=1&search=${param.search }">&laquo;</a></li>
 		</c:if>
 		
 		<!-- 이전 페이지로 가기 -->
 		<c:if test="${paging.curPage ne 1 }">
-		<li><a href="/artist/donation?curPage=${paging.curPage - 1 }&search=${param.search }">&lt;</a>
+		<li><a href="/main/search?curPage=${paging.curPage - 1 }&search=${param.search }">&lt;</a>
 		</c:if>
 		
 		<c:forEach begin="${paging.startPage }" end="${paging.endPage }" var="i">
 		<!-- 현재 페이지라면 강조(.active) -->
 		<c:if test="${paging.curPage eq i }">
-		<li class="active"><a href="/artist/donation?curPage=${i }&search=${param.search }">${i }</a></li>
+		<li class="active"><a href="/main/search?curPage=${i }&search=${param.search }">${i }</a></li>
 		</c:if>
 		
 		<!-- 현재 페이지가 아니라면 평소 모습-->
 		<c:if test="${paging.curPage ne i }">
-		<li><a href="/artist/donation?curPage=${i }&search=${param.search }">${i }</a></li>
+		<li><a href="/main/search?curPage=${i }&search=${param.search }">${i }</a></li>
 		</c:if>
 		</c:forEach>
 	
 		<!-- 다음 페이지로 가기 -->
 		<c:if test="${paging.curPage ne paging.totalPage}">
-		<li><a href="/artist/donation?curPage=${paging.curPage + 1 }&search=${param.search }">&gt;</a>
+		<li><a href="/main/search?curPage=${paging.curPage + 1 }&search=${param.search }">&gt;</a>
 		</c:if>
 	
 	 	<!-- 마지막 페이지로 가기 -->
 		<c:if test="${paging.curPage ne paging.totalPage }">
-		<li><a href="/artist/donation?curPage=${paging.totalPage }&search=${param.search }">&raquo;</a></li>
+		<li><a href="/main/search?curPage=${paging.totalPage }&search=${param.search }">&raquo;</a></li>
 		</c:if>
 	</c:if>
 	

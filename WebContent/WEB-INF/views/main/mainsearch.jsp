@@ -135,21 +135,14 @@
 	<div id="title">검색 결과</div>
 	<hr>
 	
-	<select>
-		<option value="0" selected>카테고리</option>
-		<option value="1">플라워</option>
-		<option value="2">음악</option>
-		<option value="3">수공예</option>
-		<option value="4">요리</option>
-		<option value="5">뷰티</option>
-		<option value="6">미술</option>
-		<option value="7">기타</option>
-	</select>
-	
 	<section id="section">
 	
 		<ul id="searchClass"><!-- 클래스 목록 한줄 -->
 	
+		<c:if test="${empty list }">
+         <div style="font-size: 20px; color: #999;">개설된 클래스가 없습니다...</div>
+      </c:if>
+      
 		<c:forEach items="${list }" var="info" >
 			<li id="li">
 			<div id="eachClass">
@@ -217,12 +210,15 @@
 
 </body><!-- end body (header에서 옴) -->
 
+<div class="clearfix"></div>
+
+<c:if test="${not empty list }">
+	<c:import url="/WEB-INF/paging/mainsearchpaging.jsp" />
+</c:if>
 
 <div id="totop">
 	<a href="/main/search"><img alt="up" src="/resources/img/totop.png" width="40px" height="35px"/></a>
 </div>
 
-
-<div class="clearfix"></div>
 <br>
 <c:import url="/WEB-INF/layout/common/main/footer.jsp" />
