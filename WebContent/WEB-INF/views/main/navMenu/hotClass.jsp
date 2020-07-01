@@ -156,7 +156,7 @@ $(document).ready(function(){
    <hr>
    
    <form action="/hotclass" method="post" id="cateForm">
-   <select name="cateSel" id="cateSel" onchange="this.form.submit();">
+   <select name="category" id="cateSel" onchange="this.form.submit();">
       <option value="0" selected>카테고리</option>
       <option value="1">플라워</option>
       <option value="2">음악</option>

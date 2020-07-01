@@ -25,7 +25,7 @@
 	
 	<!-- 이전 페이지로 가기 -->
 	<c:if test="${paging.curPage ne 1 }">
-	<li><a href="/newclass?curPage=${paging.curPage - 1 }">&lt;</a>
+	<li><a href="/newclass?category=${category }&curPage=${paging.curPage - 1 }">&lt;</a>
 	</c:if>
 	
 	
@@ -33,12 +33,12 @@
 	
 	<!-- 현재 페이지라면 강조(.active) -->
 	<c:if test="${paging.curPage eq i }">
-	<li class="active"><a href="/newclass?curPage=${i }">${i }</a></li>
+	<li class="active"><a href="/newclass?category=${category }&curPage=${i }">${i }</a></li>
 	</c:if>
 	
 	<!-- 현재 페이지가 아니라면 평소 모습-->
 	<c:if test="${paging.curPage ne i }">
-	<li><a href="/newclass?curPage=${i }">${i }</a></li>
+	<li><a href="/newclass?category=${category }&curPage=${i }">${i }</a></li>
 	</c:if>
 
 	</c:forEach>
@@ -46,7 +46,7 @@
 
 	<!-- 다음 페이지로 가기 -->
 	<c:if test="${paging.curPage ne paging.totalPage}">
-	<li><a href="/newclass?curPage=${paging.curPage + 1 }">&gt;</a>
+	<li><a href="/newclass?category=${category }&curPage=${paging.curPage + 1 }">&gt;</a>
 	</c:if>
 	
 
@@ -62,7 +62,7 @@
 
 	<!-- 마지막 페이지로 가기 -->
 	<c:if test="${paging.curPage ne paging.totalPage }">
-	<li><a href="/newclass?curPage=${paging.totalPage }">&rarr;</a></li>
+	<li><a href="/newclass?category=${category }&curPage=${paging.totalPage }">&rarr;</a></li>
 	</c:if>
 	
 </ul>
