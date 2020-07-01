@@ -34,4 +34,12 @@ public interface NewClassDao {
 	 */
 	List<Map<String, Object>> newClassBySelectedCate(int category);
 
+	
+	/**
+	 * 페이징
+	 * @param category
+	 * @return
+	 */
+	int selectCntAllHot(int category);
+
 }

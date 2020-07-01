@@ -3,6 +3,10 @@ package main.service.face;
 import java.util.List;
 import java.util.Map;
 
+import javax.servlet.http.HttpServletRequest;
+
+import util.Paging;
+
 
 public interface NewClassService {
 
@@ -44,6 +48,15 @@ public interface NewClassService {
 	 * @return
 	 */
 	List<Map<String, Object>> newClassBySelectedCate(int category);
+
+	
+	/**
+	 * 페이징
+	 * @param req
+	 * @param category
+	 * @return
+	 */
+	Paging getPagingHot(HttpServletRequest req, int category);
 	
 	
 	

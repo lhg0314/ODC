@@ -110,30 +110,39 @@
 	color: black;
 }
 
+.ack {
+	
+    font-size: 13px;
+    background: #eeeeeebd;
+    border-radius: 15px;
+    border: 1px solid #ccc;
+    padding: 8px;
+}
+
 </style>
 
 <div id="loginbox">
 
 
 
+<div>
+<img alt="exclamation_mark" src="/resources/img/exclamation_mark.png" style="width:80px; height:70px;">
+</div>
 
-
+<br><br>
 
 <div id="loginInfo">
-<p>작가 페이지 서비스를 이용하기 위해서는 로그인이 필요합니다</p>
-
+<p>작가 페이지 서비스를 이용하기 위해서는 작가 계정 로그인이 필요합니다</p>
 <div id="find">
 <ul>
-	
-	
-	<li><a href="/artist/join" class="ack">회원가입</a></li>
-	<li>&nbsp;|&nbsp;</li>
-	<li><a href="/member/login" class="ack">로그인 하기</a></li>
+	<li><a href="/artist/join" class="ack">작가 회원가입</a></li>
+<!-- 	<li>&nbsp;|&nbsp;</li> -->
+	<li><a href="/member/login" class="ack">작가 로그인</a></li>
 </ul>
 </div>
 </div>
 
-
+<br><br>
 
 
 

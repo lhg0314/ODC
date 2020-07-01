@@ -6,6 +6,32 @@
 <c:import url="/WEB-INF/layout/common/main/header.jsp"></c:import>
 
 
+<script type="text/javascript">
+$(document).ready(function(){
+	
+	var category = '<c:out value="${category }"/>'
+	
+	if( category == 0){
+		$("#cateSel option").eq(0).attr("selected","selected");
+	}else if( category == 1){
+		$("#cateSel option").eq(1).attr("selected","selected");
+	}else if( category == 2){
+		$("#cateSel option").eq(2).attr("selected","selected");
+	}else if( category == 3){
+		$("#cateSel option").eq(3).attr("selected","selected");
+	}else if( category == 4){
+		$("#cateSel option").eq(4).attr("selected","selected");
+	}else if( category == 5){
+		$("#cateSel option").eq(5).attr("selected","selected");
+	}else if( category == 6){
+		$("#cateSel option").eq(6).attr("selected","selected");
+	}else if( category == 7){
+		$("#cateSel option").eq(7).attr("selected","selected");
+	}
+	
+})
+</script>
+
 
 <!-- 레이아웃 -->
 <style type="text/css">
@@ -108,10 +134,9 @@
 
 #classname { 
    
-/*    width: 200px; */
    height: 40px;
     
-    font-size: 18px; 
+    font-size: 16px; 
     color: black; 
     
     /* 제목 길때 ...으로 생략하기 */
@@ -119,8 +144,6 @@
     white-space: nowrap; 
     text-overflow: ellipsis; 
 } 
-
-#btns { margin: 0 0 5px; }
 
 </style>
 
@@ -172,10 +195,6 @@
             <div id="classname"><!-- 링크 누르면 클래스 상세 페이지로 이동 -->
                <a href="userclass/detail?classno=${c.classno }"><span>${c.className }</span></a>
             </div>
-            <div id="btns"><!-- 각각 상세 페이지로 이동 / 장바구니 담기 -->
-                 <a style="background: thistle;" href="userclass/detail?classno=${c.classno }"><img src="/resources/img/classbutton/reservation_btnimg.png"></a> 
-                 <a style="background: #ccc;" href="#"><img src="/resources/img/classbutton/wishlist_btnimg.png"></a>
-             </div>
          </div>
          </li>
       </c:forEach>
@@ -190,12 +209,18 @@
 </body><!-- end body (header에서 옴) -->
 
 
+<div class="clearfix"></div>
+
+
+<c:if test="${not empty cinfo }">
+	<c:import url="/WEB-INF/paging/pagingNewclass.jsp" />
+</c:if>
+
 
 <div id="totop">
    <a href="/newclass"><img alt="up" src="/resources/img/totop.png" width="40px" height="35px"/></a>
 </div>
 
 
-<div class="clearfix"></div>
 <br>
 <c:import url="/WEB-INF/layout/common/main/footer.jsp"></c:import>

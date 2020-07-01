@@ -24,7 +24,7 @@ section {
    margin: 50px auto;
 }
 
-.slideWrapper { margin: 60px 0 100px; }
+.slideWrapper { margin: 60px 0; }
 
 </style>
 
@@ -187,10 +187,9 @@ section {
 
 #classname { 
    
-/*    width: 200px; */
    height: 40px;
     
-    font-size: 18px; 
+    font-size: 16px; 
     color: black; 
     
     /* 제목 길때 ...으로 생략하기 */
@@ -198,6 +197,10 @@ section {
     white-space: nowrap; 
     text-overflow: ellipsis; 
 } 
+
+
+#arrow span:hover { background: #eeeeee85; }
+
 
 </style>
 

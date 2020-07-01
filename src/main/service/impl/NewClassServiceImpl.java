@@ -3,10 +3,13 @@ package main.service.impl;
 import java.util.List;
 import java.util.Map;
 
+import javax.servlet.http.HttpServletRequest;
+
 import dto.ClassInfo;
 import main.dao.face.NewClassDao;
 import main.dao.impl.NewClassDaoImpl;
 import main.service.face.NewClassService;
+import util.Paging;
 
 public class NewClassServiceImpl implements NewClassService{
 
@@ -82,10 +85,33 @@ public class NewClassServiceImpl implements NewClassService{
 		return nClassDao.hotClassBySelectedCate(category);
 	}
 
+	
 	@Override
 	public List<Map<String, Object>> newClassBySelectedCate(int category) {
 		
 		return nClassDao.newClassBySelectedCate(category);
+	}
+
+	
+	@Override
+	public Paging getPagingHot(HttpServletRequest req, int category) {
+		
+		// 요청파라미터 curPage를 파싱한다
+		String param = req.getParameter("curPage");
+		
+		int curPage = 0;
+		if (param != null && !"".equals(param)) {
+			curPage = Integer.parseInt(param);
+		}
+
+		// 클래스 전체 Paging 객체를 생성하고 반환
+		int totalCount = nClassDao.selectCntAllHot(category);
+
+		// Paging 객체 생성
+		Paging paging = new Paging(totalCount, curPage);
+
+		
+		return paging;
 	}
 
 }

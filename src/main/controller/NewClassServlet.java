@@ -12,6 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import main.service.face.NewClassService;
 import main.service.impl.NewClassServiceImpl;
+import util.Paging;
 
 /*
  * 0627 이서연 
@@ -30,6 +31,9 @@ public class NewClassServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		
 		
+		Paging paging = nClassService.getPagingHot(req, 0);
+		
+		
 		//최신클래스 불러오기
 		List<Map<String, Object>> cinfo = nClassService.newclass();
 		
@@ -38,6 +42,7 @@ public class NewClassServlet extends HttpServlet {
 		List<Map<String, Object>> c = nClassService.changeString(cinfo);
 		
 		
+		req.setAttribute("paging", paging);
 		
 		req.setAttribute("cinfo", c);
 		
@@ -59,12 +64,19 @@ public class NewClassServlet extends HttpServlet {
 		}
 	
 		
+		Paging paging = nClassService.getPagingHot(req, category);
+		
 		List<Map<String, Object>> list = nClassService.newClassBySelectedCate(category);
 		
 		List<Map<String, Object>> l = nClassService.changeString(list);
 	
 		
+		
+		req.setAttribute("paging", paging);
+		
 		req.setAttribute("cinfo", l);
+		
+		req.setAttribute("category", category);
 		
 		req.getRequestDispatcher("/WEB-INF/views/main/navMenu/newClass.jsp").forward(req, resp);
 	

@@ -231,4 +231,52 @@ public class NewClassDaoImpl implements NewClassDao {
 		return list;
 	}
 
+
+
+	@Override
+	public int selectCntAllHot(int category) {
+		
+		//수행할 SQL
+		String sql = "";
+		
+		sql += "SELECT ";
+		sql += "	count(*)";
+		sql += " FROM classinfo";
+		if( category > 0) {
+			sql += " WHERE category = ?";
+		}
+
+		//최종 결과 변수
+		int cnt = 0;
+		
+		conn = JDBCTemplate.getConnection();
+		
+		try {
+			
+			ps = conn.prepareStatement(sql);
+			
+			if(category > 0 ) {
+				
+				ps.setInt(1, category);
+			}
+			
+			rs = ps.executeQuery();
+			
+			while(rs.next()) {
+				
+				cnt = rs.getInt(1);
+				
+			}
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			JDBCTemplate.close(ps);
+			JDBCTemplate.close(rs);
+		}
+		
+		//최종 결과 반환
+		return cnt;
+	}
+
 }
