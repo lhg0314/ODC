@@ -399,7 +399,7 @@ public class UserDaoImpl implements UserDao {
 		sql+=" left outer join askboardcomm c on a.ask_board_no= c.ask_board_no ";
 		sql+="  join userinfo u on u.user_no=a.user_no ";
 		sql+="  join artistinfo art on a.art_no=art.art_no";
-		sql+="  where class_no=?";
+		sql+="  where class_no=? order by ask_date desc";
 		
 		List<Map<String, Object>> list = new ArrayList<>();
 		
