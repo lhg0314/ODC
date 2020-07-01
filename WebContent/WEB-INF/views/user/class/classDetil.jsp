@@ -16,21 +16,24 @@
 
 <script type="text/javascript">
 $(document).ready(function(){
-	$("#supportbtn").click(function(){
+/* 	$("#supportbtn").click(function(){
 
-		var userno = '${userno}';
+		var userno = ${userno};
+		var artno = ${artistinfo.artno};
+		var donPrice=donationForm.support-price.value;
+		
 		if(userno==''){
 			alert("로그인후 이용가능합니다")
 			return false;
 		}
-
+		console.log(donPrice)
 		$.ajax({
 			type: "POST"//요청메소드
 			,url:"/user/support"
 			,data:{
 				userno: ${userno}
 				,artno:${artistinfo.artno}
-				,price:donationForm.price.value
+				,price:donPrice
 			}
 			
 			,success:function(res){
@@ -43,7 +46,7 @@ $(document).ready(function(){
 			}
 		})
 	
-	});
+	}); */
 	
 })
 </script>
@@ -61,11 +64,11 @@ var currentPosition = parseInt($("#content-right").css("top"));
 
 <script type="text/javascript">
 
-/* function donation(){
+ function donation(){
 	
 	var userno = ${userno};
 	var artno = ${artistinfo.artno};
-	var donPrice=donationForm.support-price.value;
+	var donPrice=donationForm.support.value;
 	console.log(donPrice)
 	if(!donPrice)
 	{
@@ -78,7 +81,7 @@ var currentPosition = parseInt($("#content-right").css("top"));
 		sendRequest("POST","/user/support",param,ajaxFromServer2);
 	}
 	
-} */
+} 
 
 function ajaxFromServer2(){
 	if(httpRequest.readyState==4){//DONE,응답완료
@@ -818,12 +821,12 @@ margin-top: 10px;
 													
 												<div class="form-group">
 													<label for="support-price">후원 금액</label> <input
-														type="number" class="form-control" id="support-price" name="support-price"
+														type="number" class="form-control" id="support" name="support-price"
 														placeholder="후원할 금액을 입력해 주세요"><span>원</span>
 												</div>
 												
 												<br><br>
-												<a  class="btn btn-default" id="supportbtn">후원하기</a>
+												<a  class="btn btn-default"  onclick="donation()">후원하기</a>
 												<button type="button" class="btn btn-default" data-dismiss="modal">취소</button>
 											</form>
 										</div>
