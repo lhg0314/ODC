@@ -96,7 +96,7 @@ public class AdminSalesDaoImpl implements AdminSalesDao{
 		
 		String sql = "";
 		sql += "select count(*) from classbooking";
-		sql += " where booking_date BETWEEN ? and ? ";
+		sql += " where payment_date BETWEEN ? and ? ";
 		
 		//결과 저장할 변수
 		int totalCount = 0 ;
