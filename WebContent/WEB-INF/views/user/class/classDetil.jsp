@@ -57,7 +57,7 @@ $(function(){
 var currentPosition = parseInt($("#content-right").css("top")); 
     $(window).scroll(function() { 
             var position = $(window).scrollTop(); // 현재 스크롤바의 위치값을 반환합니다. 
-            $("#content-right").stop().animate({"top":position+currentPosition+"px"},300); 
+            $("#content-right").stop().animate({"top":position+currentPosition-15+"px"},300); 
     });
 });
 </script>
@@ -344,12 +344,12 @@ height:200px;
 }
 
 #class-bookin2{
-
+        padding: 10px 30px 15px;
 }
 
 #class-bookin3{
 	overflow: hidden;
-    padding: 30px 30px 30px;
+   padding: 10px 30px 0px;
 }
 
 #class-bookin4{
@@ -533,6 +533,14 @@ margin-top: 10px;
     height: 230px;
 }
 
+
+#Allwrapper{
+overflow: hidden;
+}
+
+.c03-count{
+    padding: 10px 34px;
+}
 </style>
 
 <script type="text/javascript">
@@ -559,7 +567,7 @@ margin-top: 10px;
 	})
 </script>
 
-<div id="wrapper"><!-- 전체 감싸기  -->
+<div id="Allwrapper"><!-- 전체 감싸기  -->
 	<div id="content"><!-- 내용물 감싸기  -->
 		<div id="content-left"><!--클래스 상세내용  -->
 			<div id="class-imgs"><!-- 클래스 메인 사진  -->
@@ -889,8 +897,8 @@ margin-top: 10px;
 
 					</div>
 					<div id="class-bookin2">
-					<div class="text01"><br>
-							&nbsp;&nbsp;&nbsp;&nbsp;날짜 선택
+					<div class="text01">
+							날짜 선택
 						</div>
 						<div class="calendar" id="scheduleCalendar">
 						
@@ -909,10 +917,7 @@ margin-top: 10px;
 		                    </div>
 		                    <span><h4>총인원:</h4></span><div class="c03-charge" id="price"></div>
 					</div>
-					<div id="class-bookin4">
-					
-						
-					</div>
+				
 				<div id="right-btn">
 			 <a class="btn btn-default"  id="wishlist"  style="margin-right:20px;margin-top:20px;margin-left:30%;background: #ccc;">
 			 	<img src="/resources/img/classbutton/wishlist_btnimg.png">
