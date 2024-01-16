@@ -1,6 +1,6 @@
 # :seedling:<ODC 프로젝트> 원데이 클래스 신청 사이트:seedling:
 
-[KH정보교육원] 세미 프로젝트_ 원데이 클래스 신청 사이트 ODC
+
 
 <img src="./WebContent/resources/img/logo2.png" width="300"/>
 
